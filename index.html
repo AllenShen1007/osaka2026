@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>2026 關西 7 天 6 夜自由行手冊</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;          /* 經典和風深紺青 */
+      --primary-accent: #2563eb;   /* 亮藍點綴 */
+      --primary-light: #eff6ff;
+      --accent: #d97706;           /* 暖琥珀金 */
+      --accent-light: #fef3c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; -webkit-tap-highlight-color: transparent; }
+
+    /* Header 封面 */
+    header {
+      position: relative;
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
+      color: white;
+      padding: 32px 20px 28px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .countdown-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    header h1 { font-size: 24px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4px; }
+    header p { font-size: 13px; color: #cbd5e1; font-weight: 500; }
+    
+    .info-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 8px 14px;
+      border-radius: 14px;
+      font-size: 12px;
+      margin-top: 14px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
+    }
+    .info-badge:active { transform: scale(0.98); background: rgba(255,255,255,0.2); }
+    .info-badge span { color: #38bdf8; font-weight: 700; }
+
+    /* Tabs 膠囊導覽列 */
+    .tabs-wrapper {
+      position: sticky;
+      top: 0;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 100;
+      padding: 12px 16px;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      scrollbar-width: none;
+    }
+    .tabs-wrapper::-webkit-scrollbar { display: none; }
+    .tabs { display: inline-flex; gap: 8px; }
+    .tab-btn {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 68px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+    }
+    .tab-btn .tab-name { font-size: 13px; font-weight: 800; color: #475569; }
+    .tab-btn .tab-sub { font-size: 10px; color: #94a3b8; font-weight: 600; margin-top: 2px; }
+    .tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(30, 58, 138, 0.3);
+      transform: translateY(-1px);
+    }
+    .tab-btn.active .tab-name { color: #ffffff; }
+    .tab-btn.active .tab-sub { color: #93c5fd; }
+    .tab-btn.tool-tab { background: #fffbeb; border-color: #fde68a; }
+    .tab-btn.tool-tab .tab-name { color: #b45309; }
+    .tab-btn.tool-tab.active { background: var(--accent); border-color: var(--accent); }
+    .tab-btn.tool-tab.active .tab-name { color: white; }
+
+    /* Layout & 動態容器 */
+    .container { max-width: 680px; margin: 0 auto; padding: 18px 16px; }
+    .day-panel { display: none; }
+    .day-panel.active { display: block; animation: slideUp 0.3s ease-out; }
+
+    .day-header {
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .day-title { font-size: 19px; font-weight: 800; color: #0f172a; line-height: 1.4; }
+    .day-subtitle { font-size: 13px; color: var(--accent); font-weight: 700; margin-top: 6px; }
+
+    /* 時間軸軌跡效果 */
+    .timeline-container { position: relative; padding-left: 22px; }
+    .timeline-container::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 15px;
+      bottom: 25px;
+      width: 2px;
+      background: linear-gradient(to bottom, #cbd5e1, #e2e8f0);
+    }
+
+    /* Event Card 卡片美化 */
+    .event-card {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-container .event-card::after {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 26px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3.5px solid var(--primary-accent);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    /* 照片超大欄位（320px）與漸層遮罩 */
+    .img-container {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: #0f172a;
+      overflow: hidden;
+    }
+    .event-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 40%, rgba(15,23,42,0.7) 100%);
+      pointer-events: none;
+    }
+    .img-tag-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      color: #f8fafc;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    /* 懸浮半透明相機按鈕 */
+    .btn-upload-label {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-upload-label:active { transform: scale(0.95); background: rgba(0, 0, 0, 0.9); }
+    .file-input { display: none; }
+
+    /* 集合點雙圖排版（280px） */
+    .dual-img-container { position: relative; display: flex; gap: 3px; height: 280px; background: #0f172a; overflow: hidden; }
+    .dual-img-box { position: relative; height: 100%; overflow: hidden; }
+    .dual-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .dual-badge { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
+    .dual-badge.orange { background: rgba(217, 119, 6, 0.95); }
+
+    /* 卡片內容排版 */
+    .event-body { padding: 18px 20px; }
+    .time-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary-accent);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+    .time-badge.alert { color: #dc2626; background: #fef2f2; }
+
+    .event-title { font-size: 17px; font-weight: 800; margin-bottom: 8px; color: #0f172a; line-height: 1.4; }
+    .event-desc { font-size: 13.5px; color: #475569; line-height: 1.7; }
+    .event-desc ul { margin-left: 18px; margin-top: 8px; }
+    .event-desc li { margin-bottom: 4px; }
+
+    .card-actions {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .event-tag { font-size: 11px; background: #f1f5f9; color: #64748b; padding: 4px 9px; border-radius: 6px; font-weight: 600; }
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      padding: 7px 15px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+    }
+    .btn-nav:active { transform: scale(0.97); background: #f1f5f9; }
+
+    .alert-box {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: #9a3412;
+      margin-top: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* Tools 工具箱樣式 */
+    .tool-section { background: var(--card-bg); border-radius: 20px; padding: 20px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+    .tool-title { font-size: 16px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; color: #0f172a; }
+    .checklist { display: flex; flex-direction: column; gap: 12px; }
+    .check-item { display: flex; align-items: center; gap: 12px; font-size: 13.5px; cursor: pointer; user-select: none; }
+    .check-item input[type="checkbox"] { width: 19px; height: 19px; accent-color: var(--primary-accent); border-radius: 6px; }
+    .check-item.done { text-decoration: line-through; color: #94a3b8; }
+    
+    .booking-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+    .booking-card h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 5px; color: #1e293b; }
+    .booking-card p { font-size: 12.5px; color: #64748b; line-height: 1.5; }
+
+    .split-box input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; margin-bottom: 12px; outline: none; }
+    .split-box input:focus { border-color: var(--primary-accent); }
+    .split-btn { width: 100%; background: var(--primary-accent); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+    .split-btn:active { transform: scale(0.98); }
+    .split-res { margin-top: 14px; padding: 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; font-size: 14px; color: #065f46; font-weight: 700; text-align: center; line-height: 1.6; }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部封面 -->
+  <header>
+    <div class="countdown-chip" id="countdownBanner">✈️ 2026/10/31 啟程</div>
+    <h1>🇯🇵 關西 7 天 6 夜自由行</h1>
+    <p>10/31～11/6・5 人同行・鶴橋獨棟民宿</p>
+    <div class="info-badge" onclick="copyAddress()">
+      🏠 民宿：大阪市東成区東小橋3-11-9 <span id="copyTxt">(點擊複製)</span>
+    </div>
+  </header>
+
+  <!-- 膠囊導覽頁籤（含小日期） -->
+  <div class="tabs-wrapper">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchDay(1)">
+        <span class="tab-name">Day 1</span>
+        <span class="tab-sub">10/31 五</span>
+      </button>
+      <button class="tab-btn" onclick="switchDay(2)">
+        <span class="tab-name">Day 2</span>
+        <span class="tab-sub">11/01 六</span>
+      </button>
+      <button class="tab-btn" onclick="switchDay(3)">
+        <span class="tab-name">Day 3</span>
+        <span class="tab-sub">包車專車</span>
+      </button>
+      <button class="tab-btn" onclick="switchDay(4)">
+        <span class="tab-name">Day 4</span>
+        <span class="tab-sub">11/03 一</span>
+      </button>
+      <button class="tab-btn" onclick="switchDay(5)">
+        <span class="tab-name">Day 5</span>
+        <span class="tab-sub">11/04 二</span>
+      </button>
+      <button class="tab-btn" onclick="switchDay(6)">
+        <span class="tab-name">Day 6</span>
+        <span class="tab-sub">11/05 三</span>
+      </button>
+      <button class="tab-btn" onclick="switchDay(7)">
+        <span class="tab-name">Day 7</span>
+        <span class="tab-sub">返台日</span>
+      </button>
+      <button class="tab-btn tool-tab" onclick="switchDay(8)">
+        <span class="tab-name">🧰 工具</span>
+        <span class="tab-sub">分帳清單</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- DAY 1 -->
+    <div id="day-1" class="day-panel active">
+      <div class="day-header">
+        <div class="day-title">Day 1：抵達關西 ➔ 寶可夢 DX ➔ 迪奧專櫃 ＆ 藥妝 ➔ 難波地下街</div>
+        <div class="day-subtitle">10/31 舊制免稅最後衝刺・大丸心齋橋美妝・難波 Walk</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 民宿 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d1_airbnb" class="event-img" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1000&auto=format&fit=crop" alt="民宿">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🏠 鶴橋住宿據點</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d1_airbnb')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">下午</span>
+            <div class="event-title">抵達關西機場 ➔ 鶴橋民宿 Check-in</div>
+            <div class="event-desc">抵達關西機場搭車直奔鶴橋站，步行至民宿卸下大件行李休整，換輕裝出發心齋橋。</div>
+            <div class="card-actions">
+              <span class="event-tag">東成区東小橋3-11-9</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=大阪市東成区東小橋3-11-9" target="_blank">📍 導航民宿</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 寶可夢 DX -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d1_poke" class="event-img" src="https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=1000&auto=format&fit=crop" alt="寶可夢">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">⚡ 心齋橋大丸 9F</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d1_poke')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">傍晚 16:30</span>
+            <div class="event-title">大丸心齋橋本館 9F｜寶可夢中心 DX</div>
+            <div class="event-desc">朝聖 Pokemon Center Osaka DX 入手限定周邊、拍照打卡，同層設有免稅退稅櫃台。</div>
+            <div class="card-actions">
+              <span class="event-tag">大丸本館 9F</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Pokemon+Center+Osaka+DX" target="_blank">📍 導航門市</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dior & 藥妝 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d1_dior" class="event-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1000&auto=format&fit=crop" alt="迪奧化妝品與藥妝">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">💄 專櫃美妝 ＆ 藥妝</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d1_dior')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">10/31 舊制退稅重點</span>
+            <div class="event-title">大丸 1F 迪奧專櫃 ＆ 心齋橋重點藥妝</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>Dior 專櫃</strong>：大丸本館 1 樓化妝品專區採買託買的美妝保養品，同棟直接辦理舊制退稅。</li>
+                <li><strong>心齋橋藥妝</strong>：大丸對面連鎖藥妝店（Sundrug / 大國 / 松本清），趁舊制直接免稅結帳封袋。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">大丸 1F / 心齋橋筋</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Daimaru+Shinsaibashi" target="_blank">📍 導航大丸心齋橋</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 難波 Walk -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d1_namba_walk" class="event-img" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=1000&auto=format&fit=crop" alt="道頓堀與難波地下街">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🛍️ 地下街散策</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d1_namba_walk')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">夜晚</span>
+            <div class="event-title">道頓堀跑跑人 ➔ 難波地下街（NAMBA Walk）</div>
+            <div class="event-desc">走過道頓堀橋拍固力果跑跑人，隨後進入難波地下街逛日式雜貨並享用晚餐。結束後搭近鐵直達鶴橋。</div>
+            <div class="card-actions">
+              <span class="event-tag">なんばウォーク</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Namba+Walk" target="_blank">📍 導航地下街</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div id="day-2" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">Day 2：Klook 京都精華一日遊</div>
+        <div class="day-subtitle">宇治平等院 ➔ 伏見稻荷 ➔ 勝尾寺（達摩寺）</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 集合點：乾淨雙圖 -->
+        <div class="event-card">
+          <div class="dual-img-container">
+            <div class="dual-img-box" style="flex: 1.2;">
+              <img id="img_d2_crab" src="kani.jpg" onerror="this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1000&auto=format&fit=crop'" alt="蟹道樂中店門口">
+              <span class="dual-badge">📍 かに道楽 中店門口</span>
+              <label class="btn-upload-label" style="left: 8px; right: auto; top: 8px;">
+                📷 換螃蟹
+                <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d2_crab')">
+              </label>
+            </div>
+            <div class="dual-img-box" style="flex: 1;">
+              <img id="img_d2_vest" src="easygo.png" onerror="this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?w=1000&auto=format&fit=crop'" alt="EasyGo橘色背心">
+              <span class="dual-badge orange">認橘色 EasyGo 背心</span>
+              <label class="btn-upload-label" style="right: 8px; top: 8px;">
+                📷 換背心
+                <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d2_vest')">
+              </label>
+            </div>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">重要集合報到</span>
+            <div class="event-title">道頓堀蟹道樂中店前 集合搭專車</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>門市辨識</strong>：道頓堀「かに道楽 中店」正門大螃蟹招牌下（非本店或東店）。</li>
+                <li><strong>工作人員</strong>：現場認明身穿<strong>亮橘色「EasyGo!」背心</strong>、手持隊旗的工作人員報到。</li>
+                <li><strong>交通方式</strong>：從鶴橋搭近鐵至日本橋站 2 號出口出站，步行約 3～4 分鐘。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag" style="color:#d97706; background:#fffbeb;">認橘色 EasyGo 背心</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=かに道楽+中店" target="_blank">📍 導航蟹道樂中店</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 平等院 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d2_uji" class="event-img" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1000&auto=format&fit=crop" alt="平等院">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍵 宇治老街散策</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d2_uji')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">第一站</span>
+            <div class="event-title">宇治｜平等院鳳凰堂 ＆ 抹茶老街</div>
+            <div class="event-desc">欣賞十圓日幣國寶鳳凰堂，表參道品嚐中村藤吉／伊藤久右衛門濃抹茶甜點。</div>
+            <div class="card-actions">
+              <span class="event-tag">平等院表參道</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Byodoin+Temple+Kyoto" target="_blank">📍 導航景點</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 伏見稻荷 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d2_inari" class="event-img" src="https://images.unsplash.com/photo-1478436127897-769e00d2c715?w=1000&auto=format&fit=crop" alt="伏見稻荷">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">⛩️ 千本鳥居</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d2_inari')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">第二站</span>
+            <div class="event-title">伏見稻荷大社｜朱紅千本鳥居</div>
+            <div class="event-desc">走訪綿延不絕的朱紅鳥居隧道，參拜狐狸守護神與狐狸繪馬。</div>
+            <div class="card-actions">
+              <span class="event-tag">千本鳥居</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Fushimi+Inari+Taisha" target="_blank">📍 導航神社</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 勝尾寺 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d2_shorinji" class="event-img" src="https://images.unsplash.com/photo-1528164344705-475426879c0d?w=1000&auto=format&fit=crop" alt="達摩寺">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🎯 勝運達摩</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d2_shorinji')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">第三站</span>
+            <div class="event-title">勝尾寺（勝運達摩寺）</div>
+            <div class="event-desc">滿山遍野寫著「勝」字的超萌開運達摩不倒翁，祈求考運、事業與旅程平安！</div>
+            <div class="card-actions">
+              <span class="event-tag">勝運達摩</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Katsuo-ji" target="_blank">📍 導航勝尾寺</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div id="day-3" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">Day 3：京都 10 小時專車包車（08:00～18:00 嚴格不超時）</div>
+        <div class="day-subtitle">嵐山竹林 ➔ 清水舞台 ➔ 祇園貓咖 ➔ 寶可夢京都限定店 ➔ 鶴橋燒肉</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 包車出發 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_start" class="event-img" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1000&auto=format&fit=crop" alt="專車出發">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🚗 10小時包車專車</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_start')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">08:00 準時發車</span>
+            <div class="event-title">鶴橋民宿門口上車 ➔ 直奔嵐山</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>出發準備</strong>：07:50 全員於民宿 1F 大廳集合，司機於東小橋 3-11-9 門口待命。</li>
+                <li><strong>行車路線</strong>：走阪神高速往京都嵐山，車程約 70～75 分鐘（車上補眠或吃早餐）。</li>
+                <li><strong>下車策略點</strong>：司機導航至<strong>「天龍寺北門」</strong>旁下車，下車直接進竹林小徑，省下穿大街 15 分鐘！</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">車程 75 分鐘</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Tenryuji+North+Gate" target="_blank">📍 導航天龍寺北門</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 嵐山 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_arashiyama" class="event-img" src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1000&auto=format&fit=crop" alt="嵐山竹林">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🎋 嵐山竹林 ＆ 渡月橋</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_arashiyama')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">09:15～10:25（限時 70 分鐘）</span>
+            <div class="event-title">嵐山精華散策 ➔ 渡月橋準時上車離開</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>單向動線（不走回頭路）</strong>：<br>
+                  <strong>09:15 天龍寺北門下車</strong> ➔ 漫步「竹林小徑」 ➔ 參拜「野宮神社」（締結良緣／摸神石黑木鳥居） ➔ 沿嵐山大街散步 ➔ 抵達「渡月橋」遠眺山色。
+                </li>
+                <li><strong>上車點</strong>：渡月橋北側靠川邊小巴臨停處（司機會在此等待）。</li>
+              </ul>
+              <div class="alert-box">⚠️ 鐵則警報：10:25 必須全員上車關門發車！嵐山往清水寺車程約 45～50 分鐘，遲走會壓縮下午所有時間！</div>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">野宮神社</span><span class="event-tag">渡月橋</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Togetsukyo+Bridge" target="_blank">📍 導航渡月橋上車點</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 清水寺 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_kiyomizu" class="event-img" src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1000&auto=format&fit=crop" alt="清水寺舞台">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🏯 國寶清水舞台</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_kiyomizu')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">11:15～14:00（2 小時 45 分）</span>
+            <div class="event-title">清水舞台 ➔ 音羽之瀧 ➔ 二年坂老街午餐</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>11:15 五條坂下車</strong>：沿清水坂步行 6 分鐘登仁王門與本堂，司機直接前往市區「四條烏丸」待命，不再回塞車區。</li>
+                <li><strong>清水寺境內重點</strong>：<br>
+                  ① 參觀國寶「清水舞台」俯瞰京都盆地。<br>
+                  ②「奧之院」側拍清水舞台最經典角度與秋景。<br>
+                  ③「音羽之瀧」洗手喝泉水（學問、健康、姻緣三選一，不可貪心喝三勺）。
+                </li>
+                <li><strong>二年坂／產寧坂老街午餐</strong>：走下老街享用日式蕎麥麵、湯豆腐或鰻魚飯，品嚐名物「月下美人烤糰子」與抹茶冰淇淋。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">產寧坂</span><span class="event-tag">音羽之瀧</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Kiyomizu-dera" target="_blank">📍 導航清水寺本堂</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 八坂神社 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_yasaka" class="event-img" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1000&auto=format&fit=crop" alt="八坂神社">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🏮 祇園花見小路 ＆ 鴨川</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_yasaka')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">14:00～14:30 祇園徒步</span>
+            <div class="event-title">二年坂 ➔ 八坂神社 ➔ 祇園花見小路 ➔ 鴨川</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>步行動線</strong>：吃完午餐後，從二年坂經由幽靜的「寧寧之道」漫步至八坂神社南門。</li>
+                <li><strong>參拜重點</strong>：參觀八坂神社中央掛滿白燈籠的舞殿，以及祈求美麗的「美御前社」（洗美容水）。</li>
+                <li><strong>漫步祇園</strong>：走出壯麗朱紅西樓門，沿著四條通經過花見小路，橫跨「四條大橋」遠眺鴨川水岸風光。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">八坂神社</span><span class="event-tag">鴨川四條大橋</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Yasaka+Shrine+Kyoto" target="_blank">📍 導航八坂神社</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 豹貓之森 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_bengal_cat" class="event-img" src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1000&auto=format&fit=crop" alt="京都豹貓之森">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🐱 森林療癒貓咖</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_bengal_cat')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">14:40～15:30 擼貓放鬆</span>
+            <div class="event-title">新京極商店街｜京都豹貓之森（Cat Cafe）</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>地點資訊</strong>：位於新京極熱鬧商店街內（ヒカリビル 2F）。</li>
+                <li><strong>特色體驗</strong>：全日本極少見的「豹貓（Bengal Cat）」專門貓咪咖啡廳！店內打造成綠意盎然的森林樹洞風格，豹貓花紋美麗、身手敏捷又親人。</li>
+                <li><strong>放鬆回血</strong>：在此坐著喝杯飲品、摸摸貓咪，讓走了一早上的雙腿充分休息補體力。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">新京極 2F</span><span class="event-tag">豹貓互動</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=京都豹猫の森" target="_blank">📍 導航豹貓之森</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 寶可夢中心京都店 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_poke_kyoto" class="event-img" src="https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=1000&auto=format&fit=crop" alt="寶可夢中心京都店">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">✨ 京都限定藝妓皮卡丘</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_poke_kyoto')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">15:45～16:30 旗艦限定</span>
+            <div class="event-title">SUINA室町 2F｜寶可夢中心京都店（Pokemon Center）</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>前往方式</strong>：沿著四條通直走約 10～12 分鐘至四條烏丸交界「SUINA室町」大樓，直上 2 樓。</li>
+                <li><strong>三大必買限定神物</strong>：<br>
+                  ① 撐櫻花傘、手拿藝妓小扇子的<strong>「舞妓皮卡丘限定公仔／娃娃」</strong>。<br>
+                  ② 神獸<strong>「金色鳳王（Ho-Oh）金屬立體徽章／浮雕吊飾」</strong>。<br>
+                  ③ 京都傳統漆器與日式和風紋樣寶可夢聯名文具伴手禮。
+                </li>
+              </ul>
+              <div class="alert-box">⚠️ 壓線鐵則：採買至 16:25，16:30 準時由 SUINA室町西側室町通上車出發回大阪！</div>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">SUINA室町 2F</span><span class="event-tag">限定舞妓皮卡丘</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Pokemon+Center+Kyoto" target="_blank">📍 導航寶可夢京都店</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 鶴橋燒肉 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d3_dinner" class="event-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1000&auto=format&fit=crop" alt="炭火燒肉">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🥩 鶴橋和牛慶功宴</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d3_dinner')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">16:30 準時集合返程</span>
+            <div class="event-title">四條烏丸上車 ➔ 返抵鶴橋民宿 ＆ 燒肉晚餐</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>上車集合點</strong>：於 SUINA室町建築西側「室町通」巷口（避開四條通禁停區），司機於此無縫接駁。</li>
+                <li><strong>高速回程</strong>：走第二京阪與近畿道，約 17:50～18:00 準時回到鶴橋民宿東小橋門口（10 小時完全不超時）。</li>
+                <li><strong>今晚盛宴｜鶴橋道地燒肉</strong>：放好戰利品後，步行至鶴橋站周邊燒肉街（如：空 鶴橋本店、牛一 或 鶴橋燒肉白雲台），享受炭火黑毛和牛與啤酒慶功！</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">10小時滿分達標</span><span class="event-tag">鶴橋燒肉一條街</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Tsuruhashi+Yakiniku" target="_blank">📍 尋找鶴橋燒肉</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div id="day-4" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">Day 4：通天閣 ➔ 阿倍野 ➔ 爐端燒晚餐</div>
+        <div class="day-subtitle">11/3 文化之日・一蘭拉麵朝食與百萬夜景</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 一蘭拉麵 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d4_ichiran" class="event-img" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1000&auto=format&fit=crop" alt="一蘭拉麵">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍜 晨間一蘭朝食</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d4_ichiran')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">08:30～09:45 早餐</span>
+            <div class="event-title">道頓堀 一蘭拉麵早餐</div>
+            <div class="event-desc">晨間時段避開排隊人潮，享用濃郁天然豚骨拉麵。</div>
+            <div class="card-actions">
+              <span class="event-tag">道頓堀本館</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Ichiran+Dotonbori+Main+Building" target="_blank">📍 導航一蘭</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 通天閣 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d4_tsuten" class="event-img" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=1000&auto=format&fit=crop" alt="通天閣">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🗼 新世界懷舊街區</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d4_tsuten')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">10:00～13:30</span>
+            <div class="event-title">通天閣溜滑梯 ＆ 新世界串炸</div>
+            <div class="event-desc">挑戰 TOWER SLIDER 溜滑梯；吃元祖串炸達摩、玩傳統射擊打靶。</div>
+            <div class="card-actions">
+              <span class="event-tag">新世界</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Tsutenkaku" target="_blank">📍 導航通天閣</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HARUKAS 300 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d4_harukas" class="event-img" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1000&auto=format&fit=crop" alt="HARUKAS夜景">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🌃 60F 百萬夜景</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d4_harukas')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">16:30～18:30 展望台</span>
+            <div class="event-title">阿倍野 HARUKAS 300 展望台</div>
+            <div class="event-desc">60 樓 360 度玻璃迴廊，俯瞰夕陽與大阪百萬璀璨夜景。</div>
+            <div class="card-actions">
+              <span class="event-tag">HARUKAS 60F</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Harukas+300" target="_blank">📍 導航展望台</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 爐端燒 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d4_robata" class="event-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1000&auto=format&fit=crop" alt="爐端燒">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍢 船槳送餐爐端燒</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d4_robata')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">19:00～20:30 晚餐</span>
+            <div class="event-title">力丸爐端燒 網兵衛（天王寺店）</div>
+            <div class="event-desc">天王寺站北口堀越町店，體驗長木槳送餐烤物！結束搭 JR 環狀線直達鶴橋。</div>
+            <div class="card-actions">
+              <span class="event-tag">天王寺区堀越町16-9</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=大阪市天王寺区堀越町16-9" target="_blank">📍 導航網兵衛</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div id="day-5" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">Day 5：大阪城 ➔ 天神橋筋 ➔ 梅田旗艦大血拼 ➔ 民宿火鍋</div>
+        <div class="day-subtitle">西日本最大 UNIQLO UMEDA ＆ 任天堂旗艦店 ＆ 溫馨圍爐</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 大阪城 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d5_osaka_castle" class="event-img" src="https://images.unsplash.com/photo-1590253230537-8822998a4449?w=1000&auto=format&fit=crop" alt="大阪城">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🏯 大阪城天守閣</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d5_osaka_castle')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">上午</span>
+            <div class="event-title">大阪城公園 ＆ 天守閣</div>
+            <div class="event-desc">登頂眺望大阪市景，漫步西之丸庭園感受壯麗石牆與古蹟風采。</div>
+            <div class="card-actions">
+              <span class="event-tag">天守閣</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Osaka+Castle" target="_blank">📍 導航大阪城</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 天神橋筋 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d5_tenjin" class="event-img" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1000&auto=format&fit=crop" alt="商店街">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍣 最長商店街午餐</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d5_tenjin')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">中午</span>
+            <div class="event-title">天神橋筋商店街 午餐邊走邊吃</div>
+            <div class="event-desc">品嚐中村屋炸可樂餅、春駒壽司、鳴門鯛燒等平價排隊美食。</div>
+            <div class="card-actions">
+              <span class="event-tag">天神橋筋</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Tenjimbashisuji+Shopping+Street" target="_blank">📍 導航商店街</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 一番賞 & 任天堂 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d5_ichiban" class="event-img" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&auto=format&fit=crop" alt="一番賞官方店">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🎮 大丸梅田 13F</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d5_ichiban')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">下午 14:30～16:00</span>
+            <div class="event-title">大丸梅田 13F｜一番賞官方旗艦店 ＆ 任天堂旗艦店</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>一番賞官方店（一番くじ公式ショップ）</strong>：最新正版一番賞一字排開（航海王、七龍珠、獵人等），貨量齊全、中大獎即拆即領。</li>
+                <li><strong>同層連逛</strong>：<strong>Nintendo OSAKA</strong>（巨大瑪利歐合影）與 <strong>JUMP SHOP</strong>（少年JUMP動漫特區）。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">大丸梅田 13F</span><span class="event-tag">一番賞官方認證</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Daimaru+Umeda" target="_blank">📍 導航大丸梅田 13F</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 寶可夢梅田店 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d5_poke_umeda" class="event-img" src="https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=1000&auto=format&fit=crop" alt="寶可夢中心大阪店">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">⚡ PTCG 卡牌與絨毛牆</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d5_poke_umeda')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">下午 16:00～17:00</span>
+            <div class="event-title">大丸梅田 13F｜寶可夢中心大阪店（Pokemon Center Osaka）</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>關西元祖旗艦店</strong>：門口有帥氣的超夢與初代御三家立體雕像打卡。</li>
+                <li><strong>特色重點</strong>：與心齋橋 DX 店販售重點不同，梅田店以齊全的寶可夢卡牌（PTCG）、毛絨玩偶牆、生活雜貨為主。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">大丸梅田 13F</span><span class="event-tag">卡牌與絨毛牆</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Pokemon+Center+Osaka" target="_blank">📍 導航寶可夢大阪店</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- UNIQLO 旗艦店 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d5_uniqlo_flagship" class="event-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1000&auto=format&fit=crop" alt="UNIQLO UMEDA">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">👕 1,300坪西日本最大</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d5_uniqlo_flagship')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">傍晚 17:15～18:45</span>
+            <div class="event-title">LINKS UMEDA 1～2F｜UNIQLO UMEDA 西日本最大旗艦店</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>步行動線</strong>：大丸梅田走空橋 3 分鐘即達友都八喜「LINKS UMEDA」。</li>
+                <li><strong>1,300 坪旗艦規格</strong>：全西日本最頂級門市，聯名款（JW Anderson、動漫UT、C系列）尺碼最齊全。</li>
+                <li><strong>專屬服務</strong>：提供 <strong>UTme! 客製化 T 恤／托特包</strong> 與大阪限定刺繡服務；現場可直接免稅！</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">LINKS UMEDA 1-2F</span><span class="event-tag">1300坪旗艦店</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=UNIQLO+OSAKA+LINKS+UMEDA" target="_blank">📍 導航UNIQLO旗艦</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 民宿火鍋 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d5_hotpot" class="event-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=1000&auto=format&fit=crop" alt="日式火鍋派對">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍲 5人圍爐時光</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d5_hotpot')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">溫馨晚餐 19:30～21:30</span>
+            <div class="event-title">大型超市火鍋料採買 ➔ 鶴橋民宿溫馨火鍋盛宴</div>
+            <div class="event-desc">
+              <p><strong>🍲 結束逛街提著戰利品回民宿，5 人圍爐煮火鍋最舒服！</strong></p>
+              <ul>
+                <li><strong>採買地點（二選一順路）</strong>：<br>
+                  ① <strong>LINKS UMEDA B1F「Harves 超市」</strong>：逛完 UNIQLO 直接下樓採購特選黑毛和牛火鍋肉片與高湯包。<br>
+                  ② <strong>鶴橋站前「LIFE 超市」</strong>：搭車回鶴橋出站順路採買，提回東小橋民宿只要幾分鐘。
+                </li>
+                <li><strong>火鍋必備清單</strong>：高湯包、特選牛五花/豚肉片、烏龍麵條、生食雞蛋、日式餃子、日本啤酒與甜點！</li>
+                <li><strong>自在回血</strong>：換上舒適睡衣邊吃邊聊天、開箱今天的一番賞戰利品，徹底洗刷疲勞！</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">民宿大客廳</span><span class="event-tag">5人和牛火鍋</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=LIFE+Supermarket+Tsuruhashi" target="_blank">📍 導航鶴橋 LIFE 超市</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 6 -->
+    <div id="day-6" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">Day 6：海遊館 ➔ 壽喜燒 ➔ 日本橋動漫 ＆ GiGO</div>
+        <div class="day-subtitle">鯨鯊 ➔ 13:45 壽喜燒 ➔ 公仔模型挖寶</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 早餐烏龍麵 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d6_udon" class="event-img" src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1000&auto=format&fit=crop" alt="烏龍麵">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍜 難波老舖朝食</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_udon')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">08:30～09:30 早餐</span>
+            <div class="event-title">難波千日前 天政烏龍麵</div>
+            <div class="event-desc">造訪排隊老舖，品嚐滑順道地的大阪肉烏龍與豆皮烏龍麵。</div>
+            <div class="card-actions">
+              <span class="event-tag">千日前通</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Tenmasa+Udon+Namba" target="_blank">📍 導航天政</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 海遊館 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d6_aquarium" class="event-img" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1000&auto=format&fit=crop" alt="海遊館鯨鯊">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🦈 巨型鯨鯊水槽</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_aquarium')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">10:15～13:00 重點</span>
+            <div class="event-title">大阪港 海遊館（Kaiyukan）</div>
+            <div class="event-desc">早場欣賞世界級水族館巨型鯨鯊、環斑海豹與企鵝。（提前預約 10:15~10:30 入場）</div>
+            <div class="card-actions">
+              <span class="event-tag">大阪港站</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Osaka+Aquarium+Kaiyukan" target="_blank">📍 導航海遊館</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 壽喜燒 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d6_sukiyaki" class="event-img" src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1000&auto=format&fit=crop" alt="壽喜燒">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🍲 和牛壽喜燒午餐</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_sukiyaki')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">13:45～15:15 午餐</span>
+            <div class="event-title">道地日式壽喜燒午餐大餐</div>
+            <div class="event-desc">返回難波避開中午尖峰，品嚐熱騰騰黑毛和牛壽喜燒沾蛋液。</div>
+            <div class="card-actions">
+              <span class="event-tag">難波商圈</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Sukiyaki+Namba+Osaka" target="_blank">📍 尋找周邊壽喜燒</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 日本橋動漫街 & GiGO -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d6_gigo" class="event-img" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&auto=format&fit=crop" alt="公仔街">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🕹️ GiGO 抓娃娃 ＆ 模型</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_gigo')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">15:30～19:30 下午～夜晚</span>
+            <div class="event-title">難波 GiGO 夾娃娃 ＆ 日本橋公仔挖寶</div>
+            <div class="event-desc">難波 GiGO 抓最新景品，日本橋 Ota Road 逛駿河屋、AmiAmi、Animate 挖寶。</div>
+            <div class="card-actions">
+              <span class="event-tag">オタロード</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Nipponbashi+Denden+Town" target="_blank">📍 導航日本橋動漫街</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 7 -->
+    <div id="day-7" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">Day 7：木津市場海鮮盛宴 ➔ JR 直通臨空城 OUTLET ➔ 關西機場返台</div>
+        <div class="day-subtitle">頂級生魚片早餐 ➔ JR 關空快速直達臨空城 ➔ 抵達機場搭機</div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- 木津市場 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d7_kizu" class="event-img" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1000&auto=format&fit=crop" alt="海鮮市場">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🐟 奢華生魚片早餐</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d7_kizu')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">08:30～10:30 盛宴</span>
+            <div class="event-title">木津批發市場海鮮採買 ＆ 民宿奢華海鮮早餐</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>採買重點</strong>：新鮮現切黑鮪魚大腹/中腹、北海道海膽木盒、大干貝刺身與熟食鰻魚玉子燒。</li>
+                <li><strong>退房出發</strong>：提回鶴橋民宿大快朵頤，吃飽後打包全部戰利品，11:00 前完成退房，拉行李步行至鶴橋站 JR 月台。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">木津卸売市場</span><span class="event-tag">東小橋退房</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Kizu+Wholesale+Market" target="_blank">📍 導航木津市場</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 臨空城 OUTLET -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d7_rinku" class="event-img" src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1000&auto=format&fit=crop" alt="臨空城OUTLET">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">🛍️ 暢貨中心免稅衝刺</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d7_rinku')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge alert">12:15～16:00 交通與購物</span>
+            <div class="event-title">JR 環狀線直通「臨空城站」 ➔ 暢貨中心最後衝刺</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>搭車指南（一車到底免換車）</strong>：從 JR 鶴橋站搭乘<strong>「JR 關空快速」直通班次</strong>直達「臨空城站（Rinku-Town）」，車程約 55 分鐘。</li>
+                <li><strong>⚠️ 乘車重要鐵則</strong>：上車務必坐在<strong>「第 1～4 節車廂」</strong>！（列車途中在日根野站會分離，僅前 4 節前往關空與臨空城，後 4 節開往和歌山）。</li>
+                <li><strong>行李與血拼</strong>：於臨空城站內置物櫃或 OUTLET 旅客中心寄放大件行李，隨後盡情採購運動品牌、服飾與免稅商品。</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">JR關空快速直通</span><span class="event-tag">坐前4節車廂</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Rinku+Premium+Outlets" target="_blank">📍 導航臨空城 OUTLET</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 機場返台 -->
+        <div class="event-card">
+          <div class="img-container">
+            <img id="img_d7_airport" class="event-img" src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1000&auto=format&fit=crop" alt="關西國際機場">
+            <div class="img-scrim"></div>
+            <span class="img-tag-overlay">✈️ 機場出境返台</span>
+            <label class="btn-upload-label">
+              📷 換照
+              <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d7_airport')">
+            </label>
+          </div>
+          <div class="event-body">
+            <span class="time-badge">傍晚 16:30</span>
+            <div class="event-title">臨空城站 ➔ 關西國際機場（KIX）辦理登機返台</div>
+            <div class="event-desc">
+              <ul>
+                <li><strong>前往機場</strong>：領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘跨過跨海大橋）即抵達關西機場第一航廈。</li>
+                <li><strong>登機出境</strong>：起飛前 2.5～3 小時抵達航空公司櫃台託運行李、通過安檢海關，免稅店採買最後伴手禮後登機返台，結束 7 天充實旅程！</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <span class="event-tag">JR僅1站5分鐘</span><span class="event-tag">滿載而歸</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Kansai+International+Airport" target="_blank">📍 導航關西機場</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLBOX 工具箱 -->
+    <div id="day-8" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">🧰 行前與旅途實用工具箱</div>
+        <div class="day-subtitle">行李打包清單・預約憑證備忘・5人分帳計算機</div>
+      </div>
+
+      <div class="tool-section">
+        <div class="tool-title">📋 必備清單 Checkbox（自動記憶）</div>
+        <div class="checklist">
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c1"> 護照（效期 6 個月以上）</label>
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c2"> Visit Japan Web 入境審查填寫完畢</label>
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c3"> 日本網卡 / eSIM 設定完成</label>
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c4"> 實體信用卡 ＋ 日幣現金</label>
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c5"> 隨身行動電源（須放隨身行李）</label>
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c6"> 海遊館門票（提前預約 10:15 場次）</label>
+          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c7"> 隨身小折疊雨傘 / 換洗衣物</label>
+        </div>
+      </div>
+
+      <div class="tool-section">
+        <div class="tool-title">🔖 重要訂單與預約備忘錄</div>
+        <div class="booking-card">
+          <h4>🚗 Day 3 京都 10 小時包車</h4>
+          <p>時間：08:00 民宿門口準時發車 ➔ 18:00 前返回民宿</p>
+          <p>司機聯絡方式 / 訂單號：<strong>[已預訂 10 小時方案]</strong></p>
+        </div>
+        <div class="booking-card">
+          <h4>🚌 Day 2 Klook 京都一日遊</h4>
+          <p>集合地點：道頓堀蟹道樂中店門口（認橘色 EasyGo 背心）</p>
+        </div>
+        <div class="booking-card">
+          <h4>🍢 Day 4 力丸爐端燒 網兵衛</h4>
+          <p>地址：大阪市天王寺区堀越町 16-9（天王寺站北口步行 2 分）</p>
+          <p>預約時間：19:00（5 人）</p>
+        </div>
+      </div>
+
+      <div class="tool-section split-box">
+        <div class="tool-title">💰 5 人公費平攤計算機</div>
+        <input type="text" id="splitItem" placeholder="支出項目（如：超商飲料、計程車、超市火鍋料）">
+        <input type="number" id="splitAmount" placeholder="總金額（日幣 JPY ¥）">
+        <button class="split-btn" onclick="calcSplit()">計算每人應付金額</button>
+        <div id="splitResult" class="split-res" style="display:none;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // 動態倒數計時計算
+    function updateCountdown() {
+      const targetDate = new Date("2026-10-31T00:00:00");
+      const now = new Date();
+      const diffTime = targetDate - now;
+      const banner = document.getElementById("countdownBanner");
+      if (diffTime > 0) {
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        banner.innerHTML = `✈️ 距離出發還有 <span style="font-size:14px;color:#fff;">${diffDays}</span> 天！(2026/10/31)`;
+      } else {
+        banner.innerHTML = `🇯🇵 關西旅行進行中！享受每一刻`;
+      }
+    }
+    updateCountdown();
+
+    // Tab 切換
+    function switchDay(day) {
+      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === day - 1);
+      });
+      document.querySelectorAll('.day-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      const activePanel = document.getElementById(`day-${day}`);
+      if(activePanel) activePanel.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 複製地址與動畫
+    function copyAddress() {
+      const address = "大阪府大阪市東成区東小橋3丁目11-9";
+      const copyTxt = document.getElementById("copyTxt");
+      navigator.clipboard.writeText(address).then(() => {
+        copyTxt.innerHTML = "✅ 已複製！";
+        copyTxt.style.color = "#4ade80";
+        setTimeout(() => {
+          copyTxt.innerHTML = "(點擊複製)";
+          copyTxt.style.color = "#38bdf8";
+        }, 2000);
+      }).catch(err => {
+        prompt("請手動複製地址：", address);
+      });
+    }
+
+    // Checkbox 狀態記憶
+    function toggleCheck(el) {
+      const id = el.getAttribute('data-id');
+      if (el.checked) {
+        el.parentElement.classList.add('done');
+        localStorage.setItem('trip_chk_' + id, '1');
+      } else {
+        el.parentElement.classList.remove('done');
+        localStorage.removeItem('trip_chk_' + id);
+      }
+    }
+
+    // 上傳並自動輕量化壓縮快取（限制寬度 1200px 確保大圖清晰且 localStorage 存得下）
+    function uploadCardPhoto(input, imgElementId) {
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const maxW = 1200;
+            const scale = Math.min(maxW / img.width, 1);
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            const compressedBase64 = canvas.toDataURL('image/jpeg', 0.78);
+            document.getElementById(imgElementId).src = compressedBase64;
+
+            try {
+              localStorage.setItem('trip_img_' + imgElementId, compressedBase64);
+            } catch (err) {
+              console.warn('儲存空間已滿，但當前畫面已成功顯示。');
+            }
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // 頁面載入時讀取儲存的狀態與照片
+    window.addEventListener('DOMContentLoaded', () => {
+      // 讀取 Checkbox
+      document.querySelectorAll('.check-item input').forEach(input => {
+        const id = input.getAttribute('data-id');
+        if (localStorage.getItem('trip_chk_' + id) === '1') {
+          input.checked = true;
+          input.parentElement.classList.add('done');
+        }
+      });
+
+      // 讀取自訂上傳的照片
+      document.querySelectorAll('.event-img, .dual-img-box img').forEach(img => {
+        const savedData = localStorage.getItem('trip_img_' + img.id);
+        if (savedData) {
+          img.src = savedData;
+        }
+      });
+    });
+
+    // 分帳試算
+    function calcSplit() {
+      const item = document.getElementById('splitItem').value || "此筆消費";
+      const amt = parseFloat(document.getElementById('splitAmount').value);
+      const res = document.getElementById('splitResult');
+
+      if (!amt || amt <= 0) {
+        alert("請輸入有效的金額！");
+        return;
+      }
+
+      const perPerson = Math.round(amt / 5);
+      res.style.display = "block";
+      res.innerHTML = `【${item}】總計 ¥${amt.toLocaleString()}<br>👉 5 人均分，每人應付：<span style="color:#2563eb; font-size:18px;">¥${perPerson.toLocaleString()}</span> 日圓`;
+    }
+  </script>
+</body>
+</html>
