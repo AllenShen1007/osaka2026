@@ -1291,30 +1291,34 @@
       </div>
 
       <div class="tool-section split-box">
-        <div class="tool-title">💰 5 人公費記帳簿（代墊與智慧結算）</div>
+        <div class="tool-title">💰 5 人公費記帳簿（多幣別與可編輯）</div>
         
         <!-- 輸入區 -->
         <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-          <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 13.5px; background: white; outline: none; flex: 1.2;">
+          <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; background: white; outline: none; flex: 1.1;">
             <option value="柏毅">由「柏毅」先付</option>
             <option value="張庭">由「張庭」先付</option>
             <option value="班長">由「班長」先付</option>
             <option value="書緯">由「書緯」先付</option>
             <option value="柳丁">由「柳丁」先付</option>
           </select>
-          <input type="text" id="splitItem" placeholder="項目（如：車資、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13.5px; outline: none;">
+          <input type="text" id="splitItem" placeholder="項目（如：車資、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; outline: none;">
         </div>
 
         <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-          <input type="number" id="splitAmount" placeholder="金額 (JPY ¥)" style="margin-bottom:0; flex: 1; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13.5px; outline: none;">
-          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1; padding: 10px; margin: 0;">＋ 新增支出</button>
+          <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; background: white; outline: none; flex: 0.9;">
+            <option value="JPY">日圓 ¥</option>
+            <option value="TWD">台幣 NT$</option>
+          </select>
+          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; outline: none;">
+          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 13px;">＋ 新增支出</button>
         </div>
 
         <!-- 歷史支出流水帳明細 -->
         <div id="expenseList" style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;"></div>
 
         <!-- 結算結果看板 -->
-        <div id="splitResult" class="split-res" style="display:none; margin-top: 14px;"></div>
+        <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
         
         <button id="clearExpenseBtn" onclick="clearAllExpenses()" style="display:none; width: 100%; margin-top: 10px; background: transparent; border: 1px dashed #cbd5e1; color: #94a3b8; padding: 8px; border-radius: 8px; font-size: 12px; cursor: pointer;">
           🗑️ 清空所有記帳（今日已結清）
@@ -1440,7 +1444,7 @@
     const tripMembers = ["柏毅", "張庭", "班長", "書緯", "柳丁"];
     let tripExpenses = JSON.parse(localStorage.getItem('trip_expenses_list') || '[]');
 
-    // 渲染支出清單與每人多退少補看板
+    // 渲染支出清單與多幣別結算看板
     function renderExpenses() {
       const listEl = document.getElementById('expenseList');
       const resEl = document.getElementById('splitResult');
@@ -1455,14 +1459,22 @@
         return;
       }
 
-      let total = 0;
-      // 統計每人代墊總額
-      const paidMap = {};
-      tripMembers.forEach(m => paidMap[m] = 0);
+      // 幣別分類統計
+      const totals = { JPY: 0, TWD: 0 };
+      const paidMap = {
+        JPY: {},
+        TWD: {}
+      };
+      tripMembers.forEach(m => {
+        paidMap.JPY[m] = 0;
+        paidMap.TWD[m] = 0;
+      });
 
       tripExpenses.forEach((item, index) => {
-        total += item.amount;
-        paidMap[item.payer] = (paidMap[item.payer] || 0) + item.amount;
+        const cur = item.currency || 'JPY';
+        const symbol = cur === 'JPY' ? '¥' : 'NT$';
+        totals[cur] = (totals[cur] || 0) + item.amount;
+        paidMap[cur][item.payer] = (paidMap[cur][item.payer] || 0) + item.amount;
 
         const row = document.createElement('div');
         row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border:1px solid #e2e8f0; padding:10px 14px; border-radius:10px; font-size:13px;';
@@ -1470,80 +1482,143 @@
           <div>
             <span style="display:inline-block; background:#e0e7ff; color:#3730a3; padding:2px 6px; border-radius:6px; font-size:11px; font-weight:700; margin-right:6px;">${item.payer} 付</span>
             <span style="font-weight:700; color:#1e293b;">${item.name}</span>
-            <span style="color:#64748b; font-size:12px; margin-left:6px;">¥${item.amount.toLocaleString()}</span>
+            <span style="color:#64748b; font-size:12px; margin-left:6px; font-weight:600;">${symbol}${item.amount.toLocaleString()}</span>
           </div>
-          <button onclick="removeExpenseRecord(${index})" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:12.5px; font-weight:700;">刪除</button>
+          <div style="display:flex; gap:8px;">
+            <button onclick="editExpenseRecord(${index})" style="background:none; border:none; color:#2563eb; cursor:pointer; font-size:12.5px; font-weight:700;">編輯</button>
+            <button onclick="removeExpenseRecord(${index})" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:12.5px; font-weight:700;">刪除</button>
+          </div>
         `;
         listEl.appendChild(row);
       });
 
-      const perPerson = Math.round(total / tripMembers.length);
       resEl.style.display = 'block';
       clearBtn.style.display = 'block';
 
-      // 產生個人多退少補明細
-      let balanceHtml = '';
-      tripMembers.forEach(m => {
-        const paid = paidMap[m] || 0;
-        const diff = paid - perPerson;
-        if (diff > 0) {
-          balanceHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px; color:#065f46;">
-            <span>🟢 <strong>${m}</strong>（代墊 ¥${paid.toLocaleString()}）</span>
-            <span style="font-weight:800; color:#059669;">應收回 +¥${diff.toLocaleString()}</span>
-          </div>`;
-        } else if (diff < 0) {
-          balanceHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px; color:#991b1b;">
-            <span>🔴 <strong>${m}</strong>（代墊 ¥${paid.toLocaleString()}）</span>
-            <span style="font-weight:800; color:#dc2626;">應拿出 -¥${Math.abs(diff).toLocaleString()}</span>
-          </div>`;
-        } else {
-          balanceHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px; color:#475569;">
-            <span>⚪ <strong>${m}</strong>（代墊 ¥${paid.toLocaleString()}）</span>
-            <span style="font-weight:700;">剛好結清</span>
-          </div>`;
+      // 產生各幣別結算報告
+      let summaryHtml = '';
+      ['JPY', 'TWD'].forEach(cur => {
+        if (totals[cur] > 0) {
+          const sym = cur === 'JPY' ? '¥' : 'NT$';
+          const perPerson = Math.round(totals[cur] / tripMembers.length);
+          let detail = '';
+
+          tripMembers.forEach(m => {
+            const paid = paidMap[cur][m] || 0;
+            const diff = paid - perPerson;
+            if (diff > 0) {
+              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12.5px; color:#065f46;">
+                <span>🟢 <strong>${m}</strong>（代墊 ${sym}${paid.toLocaleString()}）</span>
+                <span style="font-weight:800; color:#059669;">應收回 +${sym}${diff.toLocaleString()}</span>
+              </div>`;
+            } else if (diff < 0) {
+              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12.5px; color:#991b1b;">
+                <span>🔴 <strong>${m}</strong>（代墊 ${sym}${paid.toLocaleString()}）</span>
+                <span style="font-weight:800; color:#dc2626;">應拿出 -${sym}${Math.abs(diff).toLocaleString()}</span>
+              </div>`;
+            } else {
+              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12.5px; color:#475569;">
+                <span>⚪ <strong>${m}</strong>（代墊 ${sym}${paid.toLocaleString()}）</span>
+                <span style="font-weight:600;">剛好結清</span>
+              </div>`;
+            }
+          });
+
+          summaryHtml += `
+            <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; padding:10px 12px; margin-top:8px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed #e2e8f0; padding-bottom:5px; margin-bottom:6px;">
+                <strong style="font-size:13px; color:#1e3a8a;">🪙 ${cur === 'JPY' ? '日幣結算 (JPY ¥)' : '台幣結算 (TWD NT$)'}</strong>
+                <span style="font-size:12px; color:#64748b;">總計 ${sym}${totals[cur].toLocaleString()}（每人 ${sym}${perPerson.toLocaleString()}）</span>
+              </div>
+              ${detail}
+            </div>
+          `;
         }
       });
 
       resEl.innerHTML = `
-        <div style="font-size:13px; color:#047857; margin-bottom:4px;">今日累計 <strong>${tripExpenses.length}</strong> 筆支出｜總金額：<strong>¥${total.toLocaleString()}</strong></div>
-        <div style="font-size:13px; color:#475569; margin-bottom:10px;">平均每人分攤：<strong style="color:#1e3a8a;">¥${perPerson.toLocaleString()} JPY</strong></div>
-        <div style="background:#ffffff; border:1px solid #a7f3d0; border-radius:8px; padding:10px 12px;">
-          <div style="font-size:12px; font-weight:800; color:#0f172a; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:4px;">📊 每日最終結算：</div>
-          ${balanceHtml}
-        </div>
+        <div style="font-size:13px; color:#047857; margin-bottom:4px; font-weight:700;">今日累計 <strong>${tripExpenses.length}</strong> 筆支出</div>
+        ${summaryHtml}
       `;
     }
 
-    // 新增一筆支出
+    // 新增支出
     function addExpenseRecord() {
       const payer = document.getElementById('splitPayer').value;
+      const currency = document.getElementById('splitCurrency').value;
       const nameInput = document.getElementById('splitItem');
       const amtInput = document.getElementById('splitAmount');
       const name = nameInput.value.trim() || '未命名公費';
       const amt = parseFloat(amtInput.value);
 
       if (!amt || amt <= 0) {
-        alert('請輸入大於 0 的有效日幣金額！');
+        alert('請輸入大於 0 的有效金額！');
         return;
       }
 
-      tripExpenses.push({ payer, name, amount: amt, time: new Date().toLocaleTimeString() });
+      tripExpenses.push({ payer, currency, name, amount: amt, time: new Date().toLocaleTimeString() });
       localStorage.setItem('trip_expenses_list', JSON.stringify(tripExpenses));
       nameInput.value = '';
       amtInput.value = '';
       renderExpenses();
     }
 
-    // 刪除單筆
-    function removeExpenseRecord(index) {
-      tripExpenses.splice(index, 1);
+    // 編輯單筆
+    function editExpenseRecord(index) {
+      const item = tripExpenses[index];
+      const curSym = item.currency === 'TWD' ? 'NT$' : '¥';
+
+      const newPayer = prompt(`修改代墊人（請填：柏毅、張庭、班長、書緯、柳丁）`, item.payer);
+      if (newPayer === null) return;
+      if (!tripMembers.includes(newPayer.trim())) {
+        alert('代墊人必須是名單中的成員喔！');
+        return;
+      }
+
+      const newName = prompt(`修改支出項目名稱：`, item.name);
+      if (newName === null) return;
+
+      const newCur = prompt(`修改幣別（請填：JPY 或 TWD）：`, item.currency || 'JPY');
+      if (newCur === null) return;
+      const formattedCur = newCur.trim().toUpperCase();
+      if (!['JPY', 'TWD'].includes(formattedCur)) {
+        alert('幣別僅支援 JPY（日幣）或 TWD（台幣）！');
+        return;
+      }
+
+      const newAmtStr = prompt(`修改金額（${formattedCur}）：`, item.amount);
+      if (newAmtStr === null) return;
+      const newAmt = parseFloat(newAmtStr);
+      if (!newAmt || newAmt <= 0) {
+        alert('請輸入有效金額！');
+        return;
+      }
+
+      // 更新資料
+      tripExpenses[index] = {
+        payer: newPayer.trim(),
+        name: newName.trim() || '未命名公費',
+        currency: formattedCur,
+        amount: newAmt,
+        time: item.time
+      };
+
       localStorage.setItem('trip_expenses_list', JSON.stringify(tripExpenses));
       renderExpenses();
     }
 
+    // 刪除單筆
+    function removeExpenseRecord(index) {
+      if (confirm(`確定刪除「${tripExpenses[index].name}」這筆紀錄嗎？`)) {
+        tripExpenses.splice(index, 1);
+        localStorage.setItem('trip_expenses_list', JSON.stringify(tripExpenses));
+        renderExpenses();
+      }
+    }
+
     // 清空重置（結清）
     function clearAllExpenses() {
-      if (confirm('確定要清空今天的公費記帳紀錄嗎？（請確認已完成收款結算）')) {
+      if (confirm('確定要清空今日所有記帳紀錄嗎？（請確認已完成收款結算）')) {
         tripExpenses = [];
         localStorage.removeItem('trip_expenses_list');
         renderExpenses();
