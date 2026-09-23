@@ -1444,10 +1444,8 @@
       });
     });
 
-    // 分帳試算
-    // 讀取既有記帳資料
-    // 預設 5 位成員清單（若想改成朋友名字，可直接修改此陣列）
-    const tripMembers = ["我", "成員 A", "成員 B", "成員 C", "成員 D"];
+    // 專屬 5 位成員名單
+    const tripMembers = ["柏毅", "張庭", "班長", "書緯", "柳丁"];
     let tripExpenses = JSON.parse(localStorage.getItem('trip_expenses_list') || '[]');
 
     // 渲染支出清單與每人多退少補看板
@@ -1491,24 +1489,24 @@
       resEl.style.display = 'block';
       clearBtn.style.display = 'block';
 
-      // 產生結算報告明細
+      // 產生個人多退少補明細
       let balanceHtml = '';
       tripMembers.forEach(m => {
         const paid = paidMap[m] || 0;
         const diff = paid - perPerson;
         if (diff > 0) {
           balanceHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px; color:#065f46;">
-            <span>🟢 <strong>${m}</strong>（已墊 ¥${paid.toLocaleString()}）</span>
+            <span>🟢 <strong>${m}</strong>（代墊 ¥${paid.toLocaleString()}）</span>
             <span style="font-weight:800; color:#059669;">應收回 +¥${diff.toLocaleString()}</span>
           </div>`;
         } else if (diff < 0) {
           balanceHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px; color:#991b1b;">
-            <span>🔴 <strong>${m}</strong>（已墊 ¥${paid.toLocaleString()}）</span>
+            <span>🔴 <strong>${m}</strong>（代墊 ¥${paid.toLocaleString()}）</span>
             <span style="font-weight:800; color:#dc2626;">應拿出 -¥${Math.abs(diff).toLocaleString()}</span>
           </div>`;
         } else {
           balanceHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px; color:#475569;">
-            <span>⚪ <strong>${m}</strong>（已墊 ¥${paid.toLocaleString()}）</span>
+            <span>⚪ <strong>${m}</strong>（代墊 ¥${paid.toLocaleString()}）</span>
             <span style="font-weight:700;">剛好結清</span>
           </div>`;
         }
@@ -1516,9 +1514,9 @@
 
       resEl.innerHTML = `
         <div style="font-size:13px; color:#047857; margin-bottom:4px;">今日累計 <strong>${tripExpenses.length}</strong> 筆支出｜總金額：<strong>¥${total.toLocaleString()}</strong></div>
-        <div style="font-size:13px; color:#475569; margin-bottom:10px;">平均每人應分攤：<strong style="color:#1e3a8a;">¥${perPerson.toLocaleString()} JPY</strong></div>
+        <div style="font-size:13px; color:#475569; margin-bottom:10px;">平均每人分攤：<strong style="color:#1e3a8a;">¥${perPerson.toLocaleString()} JPY</strong></div>
         <div style="background:#ffffff; border:1px solid #a7f3d0; border-radius:8px; padding:10px 12px;">
-          <div style="font-size:12px; font-weight:800; color:#0f172a; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:4px;">📊 最終結算（誰該給誰）：</div>
+          <div style="font-size:12px; font-weight:800; color:#0f172a; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:4px;">📊 每日最終結算：</div>
           ${balanceHtml}
         </div>
       `;
