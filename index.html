@@ -1328,27 +1328,39 @@
       </div>
 
       <div class="tool-section split-box">
-        <div class="tool-title">💰 5 人公費記帳簿（多幣別與可編輯）</div>
+        <div class="tool-title">💰 5 人公費記帳簿（自選分攤成員）</div>
         
         <!-- 輸入區 -->
         <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-          <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; background: white; outline: none; flex: 1.1;">
+          <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
             <option value="柏毅">由「柏毅」先付</option>
             <option value="張庭">由「張庭」先付</option>
             <option value="班長">由「班長」先付</option>
             <option value="書緯">由「書緯」先付</option>
             <option value="柳丁">由「柳丁」先付</option>
           </select>
-          <input type="text" id="splitItem" placeholder="項目（如：車資、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; outline: none;">
+          <input type="text" id="splitItem" placeholder="項目（如：門票、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
         </div>
 
-        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-          <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; background: white; outline: none; flex: 0.9;">
+        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+          <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 0.9;">
             <option value="JPY">日圓 ¥</option>
             <option value="TWD">台幣 NT$</option>
           </select>
-          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; outline: none;">
-          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 13px;">＋ 新增支出</button>
+          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
+          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
+        </div>
+
+        <!-- 選擇分攤對象（預設全選，可自由勾選） -->
+        <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 8px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #475569; margin-bottom: 6px;">👥 參與分攤成員（預設全員，非全員請手動點掉）：</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柏毅" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柏毅</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="張庭" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 張庭</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="班長" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 班長</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="書緯" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 書緯</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柳丁" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柳丁</label>
+          </div>
         </div>
 
         <!-- 歷史支出流水帳明細 -->
@@ -1357,7 +1369,7 @@
         <!-- 結算結果看板 -->
         <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
         
-        <button id="clearExpenseBtn" onclick="clearAllExpenses()" style="display:none; width: 100%; margin-top: 10px; background: transparent; border: 1px dashed #cbd5e1; color: #94a3b8; padding: 8px; border-radius: 8px; font-size: 12px; cursor: pointer;">
+        <button id="clearExpenseBtn" onclick="clearAllExpenses()" style="display:none; width: 100%; margin-top: 10px; background: transparent; border: 1px dashed #cbd5e1; color: #94a3b8; padding: 8px; border-radius: 8px; font-size: 13px; cursor: pointer;">
           🗑️ 清空所有記帳（今日已結清）
         </button>
       </div>
@@ -1492,7 +1504,7 @@
     const tripMembers = ["柏毅", "張庭", "班長", "書緯", "柳丁"];
     let tripExpenses = JSON.parse(localStorage.getItem('trip_expenses_list') || '[]');
 
-    // 渲染支出清單與多幣別結算看板
+    // 渲染支出清單與各自精確結算看板
     function renderExpenses() {
       const listEl = document.getElementById('expenseList');
       const resEl = document.getElementById('splitResult');
@@ -1507,34 +1519,47 @@
         return;
       }
 
-      // 幣別分類統計
+      // 幣別分類統計：總花費、代墊額度、應付額度
       const totals = { JPY: 0, TWD: 0 };
-      const paidMap = {
-        JPY: {},
-        TWD: {}
-      };
+      const paidMap = { JPY: {}, TWD: {} };
+      const shouldPayMap = { JPY: {}, TWD: {} };
+
       tripMembers.forEach(m => {
-        paidMap.JPY[m] = 0;
-        paidMap.TWD[m] = 0;
+        paidMap.JPY[m] = 0; paidMap.TWD[m] = 0;
+        shouldPayMap.JPY[m] = 0; shouldPayMap.TWD[m] = 0;
       });
 
       tripExpenses.forEach((item, index) => {
         const cur = item.currency || 'JPY';
         const symbol = cur === 'JPY' ? '¥' : 'NT$';
+        const beneficiaries = (item.beneficiaries && item.beneficiaries.length > 0) ? item.beneficiaries : tripMembers;
+        const perPersonShare = item.amount / beneficiaries.length;
+
         totals[cur] = (totals[cur] || 0) + item.amount;
         paidMap[cur][item.payer] = (paidMap[cur][item.payer] || 0) + item.amount;
 
+        // 計算每個被分攤者的應付責任額
+        beneficiaries.forEach(m => {
+          shouldPayMap[cur][m] = (shouldPayMap[cur][m] || 0) + perPersonShare;
+        });
+
+        const isAll = beneficiaries.length === tripMembers.length;
+        const bText = isAll ? '5人均分' : `${beneficiaries.length}人分 (${beneficiaries.join('、')})`;
+
         const row = document.createElement('div');
-        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border:1px solid #e2e8f0; padding:10px 14px; border-radius:10px; font-size:13px;';
+        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border:1px solid #e2e8f0; padding:10px 14px; border-radius:10px; font-size:13.5px;';
         row.innerHTML = `
           <div>
-            <span style="display:inline-block; background:#e0e7ff; color:#3730a3; padding:2px 6px; border-radius:6px; font-size:11px; font-weight:700; margin-right:6px;">${item.payer} 付</span>
-            <span style="font-weight:700; color:#1e293b;">${item.name}</span>
-            <span style="color:#64748b; font-size:12px; margin-left:6px; font-weight:600;">${symbol}${item.amount.toLocaleString()}</span>
+            <div>
+              <span style="display:inline-block; background:#e0e7ff; color:#3730a3; padding:2px 6px; border-radius:6px; font-size:11.5px; font-weight:700; margin-right:6px;">${item.payer} 付</span>
+              <span style="font-weight:700; color:#1e293b;">${item.name}</span>
+              <span style="color:#0f766e; font-size:12.5px; font-weight:700; margin-left:6px;">${symbol}${item.amount.toLocaleString()}</span>
+            </div>
+            <div style="font-size:11.5px; color:#64748b; margin-top:3px;">分攤對象：<span style="color:#475569;">${bText}</span></div>
           </div>
           <div style="display:flex; gap:8px;">
-            <button onclick="editExpenseRecord(${index})" style="background:none; border:none; color:#2563eb; cursor:pointer; font-size:12.5px; font-weight:700;">編輯</button>
-            <button onclick="removeExpenseRecord(${index})" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:12.5px; font-weight:700;">刪除</button>
+            <button onclick="editExpenseRecord(${index})" style="background:none; border:none; color:#2563eb; cursor:pointer; font-size:13px; font-weight:700;">編輯</button>
+            <button onclick="removeExpenseRecord(${index})" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:13px; font-weight:700;">刪除</button>
           </div>
         `;
         listEl.appendChild(row);
@@ -1548,25 +1573,26 @@
       ['JPY', 'TWD'].forEach(cur => {
         if (totals[cur] > 0) {
           const sym = cur === 'JPY' ? '¥' : 'NT$';
-          const perPerson = Math.round(totals[cur] / tripMembers.length);
           let detail = '';
 
           tripMembers.forEach(m => {
             const paid = paidMap[cur][m] || 0;
-            const diff = paid - perPerson;
+            const shouldPay = Math.round(shouldPayMap[cur][m] || 0);
+            const diff = paid - shouldPay;
+
             if (diff > 0) {
-              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12.5px; color:#065f46;">
-                <span>🟢 <strong>${m}</strong>（代墊 ${sym}${paid.toLocaleString()}）</span>
+              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:13.5px; color:#065f46;">
+                <span>🟢 <strong>${m}</strong>（墊 ${sym}${paid.toLocaleString()} / 應分 ${sym}${shouldPay.toLocaleString()}）</span>
                 <span style="font-weight:800; color:#059669;">應收回 +${sym}${diff.toLocaleString()}</span>
               </div>`;
             } else if (diff < 0) {
-              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12.5px; color:#991b1b;">
-                <span>🔴 <strong>${m}</strong>（代墊 ${sym}${paid.toLocaleString()}）</span>
+              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:13.5px; color:#991b1b;">
+                <span>🔴 <strong>${m}</strong>（墊 ${sym}${paid.toLocaleString()} / 應分 ${sym}${shouldPay.toLocaleString()}）</span>
                 <span style="font-weight:800; color:#dc2626;">應拿出 -${sym}${Math.abs(diff).toLocaleString()}</span>
               </div>`;
             } else {
-              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12.5px; color:#475569;">
-                <span>⚪ <strong>${m}</strong>（代墊 ${sym}${paid.toLocaleString()}）</span>
+              detail += `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:13.5px; color:#475569;">
+                <span>⚪ <strong>${m}</strong>（墊 ${sym}${paid.toLocaleString()} / 應分 ${sym}${shouldPay.toLocaleString()}）</span>
                 <span style="font-weight:600;">剛好結清</span>
               </div>`;
             }
@@ -1574,9 +1600,9 @@
 
           summaryHtml += `
             <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; padding:10px 12px; margin-top:8px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed #e2e8f0; padding-bottom:5px; margin-bottom:6px;">
-                <strong style="font-size:13px; color:#1e3a8a;">🪙 ${cur === 'JPY' ? '日幣結算 (JPY ¥)' : '台幣結算 (TWD NT$)'}</strong>
-                <span style="font-size:12px; color:#64748b;">總計 ${sym}${totals[cur].toLocaleString()}（每人 ${sym}${perPerson.toLocaleString()}）</span>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed #e2e8f0; padding-bottom:6px; margin-bottom:6px;">
+                <strong style="font-size:14px; color:#1e3a8a;">🪙 ${cur === 'JPY' ? '日幣結算 (JPY ¥)' : '台幣結算 (TWD NT$)'}</strong>
+                <span style="font-size:13px; color:#64748b; font-weight:600;">總支出 ${sym}${totals[cur].toLocaleString()}</span>
               </div>
               ${detail}
             </div>
@@ -1585,7 +1611,7 @@
       });
 
       resEl.innerHTML = `
-        <div style="font-size:13px; color:#047857; margin-bottom:4px; font-weight:700;">今日累計 <strong>${tripExpenses.length}</strong> 筆支出</div>
+        <div style="font-size:13.5px; color:#047857; margin-bottom:4px; font-weight:700;">今日累計 <strong>${tripExpenses.length}</strong> 筆支出</div>
         ${summaryHtml}
       `;
     }
@@ -1604,17 +1630,37 @@
         return;
       }
 
-      tripExpenses.push({ payer, currency, name, amount: amt, time: new Date().toLocaleTimeString() });
+      // 取得勾選的分攤成員
+      const checkedBeneficiaries = [];
+      document.querySelectorAll('input[name="splitBeneficiary"]:checked').forEach(cb => {
+        checkedBeneficiaries.push(cb.value);
+      });
+
+      if (checkedBeneficiaries.length === 0) {
+        alert('請至少勾選 1 位參與分攤的成員！');
+        return;
+      }
+
+      tripExpenses.push({
+        payer,
+        currency,
+        name,
+        amount: amt,
+        beneficiaries: checkedBeneficiaries,
+        time: new Date().toLocaleTimeString()
+      });
+
       localStorage.setItem('trip_expenses_list', JSON.stringify(tripExpenses));
       nameInput.value = '';
       amtInput.value = '';
       renderExpenses();
     }
 
-    // 編輯單筆
+    // 編輯單筆支出
     function editExpenseRecord(index) {
       const item = tripExpenses[index];
       const curSym = item.currency === 'TWD' ? 'NT$' : '¥';
+      const currentBeneficiaries = item.beneficiaries || tripMembers;
 
       const newPayer = prompt(`修改代墊人（請填：柏毅、張庭、班長、書緯、柳丁）`, item.payer);
       if (newPayer === null) return;
@@ -1642,12 +1688,20 @@
         return;
       }
 
-      // 更新資料
+      const newBenStr = prompt(`修改分攤成員（請用逗號隔開，如：柏毅,張庭,班長）：`, currentBeneficiaries.join(','));
+      if (newBenStr === null) return;
+      const parsedBen = newBenStr.split(/[,，、 ]/).map(s => s.trim()).filter(s => tripMembers.includes(s));
+      if (parsedBen.length === 0) {
+        alert('必須至少有一位有效分攤成員！');
+        return;
+      }
+
       tripExpenses[index] = {
         payer: newPayer.trim(),
         name: newName.trim() || '未命名公費',
         currency: formattedCur,
         amount: newAmt,
+        beneficiaries: parsedBen,
         time: item.time
       };
 
