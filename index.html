@@ -307,7 +307,7 @@
     .split-box input:focus { border-color: var(--primary-accent); }
     .split-btn { width: 100%; background: var(--primary-accent); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
     .split-btn:active { transform: scale(0.98); }
-    .split-res { margin-top: 14px; padding: 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; font-size: 14px; color: #065f46; font-weight: 700; text-align: center; line-height: 1.6; }
+    .split-res { margin-top: 14px; padding: 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; font-size: 14px; color: #065f46; font-weight: 700; text-align: left; line-height: 1.6; }
 
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   </style>
@@ -1314,18 +1314,7 @@
         <div id="expenseList" style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;"></div>
 
         <!-- 結算結果看板 -->
-        <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
-        
-        <button id="clearExpenseBtn" onclick="clearAllExpenses()" style="display:none; width: 100%; margin-top: 10px; background: transparent; border: 1px dashed #cbd5e1; color: #94a3b8; padding: 8px; border-radius: 8px; font-size: 12px; cursor: pointer;">
-          🗑️ 清空所有記帳（今日已結清）
-        </button>
-      </div>
-
-        <!-- 歷史支出流水帳明細 -->
-        <div id="expenseList" style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;"></div>
-
-        <!-- 結算結果看板 -->
-        <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
+        <div id="splitResult" class="split-res" style="display:none; margin-top: 14px;"></div>
         
         <button id="clearExpenseBtn" onclick="clearAllExpenses()" style="display:none; width: 100%; margin-top: 10px; background: transparent; border: 1px dashed #cbd5e1; color: #94a3b8; padding: 8px; border-radius: 8px; font-size: 12px; cursor: pointer;">
           🗑️ 清空所有記帳（今日已結清）
@@ -1442,6 +1431,9 @@
           img.src = savedData;
         }
       });
+
+      // 渲染記帳清單
+      renderExpenses();
     });
 
     // 專屬 5 位成員名單
@@ -1557,11 +1549,6 @@
         renderExpenses();
       }
     }
-
-    // 網頁載入時自動渲染記帳清單
-    window.addEventListener('DOMContentLoaded', () => {
-      renderExpenses();
-    });
   </script>
 </body>
 </html>
