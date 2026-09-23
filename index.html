@@ -319,8 +319,15 @@
     <div class="countdown-chip" id="countdownBanner">✈️ 2026/10/31 啟程</div>
     <h1>🇯🇵 關西 7 天 6 夜自由行</h1>
     <p>10/31～11/6・5 人同行・鶴橋獨棟民宿</p>
-    <div class="info-badge" onclick="copyAddress()">
-      🏠 民宿：大阪市東成区東小橋3-11-9 <span id="copyTxt">(點擊複製)</span>
+    
+    <!-- 中文 / 日文地址複製 -->
+    <div class="info-badge" onclick="copyAddress('jp')">
+      🏠 日文：大阪市東成区東小橋3-11-9 <span id="copyTxtJp" style="color:#38bdf8; font-weight:700;">(點擊複製)</span>
+    </div>
+    
+    <!-- 英文地址複製（供入境卡/計程車使用） -->
+    <div class="info-badge" onclick="copyAddress('en')" style="margin-top: 8px;">
+      🏠 英文：3-11-9 Higashiobase, Higashinari-ku, Osaka <span id="copyTxtEn" style="color:#38bdf8; font-weight:700;">(點擊複製)</span>
     </div>
   </header>
 
