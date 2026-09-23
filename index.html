@@ -1394,16 +1394,27 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 複製地址與動畫
-    function copyAddress() {
-      const address = "大阪府大阪市東成区東小橋3丁目11-9";
-      const copyTxt = document.getElementById("copyTxt");
+    // 支援中/日文與英文地址個別複製
+    function copyAddress(type) {
+      let address = "";
+      let targetSpanId = "";
+
+      if (type === 'jp') {
+        address = "大阪府大阪市東成区東小橋3丁目11-9";
+        targetSpanId = "copyTxtJp";
+      } else {
+        address = "3-11-9 Higashiobase, Higashinari-ku, Osaka, Japan";
+        targetSpanId = "copyTxtEn";
+      }
+
+      const copySpan = document.getElementById(targetSpanId);
       navigator.clipboard.writeText(address).then(() => {
-        copyTxt.innerHTML = "✅ 已複製！";
-        copyTxt.style.color = "#4ade80";
+        const origText = copySpan.innerHTML;
+        copySpan.innerHTML = "✅ 已複製！";
+        copySpan.style.color = "#4ade80";
         setTimeout(() => {
-          copyTxt.innerHTML = "(點擊複製)";
-          copyTxt.style.color = "#38bdf8";
+          copySpan.innerHTML = origText;
+          copySpan.style.color = "#38bdf8";
         }, 2000);
       }).catch(err => {
         prompt("請手動複製地址：", address);
