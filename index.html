@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>2026 關西 7 天 6 夜自由行手冊</title>
   <style>
-/* 摺疊詳情區塊美化 */
+    /* 摺疊詳情區塊美化 */
     .spot-details {
       margin-top: 10px;
       border: 1px dashed var(--border);
-      border-radius: 10px;
-      padding: 8px 12px;
-      background: #fafafa;
+      border-radius: 12px;
+      padding: 9px 13px;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+    }
+    .spot-details[open] {
+      background: #eff6ff;
+      border-color: #bfdbfe;
     }
     .spot-details summary {
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-accent);
       cursor: pointer;
@@ -22,11 +27,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      user-select: none;
     }
     .spot-details summary::-webkit-details-marker { display: none; }
     .spot-details summary::after { content: "▾"; font-size: 14px; transition: transform 0.2s; }
     .spot-details[open] summary::after { transform: rotate(180deg); }
-    .spot-details-content { font-size: 13px; color: #475569; margin-top: 8px; line-height: 1.6; }
+    .spot-details-content { font-size: 13px; color: #334155; margin-top: 8px; line-height: 1.65; border-top: 1px dashed #cbd5e1; padding-top: 8px; }
 
     /* 懸浮回到頂部按鈕 (FAB) */
     .fab-top {
@@ -35,11 +41,11 @@
       right: 20px;
       width: 44px;
       height: 44px;
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(15, 23, 42, 0.78);
       backdrop-filter: blur(8px);
       color: white;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -52,6 +58,7 @@
       z-index: 90;
     }
     .fab-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
     :root {
       --primary: #1e3a8a;          /* 經典和風深紺青 */
       --primary-accent: #2563eb;   /* 亮藍點綴 */
@@ -274,7 +281,7 @@
     /* 卡片內容排版 */
     .event-body { padding: 18px 20px; }
     .time-badge {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 800;
       color: var(--primary-accent);
       background: var(--primary-light);
@@ -285,6 +292,11 @@
       letter-spacing: 0.3px;
     }
     .time-badge.alert { color: #dc2626; background: #fef2f2; }
+    .time-badge.night {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%) !important;
+      color: #f8fafc !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+    }
 
     .event-title { font-size: 17px; font-weight: 800; margin-bottom: 8px; color: #0f172a; line-height: 1.4; }
     .event-desc { font-size: 13.5px; color: #475569; line-height: 1.7; }
@@ -577,10 +589,17 @@
             <span class="time-badge">⏰ 16:15～17:45 寶可夢朝聖</span>
             <div class="event-title">大丸心齋橋本館 9F｜寶可夢中心 DX</div>
             <div class="event-desc">
-              約 15:45 從鶴橋民宿出發搭地鐵，16:15 抵達大丸 9F 採買限定周邊與拍照打卡，同層設有免稅退稅櫃台。<br>
-              🎯 <strong>景點特色</strong>：關西規模最大寶可夢中心之一，入口有巨型皮卡丘迎賓，是寶可夢迷必拍打卡聖地。<br>
-              🔥 <strong>必買推薦</strong>：心齋橋限定木木梟/皮卡丘周邊、寶可夢 PTCG 卡牌補充包、精靈球造型生活雜貨。
+              約 15:45 從鶴橋民宿出發搭地鐵，16:15 抵達大丸 9F 採買限定周邊與拍照打卡，同層設有免稅退稅櫃台。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看景點亮點 ＆ 必買推薦</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：關西規模最大寶可夢中心之一，入口有巨型皮卡丘迎賓，是寶可夢迷必拍打卡聖地。<br>
+                🔥 <strong>必買推薦</strong>：心齋橋限定木木梟/皮卡丘周邊、寶可夢 PTCG 卡牌補充包、精靈球造型生活雜貨。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 鶴橋民宿 ➔ 大丸心齋橋</div>
@@ -621,12 +640,16 @@
                 <li><strong>Dior 專櫃（大丸 1F）</strong>：採買親友託買的美妝保養品，同棟 9 樓退稅櫃台直接辦理免稅退現金。</li>
                 <li><strong>心齋橋藥妝街</strong>：鎖定大丸對面連鎖店（Sundrug / 大國 / 松本清），店內直接免稅封袋。</li>
               </ul>
-              🔥 <strong>必買必搶清單</strong>：
-              <ul>
-                <li><strong>美妝專櫃</strong>：Dior 癮誘粉漾潤唇膏（熱門色號 001/004）、逆時能量精華。</li>
-                <li><strong>藥妝必備</strong>：合利他命 EX Plus 270錠、EVE 白盒/藍盒止痛藥、大正百保能感冒微粒、Wakamoto 若元錠、DHC 維他命C/B群。</li>
-              </ul>
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看美妝專櫃與藥妝必買清單</summary>
+              <div class="spot-details-content">
+                💄 <strong>專櫃美妝</strong>：Dior 癮誘粉漾潤唇膏（熱門色號 001/004）、逆時能量精華、超完美持久氣墊。<br>
+                💊 <strong>藥妝必搶</strong>：合利他命 EX Plus 270錠、EVE 白盒/藍盒止痛藥、大正百保能感冒微粒、Wakamoto 若元錠、DHC 維他命C/B群、花王蒸氣眼罩。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚶 步行動線</div>
@@ -654,13 +677,21 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 19:45～21:30 夜晚晚餐散策</span>
+            <!-- 🌙 夜間標籤 -->
+            <span class="time-badge night">🌙 19:45～21:30 晚間散策與晚餐</span>
             <div class="event-title">道頓堀跑跑人 ➔ 難波地下街（NAMBA Walk）</div>
             <div class="event-desc">
-              走過戎橋拍固力果跑跑人，沿著戎橋筋商店街直走接進難波地下街逛日式雜貨、扭蛋並享用晚餐。結束後搭近鐵直達鶴橋。<br>
-              🎯 <strong>景點特色</strong>：難波地下街橫跨兩大地鐵站，長達數百公尺，匯聚近 200 家日系服飾、生活雜貨、日式居酒屋與甜點。<br>
-              🔥 <strong>必吃必逛推薦</strong>：鳴門鯛燒本舖（天然鯛魚燒金時地瓜口味）、老爺爺起司蛋糕（Rikuro 難波本店排隊現烤）、3COINS 平價日雜店。
+              走過戎橋拍固力果跑跑人，沿著戎橋筋商店街直走接進難波地下街逛日式雜貨、扭蛋並享用晚餐。結束後搭近鐵直達鶴橋。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看地下街必吃必逛清單</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：難波地下街橫跨兩大地鐵站，長達數百公尺，匯聚近 200 家日系服飾、生活雜貨、日式居酒屋與甜點。<br>
+                🔥 <strong>必吃必逛推薦</strong>：鳴門鯛燒本舖（天然鯛魚燒金時地瓜口味）、老爺爺起司蛋糕（Rikuro 難波本店排隊現烤）、3COINS 平價日雜店。
+              </div>
+            </details>
 
             <!-- 🧭 實體防迷路步行指引 -->
             <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb; border-radius: 12px; padding: 12px; margin-top: 12px; font-size: 13px; line-height: 1.6; color: #1e3a8a;">
@@ -758,10 +789,18 @@
             <span class="time-badge">⏰ 10:00～12:00 上午</span>
             <div class="event-title">宇治｜平等院鳳凰堂 ＆ 抹茶老街</div>
             <div class="event-desc">
-              欣賞十圓日幣國寶鳳凰堂，表參道品嚐中村藤吉／伊藤久右衛門濃抹茶甜點。<br>
-              🎯 <strong>景點特色</strong>：日本國寶級古蹟，印在日幣 10 圓硬幣及萬元鈔票上的鳳凰圖騰，阿字池水面倒映著極樂淨土風貌。<br>
-              🔥 <strong>必買必吃推薦</strong>：中村藤吉本店（生茶果凍竹筒冰）、伊藤久右衛門（宇治抹茶芭菲、抹茶大福）、宇治上等茶葉煎茶包禮盒。
+              欣賞十圓日幣國寶鳳凰堂，表參道品嚐中村藤吉／伊藤久右衛門濃抹茶甜點。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看宇治抹茶名店與必吃推薦</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：日本國寶級古蹟，印在日幣 10 圓硬幣及萬元鈔票上的鳳凰圖騰，阿字池水面倒映著極樂淨土風貌。<br>
+                🔥 <strong>必吃必買推薦</strong>：中村藤吉本店（生茶果凍竹筒冰）、伊藤久右衛門（宇治抹茶芭菲、抹茶大福）、宇治上等煎茶與玄米茶茶包。
+              </div>
+            </details>
+
             <div class="transit-box">
               <div class="transit-title">🚌 交通方式</div>
               <div class="transit-step">Klook 一日遊專車直達宇治停車場，下車跟隨導遊步行 5 分鐘進表參道。</div>
@@ -788,10 +827,18 @@
             <span class="time-badge">⏰ 12:30～14:30 中午～下午</span>
             <div class="event-title">伏見稻荷大社｜朱紅千本鳥居</div>
             <div class="event-desc">
-              走訪綿延不絕的朱紅鳥居隧道，參拜狐狸守護神與狐狸繪馬。<br>
-              🎯 <strong>景點特色</strong>：全日本三萬座稻荷神社總本社，以壯觀的「千本鳥居」聞名世界，祈求五穀豐收、商業繁盛。<br>
-              🔥 <strong>必買必做體驗</strong>：掛「白狐造型繪馬」（可自己畫狐狸表情臉）、千本鳥居迷你朱紅鳥居守護御守、稻荷狐狸煎餅（寶玉堂）。
+              走訪綿延不絕的朱紅鳥居隧道，參拜狐狸守護神與狐狸繪馬。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看千本鳥居看點與特色伴手禮</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：全日本三萬座稻荷神社總本社，以壯觀的「千本鳥居」聞名世界，祈求五穀豐收、商業繁盛。<br>
+                🔥 <strong>必買必做體驗</strong>：掛「白狐造型繪馬」（可自己畫狐狸表情臉）、千本鳥居迷你朱紅鳥居守護御守、稻荷狐狸煎餅（寶玉堂）。
+              </div>
+            </details>
+
             <div class="transit-box">
               <div class="transit-title">🚌 交通方式</div>
               <div class="transit-step">專車直達伏見稻荷大巴停靠區，步行 3 分鐘穿過鐵道即進入參道。</div>
@@ -818,10 +865,18 @@
             <span class="time-badge">⏰ 15:30～17:00 下午</span>
             <div class="event-title">勝尾寺（勝運達摩寺）</div>
             <div class="event-desc">
-              滿山遍野寫著「勝」字的超萌開運達摩不倒翁，祈求考運、事業與旅程平安！一日遊專車返抵道頓堀後解散。<br>
-              🎯 <strong>景點特色</strong>：源自平安時代專求「勝運」的靈驗名剎，全寺石梯、樹枝間擺滿信徒還願的紅色達摩，極度壯觀好拍。<br>
-              🔥 <strong>必買推薦</strong>：勝尾寺「勝運達摩神籤」（抽完可帶走或塞入石縫求運）、開眼大達摩（許願時畫左眼，願望達成畫右眼）。
+              滿山遍野寫著「勝」字的超萌開運達摩不倒翁，祈求考運、事業與旅程平安！一日遊專車返抵道頓堀後解散。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看勝運達摩祈願玩法</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：源自平安時代專求「勝運」的靈驗名剎，全寺石梯、樹枝間擺滿信徒還願的紅色達摩，極度壯觀好拍。<br>
+                🔥 <strong>必買推薦</strong>：勝尾寺「勝運達摩神籤」（抽完可帶走或塞入石縫求運）、開眼大達摩（許願時畫左眼，願望達成畫右眼）。
+              </div>
+            </details>
+
             <div class="card-actions">
               <span class="event-tag">勝運達摩</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Katsuo-ji" target="_blank">📍 導航勝尾寺</a>
@@ -882,11 +937,19 @@
             <span class="time-badge alert">⏰ 09:15～10:25（限時 70 分鐘）</span>
             <div class="event-title">嵐山精華散策 ➔ 渡月橋準時上車離開</div>
             <div class="event-desc">
-              09:15 天龍寺北門下車 ➔ 竹林小徑 ➔ 野宮神社 ➔ 渡月橋北側靠川邊小巴臨停處上車。<br>
-              🎯 <strong>景點特色</strong>：高聳入天的嵯峨野竹林綠色隧道，穿過源氏物語歷史名剎野宮神社，漫步至渡月橋眺望大堰川秀麗山水。<br>
-              🔥 <strong>必買必嚐美食</strong>：野宮神社黑木鳥居御守、古都芋本舖（現烤炙燒四色糰子、軟糯日式醬油糰子）、% Arabica 嵐山景觀咖啡。
+              09:15 天龍寺北門下車 ➔ 竹林小徑 ➔ 野宮神社 ➔ 渡月橋北側靠川邊小巴臨停處上車。
               <div class="alert-box">⚠️ 鐵則警報：10:25 必須全員上車關門發車！嵐山往清水寺車程約 45～50 分鐘！</div>
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看嵐山必拍特色與街頭美食</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：高聳入天的嵯峨野竹林綠色隧道，穿過源氏物語歷史名剎野宮神社，漫步至渡月橋眺望大堰川秀麗山水。<br>
+                🔥 <strong>必買必嚐美食</strong>：野宮神社黑木鳥居御守、古都芋本舖（現烤炙燒四色糰子、軟糯日式醬油糰子）、% Arabica 嵐山景觀咖啡。
+              </div>
+            </details>
+
             <div class="card-actions">
               <span class="event-tag">野宮神社</span><span class="event-tag">渡月橋</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Togetsukyo+Bridge" target="_blank">📍 導航渡月橋上車點</a>
@@ -909,10 +972,18 @@
             <span class="time-badge">⏰ 11:15～14:00 午餐與參拜</span>
             <div class="event-title">清水舞台 ➔ 音羽之瀧 ➔ 二年坂老街午餐</div>
             <div class="event-desc">
-              11:15 五條坂下車步行上山，司機前往市區四條烏丸待命。參觀國寶舞台後走二年坂老街午餐。<br>
-              🎯 <strong>景點特色</strong>：世界文化遺產，全棟未用一根釘子的木造「清水舞台」，底下的音羽之瀧三道清泉代表健康、學業、姻緣（選一道喝）。<br>
-              🔥 <strong>必買伴手禮</strong>：本家西尾八ッ橋（生八橋抹茶/肉桂餅皮）、清水寺開運「頭上結草」護身符、二年坂傳統京扇子。
+              11:15 五條坂下車步行上山，司機前往市區四條烏丸待命。參觀國寶舞台後走二年坂老街午餐。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看清水寺舞台傳奇與京都伴手禮</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：世界文化遺產，全棟未用一根釘子的木造「清水舞台」，底下的音羽之瀧三道清泉代表健康、學業、姻緣（選一道喝）。<br>
+                🔥 <strong>必買伴手禮</strong>：本家西尾八ッ橋（生八橋抹茶/肉桂餅皮）、清水寺開運「頭上結草」護身符、二年坂傳統京扇子。
+              </div>
+            </details>
+
             <div class="card-actions">
               <span class="event-tag">產寧坂</span><span class="event-tag">音羽之瀧</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Kiyomizu-dera" target="_blank">📍 導航清水寺本堂</a>
@@ -985,10 +1056,18 @@
             <span class="time-badge alert">⏰ 15:45～16:30（16:30 準時發車回大阪）</span>
             <div class="event-title">SUINA室町 2F｜寶可夢中心京都店（Pokemon Center）</div>
             <div class="event-desc">
-              鎖定藝妓皮卡丘公仔、金色鳳王徽章！採買至 16:25，16:30 準時由 SUINA室町西側室町通上車回大阪！<br>
-              🎯 <strong>景點特色</strong>：京都獨一無二的和風主題寶可夢店，門口有洛奇亞與鳳王盤旋造景。<br>
-              🔥 <strong>必買限定神物</strong>：<strong>京都店限定「舞妓/藝妓皮卡丘」</strong>毛絨公仔（手拿櫻花油紙傘超精緻）、和風花紋鳳王徽章、京都限定和紙手帳膠帶。
+              鎖定藝妓皮卡丘公仔、金色鳳王徽章！採買至 16:25，16:30 準時由 SUINA室町西側室町通上車回大阪！
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看京都限定皮卡丘與獨家周邊</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：京都獨一無二的和風主題寶可夢店，門口有洛奇亞與鳳王盤旋造景。<br>
+                🔥 <strong>必買限定神物</strong>：<strong>京都店限定「舞妓/藝妓皮卡丘」</strong>毛絨公仔（手拿櫻花油紙傘超精緻）、和風花紋鳳王徽章、京都限定和紙手帳膠帶。
+              </div>
+            </details>
+
             <div class="card-actions">
               <span class="event-tag">SUINA室町 2F</span><span class="event-tag">限定舞妓皮卡丘</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Pokemon+Center+Kyoto" target="_blank">📍 導航寶可夢京都店</a>
@@ -1008,13 +1087,22 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 18:00～20:00 燒肉晚餐</span>
+            <!-- 🌙 夜間標籤 -->
+            <span class="time-badge night">🌙 18:00～20:00 炭火燒肉晚餐</span>
             <div class="event-title">四條烏丸上車 ➔ 返抵鶴橋民宿 ＆ 燒肉晚餐</div>
             <div class="event-desc">
-              約 18:00 前準時回到鶴橋民宿門口，步行至鶴橋燒肉一條街享受炭火黑毛和牛慶功！<br>
-              🎯 <strong>美食特色</strong>：鶴橋是全日本首屈一指的韓式烤肉與黑毛和牛聖地，整條巷子香氣四溢、炭火直烤肉質鮮嫩爆汁。<br>
-              🔥 <strong>必點招牌部位</strong>：特選和牛橫膈膜（ハラミ，油花勻稱肉味濃郁）、厚切蔥鹽牛舌（牛タン）、特等牛五花（カルビ）搭生啤酒。
+              約 18:00 前準時回到鶴橋民宿門口，步行至鶴橋燒肉一條街享受炭火黑毛和牛慶功！
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看鶴橋燒肉特色與必點肉品</summary>
+              <div class="spot-details-content">
+                🎯 <strong>美食特色</strong>：鶴橋是全日本首屈一指的韓式烤肉與黑毛和牛聖地，整條巷子香氣四溢、炭火直烤肉質鮮嫩爆汁。<br>
+                🔥 <strong>必點招牌部位</strong>：特選和牛橫膈膜（ハラミ，油花勻稱肉味濃郁）、厚切蔥鹽牛舌（牛タン）、特等牛五花（カルビ）搭生啤酒。
+              </div>
+            </details>
+
             <div class="card-actions">
               <span class="event-tag">10小時滿分達標</span><span class="event-tag">鶴橋燒肉一條街</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Tsuruhashi+Yakiniku" target="_blank">📍 尋找鶴橋燒肉</a>
@@ -1081,10 +1169,17 @@
             <span class="time-badge">⏰ 10:00～13:30 溜滑梯＆串炸</span>
             <div class="event-title">通天閣溜滑梯 ＆ 新世界串炸</div>
             <div class="event-desc">
-              挑戰 TOWER SLIDER 溜滑梯；吃元祖串炸達摩、玩傳統射擊打靶。<br>
-              🎯 <strong>景點特色</strong>：大阪下町懷舊風情，摸頂樓比利肯神像（Billiken）腳底求好運。全新「TOWER SLIDER」從 3 樓繞著塔身溜到 B1，全長 60 公尺僅需 10 秒超刺激！<br>
-              🔥 <strong>必吃美食</strong>：元祖串炸達摩（牛肉串、紅薑、炸起司，沾獨門醬汁）。
+              挑戰 TOWER SLIDER 溜滑梯；吃元祖串炸達摩、玩傳統射擊打靶。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看通天閣看點與元祖串炸</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：大阪下町懷舊風情，摸頂樓比利肯神像（Billiken）腳底求好運。全新「TOWER SLIDER」從 3 樓繞著塔身溜到 B1，全長 60 公尺僅需 10 秒超刺激！<br>
+                🔥 <strong>必吃美食</strong>：元祖串炸達摩（牛肉串、紅薑、炸起司，沾獨門醬汁）。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 道頓堀 ➔ 通天閣</div>
@@ -1148,13 +1243,21 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">⏰ 19:00～20:30 預約晚餐</span>
+            <!-- 🌙 夜間標籤 -->
+            <span class="time-badge night">🌙 19:00～20:30 預約晚餐</span>
             <div class="event-title">力丸爐端燒 網兵衛（天王寺店）</div>
             <div class="event-desc">
-              體驗長木槳送餐烤物！結束後直搭 JR 環狀線回鶴橋。<br>
-              🎯 <strong>餐廳特色</strong>：師傅坐在環形吧台中央炭火前現烤，烤熟後用超長木槳（船槳）直接將熱騰騰的烤盤送到面前，極具日式傳統儀式感！<br>
-              🔥 <strong>必點招牌</strong>：帶殼現烤大帆立貝（蒜香牛油醬汁）、巨大鹽烤海老、烤雞肉串拼盤、生薑燒肉。
+              體驗長木槳送餐烤物！結束後直搭 JR 環狀線回鶴橋。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看爐端燒看點與必點烤海鮮</summary>
+              <div class="spot-details-content">
+                🎯 <strong>餐廳特色</strong>：師傅坐在環形吧台中央炭火前現烤，烤熟後用超長木槳（船槳）直接將熱騰騰的烤盤送到面前，極具日式傳統儀式感！<br>
+                🔥 <strong>必點招牌</strong>：帶殼現烤大帆立貝（蒜香牛油醬汁）、巨大鹽烤海老、烤雞肉串拼盤、生薑燒肉。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 HARUKAS ➔ 網兵衛 ➔ 回鶴橋民宿</div>
@@ -1199,10 +1302,17 @@
             <span class="time-badge">⏰ 09:30～11:30 上午</span>
             <div class="event-title">大阪城公園 ＆ 天守閣</div>
             <div class="event-desc">
-              登頂眺望大阪市景，漫步西之丸庭園感受壯麗石牆。<br>
-              🎯 <strong>景點特色</strong>：大阪地標名城，豐臣秀吉與德川家康的戰國名勝。天守閣 8 樓展望台可 360 度俯瞰大阪城全景與護城河。<br>
-              🔥 <strong>必買紀念品</strong>：戰國武將家徽御守（豐臣秀吉五七桐紋）、大阪城限定金色立體城堡磁鐵。
+              登頂眺望大阪市景，漫步西之丸庭園感受壯麗石牆。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看大阪城歷史特色與限定御守</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：大阪地標名城，豐臣秀吉與德川家康的戰國名勝。天守閣 8 樓展望台可 360 度俯瞰大阪城全景與護城河。<br>
+                🔥 <strong>必買紀念品</strong>：戰國武將家徽御守（豐臣秀吉五七桐紋）、大阪城限定金色立體城堡磁鐵。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 鶴橋民宿 ➔ 大阪城公園</div>
@@ -1234,10 +1344,17 @@
             <span class="time-badge">⏰ 12:00～14:00 散策午餐</span>
             <div class="event-title">天神橋筋商店街 午餐邊走邊吃</div>
             <div class="event-desc">
-              品嚐中村屋炸可樂餅、春駒壽司、鳴門鯛燒等平價排隊美食。<br>
-              🎯 <strong>景點特色</strong>：全日本最長的商店街（橫跨 3 個地鐵站、全長 2.6 公里！），充滿道地大阪庶民生活氣息與銅板美食。<br>
-              🔥 <strong>必吃三大名物</strong>：中村屋可樂餅（70日圓外脆內綿鬆軟馬鈴薯）、春駒壽司（高CP值厚切生魚片手握）、鳴門鯛燒（天然炭火烘烤酥脆外皮）。
+              品嚐中村屋炸可樂餅、春駒壽司、鳴門鯛燒等平價排隊美食。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看天神橋筋三大庶民排隊名物</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：全日本最長的商店街（橫跨 3 個地鐵站、全長 2.6 公里！），充滿道地大阪庶民生活氣息與銅板美食。<br>
+                🔥 <strong>必吃三大名物</strong>：中村屋可樂餅（70日圓外脆內綿鬆軟馬鈴薯）、春駒壽司（高CP值厚切生魚片手握）、鳴門鯛燒（天然炭火烘烤酥脆外皮）。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 大阪城 ➔ 天神橋筋</div>
@@ -1269,10 +1386,17 @@
             <span class="time-badge">⏰ 14:30～16:00 旗艦抽獎</span>
             <div class="event-title">大丸梅田 13F｜一番賞官方旗艦店 ＆ 任天堂旗艦店</div>
             <div class="event-desc">
-              一番賞官方店拆獎、Nintendo OSAKA 瑪利歐合影與 JUMP SHOP 特區。<br>
-              🎯 <strong>景點特色</strong>：大丸梅田 13 樓是宅宅頂級樂園，一番賞官方直營店陳列完整展示櫃，同層還有直營任天堂、海賊王、JUMP SHOP。<br>
-              🔥 <strong>必買必抽推薦</strong>：當季限定一番賞（A賞/最後賞神物）、Nintendo OSAKA 限定瑪利歐周邊、斯普拉遁射擊遊戲水槍玩具。
+              一番賞官方店拆獎、Nintendo OSAKA 瑪利歐合影與 JUMP SHOP 特區。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看一番賞官方店與任天堂限定周邊</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：大丸梅田 13 樓是宅宅頂級樂園，一番賞官方直營店陳列完整展示櫃，同層還有直營任天堂、海賊王、JUMP SHOP。<br>
+                🔥 <strong>必買必抽推薦</strong>：當季限定一番賞（A賞/最後賞神物）、Nintendo OSAKA 限定瑪利歐周邊、斯普拉遁射擊遊戲水槍玩具。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 天神橋筋 ➔ 梅田商圈</div>
@@ -1357,12 +1481,20 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">⏰ 19:30～21:30 溫馨圍爐</span>
+            <!-- 🌙 夜間標籤 -->
+            <span class="time-badge night">🌙 19:30～21:30 溫馨圍爐盛宴</span>
             <div class="event-title">大型超市火鍋料採買 ➔ 鶴橋民宿溫馨火鍋盛宴</div>
             <div class="event-desc">
-              LINKS UMEDA B1F 超市或鶴橋站前 LIFE 超市採買黑毛和牛與高湯包，回鶴橋民宿圍爐煮火鍋！<br>
-              🔥 <strong>超市必掃食材清單</strong>：黑毛和牛火鍋肉片（晚上 19:00 後常有 20%～半價折扣貼紙）、博多水炊地雞/相撲濃高湯包、甜玉米、大蔥、讃岐烏龍麵條、當季日本新鮮草莓。
+              LINKS UMEDA B1F 超市或鶴橋站前 LIFE 超市採買黑毛和牛與高湯包，回鶴橋民宿圍爐煮火鍋！
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看超市必掃頂級食材與折扣技巧</summary>
+              <div class="spot-details-content">
+                🔥 <strong>超市必掃食材清單</strong>：黑毛和牛火鍋肉片（晚上 19:00 後常有 20%～半價折扣貼紙）、博多水炊地雞/相撲濃高湯包、甜玉米、大蔥、讃岐烏龍麵條、當季日本新鮮草莓。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 梅田 ➔ 回鶴橋民宿</div>
@@ -1442,10 +1574,17 @@
             <span class="time-badge alert">⏰ 10:15～13:00（預約 10:15 場次）</span>
             <div class="event-title">大阪港 海遊館（Kaiyukan）</div>
             <div class="event-desc">
-              世界級水族館巨型鯨鯊、環斑海豹與企鵝（預約 10:15 場次）。<br>
-              🎯 <strong>景點特色</strong>：全球最大規模水族館之一，以重現環太平洋火山帶為概念，順著 8 層螺旋坡道環繞 9 公尺深的中央大水槽，近距離欣賞鯨鯊優游！<br>
-              🔥 <strong>必看必買</strong>：巨型鯨鯊（海吉）、超人氣微笑表情「環斑海豹」、海遊館限定圓滾滾海豹抱枕。
+              世界級水族館巨型鯨鯊、環斑海豹與企鵝（預約 10:15 場次）。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看海遊館鯨鯊看點與限定抱枕</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：全球最大規模水族館之一，以重現環太平洋火山帶為概念，順著 8 層螺旋坡道環繞 9 公尺深的中央大水槽，近距離欣賞鯨鯊優游！<br>
+                🔥 <strong>必看必買</strong>：巨型鯨鯊（海吉）、超人氣微笑表情「環斑海豹」、海遊館限定圓滾滾海豹抱枕。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 難波 ➔ 海遊館（大阪港站）</div>
@@ -1512,13 +1651,21 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 15:30～19:30 夾娃娃＆挖寶</span>
+            <!-- 🌙 傍晚至夜晚標籤 -->
+            <span class="time-badge night">🌙 15:30～19:30 夾娃娃＆公仔挖寶</span>
             <div class="event-title">難波 GiGO 夾娃娃 ＆ 日本橋公仔挖寶</div>
             <div class="event-desc">
-              難波 GiGO 抓最新景品，日本橋 Ota Road 逛駿河屋、AmiAmi、Animate 挖寶。<br>
-              🎯 <strong>景點特色</strong>：關西秋葉原「電電城（Den Den Town）」，公仔、模型、一番賞二手專門店、復古紅白機卡帶最密集聖地。<br>
-              🔥 <strong>必逛名店清單</strong>：駿河屋大阪日本橋本館（二手模型大本營）、AmiAmi（正版新品手辦）、Animate（動漫周邊輕小說）、GiGO 難波旗艦店（最新日本限定景品夾娃娃）。
+              難波 GiGO 抓最新景品，日本橋 Ota Road 逛駿河屋、AmiAmi、Animate 挖寶。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看日本橋電電城必逛挖寶名店</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：關西秋葉原「電電城（Den Den Town）」，公仔、模型、一番賞二手專門店、復古紅白機卡帶最密集聖地。<br>
+                🔥 <strong>必逛名店清單</strong>：駿河屋大阪日本橋本館（二手模型大本營）、AmiAmi（正版新品手辦）、Animate（動漫周邊輕小說）、GiGO 難波旗艦店（最新日本限定景品夾娃娃）。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 徒步與回程路線</div>
@@ -1558,10 +1705,17 @@
             <span class="time-badge alert">⏰ 08:30～10:30 生魚片盛宴</span>
             <div class="event-title">木津批發市場海鮮採買 ＆ 鶴橋民宿奢華海鮮早餐</div>
             <div class="event-desc">
-              採買黑鮪魚、海膽、大干貝刺身回鶴橋民宿早餐，打包行李 11:00 退房。<br>
-              🎯 <strong>景點特色</strong>：有 300 年歷史的大阪在地海鮮批發大本營，非觀光化黑門市場，價格超級親民厚道、漁獲當天清晨現殺直送！<br>
-              🔥 <strong>必買奢華刺身</strong>：頂級黑鮪魚大腹（大トロ，油脂爆表）、一整盒產地直產生海膽、生食級大干貝拼盤、巨型甜蝦。
+              採買黑鮪魚、海膽、大干貝刺身回鶴橋民宿早餐，打包行李 11:00 退房。
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看木津市場頂級刺身必買清單</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：有 300 年歷史的大阪在地海鮮批發大本營，非觀光化黑門市場，價格超級親民厚道、漁獲當天清晨現殺直送！<br>
+                🔥 <strong>必買奢華刺身</strong>：頂級黑鮪魚大腹（大トロ，油脂爆表）、一整盒產地直產生海膽、生食級大干貝拼盤、巨型甜蝦。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 鶴橋民宿 ➔ 木津批發市場</div>
@@ -1593,10 +1747,17 @@
             <span class="time-badge alert">⏰ 12:15～16:00 交通與購物衝刺</span>
             <div class="event-title">JR 環狀線直通「臨空城站」 ➔ 暢貨中心最後衝刺</div>
             <div class="event-desc">
-              退房後拉行李至 JR 鶴橋站，直達臨空城寄放大件行李血拼！<br>
-              🎯 <strong>景點特色</strong>：西日本最大渡假風臨海 Outlet，擁有 250 家國際與日本品牌，依山傍海風景優美，回國前血拼絕佳據點。<br>
-              🔥 <strong>必逛品牌優惠</strong>：Nike Factory Store（球鞋折上折超便宜）、Adidas、The North Face 防風機能外套、Beams/United Arrows 日系流行服裝免稅。
+              退房後拉行李至 JR 鶴橋站，直達臨空城寄放大件行李血拼！
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看臨空城 Outlet 必搶人氣品牌</summary>
+              <div class="spot-details-content">
+                🎯 <strong>景點特色</strong>：西日本最大渡假風臨海 Outlet，擁有 250 家國際與日本品牌，依山傍海風景優美，回國前血拼絕佳據點。<br>
+                🔥 <strong>必逛品牌優惠</strong>：Nike Factory Store（球鞋折上折超便宜）、Adidas、The North Face 防風機能外套、Beams/United Arrows 日系流行服裝免稅。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 鶴橋站 ➔ 臨空城站（一車直達）</div>
@@ -1628,9 +1789,16 @@
             <span class="time-badge">⏰ 16:30 報到登機出境</span>
             <div class="event-title">臨空城站 ➔ 關西國際機場（KIX）辦理登機返台</div>
             <div class="event-desc">
-              領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘跨過跨海大橋）即抵達關西機場第一航廈託運行李出境返台！<br>
-              🔥 <strong>出境免稅店必掃伴手禮</strong>：ROYCE' 生巧克力、白色戀人白巧克力夾心、Tokyo Banana、獺祭二割三分純米大吟釀、一蘭拉麵盒裝伴手禮。
+              領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘跨過跨海大橋）即抵達關西機場第一航廈託運行李出境返台！
             </div>
+
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看機場免稅店必掃伴手禮清單</summary>
+              <div class="spot-details-content">
+                🔥 <strong>出境免稅店必掃伴手禮</strong>：ROYCE' 生巧克力、白色戀人白巧克力夾心、Tokyo Banana、獺祭二割三分純米大吟釀、一蘭拉麵盒裝伴手禮。
+              </div>
+            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 臨空城 ➔ 關西機場</div>
@@ -1998,8 +2166,7 @@
     }
     updateWeatherInfo();
 
-    // Tab 切換
-   // 升級版 Tab 切換：自動將點選的 Tab 平滑滑入螢幕正中央
+    // 升級版 Tab 切換：自動將點選的 Tab 平滑滑入螢幕正中央
     function switchDay(day) {
       document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
         const isActive = idx === day - 1;
