@@ -5,54 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>2026 關西 7 天 6 夜自由行手冊</title>
   <style>
-    /* 🚇 官方 Osaka Metro 圓圈與轉乘卡片 */
-    .metro-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-weight: 700;
-      font-size: 13px;
-      color: #0f172a;
-    }
-    .metro-circle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 13px;
-      font-family: Arial, -apple-system, sans-serif;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-      flex-shrink: 0;
-    }
-
-    /* 官方精準色標 */
-    .line-M { background-color: #E60012; } /* 御堂筋線 紅 */
-    .line-T { background-color: #A61280; } /* 谷町線 紫 */
-    .line-Y { background-color: #007AC1; } /* 四つ橋線 藍 */
-    .line-C { background-color: #009944; } /* 中央線 綠 */
-    .line-S { background-color: #E5177E; } /* 千日前線 桃粉 */
-    .line-K { background-color: #8F4B2D; } /* 堺筋線 茶褐 */
-    .line-N { background-color: #A9CC17; color: #1e293b; } /* 長堀鶴見綠地線 黃綠 (深字) */
-    .line-I { background-color: #EE7B00; } /* 今里筋線 橙 */
-    .line-P { background-color: #00A0E9; } /* 南港港城線 天藍 */
-    .line-JR { background-color: #E60012; border-radius: 4px; padding: 0 4px; width: auto; height: 20px; font-size: 11px; }
-    .line-KINTETSU { background-color: #004098; border-radius: 4px; padding: 0 4px; width: auto; height: 20px; font-size: 11px; }
-
-    .transit-box {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-left: 4px solid #1e3a8a;
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-top: 10px;
-    }
-    .transit-title { font-size: 13.5px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px; }
-    .transit-step { font-size: 13px; color: #334155; margin-bottom: 4px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
-    .transit-tip { font-size: 11.5px; color: #d97706; margin-top: 4px; font-weight: 600; }
     :root {
       --primary: #1e3a8a;          /* 經典和風深紺青 */
       --primary-accent: #2563eb;   /* 亮藍點綴 */
@@ -230,7 +182,7 @@
       box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
     }
 
-    /* 照片超大欄位（320px）與漸層遮罩 */
+    /* 照片欄位與漸層遮罩 */
     .img-container {
       position: relative;
       width: 100%;
@@ -308,6 +260,54 @@
     .event-desc { font-size: 13.5px; color: #475569; line-height: 1.7; }
     .event-desc ul { margin-left: 18px; margin-top: 8px; }
     .event-desc li { margin-bottom: 4px; }
+
+    /* 🚇 官方 Osaka Metro 圓圈與轉乘卡片 */
+    .transit-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #1e3a8a;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: 12px;
+    }
+    .transit-title { font-size: 13.5px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+    .transit-step { font-size: 13px; color: #334155; margin-bottom: 5px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; line-height: 1.5; }
+    .transit-tip { font-size: 12px; color: #b45309; margin-top: 5px; font-weight: 600; background: #fffbeb; padding: 4px 8px; border-radius: 6px; border: 1px dashed #fde68a; }
+
+    .metro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 700;
+      font-size: 12.5px;
+      color: #0f172a;
+    }
+    .metro-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 12px;
+      font-family: Arial, -apple-system, sans-serif;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    /* 官方精準色標 */
+    .line-M { background-color: #E60012; } /* 御堂筋線 紅 */
+    .line-T { background-color: #A61280; } /* 谷町線 紫 */
+    .line-Y { background-color: #007AC1; } /* 四つ橋線 藍 */
+    .line-C { background-color: #009944; } /* 中央線 綠 */
+    .line-S { background-color: #E5177E; } /* 千日前線 桃粉 */
+    .line-K { background-color: #8F4B2D; } /* 堺筋線 茶褐 */
+    .line-N { background-color: #A9CC17; color: #1e293b; } /* 長堀鶴見綠地線 黃綠 (深字) */
+    .line-I { background-color: #EE7B00; } /* 今里筋線 橙 */
+    .line-JR { background-color: #E60012; border-radius: 4px; padding: 0 5px; width: auto; height: 19px; font-size: 11px; }
+    .line-KINTETSU { background-color: #004098; border-radius: 4px; padding: 0 5px; width: auto; height: 19px; font-size: 11px; }
 
     .card-actions {
       margin-top: 14px;
@@ -485,6 +485,15 @@
             <span class="time-badge">下午</span>
             <div class="event-title">抵達關西機場 ➔ 鶴橋民宿 Check-in</div>
             <div class="event-desc">抵達關西機場搭車直奔鶴橋站，步行至民宿卸下大件行李休整，換輕裝出發心齋橋。</div>
+            
+            <div class="transit-box">
+              <div class="transit-title">🚇 機場至民宿路線（一車到底或轉 1 次）</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 關空快速</span> <strong>關西空港站</strong> ➔ 直達 <strong>JR 鶴橋站</strong>（中央口出站步行 4 分鐘抵達東小橋民宿）。
+              </div>
+              <div class="transit-tip">💡 亦可搭南海電鐵 Rapi:t 到難波，轉 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> 3 站至鶴橋。</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">東成区東小橋3-11-9</span>
               <a class="btn-nav" href="https://maps.google.com/?q=大阪市東成区東小橋3-11-9" target="_blank">📍 導航民宿</a>
@@ -507,6 +516,19 @@
             <span class="time-badge">傍晚 16:30</span>
             <div class="event-title">大丸心齋橋本館 9F｜寶可夢中心 DX</div>
             <div class="event-desc">朝聖 Pokemon Center Osaka DX 入手限定周邊、拍照打卡，同層設有免稅退稅櫃台。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 大丸心齋橋</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong>（往野田阪神方向）➔ 搭 3 站至 <strong>難波站</strong>
+              </div>
+              <div class="transit-step">
+                <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
+                <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> <strong>難波站</strong>（往千里中央方向）➔ 搭 1 站至 <strong>心齋橋站</strong>
+              </div>
+              <div class="transit-tip">💡 心齋橋站 4 號/5 號出口，地下連通道直通大丸本館 B1，搭電梯直上 9F！</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">大丸本館 9F</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Pokemon+Center+Osaka+DX" target="_blank">📍 導航門市</a>
@@ -534,6 +556,14 @@
                 <li><strong>心齋橋藥妝</strong>：大丸對面連鎖藥妝店（Sundrug / 大國 / 松本清），趁舊制直接免稅結帳封袋。</li>
               </ul>
             </div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚶 步行動線</div>
+              <div class="transit-step">
+                大丸 9 樓寶可夢採買完畢 ➔ 搭手扶梯下至 <strong>1 樓化妝品專櫃</strong> ➔ 走出大門即是 <strong>心齋橋筋商店街</strong>。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">大丸 1F / 心齋橋筋</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Daimaru+Shinsaibashi" target="_blank">📍 導航大丸心齋橋</a>
@@ -556,6 +586,18 @@
             <span class="time-badge">夜晚</span>
             <div class="event-title">道頓堀跑跑人 ➔ 難波地下街（NAMBA Walk）</div>
             <div class="event-desc">走過道頓堀橋拍固力果跑跑人，隨後進入難波地下街逛日式雜貨並享用晚餐。結束後搭近鐵直達鶴橋。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 回程返抵鶴橋民宿</div>
+              <div class="transit-step">
+                從難波地下街進入 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 大阪難波站</span> 或 <span class="metro-badge"><span class="metro-circle line-S">S</span> 難波站</span>
+              </div>
+              <div class="transit-step">
+                搭 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 奈良線</span>（往奈良方向）➔ <strong>僅 2 站直達 鶴橋站</strong>（車程 5 分鐘極快！）。
+              </div>
+              <div class="transit-tip">💡 若搭地鐵千日前線，也是搭 3 站直達鶴橋站。</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">なんばウォーク</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Namba+Walk" target="_blank">📍 導航地下街</a>
@@ -600,9 +642,20 @@
               <ul>
                 <li><strong>門市辨識</strong>：道頓堀「かに道楽 中店」正門大螃蟹招牌下（非本店或東店）。</li>
                 <li><strong>工作人員</strong>：現場認明身穿<strong>亮橘色「EasyGo!」背心</strong>、手持隊旗的工作人員報到。</li>
-                <li><strong>交通方式</strong>：從鶴橋搭近鐵至日本橋站 2 號出口出站，步行約 3～4 分鐘。</li>
               </ul>
             </div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 集合點（日本橋/道頓堀）</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong>（往野田阪神方向）➔ 搭 2 站至 <strong>日本橋站</strong>
+              </div>
+              <div class="transit-step">
+                從 <strong>2 號出口</strong> 出站 ➔ 沿道頓堀川往西步行約 3～4 分鐘即達「蟹道樂中店」。
+              </div>
+              <div class="transit-tip">💡 搭 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span></span> 也是 1 站直通近鐵日本橋站。</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag" style="color:#d97706; background:#fffbeb;">認橘色 EasyGo 背心</span>
               <a class="btn-nav" href="https://maps.google.com/?q=かに道楽+中店" target="_blank">📍 導航蟹道樂中店</a>
@@ -625,6 +678,10 @@
             <span class="time-badge">第一站</span>
             <div class="event-title">宇治｜平等院鳳凰堂 ＆ 抹茶老街</div>
             <div class="event-desc">欣賞十圓日幣國寶鳳凰堂，表參道品嚐中村藤吉／伊藤久右衛門濃抹茶甜點。</div>
+            <div class="transit-box">
+              <div class="transit-title">🚌 交通方式</div>
+              <div class="transit-step">Klook 一日遊專車直達宇治停車場，下車跟隨導遊步行 5 分鐘進表參道。</div>
+            </div>
             <div class="card-actions">
               <span class="event-tag">平等院表參道</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Byodoin+Temple+Kyoto" target="_blank">📍 導航景點</a>
@@ -647,6 +704,10 @@
             <span class="time-badge">第二站</span>
             <div class="event-title">伏見稻荷大社｜朱紅千本鳥居</div>
             <div class="event-desc">走訪綿延不絕的朱紅鳥居隧道，參拜狐狸守護神與狐狸繪馬。</div>
+            <div class="transit-box">
+              <div class="transit-title">🚌 交通方式</div>
+              <div class="transit-step">專車直達伏見稻荷大巴停靠區，步行 3 分鐘穿過鐵道即進入參道。</div>
+            </div>
             <div class="card-actions">
               <span class="event-tag">千本鳥居</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Fushimi+Inari+Taisha" target="_blank">📍 導航神社</a>
@@ -668,7 +729,7 @@
           <div class="event-body">
             <span class="time-badge">第三站</span>
             <div class="event-title">勝尾寺（勝運達摩寺）</div>
-            <div class="event-desc">滿山遍野寫著「勝」字的超萌開運達摩不倒翁，祈求考運、事業與旅程平安！</div>
+            <div class="event-desc">滿山遍野寫著「勝」字的超萌開運達摩不倒翁，祈求考運、事業與旅程平安！一日遊專車返抵道頓堀後解散。</div>
             <div class="card-actions">
               <span class="event-tag">勝運達摩</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Katsuo-ji" target="_blank">📍 導航勝尾寺</a>
@@ -703,8 +764,8 @@
             <div class="event-desc">
               <ul>
                 <li><strong>出發準備</strong>：07:50 全員於民宿 1F 大廳集合，司機於東小橋 3-11-9 門口待命。</li>
-                <li><strong>行車路線</strong>：走阪神高速往京都嵐山，車程約 70～75 分鐘（車上補眠或吃早餐）。</li>
-                <li><strong>下車策略點</strong>：司機導航至<strong>「天龍寺北門」</strong>旁下車，下車直接進竹林小徑，省下穿大街 15 分鐘！</li>
+                <li><strong>行車路線</strong>：走阪神高速往京都嵐山，車程約 70～75 分鐘。</li>
+                <li><strong>下車策略點</strong>：司機導航至<strong>「天龍寺北門」</strong>旁下車，直接進竹林！</li>
               </ul>
             </div>
             <div class="card-actions">
@@ -729,13 +790,8 @@
             <span class="time-badge alert">09:15～10:25（限時 70 分鐘）</span>
             <div class="event-title">嵐山精華散策 ➔ 渡月橋準時上車離開</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>單向動線（不走回頭路）</strong>：<br>
-                  <strong>09:15 天龍寺北門下車</strong> ➔ 漫步「竹林小徑」 ➔ 參拜「野宮神社」（締結良緣／摸神石黑木鳥居） ➔ 沿嵐山大街散步 ➔ 抵達「渡月橋」遠眺山色。
-                </li>
-                <li><strong>上車點</strong>：渡月橋北側靠川邊小巴臨停處（司機會在此等待）。</li>
-              </ul>
-              <div class="alert-box">⚠️ 鐵則警報：10:25 必須全員上車關門發車！嵐山往清水寺車程約 45～50 分鐘，遲走會壓縮下午所有時間！</div>
+              09:15 天龍寺北門下車 ➔ 竹林小徑 ➔ 野宮神社 ➔ 渡月橋北側靠川邊小巴臨停處上車。
+              <div class="alert-box">⚠️ 鐵則警報：10:25 必須全員上車關門發車！嵐山往清水寺車程約 45～50 分鐘！</div>
             </div>
             <div class="card-actions">
               <span class="event-tag">野宮神社</span><span class="event-tag">渡月橋</span>
@@ -756,18 +812,10 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">11:15～14:00（2 小時 45 分）</span>
+            <span class="time-badge">11:15～14:00</span>
             <div class="event-title">清水舞台 ➔ 音羽之瀧 ➔ 二年坂老街午餐</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>11:15 五條坂下車</strong>：沿清水坂步行 6 分鐘登仁王門與本堂，司機直接前往市區「四條烏丸」待命，不再回塞車區。</li>
-                <li><strong>清水寺境內重點</strong>：<br>
-                  ① 參觀國寶「清水舞台」俯瞰京都盆地。<br>
-                  ②「奧之院」側拍清水舞台最經典角度與秋景。<br>
-                  ③「音羽之瀧」洗手喝泉水（學問、健康、姻緣三選一，不可貪心喝三勺）。
-                </li>
-                <li><strong>二年坂／產寧坂老街午餐</strong>：走下老街享用日式蕎麥麵、湯豆腐或鰻魚飯，品嚐名物「月下美人烤糰子」與抹茶冰淇淋。</li>
-              </ul>
+              11:15 五條坂下車步行上山，司機前往市區四條烏丸待命。參觀國寶舞台後走二年坂老街午餐。
             </div>
             <div class="card-actions">
               <span class="event-tag">產寧坂</span><span class="event-tag">音羽之瀧</span>
@@ -791,11 +839,7 @@
             <span class="time-badge">14:00～14:30 祇園徒步</span>
             <div class="event-title">二年坂 ➔ 八坂神社 ➔ 祇園花見小路 ➔ 鴨川</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>步行動線</strong>：吃完午餐後，從二年坂經由幽靜的「寧寧之道」漫步至八坂神社南門。</li>
-                <li><strong>參拜重點</strong>：參觀八坂神社中央掛滿白燈籠的舞殿，以及祈求美麗的「美御前社」（洗美容水）。</li>
-                <li><strong>漫步祇園</strong>：走出壯麗朱紅西樓門，沿著四條通經過花見小路，橫跨「四條大橋」遠眺鴨川水岸風光。</li>
-              </ul>
+              吃完午餐後沿寧寧之道漫步至八坂神社，穿過朱紅西樓門沿四條通跨過四條大橋賞鴨川。
             </div>
             <div class="card-actions">
               <span class="event-tag">八坂神社</span><span class="event-tag">鴨川四條大橋</span>
@@ -819,11 +863,7 @@
             <span class="time-badge">14:40～15:30 擼貓放鬆</span>
             <div class="event-title">新京極商店街｜京都豹貓之森（Cat Cafe）</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>地點資訊</strong>：位於新京極熱鬧商店街內（ヒカリビル 2F）。</li>
-                <li><strong>特色體驗</strong>：全日本極少見的「豹貓（Bengal Cat）」專門貓咪咖啡廳！店內打造成綠意盎然的森林樹洞風格，豹貓花紋美麗、身手敏捷又親人。</li>
-                <li><strong>放鬆回血</strong>：在此坐著喝杯飲品、摸摸貓咪，讓走了一早上的雙腿充分休息補體力。</li>
-              </ul>
+              位於新京極ヒカリビル 2F，全日本極少見的豹貓專門咖啡廳，喝飲料摸貓補體力！
             </div>
             <div class="card-actions">
               <span class="event-tag">新京極 2F</span><span class="event-tag">豹貓互動</span>
@@ -847,15 +887,7 @@
             <span class="time-badge">15:45～16:30 旗艦限定</span>
             <div class="event-title">SUINA室町 2F｜寶可夢中心京都店（Pokemon Center）</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>前往方式</strong>：沿著四條通直走約 10～12 分鐘至四條烏丸交界「SUINA室町」大樓，直上 2 樓。</li>
-                <li><strong>三大必買限定神物</strong>：<br>
-                  ① 撐櫻花傘、手拿藝妓小扇子的<strong>「舞妓皮卡丘限定公仔／娃娃」</strong>。<br>
-                  ② 神獸<strong>「金色鳳王（Ho-Oh）金屬立體徽章／浮雕吊飾」</strong>。<br>
-                  ③ 京都傳統漆器與日式和風紋樣寶可夢聯名文具伴手禮。
-                </li>
-              </ul>
-              <div class="alert-box">⚠️ 壓線鐵則：採買至 16:25，16:30 準時由 SUINA室町西側室町通上車出發回大阪！</div>
+              鎖定藝妓皮卡丘公仔、金色鳳王徽章！採買至 16:25，16:30 準時由 SUINA室町西側室町通上車回大阪！
             </div>
             <div class="card-actions">
               <span class="event-tag">SUINA室町 2F</span><span class="event-tag">限定舞妓皮卡丘</span>
@@ -876,14 +908,10 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">16:30 準時集合返程</span>
+            <span class="time-badge alert">16:30 準時返程</span>
             <div class="event-title">四條烏丸上車 ➔ 返抵鶴橋民宿 ＆ 燒肉晚餐</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>上車集合點</strong>：於 SUINA室町建築西側「室町通」巷口（避開四條通禁停區），司機於此無縫接駁。</li>
-                <li><strong>高速回程</strong>：走第二京阪與近畿道，約 17:50～18:00 準時回到鶴橋民宿東小橋門口（10 小時完全不超時）。</li>
-                <li><strong>今晚盛宴｜鶴橋道地燒肉</strong>：放好戰利品後，步行至鶴橋站周邊燒肉街（如：空 鶴橋本店、牛一 或 鶴橋燒肉白雲台），享受炭火黑毛和牛與啤酒慶功！</li>
-              </ul>
+              約 18:00 前準時回到民宿門口，步行至鶴橋燒肉一條街享受炭火黑毛和牛慶功！
             </div>
             <div class="card-actions">
               <span class="event-tag">10小時滿分達標</span><span class="event-tag">鶴橋燒肉一條街</span>
@@ -917,6 +945,14 @@
             <span class="time-badge">08:30～09:45 早餐</span>
             <div class="event-title">道頓堀 一蘭拉麵早餐</div>
             <div class="event-desc">晨間時段避開排隊人潮，享用濃郁天然豚骨拉麵。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 道頓堀一蘭</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 2 站至 <strong>日本橋站</strong>（7 號出口步行 4 分即達道頓堀川旁）。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">道頓堀本館</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Ichiran+Dotonbori+Main+Building" target="_blank">📍 導航一蘭</a>
@@ -939,6 +975,15 @@
             <span class="time-badge">10:00～13:30</span>
             <div class="event-title">通天閣溜滑梯 ＆ 新世界串炸</div>
             <div class="event-desc">挑戰 TOWER SLIDER 溜滑梯；吃元祖串炸達摩、玩傳統射擊打靶。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 道頓堀 ➔ 通天閣</div>
+              <div class="transit-step">
+                從日本橋站搭 <span class="metro-badge"><span class="metro-circle line-K">K</span> 堺筋線</span>（往天下茶屋方向）➔ 搭 1 站至 <strong>惠美須町站</strong>
+              </div>
+              <div class="transit-tip">💡 3 號出口出站直面通天閣正門通，步行 3 分鐘！</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">新世界</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Tsutenkaku" target="_blank">📍 導航通天閣</a>
@@ -961,6 +1006,14 @@
             <span class="time-badge">16:30～18:30 展望台</span>
             <div class="event-title">阿倍野 HARUKAS 300 展望台</div>
             <div class="event-desc">60 樓 360 度玻璃迴廊，俯瞰夕陽與大阪百萬璀璨夜景。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 通天閣 ➔ 阿倍野 HARUKAS</div>
+              <div class="transit-step">
+                從天王寺站步行 或搭 <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> / <span class="metro-badge"><span class="metro-circle line-T">T</span> 谷町線</span> 至 <strong>天王寺站</strong>（地下直通阿倍野 HARUKAS 2 樓售票處）。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">HARUKAS 60F</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Harukas+300" target="_blank">📍 導航展望台</a>
@@ -982,7 +1035,15 @@
           <div class="event-body">
             <span class="time-badge alert">19:00～20:30 晚餐</span>
             <div class="event-title">力丸爐端燒 網兵衛（天王寺店）</div>
-            <div class="event-desc">天王寺站北口堀越町店，體驗長木槳送餐烤物！結束搭 JR 環狀線直達鶴橋。</div>
+            <div class="event-desc">體驗長木槳送餐烤物！結束後直搭 JR 環狀線回鶴橋。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 晚餐 ➔ 回鶴橋民宿</div>
+              <div class="transit-step">
+                天王寺站搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span>（內環方向）➔ <strong>僅 3 站直達 鶴橋站</strong>（車程 6 分鐘！）。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">天王寺区堀越町16-9</span>
               <a class="btn-nav" href="https://maps.google.com/?q=大阪市天王寺区堀越町16-9" target="_blank">📍 導航網兵衛</a>
@@ -1014,7 +1075,15 @@
           <div class="event-body">
             <span class="time-badge">上午</span>
             <div class="event-title">大阪城公園 ＆ 天守閣</div>
-            <div class="event-desc">登頂眺望大阪市景，漫步西之丸庭園感受壯麗石牆與古蹟風采。</div>
+            <div class="event-desc">登頂眺望大阪市景，漫步西之丸庭園感受壯麗石牆。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 大阪城公園</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span> <strong>鶴橋站</strong>（外環/京橋方向）➔ <strong>搭 3 站直達 大阪城公園站</strong>（車程 6 分鐘，免換線！）。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">天守閣</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Osaka+Castle" target="_blank">📍 導航大阪城</a>
@@ -1037,6 +1106,15 @@
             <span class="time-badge">中午</span>
             <div class="event-title">天神橋筋商店街 午餐邊走邊吃</div>
             <div class="event-desc">品嚐中村屋炸可樂餅、春駒壽司、鳴門鯛燒等平價排隊美食。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 大阪城 ➔ 天神橋筋六丁目</div>
+              <div class="transit-step">
+                從天滿橋站搭 <span class="metro-badge"><span class="metro-circle line-T">T</span> 谷町線</span>（往大日方向）➔ 搭 2 站至 <strong>天神橋筋六丁目站</strong>
+              </div>
+              <div class="transit-tip">💡 或從大阪城公園搭 JR 環狀線 2 站至「天滿站」出站即是商店街！</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">天神橋筋</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Tenjimbashisuji+Shopping+Street" target="_blank">📍 導航商店街</a>
@@ -1058,12 +1136,15 @@
           <div class="event-body">
             <span class="time-badge">下午 14:30～16:00</span>
             <div class="event-title">大丸梅田 13F｜一番賞官方旗艦店 ＆ 任天堂旗艦店</div>
-            <div class="event-desc">
-              <ul>
-                <li><strong>一番賞官方店（一番くじ公式ショップ）</strong>：最新正版一番賞一字排開（航海王、七龍珠、獵人等），貨量齊全、中大獎即拆即領。</li>
-                <li><strong>同層連逛</strong>：<strong>Nintendo OSAKA</strong>（巨大瑪利歐合影）與 <strong>JUMP SHOP</strong>（少年JUMP動漫特區）。</li>
-              </ul>
+            <div class="event-desc">一番賞官方店拆獎、Nintendo OSAKA 瑪利歐合影與 JUMP SHOP 特區。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 天神橋筋 ➔ 梅田商圈</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-T">T</span> 谷町線</span> <strong>天神橋筋六丁目站</strong> ➔ 搭 1 站至 <strong>東梅田站</strong>（沿地下街標示步行 4 分進大丸梅田地下入口）。
+              </div>
             </div>
+
             <div class="card-actions">
               <span class="event-tag">大丸梅田 13F</span><span class="event-tag">一番賞官方認證</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Daimaru+Umeda" target="_blank">📍 導航大丸梅田 13F</a>
@@ -1085,12 +1166,7 @@
           <div class="event-body">
             <span class="time-badge">下午 16:00～17:00</span>
             <div class="event-title">大丸梅田 13F｜寶可夢中心大阪店（Pokemon Center Osaka）</div>
-            <div class="event-desc">
-              <ul>
-                <li><strong>關西元祖旗艦店</strong>：門口有帥氣的超夢與初代御三家立體雕像打卡。</li>
-                <li><strong>特色重點</strong>：與心齋橋 DX 店販售重點不同，梅田店以齊全的寶可夢卡牌（PTCG）、毛絨玩偶牆、生活雜貨為主。</li>
-              </ul>
-            </div>
+            <div class="event-desc">齊全的卡牌（PTCG）、巨大絨毛娃娃牆與生活雜貨，同層無縫連逛！</div>
             <div class="card-actions">
               <span class="event-tag">大丸梅田 13F</span><span class="event-tag">卡牌與絨毛牆</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Pokemon+Center+Osaka" target="_blank">📍 導航寶可夢大阪店</a>
@@ -1113,11 +1189,7 @@
             <span class="time-badge">傍晚 17:15～18:45</span>
             <div class="event-title">LINKS UMEDA 1～2F｜UNIQLO UMEDA 西日本最大旗艦店</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>步行動線</strong>：大丸梅田走空橋 3 分鐘即達友都八喜「LINKS UMEDA」。</li>
-                <li><strong>1,300 坪旗艦規格</strong>：全西日本最頂級門市，聯名款（JW Anderson、動漫UT、C系列）尺碼最齊全。</li>
-                <li><strong>專屬服務</strong>：提供 <strong>UTme! 客製化 T 恤／托特包</strong> 與大阪限定刺繡服務；現場可直接免稅！</li>
-              </ul>
+              西日本最大旗艦門市，聯名款尺碼最齊全，提供客製化 UTme! 與免稅。大丸梅田走 2F 空橋 3 分鐘即達友都八喜「LINKS UMEDA」。
             </div>
             <div class="card-actions">
               <span class="event-tag">LINKS UMEDA 1-2F</span><span class="event-tag">1300坪旗艦店</span>
@@ -1141,16 +1213,16 @@
             <span class="time-badge alert">溫馨晚餐 19:30～21:30</span>
             <div class="event-title">大型超市火鍋料採買 ➔ 鶴橋民宿溫馨火鍋盛宴</div>
             <div class="event-desc">
-              <p><strong>🍲 結束逛街提著戰利品回民宿，5 人圍爐煮火鍋最舒服！</strong></p>
-              <ul>
-                <li><strong>採買地點（二選一順路）</strong>：<br>
-                  ① <strong>LINKS UMEDA B1F「Harves 超市」</strong>：逛完 UNIQLO 直接下樓採購特選黑毛和牛火鍋肉片與高湯包。<br>
-                  ② <strong>鶴橋站前「LIFE 超市」</strong>：搭車回鶴橋出站順路採買，提回東小橋民宿只要幾分鐘。
-                </li>
-                <li><strong>火鍋必備清單</strong>：高湯包、特選牛五花/豚肉片、烏龍麵條、生食雞蛋、日式餃子、日本啤酒與甜點！</li>
-                <li><strong>自在回血</strong>：換上舒適睡衣邊吃邊聊天、開箱今天的一番賞戰利品，徹底洗刷疲勞！</li>
-              </ul>
+              LINKS UMEDA B1F 超市或鶴橋站前 LIFE 超市採買黑毛和牛與高湯包，回民宿圍爐煮火鍋！
             </div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 梅田 ➔ 回鶴橋民宿</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 大阪站</span> ➔ 搭乘 JR 環狀線（外環/京橋方向）➔ <strong>直達 鶴橋站</strong>（車程約 15 分鐘，免轉車！）。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">民宿大客廳</span><span class="event-tag">5人和牛火鍋</span>
               <a class="btn-nav" href="https://maps.google.com/?q=LIFE+Supermarket+Tsuruhashi" target="_blank">📍 導航鶴橋 LIFE 超市</a>
@@ -1183,6 +1255,14 @@
             <span class="time-badge">08:30～09:30 早餐</span>
             <div class="event-title">難波千日前 天政烏龍麵</div>
             <div class="event-desc">造訪排隊老舖，品嚐滑順道地的大阪肉烏龍與豆皮烏龍麵。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 難波天政</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 3 站至 <strong>難波站</strong>（走出難波 Walk 地下街 B21 出口步行 2 分）。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">千日前通</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Tenmasa+Udon+Namba" target="_blank">📍 導航天政</a>
@@ -1204,7 +1284,20 @@
           <div class="event-body">
             <span class="time-badge alert">10:15～13:00 重點</span>
             <div class="event-title">大阪港 海遊館（Kaiyukan）</div>
-            <div class="event-desc">早場欣賞世界級水族館巨型鯨鯊、環斑海豹與企鵝。（提前預約 10:15~10:30 入場）</div>
+            <div class="event-desc">世界級水族館巨型鯨鯊、環斑海豹與企鵝（預約 10:15 場次）。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 難波 / 鶴橋 ➔ 海遊館（大阪港站）</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> <strong>難波站</strong> ➔ 搭 2 站至 <strong>本町站</strong>
+              </div>
+              <div class="transit-step">
+                <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
+                <span class="metro-badge"><span class="metro-circle line-C">C</span> 中央線</span> <strong>本町站</strong>（往宇宙廣場方向）➔ 直達 <strong>大阪港站</strong>
+              </div>
+              <div class="transit-tip">💡 大阪港站 1 號或 2 號出口出站，步行 5 分鐘即達海遊館！</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">大阪港站</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Osaka+Aquarium+Kaiyukan" target="_blank">📍 導航海遊館</a>
@@ -1227,6 +1320,14 @@
             <span class="time-badge">13:45～15:15 午餐</span>
             <div class="event-title">道地日式壽喜燒午餐大餐</div>
             <div class="event-desc">返回難波避開中午尖峰，品嚐熱騰騰黑毛和牛壽喜燒沾蛋液。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 海遊館 ➔ 難波商圈</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-C">C</span> 中央線</span> <strong>大阪港站</strong> ➔ 搭至 <strong>本町站</strong> 換 <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> ➔ 回到 <strong>難波站</strong>。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">難波商圈</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Sukiyaki+Namba+Osaka" target="_blank">📍 尋找周邊壽喜燒</a>
@@ -1249,6 +1350,12 @@
             <span class="time-badge">15:30～19:30 下午～夜晚</span>
             <div class="event-title">難波 GiGO 夾娃娃 ＆ 日本橋公仔挖寶</div>
             <div class="event-desc">難波 GiGO 抓最新景品，日本橋 Ota Road 逛駿河屋、AmiAmi、Animate 挖寶。</div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 徒步與回程路線</div>
+              <div class="transit-step">吃完壽喜燒步行 5 分鐘即達日本橋電器動漫街。回程直接從 <span class="metro-badge"><span class="metro-circle line-S">S</span> 日本橋站</span> 搭 2 站回鶴橋。</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">オタロード</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Nipponbashi+Denden+Town" target="_blank">📍 導航日本橋動漫街</a>
@@ -1281,13 +1388,18 @@
             <span class="time-badge alert">08:30～10:30 盛宴</span>
             <div class="event-title">木津批發市場海鮮採買 ＆ 民宿奢華海鮮早餐</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>採買重點</strong>：新鮮現切黑鮪魚大腹/中腹、北海道海膽木盒、大干貝刺身與熟食鰻魚玉子燒。</li>
-                <li><strong>退房出發</strong>：提回鶴橋民宿大快朵頤，吃飽後打包全部戰利品，11:00 前完成退房，拉行李步行至鶴橋站 JR 月台。</li>
-              </ul>
+              採買黑鮪魚、海膽、大干貝刺身回民宿早餐，打包行李 11:00 退房。
             </div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 木津批發市場</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭至 <strong>難波站</strong> 換 <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> ➔ 搭 1 站至 <strong>大國町站</strong>（1 號出口步行 3 分）。
+              </div>
+            </div>
+
             <div class="card-actions">
-              <span class="event-tag">木津卸売市場</span><span class="event-tag">鶴橋民宿退房</span>
+              <span class="event-tag">木津卸売市場</span><span class="event-tag">東小橋退房</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Kizu+Wholesale+Market" target="_blank">📍 導航木津市場</a>
             </div>
           </div>
@@ -1308,12 +1420,17 @@
             <span class="time-badge alert">12:15～16:00 交通與購物</span>
             <div class="event-title">JR 環狀線直通「臨空城站」 ➔ 暢貨中心最後衝刺</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>搭車指南（一車到底免換車）</strong>：從 JR 鶴橋站搭乘<strong>「JR 關空快速」直通班次</strong>直達「臨空城站（Rinku-Town）」，車程約 55 分鐘。</li>
-                <li><strong>⚠️ 乘車重要鐵則</strong>：上車務必坐在<strong>「第 1～4 節車廂」</strong>！（列車途中在日根野站會分離，僅前 4 節前往關空與臨空城，後 4 節開往和歌山）。</li>
-                <li><strong>行李與血拼</strong>：於臨空城站內置物櫃或 OUTLET 旅客中心寄放大件行李，隨後盡情採購運動品牌、服飾與免稅商品。</li>
-              </ul>
+              退房後拉行李至 JR 鶴橋站，直達臨空城寄放大件行李血拼！
             </div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 鶴橋站 ➔ 臨空城站（一車直達）</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 關空快速</span> <strong>JR 鶴橋站</strong> ➔ 直達 <strong>臨空城站（Rinku-Town）</strong>（車程約 55 分鐘）。
+              </div>
+              <div class="transit-tip">⚠️ 鐵則：上車務必坐在「第 1～4 節車廂」！（列車在日根野分離，僅前 4 節開往臨空城與關空）。</div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">JR關空快速直通</span><span class="event-tag">坐前4節車廂</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Rinku+Premium+Outlets" target="_blank">📍 導航臨空城 OUTLET</a>
@@ -1336,11 +1453,16 @@
             <span class="time-badge">傍晚 16:30</span>
             <div class="event-title">臨空城站 ➔ 關西國際機場（KIX）辦理登機返台</div>
             <div class="event-desc">
-              <ul>
-                <li><strong>前往機場</strong>：領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘跨過跨海大橋）即抵達關西機場第一航廈。</li>
-                <li><strong>登機出境</strong>：起飛前 2.5～3 小時抵達航空公司櫃台託運行李、通過安檢海關，免稅店採買最後伴手禮後登機返台，結束 7 天充實旅程！</li>
-              </ul>
+              領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘跨過跨海大橋）即抵達關西機場第一航廈託運行李出境返台！
             </div>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 臨空城 ➔ 關西機場</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 關空快速</span> <strong>臨空城站</strong> ➔ <strong>僅 1 站（5分鐘）</strong> 抵達 <strong>關西機場第一航廈</strong>。
+              </div>
+            </div>
+
             <div class="card-actions">
               <span class="event-tag">JR僅1站5分鐘</span><span class="event-tag">滿載而歸</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Kansai+International+Airport" target="_blank">📍 導航關西機場</a>
@@ -1940,7 +2062,6 @@
     // 編輯單筆支出
     function editExpenseRecord(index) {
       const item = tripExpenses[index];
-      const curSym = item.currency === 'TWD' ? 'NT$' : '¥';
       const currentBeneficiaries = item.beneficiaries || tripMembers;
 
       const newPayer = prompt(`修改代墊人（請填：柏毅、張庭、班長、書緯、柳丁）`, item.payer);
