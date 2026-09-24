@@ -1355,19 +1355,20 @@
       </div>
 
       <!-- 💱 即時匯率雙向換算卡片 -->
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">💱 即時匯率換算</span>
-            <span id="liveRateDisplay" style="font-size: 12px; font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 2px 8px; border-radius: 6px;">
-              匯率連線中...
-            </span>
-          </div>
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <input type="number" id="calcJpyInput" placeholder="日幣 JPY ¥" oninput="calcExchange('jpy')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
-            <span style="font-size: 15px; color: #94a3b8; font-weight: 700;">⇄</span>
-            <input type="number" id="calcTwdInput" placeholder="約台幣 NT$" oninput="calcExchange('twd')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
-          </div>
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">💱 即時匯率換算</span>
+          <span id="liveRateDisplay" style="font-size: 12px; font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 2px 8px; border-radius: 6px;">
+            匯率連線中...
+          </span>
         </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <input type="number" id="calcJpyInput" placeholder="日幣 JPY ¥" oninput="calcExchange('jpy')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
+          <span style="font-size: 15px; color: #94a3b8; font-weight: 700;">⇄</span>
+          <input type="number" id="calcTwdInput" placeholder="約台幣 NT$" oninput="calcExchange('twd')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
+        </div>
+      </div>
+
       <div class="tool-section split-box">
         <!-- 輸入區 -->
         <div style="display: flex; gap: 8px; margin-bottom: 8px;">
@@ -1409,7 +1410,7 @@
         <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
 
         <!-- 📲 一鍵複製到 LINE 按鈕 -->
-        <button id="copyLineBtn" onclick="copyExpenseSummaryToLine()" style="display:none; width: 100%; margin-top: 12px; background: #06c755; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(6, 199, 85, 0.25); display: none; align-items: center; justify-content: center; gap: 6px;">
+        <button id="copyLineBtn" onclick="copyExpenseSummaryToLine()" style="display:none; width: 100%; margin-top: 12px; background: #06c755; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(6, 199, 85, 0.25); align-items: center; justify-content: center; gap: 6px;">
           📲 複製今日結算報告（貼到 LINE）
         </button>
         
@@ -1521,34 +1522,13 @@
       }
     }
 
-    // 頁面載入時讀取儲存的狀態與照片
-    window.addEventListener('DOMContentLoaded', () => {
-      // 讀取 Checkbox
-      document.querySelectorAll('.check-item input').forEach(input => {
-        const id = input.getAttribute('data-id');
-        if (localStorage.getItem('trip_chk_' + id) === '1') {
-          input.checked = true;
-          input.parentElement.classList.add('done');
-        }
-      });
-
-      // 讀取自訂上傳的照片
-      document.querySelectorAll('.event-img, .dual-img-box img').forEach(img => {
-        const savedData = localStorage.getItem('trip_img_' + img.id);
-        if (savedData) {
-          img.src = savedData;
-        }
-      });
-
-      // 💱 雙線路即時匯率抓取（3秒超時自動備援，不卡死）
-    let currentJpyToTwdRate = 0.215; // 預備匯率
+    // 💱 雙線路即時匯率抓取（3秒超時自動備援）
+    let currentJpyToTwdRate = 0.215;
 
     async function fetchLiveExchangeRate() {
       const rateEl = document.getElementById('liveRateDisplay');
-      
       const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
 
-      // 線路 1
       try {
         const fetchPromise = fetch('https://open.er-api.com/v6/latest/JPY').then(res => res.json());
         const data = await Promise.race([fetchPromise, timeout(3000)]);
@@ -1561,7 +1541,6 @@
         console.warn('線路 1 失敗，嘗試線路 2...');
       }
 
-      // 線路 2（備用端點）
       try {
         const fetchPromise2 = fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/jpy.json').then(res => res.json());
         const data2 = await Promise.race([fetchPromise2, timeout(3000)]);
@@ -1574,7 +1553,6 @@
         console.warn('線路 2 失敗，啟用離線基準值');
       }
 
-      // 若兩條線路都受限，立即顯示離線預設值
       if (rateEl) {
         rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(3)} (離線)`;
         rateEl.style.color = '#64748b';
@@ -1582,13 +1560,7 @@
       }
     }
 
-    // 確保頁面載入完成時觸發
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fetchLiveExchangeRate);
-    } else {
-      fetchLiveExchangeRate();
-    }
-      // 雙向換算輸入連動計算
+    // 雙向換算輸入連動計算（全域函式）
     function calcExchange(source) {
       const jpyInput = document.getElementById('calcJpyInput');
       const twdInput = document.getElementById('calcTwdInput');
@@ -1601,7 +1573,6 @@
           twdInput.value = '';
           return;
         }
-        // 日幣換算台幣（四捨五入取整數）
         twdInput.value = Math.round(jpyVal * currentJpyToTwdRate);
       } else {
         const twdVal = parseFloat(twdInput.value);
@@ -1609,11 +1580,28 @@
           jpyInput.value = '';
           return;
         }
-        // 台幣反推日幣
         jpyInput.value = Math.round(twdVal / currentJpyToTwdRate);
       }
     }
-      // 渲染記帳清單
+
+    // 頁面載入時讀取儲存的狀態與照片
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.check-item input').forEach(input => {
+        const id = input.getAttribute('data-id');
+        if (localStorage.getItem('trip_chk_' + id) === '1') {
+          input.checked = true;
+          input.parentElement.classList.add('done');
+        }
+      });
+
+      document.querySelectorAll('.event-img, .dual-img-box img').forEach(img => {
+        const savedData = localStorage.getItem('trip_img_' + img.id);
+        if (savedData) {
+          img.src = savedData;
+        }
+      });
+
+      fetchLiveExchangeRate();
       renderExpenses();
     });
 
@@ -1638,7 +1626,6 @@
         return;
       }
 
-      // 幣別分類統計：總花費、代墊額度、應付額度
       const totals = { JPY: 0, TWD: 0 };
       const paidMap = { JPY: {}, TWD: {} };
       const shouldPayMap = { JPY: {}, TWD: {} };
@@ -1687,7 +1674,6 @@
       clearBtn.style.display = 'block';
       if (lineBtn) lineBtn.style.display = 'flex';
 
-      // 產生各幣別結算報告
       let summaryHtml = '';
       ['JPY', 'TWD'].forEach(cur => {
         if (totals[cur] > 0) {
@@ -1857,7 +1843,6 @@
         return;
       }
 
-      // 取得勾選的分攤成員
       const checkedBeneficiaries = [];
       document.querySelectorAll('input[name="splitBeneficiary"]:checked').forEach(cb => {
         checkedBeneficiaries.push(cb.value);
