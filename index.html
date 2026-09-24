@@ -1354,6 +1354,20 @@
         <div class="day-subtitle">多幣別記錄・自選分攤成員・當日智慧多退少補結算</div>
       </div>
 
+      <!-- 💱 即時匯率雙向換算卡片 -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">💱 即時匯率換算</span>
+            <span id="liveRateDisplay" style="font-size: 12px; font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 2px 8px; border-radius: 6px;">
+              匯率連線中...
+            </span>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="number" id="calcJpyInput" placeholder="日幣 JPY ¥" oninput="calcExchange('jpy')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
+            <span style="font-size: 15px; color: #94a3b8; font-weight: 700;">⇄</span>
+            <input type="number" id="calcTwdInput" placeholder="約台幣 NT$" oninput="calcExchange('twd')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
+          </div>
+        </div>
       <div class="tool-section split-box">
         <!-- 輸入區 -->
         <div style="display: flex; gap: 8px; margin-bottom: 8px;">
