@@ -1540,46 +1540,54 @@
         }
       });
 
-      // 💱 即時匯率 API 抓取與雙向換算
-    let currentJpyToTwdRate = 0.215; // 離線預設備用匯率
+      // 💱 雙線路即時匯率抓取（3秒超時自動備援，不卡死）
+    let currentJpyToTwdRate = 0.215; // 預備匯率
 
     async function fetchLiveExchangeRate() {
+      const rateEl = document.getElementById('liveRateDisplay');
+      
+      const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+
+      // 線路 1
       try {
-        const res = await fetch('https://open.er-api.com/v6/latest/JPY');
-        const data = await res.json();
+        const fetchPromise = fetch('https://open.er-api.com/v6/latest/JPY').then(res => res.json());
+        const data = await Promise.race([fetchPromise, timeout(3000)]);
         if (data && data.rates && data.rates.TWD) {
           currentJpyToTwdRate = data.rates.TWD;
-          const rateEl = document.getElementById('liveRateDisplay');
-          if (rateEl) {
-            rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)}`;
-          }
+          if (rateEl) rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)}`;
+          return;
         }
-      } catch (err) {
-        const rateEl = document.getElementById('liveRateDisplay');
-        if (rateEl) {
-          rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)} (離線預設)`;
+      } catch (e) {
+        console.warn('線路 1 失敗，嘗試線路 2...');
+      }
+
+      // 線路 2（備用端點）
+      try {
+        const fetchPromise2 = fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/jpy.json').then(res => res.json());
+        const data2 = await Promise.race([fetchPromise2, timeout(3000)]);
+        if (data2 && data2.jpy && data2.jpy.twd) {
+          currentJpyToTwdRate = data2.jpy.twd;
+          if (rateEl) rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)}`;
+          return;
         }
+      } catch (e) {
+        console.warn('線路 2 失敗，啟用離線基準值');
+      }
+
+      // 若兩條線路都受限，立即顯示離線預設值
+      if (rateEl) {
+        rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(3)} (離線)`;
+        rateEl.style.color = '#64748b';
+        rateEl.style.background = '#f1f5f9';
       }
     }
 
-    // 雙向換算輸入連動
-    function calcExchange(source) {
-      const jpyInput = document.getElementById('calcJpyInput');
-      const twdInput = document.getElementById('calcTwdInput');
-
-      if (source === 'jpy') {
-        const jpyVal = parseFloat(jpyInput.value);
-        if (!jpyVal || jpyVal <= 0) { twdInput.value = ''; return; }
-        twdInput.value = Math.round(jpyVal * currentJpyToTwdRate);
-      } else {
-        const twdVal = parseFloat(twdInput.value);
-        if (!twdVal || twdVal <= 0) { jpyInput.value = ''; return; }
-        jpyInput.value = Math.round(twdVal / currentJpyToTwdRate);
-      }
+    // 確保頁面載入完成時觸發
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fetchLiveExchangeRate);
+    } else {
+      fetchLiveExchangeRate();
     }
-
-    // 網頁載入時自動抓一次匯率
-    fetchLiveExchangeRate();
       // 渲染記帳清單
       renderExpenses();
     });
