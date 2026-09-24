@@ -5,6 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>2026 關西 7 天 6 夜自由行手冊</title>
   <style>
+    /* 🚇 官方 Osaka Metro 圓圈與轉乘卡片 */
+    .metro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 700;
+      font-size: 13px;
+      color: #0f172a;
+    }
+    .metro-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 13px;
+      font-family: Arial, -apple-system, sans-serif;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    /* 官方精準色標 */
+    .line-M { background-color: #E60012; } /* 御堂筋線 紅 */
+    .line-T { background-color: #A61280; } /* 谷町線 紫 */
+    .line-Y { background-color: #007AC1; } /* 四つ橋線 藍 */
+    .line-C { background-color: #009944; } /* 中央線 綠 */
+    .line-S { background-color: #E5177E; } /* 千日前線 桃粉 */
+    .line-K { background-color: #8F4B2D; } /* 堺筋線 茶褐 */
+    .line-N { background-color: #A9CC17; color: #1e293b; } /* 長堀鶴見綠地線 黃綠 (深字) */
+    .line-I { background-color: #EE7B00; } /* 今里筋線 橙 */
+    .line-P { background-color: #00A0E9; } /* 南港港城線 天藍 */
+    .line-JR { background-color: #E60012; border-radius: 4px; padding: 0 4px; width: auto; height: 20px; font-size: 11px; }
+    .line-KINTETSU { background-color: #004098; border-radius: 4px; padding: 0 4px; width: auto; height: 20px; font-size: 11px; }
+
+    .transit-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #1e3a8a;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: 10px;
+    }
+    .transit-title { font-size: 13.5px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px; }
+    .transit-step { font-size: 13px; color: #334155; margin-bottom: 4px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .transit-tip { font-size: 11.5px; color: #d97706; margin-top: 4px; font-weight: 600; }
     :root {
       --primary: #1e3a8a;          /* 經典和風深紺青 */
       --primary-accent: #2563eb;   /* 亮藍點綴 */
