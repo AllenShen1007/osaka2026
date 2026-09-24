@@ -1539,6 +1539,7 @@
       const listEl = document.getElementById('expenseList');
       const resEl = document.getElementById('splitResult');
       const clearBtn = document.getElementById('clearExpenseBtn');
+      const lineBtn = document.getElementById('copyLineBtn');
 
       if (!listEl) return;
       listEl.innerHTML = '';
@@ -1546,6 +1547,7 @@
       if (tripExpenses.length === 0) {
         resEl.style.display = 'none';
         clearBtn.style.display = 'none';
+        if (lineBtn) lineBtn.style.display = 'none';
         return;
       }
 
@@ -1568,7 +1570,6 @@
         totals[cur] = (totals[cur] || 0) + item.amount;
         paidMap[cur][item.payer] = (paidMap[cur][item.payer] || 0) + item.amount;
 
-        // 計算每個被分攤者的應付責任額
         beneficiaries.forEach(m => {
           shouldPayMap[cur][m] = (shouldPayMap[cur][m] || 0) + perPersonShare;
         });
@@ -1597,6 +1598,7 @@
 
       resEl.style.display = 'block';
       clearBtn.style.display = 'block';
+      if (lineBtn) lineBtn.style.display = 'flex';
 
       // 產生各幣別結算報告
       let summaryHtml = '';
@@ -1678,6 +1680,80 @@
         <div style="font-size:13.5px; color:#047857; margin-bottom:4px; font-weight:700;">今日累計 <strong>${tripExpenses.length}</strong> 筆支出</div>
         ${summaryHtml}
       `;
+    }
+
+    // 📲 一鍵複製 LINE 格式報告
+    function copyExpenseSummaryToLine() {
+      if (tripExpenses.length === 0) {
+        alert('目前還沒有任何記帳紀錄喔！');
+        return;
+      }
+
+      const todayStr = new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' });
+      let text = `【🇯🇵 關西 7 天 6 夜｜公費結算報告】\n📅 日期：${todayStr}\n📝 支出筆數：${tripExpenses.length} 筆\n\n--- 支出明細 ---\n`;
+
+      tripExpenses.forEach(item => {
+        const sym = item.currency === 'TWD' ? 'NT$' : '¥';
+        text += `・${item.name}：${sym}${item.amount.toLocaleString()}（${item.payer} 付）\n`;
+      });
+
+      const totals = { JPY: 0, TWD: 0 };
+      const paidMap = { JPY: {}, TWD: {} };
+      const shouldPayMap = { JPY: {}, TWD: {} };
+
+      tripMembers.forEach(m => {
+        paidMap.JPY[m] = 0; paidMap.TWD[m] = 0;
+        shouldPayMap.JPY[m] = 0; shouldPayMap.TWD[m] = 0;
+      });
+
+      tripExpenses.forEach(item => {
+        const cur = item.currency || 'JPY';
+        const beneficiaries = (item.beneficiaries && item.beneficiaries.length > 0) ? item.beneficiaries : tripMembers;
+        const perPersonShare = item.amount / beneficiaries.length;
+
+        totals[cur] = (totals[cur] || 0) + item.amount;
+        paidMap[cur][item.payer] = (paidMap[cur][item.payer] || 0) + item.amount;
+
+        beneficiaries.forEach(m => {
+          shouldPayMap[cur][m] = (shouldPayMap[cur][m] || 0) + perPersonShare;
+        });
+      });
+
+      ['JPY', 'TWD'].forEach(cur => {
+        if (totals[cur] > 0) {
+          const sym = cur === 'JPY' ? '¥' : 'NT$';
+          text += `\n--- 🪙 ${cur === 'JPY' ? '日幣結算 (JPY ¥)' : '台幣結算 (TWD NT$)'} ---\n`;
+          text += `💰 總支出：${sym}${totals[cur].toLocaleString()}\n`;
+
+          tripMembers.forEach(m => {
+            const paid = paidMap[cur][m] || 0;
+            const shouldPay = Math.round(shouldPayMap[cur][m] || 0);
+            const diff = paid - shouldPay;
+            if (diff > 0) {
+              text += `🟢 ${m}：應收回 +${sym}${diff.toLocaleString()}\n`;
+            } else if (diff < 0) {
+              text += `🔴 ${m}：應拿出 -${sym}${Math.abs(diff).toLocaleString()}\n`;
+            } else {
+              text += `⚪ ${m}：剛好結清\n`;
+            }
+          });
+        }
+      });
+
+      text += `\n（大家確認無誤後即可結清～💰）`;
+
+      const btn = document.getElementById('copyLineBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        const origText = btn.innerHTML;
+        btn.innerHTML = `✅ 已複製！快去 LINE 貼上`;
+        btn.style.background = '#059669';
+        setTimeout(() => {
+          btn.innerHTML = origText;
+          btn.style.background = '#06c755';
+        }, 2500);
+      }).catch(err => {
+        prompt('請手動複製以下結算文字：', text);
+      });
     }
 
     // 新增支出
