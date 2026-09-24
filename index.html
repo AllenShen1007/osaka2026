@@ -1298,10 +1298,11 @@
     </div>
 
     <!-- TOOLBOX 工具箱 -->
+    <!-- TOOLBOX 工具箱 -->
     <div id="day-8" class="day-panel">
       <div class="day-header">
         <div class="day-title">🧰 行前與旅途實用工具箱</div>
-        <div class="day-subtitle">行李打包清單・預約憑證備忘・5人分帳計算機</div>
+        <div class="day-subtitle">行李打包清單・重要預約憑證備忘</div>
       </div>
 
       <div class="tool-section">
@@ -1340,10 +1341,16 @@
           <p>預約時間：19:00（5 人）</p>
         </div>
       </div>
+    </div>
+
+    <!-- DAY 9：獨立記帳頁面 -->
+    <div id="day-9" class="day-panel">
+      <div class="day-header">
+        <div class="day-title">💰 5 人公費記帳簿</div>
+        <div class="day-subtitle">多幣別記錄・自選分攤成員・當日智慧多退少補結算</div>
+      </div>
 
       <div class="tool-section split-box">
-        <div class="tool-title">💰 5 人公費記帳簿（自選分攤成員）</div>
-        
         <!-- 輸入區 -->
         <div style="display: flex; gap: 8px; margin-bottom: 8px;">
           <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
@@ -1365,7 +1372,7 @@
           <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
         </div>
 
-        <!-- 選擇分攤對象（預設全選，可自由勾選） -->
+        <!-- 選擇分攤對象（預設全員） -->
         <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 8px;">
           <div style="font-size: 12.5px; font-weight: 700; color: #475569; margin-bottom: 6px;">👥 參與分攤成員（預設全員，非全員請手動點掉）：</div>
           <div style="display: flex; flex-wrap: wrap; gap: 12px;">
