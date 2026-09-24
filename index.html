@@ -1901,7 +1901,7 @@
         <div id="wishListContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
       </div>
 
-      <!-- 🗣️ 日本結帳/溝通必備手指卡（8大情境） -->
+      <!-- 🗣️ 日本結帳/溝通必備手指卡（8大情境・已加入 touch-card 觸控反饋） -->
       <div class="tool-section">
         <div class="tool-title">🗣️ 實用溝通手指卡（點擊放大出示）</div>
         <div style="font-size: 12.5px; color: #64748b; margin-bottom: 12px;">
@@ -1910,56 +1910,56 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <!-- 1. 免稅 -->
-          <div onclick="showBigText('免税でお願いします', '請幫我辦理免稅', 'Menzei de onegaishimasu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('免税でお願いします', '請幫我辦理免稅', 'Menzei de onegaishimasu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #d97706; font-weight: 800;">🛍️ 辦理免稅</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">免税でお願いします</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Menzei de onegaishimasu</div>
           </div>
 
           <!-- 2. 不要袋子 -->
-          <div onclick="showBigText('袋はいりません', '不需要塑膠袋', 'Fukuro wa irimasen')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('袋はいりません', '不需要塑膠袋', 'Fukuro wa irimasen')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #059669; font-weight: 800;">🥡 不用提袋</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">袋はいりません</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Fukuro wa irimasen</div>
           </div>
 
           <!-- 3. 5位大人 -->
-          <div onclick="showBigText('5人です', '我們有 5 位大人', 'Gonin desu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('5人です', '我們有 5 位大人', 'Gonin desu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #2563eb; font-weight: 800;">👥 餐廳人數</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">5人です</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Gonin desu</div>
           </div>
 
           <!-- 4. 分開結帳 -->
-          <div onclick="showBigText('お会計は別々で', '請幫我們分開結帳', 'Okaikei wa betsubetsu de')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('お会計は別々で', '請幫我們分開結帳', 'Okaikei wa betsubetsu de')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #0284c7; font-weight: 800;">💳 分開結帳</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お会計は別々で</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Okaikei wa betsubetsu de</div>
           </div>
 
           <!-- 5. 拿照片找貨 -->
-          <div onclick="showBigText('これを探しています', '我在找這個（出示手機照片）', 'Kore o sagashite imasu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('これを探しています', '我在找這個（出示手機照片）', 'Kore o sagashite imasu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #7c3aed; font-weight: 800;">🔍 拿照片找貨</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">これを探しています</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Kore o sagashite imasu</div>
           </div>
 
           <!-- 6. 全新庫存 -->
-          <div onclick="showBigText('新しい在庫はありますか？', '請問有全新庫存嗎？', 'Atarashii zaiko wa arimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('新しい在庫はありますか？', '請問有全新庫存嗎？', 'Atarashii zaiko wa arimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #ea580c; font-weight: 800;">📦 全新商品</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">新しい在庫はありますか？</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Atarashii zaiko wa arimasu ka?</div>
           </div>
 
           <!-- 7. 要溫水/熱水 -->
-          <div onclick="showBigText('お湯をいただけますか？', '可以給我溫水/熱水嗎？', 'Oyu o itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('お湯をいただけますか？', '可以給我溫水/熱水嗎？', 'Oyu o itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #e11d48; font-weight: 800;">☕ 溫水/熱水</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お湯をいただけますか？</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Oyu o itadakemasu ka?</div>
           </div>
 
           <!-- 8. 洗手間在哪 -->
-          <div onclick="showBigText('トイレはどこですか？', '請問洗手間在哪裡？', 'Toire wa doko desu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('トイレはどこですか？', '請問洗手間在哪裡？', 'Toire wa doko desu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #475569; font-weight: 800;">🚻 找洗手間</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">トイレはどこですか？</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Toire wa doko desu ka?</div>
@@ -2022,7 +2022,7 @@
       </div>
 
       <div class="tool-section split-box">
-        <!-- 輸入區第一行（防跑版包裝） -->
+        <!-- 輸入區第 1 行（加 class 防擠出） -->
         <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 8px;">
           <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
             <option value="柏毅">由「柏毅」先付</option>
@@ -2034,16 +2034,14 @@
           <input type="text" id="splitItem" placeholder="項目（如：門票、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
         </div>
 
-        <!-- 輸入區第二行（防跑版包裝） -->
+        <!-- 輸入區第 2 行（加 class 防擠出） -->
         <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 10px;">
-          <div style="display: flex; gap: 8px; flex: 1.8;">
-            <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1;">
-              <option value="JPY">日圓 ¥</option>
-              <option value="TWD">台幣 NT$</option>
-            </select>
-            <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
-          </div>
-          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
+          <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 0.9;">
+            <option value="JPY">日圓 ¥</option>
+            <option value="TWD">台幣 NT$</option>
+          </select>
+          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
+          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
         </div>
 
         <!-- 選擇分攤對象（預設全員） -->
