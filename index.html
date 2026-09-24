@@ -1354,18 +1354,39 @@
         <div class="day-subtitle">多幣別記錄・自選分攤成員・當日智慧多退少補結算</div>
       </div>
 
-      <!-- 💱 即時匯率雙向換算卡片 -->
-      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">💱 即時匯率換算</span>
-          <span id="liveRateDisplay" style="font-size: 12px; font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 2px 8px; border-radius: 6px;">
+      <!-- 💱 即時匯率雙向換算卡片（常駐標籤版） -->
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 14px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 14px; font-weight: 800; color: #1e3a8a;">💱 即時匯率試算</span>
+          <span id="liveRateDisplay" style="font-size: 12px; font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 3px 8px; border-radius: 6px;">
             匯率連線中...
           </span>
         </div>
-        <div style="display: flex; gap: 8px; align-items: center;">
-          <input type="number" id="calcJpyInput" placeholder="日幣 JPY ¥" oninput="calcExchange('jpy')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
-          <span style="font-size: 15px; color: #94a3b8; font-weight: 700;">⇄</span>
-          <input type="number" id="calcTwdInput" placeholder="約台幣 NT$" oninput="calcExchange('twd')" style="flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 0;">
+        
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <!-- 日幣區塊 -->
+          <div style="flex: 1;">
+            <div style="font-size: 11.5px; font-weight: 700; color: #475569; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;">
+              <span>🇯🇵</span> 日幣 (JPY ¥)
+            </div>
+            <div style="position: relative;">
+              <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #94a3b8; font-size: 14px;">¥</span>
+              <input type="number" id="calcJpyInput" placeholder="0" oninput="calcExchange('jpy')" style="width: 100%; padding: 8px 10px 8px 24px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 700; color: #0f172a; outline: none; margin-bottom: 0; background: white;">
+            </div>
+          </div>
+
+          <div style="font-size: 18px; color: #94a3b8; font-weight: 700; padding-top: 18px;">⇄</div>
+
+          <!-- 台幣區塊 -->
+          <div style="flex: 1;">
+            <div style="font-size: 11.5px; font-weight: 700; color: #047857; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;">
+              <span>🇹🇼</span> 約台幣 (TWD NT$)
+            </div>
+            <div style="position: relative;">
+              <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #94a3b8; font-size: 13px;">NT$</span>
+              <input type="number" id="calcTwdInput" placeholder="0" oninput="calcExchange('twd')" style="width: 100%; padding: 8px 10px 8px 36px; border: 1px solid #a7f3d0; border-radius: 8px; font-size: 15px; font-weight: 700; color: #065f46; outline: none; margin-bottom: 0; background: #f0fdf4;">
+            </div>
+          </div>
         </div>
       </div>
 
