@@ -1588,6 +1588,31 @@
     } else {
       fetchLiveExchangeRate();
     }
+      // 雙向換算輸入連動計算
+    function calcExchange(source) {
+      const jpyInput = document.getElementById('calcJpyInput');
+      const twdInput = document.getElementById('calcTwdInput');
+
+      if (!jpyInput || !twdInput) return;
+
+      if (source === 'jpy') {
+        const jpyVal = parseFloat(jpyInput.value);
+        if (isNaN(jpyVal) || jpyVal <= 0) {
+          twdInput.value = '';
+          return;
+        }
+        // 日幣換算台幣（四捨五入取整數）
+        twdInput.value = Math.round(jpyVal * currentJpyToTwdRate);
+      } else {
+        const twdVal = parseFloat(twdInput.value);
+        if (isNaN(twdVal) || twdVal <= 0) {
+          jpyInput.value = '';
+          return;
+        }
+        // 台幣反推日幣
+        jpyInput.value = Math.round(twdVal / currentJpyToTwdRate);
+      }
+    }
       // 渲染記帳清單
       renderExpenses();
     });
