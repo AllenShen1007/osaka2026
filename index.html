@@ -1540,6 +1540,46 @@
         }
       });
 
+      // 💱 即時匯率 API 抓取與雙向換算
+    let currentJpyToTwdRate = 0.215; // 離線預設備用匯率
+
+    async function fetchLiveExchangeRate() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/JPY');
+        const data = await res.json();
+        if (data && data.rates && data.rates.TWD) {
+          currentJpyToTwdRate = data.rates.TWD;
+          const rateEl = document.getElementById('liveRateDisplay');
+          if (rateEl) {
+            rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)}`;
+          }
+        }
+      } catch (err) {
+        const rateEl = document.getElementById('liveRateDisplay');
+        if (rateEl) {
+          rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)} (離線預設)`;
+        }
+      }
+    }
+
+    // 雙向換算輸入連動
+    function calcExchange(source) {
+      const jpyInput = document.getElementById('calcJpyInput');
+      const twdInput = document.getElementById('calcTwdInput');
+
+      if (source === 'jpy') {
+        const jpyVal = parseFloat(jpyInput.value);
+        if (!jpyVal || jpyVal <= 0) { twdInput.value = ''; return; }
+        twdInput.value = Math.round(jpyVal * currentJpyToTwdRate);
+      } else {
+        const twdVal = parseFloat(twdInput.value);
+        if (!twdVal || twdVal <= 0) { jpyInput.value = ''; return; }
+        jpyInput.value = Math.round(twdVal / currentJpyToTwdRate);
+      }
+    }
+
+    // 網頁載入時自動抓一次匯率
+    fetchLiveExchangeRate();
       // 渲染記帳清單
       renderExpenses();
     });
