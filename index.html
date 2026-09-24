@@ -28,7 +28,7 @@
       position: relative;
       background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
       color: white;
-      padding: 32px 20px 28px;
+      padding: 28px 18px 24px;
       border-bottom-left-radius: 28px;
       border-bottom-right-radius: 28px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
@@ -53,28 +53,11 @@
       font-size: 12px;
       font-weight: 700;
       color: #fbbf24;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
     header h1 { font-size: 24px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4px; }
     header p { font-size: 13px; color: #cbd5e1; font-weight: 500; }
-    
-    .info-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 8px 14px;
-      border-radius: 14px;
-      font-size: 12px;
-      margin-top: 14px;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: all 0.2s ease;
-    }
-    .info-badge:active { transform: scale(0.98); background: rgba(255,255,255,0.2); }
-    .info-badge span { color: #38bdf8; font-weight: 700; }
 
     /* Tabs 膠囊導覽列 */
     .tabs-wrapper {
@@ -298,14 +281,14 @@
     }
 
     /* 官方精準色標 */
-    .line-M { background-color: #E60012; } /* 御堂筋線 紅 */
-    .line-T { background-color: #A61280; } /* 谷町線 紫 */
-    .line-Y { background-color: #007AC1; } /* 四つ橋線 藍 */
-    .line-C { background-color: #009944; } /* 中央線 綠 */
-    .line-S { background-color: #E5177E; } /* 千日前線 桃粉 */
-    .line-K { background-color: #8F4B2D; } /* 堺筋線 茶褐 */
-    .line-N { background-color: #A9CC17; color: #1e293b; } /* 長堀鶴見綠地線 黃綠 (深字) */
-    .line-I { background-color: #EE7B00; } /* 今里筋線 橙 */
+    .line-M { background-color: #E60012; }
+    .line-T { background-color: #A61280; }
+    .line-Y { background-color: #007AC1; }
+    .line-C { background-color: #009944; }
+    .line-S { background-color: #E5177E; }
+    .line-K { background-color: #8F4B2D; }
+    .line-N { background-color: #A9CC17; color: #1e293b; }
+    .line-I { background-color: #EE7B00; }
     .line-JR { background-color: #E60012; border-radius: 4px; padding: 0 5px; width: auto; height: 19px; font-size: 11px; }
     .line-KINTETSU { background-color: #004098; border-radius: 4px; padding: 0 5px; width: auto; height: 19px; font-size: 11px; }
 
@@ -367,32 +350,26 @@
 
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 手機螢幕字體與元件全面放大優化 */
+    /* 手機螢幕優化 */
     @media (max-width: 600px) {
       header h1 { font-size: 26px !important; }
       header p { font-size: 15px !important; }
       .countdown-chip { font-size: 13.5px !important; padding: 6px 14px !important; }
-      .info-badge { font-size: 13.5px !important; padding: 10px 14px !important; width: 100%; justify-content: space-between; }
-      
       .tab-btn { min-width: 72px !important; padding: 10px 12px !important; }
       .tab-btn .tab-name { font-size: 15px !important; }
       .tab-btn .tab-sub { font-size: 11.5px !important; }
-
       .day-title { font-size: 21px !important; }
       .day-subtitle { font-size: 14.5px !important; }
-
       .event-title { font-size: 19px !important; }
       .event-desc { font-size: 15px !important; line-height: 1.75 !important; }
       .time-badge { font-size: 12.5px !important; padding: 5px 12px !important; }
       .event-tag { font-size: 12px !important; padding: 5px 10px !important; }
       .btn-nav { font-size: 13.5px !important; padding: 8px 16px !important; }
       .alert-box { font-size: 14px !important; line-height: 1.6 !important; }
-
       .check-item { font-size: 15.5px !important; }
       .check-item input[type="checkbox"] { width: 22px !important; height: 22px !important; }
       .booking-card h4 { font-size: 15px !important; }
       .booking-card p { font-size: 13.5px !important; }
-
       .tool-title { font-size: 18px !important; }
       .split-box input, .split-box select { font-size: 15px !important; padding: 12px !important; }
       .split-btn { font-size: 15px !important; padding: 12px !important; }
@@ -401,8 +378,7 @@
 </head>
 <body>
 
-  <!-- 頂部封面 -->
-  <!-- 頂部封面（緊湊 App 風格，不遮擋行程） -->
+  <!-- 頂部封面（緊湊 App 風格） -->
   <header>
     <div class="countdown-chip" id="countdownBanner">✈️ 2026/10/31 啟程</div>
     <h1>🇯🇵 關西 7 天 6 夜自由行</h1>
@@ -441,13 +417,13 @@
       </div>
     </div>
 
-    <!-- 簡約穿搭指引小註記（不佔高度） -->
+    <!-- 簡約穿搭指引小註記 -->
     <div style="margin-top: 10px; font-size: 11.5px; color: #cbd5e1; background: rgba(0,0,0,0.2); padding: 6px 10px; border-radius: 8px; line-height: 1.4;">
       🧥 <strong>秋季穿搭</strong>：日夜溫差大、電車暖氣強，建議薄長袖＋衛衣＋可收納輕羽絨防風外套（洋蔥式穿法）。
     </div>
   </header>
 
-  <!-- 膠囊導覽頁籤（含小日期） -->
+  <!-- 膠囊導覽頁籤 -->
   <div class="tabs-wrapper">
     <div class="tabs">
       <button class="tab-btn active" onclick="switchDay(1)">
@@ -1505,7 +1481,7 @@
     <div id="day-8" class="day-panel">
       <div class="day-header">
         <div class="day-title">🧰 行前與旅途實用工具箱</div>
-        <div class="day-subtitle">行李打包清單・重要預約憑證備忘</div>
+        <div class="day-subtitle">行李打包清單・重要預約憑證・溝通手指卡</div>
       </div>
 
       <div class="tool-section">
@@ -1543,6 +1519,99 @@
           <p>地址：大阪市天王寺区堀越町 16-9（天王寺站北口步行 2 分）</p>
           <p>預約時間：19:00（5 人）</p>
         </div>
+      </div>
+
+      <!-- 🛍️ 個人採購願望清單（Wishlist） -->
+      <div class="tool-section">
+        <div class="tool-title">🛍️ 託買與個人採購清單（Wishlist）</div>
+        <div style="font-size: 12.5px; color: #64748b; margin-bottom: 10px;">
+          記錄親友託買物品或必搶戰利品，買到後打勾自動畫線，不怕漏買或重複買！
+        </div>
+
+        <!-- 新增輸入列 -->
+        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <input type="text" id="wishItemInput" placeholder="品名（例：合利他命 270錠、Dior 潤唇膏）" style="flex: 2; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none; margin-bottom: 0;">
+          <input type="text" id="wishTargetInput" placeholder="誰託買 / 給誰" style="flex: 1.1; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none; margin-bottom: 0;">
+          <button onclick="addWishItem()" style="padding: 10px 14px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; white-space: nowrap;">＋ 加入</button>
+        </div>
+
+        <div id="wishListContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
+      </div>
+
+      <!-- 🗣️ 日本結帳/溝通必備手指卡（8大情境） -->
+      <div class="tool-section">
+        <div class="tool-title">🗣️ 實用溝通手指卡（點擊放大出示）</div>
+        <div style="font-size: 12.5px; color: #64748b; margin-bottom: 12px;">
+          結帳、點餐或詢問時，點擊卡片可放大全螢幕，直接展示給店員看！
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <!-- 1. 免稅 -->
+          <div onclick="showBigText('免税でお願いします', '請幫我辦理免稅', 'Menzei de onegaishimasu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #d97706; font-weight: 800;">🛍️ 辦理免稅</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">免税でお願いします</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Menzei de onegaishimasu</div>
+          </div>
+
+          <!-- 2. 不要袋子 -->
+          <div onclick="showBigText('袋はいりません', '不需要塑膠袋', 'Fukuro wa irimasen')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #059669; font-weight: 800;">🥡 不用提袋</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">袋はいりません</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Fukuro wa irimasen</div>
+          </div>
+
+          <!-- 3. 5位大人 -->
+          <div onclick="showBigText('5人です', '我們有 5 位大人', 'Gonin desu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #2563eb; font-weight: 800;">👥 餐廳人數</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">5人です</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Gonin desu</div>
+          </div>
+
+          <!-- 4. 分開結帳 -->
+          <div onclick="showBigText('お会計は別々で', '請幫我們分開結帳', 'Okaikei wa betsubetsu de')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #0284c7; font-weight: 800;">💳 分開結帳</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お会計は別々で</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Okaikei wa betsubetsu de</div>
+          </div>
+
+          <!-- 5. 拿照片找貨 -->
+          <div onclick="showBigText('これを探しています', '我在找這個（出示手機照片）', 'Kore o sagashite imasu')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #7c3aed; font-weight: 800;">🔍 拿照片找貨</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">これを探しています</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Kore o sagashite imasu</div>
+          </div>
+
+          <!-- 6. 全新庫存 -->
+          <div onclick="showBigText('新しい在庫はありますか？', '請問有全新庫存嗎？', 'Atarashii zaiko wa arimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #ea580c; font-weight: 800;">📦 全新商品</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">新しい在庫はありますか？</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Atarashii zaiko wa arimasu ka?</div>
+          </div>
+
+          <!-- 7. 要溫水/熱水 -->
+          <div onclick="showBigText('お湯をいただけますか？', '可以給我溫水/熱水嗎？', 'Oyu o itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #e11d48; font-weight: 800;">☕ 溫水/熱水</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お湯をいただけますか？</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Oyu o itadakemasu ka?</div>
+          </div>
+
+          <!-- 8. 洗手間在哪 -->
+          <div onclick="showBigText('トイレはどこですか？', '請問洗手間在哪裡？', 'Toire wa doko desu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 12px; color: #475569; font-weight: 800;">🚻 找洗手間</div>
+            <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">トイレはどこですか？</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Toire wa doko desu ka?</div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- 結束 Day 8 -->
+
+    <!-- 全螢幕大字彈窗 Modal（放在 Day 8 外部，全域有效） -->
+    <div id="bigTextModal" onclick="closeBigText()" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 999; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: #ffffff; width: 100%; max-width: 450px; border-radius: 24px; padding: 32px 24px; text-align: center; box-shadow: var(--shadow-lg);">
+        <div id="modalJp" style="font-size: 32px; font-weight: 900; color: #0f172a; line-height: 1.3;"></div>
+        <div id="modalRomaji" style="font-size: 14px; color: #64748b; margin-top: 8px; font-weight: 600;"></div>
+        <div id="modalZh" style="font-size: 18px; color: var(--primary-accent); font-weight: 800; margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px;"></div>
+        <div style="font-size: 12px; color: #94a3b8; margin-top: 18px;">（點擊任意處關閉）</div>
       </div>
     </div>
 
@@ -1643,6 +1712,82 @@
   </div>
 
   <script>
+    // 🗣️ 大字手指卡展示與關閉
+    function showBigText(jp, zh, romaji) {
+      document.getElementById('modalJp').innerText = jp;
+      document.getElementById('modalZh').innerText = zh;
+      document.getElementById('modalRomaji').innerText = romaji;
+      const modal = document.getElementById('bigTextModal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeBigText() {
+      const modal = document.getElementById('bigTextModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    // 🛍️ 個人採購願望清單（Wishlist）邏輯
+    let wishList = JSON.parse(localStorage.getItem('trip_wishlist_items') || '[]');
+
+    function renderWishList() {
+      const container = document.getElementById('wishListContainer');
+      if (!container) return;
+
+      container.innerHTML = '';
+      if (wishList.length === 0) {
+        container.innerHTML = `<div style="text-align:center; color:#94a3b8; font-size:13px; padding:12px 0;">目前清單是空的，隨時記錄託買物品吧！</div>`;
+        return;
+      }
+
+      wishList.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.style.cssText = `background:${item.done ? '#f8fafc' : '#ffffff'}; border:1px solid ${item.done ? '#e2e8f0' : '#cbd5e1'}; border-radius:10px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center;`;
+        row.innerHTML = `
+          <div style="display:flex; align-items:center; gap:10px; flex:1;">
+            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleWishItem(${index})" style="width:19px; height:19px; accent-color:var(--accent); cursor:pointer;">
+            <div>
+              <div style="font-size:14px; font-weight:700; color:${item.done ? '#94a3b8' : '#1e293b'}; text-decoration:${item.done ? 'line-through' : 'none'};">
+                ${item.name}
+              </div>
+              ${item.target ? `<div style="font-size:11.5px; color:${item.done ? '#cbd5e1' : '#d97706'}; font-weight:600; margin-top:2px;">對象：${item.target}</div>` : ''}
+            </div>
+          </div>
+          <button onclick="deleteWishItem(${index})" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size:13px; padding:4px 8px;">✕</button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function addWishItem() {
+      const nameInput = document.getElementById('wishItemInput');
+      const targetInput = document.getElementById('wishTargetInput');
+      const name = nameInput.value.trim();
+      const target = targetInput.value.trim();
+
+      if (!name) {
+        alert('請輸入品名！');
+        return;
+      }
+
+      wishList.push({ name, target, done: false });
+      localStorage.setItem('trip_wishlist_items', JSON.stringify(wishList));
+      nameInput.value = '';
+      targetInput.value = '';
+      renderWishList();
+    }
+
+    function toggleWishItem(index) {
+      wishList[index].done = !wishList[index].done;
+      localStorage.setItem('trip_wishlist_items', JSON.stringify(wishList));
+      renderWishList();
+    }
+
+    function deleteWishItem(index) {
+      wishList.splice(index, 1);
+      localStorage.setItem('trip_wishlist_items', JSON.stringify(wishList));
+      renderWishList();
+    }
+
     // 動態倒數計時計算
     function updateCountdown() {
       const targetDate = new Date("2026-10-31T00:00:00");
@@ -1657,6 +1802,7 @@
       }
     }
     updateCountdown();
+
     // 🌤️ 自動更新大阪與京都即時氣溫（Open-Meteo 免費氣象 API）
     async function updateWeatherInfo() {
       try {
@@ -1668,28 +1814,19 @@
         const osakaData = await osakaRes.json();
         const kyotoData = await kyotoRes.json();
 
-        if (osakaData && osakaData.current) {
-          const cur = Math.round(osakaData.current.temperature_2m);
-          const max = Math.round(osakaData.daily.temperature_2m_max[0]);
-          const min = Math.round(osakaData.daily.temperature_2m_min[0]);
-          const el = document.getElementById('osakaWeatherTxt');
-          if (el) el.innerHTML = `即時 ${cur}°C <span style="font-size:11px;font-weight:500;color:#94a3b8;">(${min}°~${max}°)</span>`;
-        }
+        let oCur = 20, kCur = 18;
+        if (osakaData && osakaData.current) oCur = Math.round(osakaData.current.temperature_2m);
+        if (kyotoData && kyotoData.current) kCur = Math.round(kyotoData.current.temperature_2m);
 
-        if (kyotoData && kyotoData.current) {
-          const cur = Math.round(kyotoData.current.temperature_2m);
-          const max = Math.round(kyotoData.daily.temperature_2m_max[0]);
-          const min = Math.round(kyotoData.daily.temperature_2m_min[0]);
-          const el = document.getElementById('kyotoWeatherTxt');
-          if (el) el.innerHTML = `即時 ${cur}°C <span style="font-size:11px;font-weight:500;color:#94a3b8;">(${min}°~${max}°)</span>`;
-        }
+        const miniEl = document.getElementById('headerWeatherMini');
+        if (miniEl) miniEl.innerText = `阪 ${oCur}° ｜ 京 ${kCur}°`;
       } catch (err) {
-        console.warn('氣象資料取得失敗，顯示秋季均溫預設值');
+        console.warn('氣象資料取得失敗，顯示預設值');
       }
     }
     updateWeatherInfo();
 
-    // Tab 切換（支援 Day 1~7、Day 8 工具、Day 9 記帳）
+    // Tab 切換
     function switchDay(day) {
       document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === day - 1);
@@ -1741,7 +1878,7 @@
       }
     }
 
-    // 上傳並自動輕量化壓縮快取（限制寬度 1200px 確保大圖清晰且 localStorage 存得下）
+    // 上傳並自動輕量化壓縮快取
     function uploadCardPhoto(input, imgElementId) {
       if (input.files && input.files[0]) {
         const file = input.files[0];
@@ -1773,7 +1910,7 @@
       }
     }
 
-    // 💱 雙線路即時匯率抓取（3秒超時自動備援）
+    // 💱 雙線路即時匯率抓取
     let currentJpyToTwdRate = 0.215;
 
     async function fetchLiveExchangeRate() {
@@ -1811,7 +1948,7 @@
       }
     }
 
-    // 雙向換算輸入連動計算（全域函式）
+    // 雙向換算輸入連動計算
     function calcExchange(source) {
       const jpyInput = document.getElementById('calcJpyInput');
       const twdInput = document.getElementById('calcTwdInput');
@@ -1854,6 +1991,7 @@
 
       fetchLiveExchangeRate();
       renderExpenses();
+      renderWishList();
     });
 
     // 專屬 5 位成員名單
