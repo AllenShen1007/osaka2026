@@ -118,10 +118,16 @@
     .tab-btn.active .tab-sub { color: #93c5fd; }
     .tab-btn.tool-tab { background: #fffbeb; border-color: #fde68a; }
     .tab-btn.tool-tab .tab-name { color: #b45309; }
-    .tab-btn.tool-tab.active { background: var(--accent); border-color: var(--accent); }
-    .tab-btn.tool-tab.active .tab-name { color: white; }
-    .tab-btn:has(span[style*="#047857"]).active { background: #059669 !important; border-color: #059669 !important; }
-    .tab-btn:has(span[style*="#047857"]).active span { color: #ffffff !important; }
+    .tab-btn.tool-tab.active { background: var(--accent) !important; border-color: var(--accent) !important; }
+    .tab-btn.tool-tab.active .tab-name { color: white !important; }
+    .tab-btn.tool-tab.active .tab-sub { color: #fef3c7 !important; }
+
+    .tab-btn.accounting-tab { background: #ecfdf5; border-color: #a7f3d0; }
+    .tab-btn.accounting-tab .tab-name { color: #047857; }
+    .tab-btn.accounting-tab .tab-sub { color: #059669; }
+    .tab-btn.accounting-tab.active { background: #059669 !important; border-color: #059669 !important; }
+    .tab-btn.accounting-tab.active .tab-name { color: #ffffff !important; }
+    .tab-btn.accounting-tab.active .tab-sub { color: #d1fae5 !important; }
 
     /* Layout & 動態容器 */
     .container { max-width: 680px; margin: 0 auto; padding: 18px 16px; }
@@ -312,7 +318,8 @@
     .split-res { margin-top: 14px; padding: 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; font-size: 14px; color: #065f46; font-weight: 700; text-align: left; line-height: 1.6; }
 
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-  /* 手機螢幕字體與元件全面放大優化 */
+
+    /* 手機螢幕字體與元件全面放大優化 */
     @media (max-width: 600px) {
       header h1 { font-size: 26px !important; }
       header p { font-size: 15px !important; }
@@ -398,9 +405,9 @@
         <span class="tab-name">🧰 工具</span>
         <span class="tab-sub">清單備忘</span>
       </button>
-      <button class="tab-btn" onclick="switchDay(9)" style="background: #ecfdf5; border-color: #a7f3d0;">
-        <span class="tab-name" style="color: #047857;">💰 記帳</span>
-        <span class="tab-sub" style="color: #059669;">公費分帳</span>
+      <button class="tab-btn accounting-tab" onclick="switchDay(9)">
+        <span class="tab-name">💰 記帳</span>
+        <span class="tab-sub">公費分帳</span>
       </button>
     </div>
   </div>
@@ -1295,8 +1302,7 @@
       </div>
     </div>
 
-    <!-- TOOLBOX 工具箱 -->
-    <!-- TOOLBOX 工具箱 -->
+    <!-- DAY 8：工具箱 -->
     <div id="day-8" class="day-panel">
       <div class="day-header">
         <div class="day-title">🧰 行前與旅途實用工具箱</div>
@@ -1412,7 +1418,6 @@
     }
     updateCountdown();
 
-    // Tab 切換
     // Tab 切換（支援 Day 1~7、Day 8 工具、Day 9 記帳）
     function switchDay(day) {
       document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
