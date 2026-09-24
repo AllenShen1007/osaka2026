@@ -409,29 +409,47 @@
 
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 手機螢幕優化 */
+    /* 懸浮卡片與觸控回饋 */
+    .touch-card { transition: transform 0.15s ease; }
+    .touch-card:active { transform: scale(0.96); }
+
+    /* 手機螢幕優化（防 iPhone 放大與跑版） */
     @media (max-width: 600px) {
-      header h1 { font-size: 26px !important; }
-      header p { font-size: 15px !important; }
-      .countdown-chip { font-size: 13.5px !important; padding: 6px 14px !important; }
-      .tab-btn { min-width: 72px !important; padding: 10px 12px !important; }
-      .tab-btn .tab-name { font-size: 15px !important; }
-      .tab-btn .tab-sub { font-size: 11.5px !important; }
-      .day-title { font-size: 21px !important; }
-      .day-subtitle { font-size: 14.5px !important; }
-      .event-title { font-size: 19px !important; }
-      .event-desc { font-size: 15px !important; line-height: 1.75 !important; }
-      .time-badge { font-size: 12.5px !important; padding: 5px 12px !important; }
-      .event-tag { font-size: 12px !important; padding: 5px 10px !important; }
-      .btn-nav { font-size: 13.5px !important; padding: 8px 16px !important; }
-      .alert-box { font-size: 14px !important; line-height: 1.6 !important; }
-      .check-item { font-size: 15.5px !important; }
-      .check-item input[type="checkbox"] { width: 22px !important; height: 22px !important; }
-      .booking-card h4 { font-size: 15px !important; }
-      .booking-card p { font-size: 13.5px !important; }
-      .tool-title { font-size: 18px !important; }
-      .split-box input, .split-box select { font-size: 15px !important; padding: 12px !important; }
-      .split-btn { font-size: 15px !important; padding: 12px !important; }
+      /* 🔒 禁止 iPhone 點擊輸入框時整頁被拉大 */
+      input[type="text"],
+      input[type="number"],
+      select {
+        font-size: 16px !important;
+      }
+      
+      header h1 { font-size: 24px !important; }
+      header p { font-size: 14px !important; }
+      .countdown-chip { font-size: 12.5px !important; padding: 5px 12px !important; }
+      .tab-btn { min-width: 68px !important; padding: 8px 10px !important; }
+      .tab-btn .tab-name { font-size: 14px !important; }
+      .tab-btn .tab-sub { font-size: 11px !important; }
+      .day-title { font-size: 19px !important; }
+      .day-subtitle { font-size: 13.5px !important; }
+      .event-title { font-size: 18px !important; }
+      .event-desc { font-size: 14.5px !important; line-height: 1.7 !important; }
+      .time-badge { font-size: 12px !important; padding: 4px 10px !important; }
+      .event-tag { font-size: 11.5px !important; padding: 4px 8px !important; }
+      .btn-nav { font-size: 13px !important; padding: 7px 14px !important; }
+      .alert-box { font-size: 13.5px !important; line-height: 1.55 !important; }
+      .check-item { font-size: 14.5px !important; }
+      .check-item input[type="checkbox"] { width: 20px !important; height: 20px !important; }
+      .booking-card h4 { font-size: 14.5px !important; }
+      .booking-card p { font-size: 13px !important; }
+      .tool-title { font-size: 17px !important; }
+
+      /* 記帳輸入區手機直覺排列：防止擠壓出鏡 */
+      .split-input-row {
+        flex-direction: column !important;
+        gap: 8px !important;
+      }
+      .split-input-row > * {
+        width: 100% !important;
+      }
     }
   </style>
 </head>
@@ -2004,8 +2022,8 @@
       </div>
 
       <div class="tool-section split-box">
-        <!-- 輸入區 -->
-        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+        <!-- 輸入區第一行（防跑版包裝） -->
+        <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 8px;">
           <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
             <option value="柏毅">由「柏毅」先付</option>
             <option value="張庭">由「張庭」先付</option>
@@ -2016,13 +2034,16 @@
           <input type="text" id="splitItem" placeholder="項目（如：門票、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
         </div>
 
-        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-          <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 0.9;">
-            <option value="JPY">日圓 ¥</option>
-            <option value="TWD">台幣 NT$</option>
-          </select>
-          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
-          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
+        <!-- 輸入區第二行（防跑版包裝） -->
+        <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 10px;">
+          <div style="display: flex; gap: 8px; flex: 1.8;">
+            <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1;">
+              <option value="JPY">日圓 ¥</option>
+              <option value="TWD">台幣 NT$</option>
+            </select>
+            <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
+          </div>
+          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
         </div>
 
         <!-- 選擇分攤對象（預設全員） -->
