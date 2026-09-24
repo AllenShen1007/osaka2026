@@ -75,7 +75,7 @@
       --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; -webkit-tap-highlight-color: transparent; }
+   body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
 
     /* Header 封面 */
     header {
@@ -1861,18 +1861,23 @@
         </div>
       </div>
 
-      <!-- 🛍️ 個人採購願望清單（Wishlist） -->
+      <!-- 🛍️ 個人採購願望清單（Wishlist）防跑版版 -->
       <div class="tool-section">
         <div class="tool-title">🛍️ 託買與個人採購清單（Wishlist）</div>
-        <div style="font-size: 12.5px; color: #64748b; margin-bottom: 10px;">
+        <div style="font-size: 12.5px; color: #64748b; margin-bottom: 12px; line-height: 1.5;">
           記錄親友託買物品或必搶戰利品，買到後打勾自動畫線，不怕漏買或重複買！
         </div>
 
-        <!-- 新增輸入列 -->
-        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-          <input type="text" id="wishItemInput" placeholder="品名（例：合利他命 270錠、Dior 潤唇膏）" style="flex: 2; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none; margin-bottom: 0;">
-          <input type="text" id="wishTargetInput" placeholder="誰託買 / 給誰" style="flex: 1.1; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none; margin-bottom: 0;">
-          <button onclick="addWishItem()" style="padding: 10px 14px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; white-space: nowrap;">＋ 加入</button>
+        <!-- 防跑版：兩層彈性輸入區塊 -->
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
+          <!-- 第 1 行：品名輸入（全寬度） -->
+          <input type="text" id="wishItemInput" placeholder="品名（例：合利他命 270錠、Dior 潤唇膏）" style="width: 100%; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; margin-bottom: 0; background: #ffffff;">
+          
+          <!-- 第 2 行：對象 + 新增按鈕 -->
+          <div style="display: flex; gap: 8px; width: 100%;">
+            <input type="text" id="wishTargetInput" placeholder="誰託買 / 給誰（例：媽媽、自用）" style="flex: 1; min-width: 0; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; margin-bottom: 0; background: #ffffff;">
+            <button onclick="addWishItem()" style="flex-shrink: 0; padding: 11px 18px; background: var(--accent); color: white; border: none; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer;">＋ 加入</button>
+          </div>
         </div>
 
         <div id="wishListContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
