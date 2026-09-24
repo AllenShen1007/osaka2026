@@ -2,9 +2,35 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>2026 關西 7 天 6 夜自由行手冊</title>
   <style>
+    :root {
+      --primary: #1e3a8a;          /* 經典和風深紺青 */
+      --primary-accent: #2563eb;   /* 亮藍點綴 */
+      --primary-light: #eff6ff;
+      --accent: #d97706;           /* 暖琥珀金 */
+      --accent-light: #fef3c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif; }
+    
+    /* 升級版 body：支援 iOS 底部安全區域，鎖定水平寬度 */
+    body { 
+      background-color: var(--bg); 
+      color: var(--text); 
+      padding-bottom: calc(75px + env(safe-area-inset-bottom, 20px)); 
+      -webkit-tap-highlight-color: transparent; 
+      overflow-x: hidden; 
+    }
+
     /* 摺疊詳情區塊美化 */
     .spot-details {
       margin-top: 10px;
@@ -37,7 +63,7 @@
     /* 懸浮回到頂部按鈕 (FAB) */
     .fab-top {
       position: fixed;
-      bottom: 22px;
+      bottom: calc(22px + env(safe-area-inset-bottom, 0px));
       right: 20px;
       width: 44px;
       height: 44px;
@@ -59,23 +85,9 @@
     }
     .fab-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    :root {
-      --primary: #1e3a8a;          /* 經典和風深紺青 */
-      --primary-accent: #2563eb;   /* 亮藍點綴 */
-      --primary-light: #eff6ff;
-      --accent: #d97706;           /* 暖琥珀金 */
-      --accent-light: #fef3c7;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif; }
-   body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+    /* 手指卡觸控反饋 */
+    .touch-card { transition: transform 0.15s ease, background-color 0.15s ease; }
+    .touch-card:active { transform: scale(0.96); background: #f1f5f9 !important; }
 
     /* Header 封面 */
     header {
@@ -112,6 +124,25 @@
     }
     header h1 { font-size: 24px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4px; }
     header p { font-size: 13px; color: #cbd5e1; font-weight: 500; }
+
+    /* Header 快捷小卡按鈕樣式 */
+    .header-quick-btn {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 8px 10px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s ease;
+    }
+    .header-quick-btn:active {
+      transform: scale(0.97);
+      background: rgba(255, 255, 255, 0.2);
+    }
 
     /* Tabs 膠囊導覽列 */
     .tabs-wrapper {
@@ -248,12 +279,12 @@
       letter-spacing: 0.3px;
     }
 
-    /* 懸浮半透明相機按鈕 */
+    /* 懸浮半透明相機按鈕（輕微透光不搶鏡） */
     .btn-upload-label {
       position: absolute;
       top: 12px;
       right: 12px;
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.55);
       backdrop-filter: blur(10px);
       color: white;
       padding: 6px 12px;
@@ -265,10 +296,10 @@
       align-items: center;
       gap: 5px;
       border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: all 0.2s;
     }
-    .btn-upload-label:active { transform: scale(0.95); background: rgba(0, 0, 0, 0.9); }
+    .btn-upload-label:active { transform: scale(0.95); background: rgba(0, 0, 0, 0.85); }
     .file-input { display: none; }
 
     /* 集合點雙圖排版（280px） */
@@ -315,16 +346,18 @@
     .transit-title { font-size: 13.5px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
     .transit-step { font-size: 13px; color: #334155; margin-bottom: 5px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; line-height: 1.5; }
     .transit-tip { font-size: 12px; color: #b45309; margin-top: 5px; font-weight: 600; background: #fffbeb; padding: 4px 8px; border-radius: 6px; border: 1px dashed #fde68a; line-height: 1.6; }
+    
+    /* 🚨 避坑防刷錯警示盒 */
     .transit-alert { 
-       font-size: 12px; 
-       color: #b91c1c; 
-       margin-top: 6px; 
-       font-weight: 700; 
-       background: #fef2f2; 
-       padding: 6px 10px; 
-       border-radius: 8px; 
-       border: 1px solid #fecaca; 
-       line-height: 1.6; 
+      font-size: 12.5px; 
+      color: #b91c1c; 
+      margin-top: 6px; 
+      font-weight: 700; 
+      background: #fef2f2; 
+      padding: 7px 10px; 
+      border-radius: 8px; 
+      border: 1px solid #fecaca; 
+      line-height: 1.6; 
     }
 
     .metro-badge {
@@ -412,27 +445,22 @@
     .booking-card h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 5px; color: #1e293b; }
     .booking-card p { font-size: 12.5px; color: #64748b; line-height: 1.5; }
 
-    .split-box input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; margin-bottom: 12px; outline: none; }
-    .split-box input:focus { border-color: var(--primary-accent); }
+    .split-box input, .split-box select { box-sizing: border-box; }
     .split-btn { width: 100%; background: var(--primary-accent); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
     .split-btn:active { transform: scale(0.98); }
     .split-res { margin-top: 14px; padding: 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; font-size: 14px; color: #065f46; font-weight: 700; text-align: left; line-height: 1.6; }
 
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 懸浮卡片與觸控回饋 */
-    .touch-card { transition: transform 0.15s ease; }
-    .touch-card:active { transform: scale(0.96); }
-
-    /* 手機螢幕優化（防 iPhone 放大與跑版） */
+    /* 手機螢幕極致優化（防止 iPhone 自動縮放與跑版） */
     @media (max-width: 600px) {
-      /* 🔒 禁止 iPhone 點擊輸入框時整頁被拉大 */
+      /* 🔒 禁止 iPhone 點擊輸入框時整頁拉大 */
       input[type="text"],
       input[type="number"],
       select {
         font-size: 16px !important;
       }
-      
+
       header h1 { font-size: 24px !important; }
       header p { font-size: 14px !important; }
       .countdown-chip { font-size: 12.5px !important; padding: 5px 12px !important; }
@@ -453,7 +481,7 @@
       .booking-card p { font-size: 13px !important; }
       .tool-title { font-size: 17px !important; }
 
-      /* 記帳輸入區手機直覺排列：防止擠壓出鏡 */
+      /* 記帳輸入區垂直堆疊滿版 */
       .split-input-row {
         flex-direction: column !important;
         gap: 8px !important;
@@ -472,10 +500,10 @@
     <h1>🇯🇵 關西 7 天 6 夜自由行</h1>
     <p>10/31～11/6・5 人同行・鶴橋民宿</p>
     
-    <!-- 快捷功能雙欄宮格 -->
+    <!-- 快捷功能雙欄宮格（毛玻璃微透光質感） -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;">
       <!-- VJW 官網快捷 -->
-      <a href="https://services.digital.go.jp/visit-japan-web/" target="_blank" style="background: rgba(37, 99, 235, 0.25); border: 1px solid rgba(147, 197, 253, 0.35); border-radius: 12px; padding: 8px 10px; text-decoration: none; display: flex; align-items: center; justify-content: space-between;">
+      <a class="header-quick-btn" href="https://services.digital.go.jp/visit-japan-web/" target="_blank" style="background: rgba(37, 99, 235, 0.3); border-color: rgba(147, 197, 253, 0.4);">
         <div style="display: flex; align-items: center; gap: 5px;">
           <span style="font-size: 15px;">📲</span>
           <span style="font-size: 12px; font-weight: 800; color: #ffffff;">VJW 官網</span>
@@ -484,7 +512,7 @@
       </a>
 
       <!-- 氣溫小卡 -->
-      <a href="https://tenki.jp/forecast/6/30/" target="_blank" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 12px; padding: 8px 10px; text-decoration: none; display: flex; align-items: center; justify-content: space-between;">
+      <a class="header-quick-btn" href="https://tenki.jp/forecast/6/30/" target="_blank">
         <div style="display: flex; align-items: center; gap: 5px;">
           <span style="font-size: 14px;">🍁</span>
           <span id="headerWeatherMini" style="font-size: 11.5px; font-weight: 700; color: #fbbf24;">阪 20° ｜ 京 18°</span>
@@ -493,20 +521,20 @@
       </a>
 
       <!-- 日文地址複製 -->
-      <div onclick="copyAddress('jp')" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 12px; padding: 8px 10px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+      <div class="header-quick-btn" onclick="copyAddress('jp')" style="cursor: pointer;">
         <span style="font-size: 11.5px; color: #f8fafc; font-weight: 700;">🏠 日文地址</span>
         <span id="copyTxtJp" style="font-size: 10.5px; color: #38bdf8; font-weight: 700;">複製</span>
       </div>
 
       <!-- 英文地址複製 -->
-      <div onclick="copyAddress('en')" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 12px; padding: 8px 10px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+      <div class="header-quick-btn" onclick="copyAddress('en')" style="cursor: pointer;">
         <span style="font-size: 11.5px; color: #f8fafc; font-weight: 700;">🏠 英文地址</span>
         <span id="copyTxtEn" style="font-size: 10.5px; color: #38bdf8; font-weight: 700;">複製</span>
       </div>
     </div>
 
     <!-- 簡約穿搭指引小註記 -->
-    <div style="margin-top: 10px; font-size: 11.5px; color: #cbd5e1; background: rgba(0,0,0,0.2); padding: 6px 10px; border-radius: 8px; line-height: 1.4;">
+    <div style="margin-top: 10px; font-size: 11.5px; color: #cbd5e1; background: rgba(0,0,0,0.22); padding: 7px 10px; border-radius: 8px; line-height: 1.45;">
       🧥 <strong>秋季穿搭</strong>：日夜溫差大、電車暖氣強，建議薄長袖＋衛衣＋可收納輕羽絨防風外套（洋蔥式穿法）。
     </div>
     <!-- 📲 一鍵加入手機主畫面提示卡 -->
@@ -731,14 +759,14 @@
             </div>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 吃飽回程返抵鶴橋民宿</div>
+              <div class="transit-title">🚇 吃飽回程返抵鶴橋民宿（近鐵線極速返家）</div>
               <div class="transit-step">
                 直接在地下街沿標示走進 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 大阪難波站</span>（東改札口進站）。
               </div>
               <div class="transit-step">
                 搭乘近鐵奈良線（往奈良/東生駒方向）➔ <strong>僅 2 站直達 鶴橋站</strong>（車程 5 分鐘極快！）。
               </div>
-              <div class="transit-tip">💡 鶴橋站中央口出站，步行 4 分鐘即可回到民宿洗澡休息！</div>
+              <div class="transit-tip">💡 鶴橋站出站：從近鐵「東改札」出站，出站即是千日前通地面，步行 4 分鐘回到民宿洗澡休息！</div>
             </div>
 
             <div class="card-actions">
@@ -1580,16 +1608,11 @@
             </div>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 日本橋 ➔ 回程返抵鶴橋民宿</div>
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 難波天政</div>
               <div class="transit-step">
-                從 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>日本橋站</strong>（5 號或 10 號出口進站）➔ 搭 2 站回 <strong>鶴橋站</strong>。
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 3 站至 <strong>難波站</strong>
               </div>
-              <div class="transit-alert">
-                🚨 <strong>鶴橋站出站防卡關鐵則</strong>：<br>
-                下地鐵後請找<strong>「東改札」</strong>出站。<br>
-                ⚠️ <strong>千萬不要順著人潮嗶進「JR／近鐵連絡閘門」</strong>（會被當成搭乘 JR 被鎖卡、走不出去）！<br>
-                出閘門後請認明 <strong>「出口 5」或「出口 6」</strong> 直通千日前通地面大道，步行 4 分鐘回民宿！
-              </div>
+              <div class="transit-tip">💡 最快出口：難波站走難波 Walk <strong>「B21 出口」</strong>鑽上來，步行 2 分鐘直達天政門口！</div>
             </div>
 
             <div class="card-actions">
@@ -1708,9 +1731,16 @@
             </details>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 徒步與回程路線</div>
-              <div class="transit-step">吃完壽喜燒步行 5 分鐘即達日本橋動漫街。回程從 <span class="metro-badge"><span class="metro-circle line-S">S</span> 日本橋站</span> 搭 2 站回鶴橋。</div>
-              <div class="transit-tip">💡 最快出口：回程由日本橋站<strong>「5 號或 10 號出口」</strong>進站，免在大街吹風！</div>
+              <div class="transit-title">🚇 日本橋 ➔ 回程返抵鶴橋民宿</div>
+              <div class="transit-step">
+                從 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>日本橋站</strong>（5 號或 10 號出口進站）➔ 搭 2 站回 <strong>鶴橋站</strong>。
+              </div>
+              <div class="transit-alert">
+                🚨 <strong>鶴橋站出站防卡關鐵則</strong>：<br>
+                下地鐵後請找<strong>「東改札」</strong>出站。<br>
+                ⚠️ <strong>千萬不要順著人潮嗶進「JR／近鐵連絡閘門」</strong>（會被當成搭乘 JR 被鎖卡、走不出去）！<br>
+                出閘門後請認明 <strong>「出口 5」或「出口 6」</strong> 直通千日前通地面大道，步行 4 分鐘回民宿！
+              </div>
             </div>
 
             <div class="card-actions">
@@ -1861,7 +1891,29 @@
     <div id="day-8" class="day-panel">
       <div class="day-header">
         <div class="day-title">🧰 行前與旅途實用工具箱</div>
-        <div class="day-subtitle">行李打包清單・重要預約憑證・溝通手指卡</div>
+        <div class="day-subtitle">行李打包清單・重要預約憑證・溝通手指卡・緊急救援</div>
+      </div>
+
+      <!-- 🚨 緊急救援與醫療支援卡片 -->
+      <div class="tool-section" style="border-left: 4px solid #ef4444; background: #fff5f5;">
+        <div class="tool-title" style="color: #991b1b;">🚨 緊急就醫與聯絡專線（離民宿最近）</div>
+        <div style="font-size: 13px; color: #4b5563; line-height: 1.65;">
+          <p>🏥 <strong>最近大醫院（支援外語急診）</strong>：</p>
+          <ul style="margin-left: 18px; margin-bottom: 8px;">
+            <li><strong>大阪日赤醫院</strong>：天王寺區筆崎町 5-30（鶴橋站步行 7 分鐘）</li>
+            <li><strong>大阪警察病院</strong>：天王寺區北山町 10-31（計程車約 5 分鐘）</li>
+          </ul>
+          <p>📞 <strong>緊急電話速查</strong>：</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
+            <a href="tel:110" style="background: white; border: 1px solid #fca5a5; padding: 5px 10px; border-radius: 6px; text-decoration: none; color: #b91c1c; font-weight: 700; font-size: 12px;">🚔 報警 110</a>
+            <a href="tel:119" style="background: white; border: 1px solid #fca5a5; padding: 5px 10px; border-radius: 6px; text-decoration: none; color: #b91c1c; font-weight: 700; font-size: 12px;">🚑 救護車 119</a>
+            <a href="tel:#7119" style="background: white; border: 1px solid #fca5a5; padding: 5px 10px; border-radius: 6px; text-decoration: none; color: #b91c1c; font-weight: 700; font-size: 12px;">🩺 急診諮詢 #7119</a>
+            <a href="tel:+81-6-6227-8623" style="background: white; border: 1px solid #fca5a5; padding: 5px 10px; border-radius: 6px; text-decoration: none; color: #b91c1c; font-weight: 700; font-size: 12px;">🇹🇼 駐大阪辦事處</a>
+          </div>
+          <div style="font-size: 11.5px; color: #991b1b; margin-top: 8px; background: #fee2e2; padding: 6px 8px; border-radius: 6px;">
+            🗑️ <strong>街頭垃圾禮儀</strong>：日本街頭無公用垃圾桶，邊走邊吃請在原店門口吃完還給店員回收，或自備小塑膠袋回民宿分類丟棄。
+          </div>
+        </div>
       </div>
 
       <div class="tool-section">
@@ -1879,20 +1931,17 @@
 
       <div class="tool-section">
         <div class="tool-title">🔖 重要訂單與預約備忘錄</div>
-        
         <!-- Day 2 -->
         <div class="booking-card">
           <h4>🚌 Day 2 Klook 京都一日遊</h4>
           <p>集合地點：道頓堀蟹道樂中店門口（認橘色 EasyGo 背心）</p>
         </div>
-
         <!-- Day 3 -->
         <div class="booking-card">
           <h4>🚗 Day 3 京都 10 小時包車</h4>
           <p>時間：08:00 民宿門口準時發車 ➔ 18:00 前返回民宿</p>
           <p>司機聯絡方式 / 訂單號：<strong>[已預訂 10 小時方案]</strong></p>
         </div>
-
         <!-- Day 4 -->
         <div class="booking-card">
           <h4>🍢 Day 4 力丸爐端燒 網兵衛</h4>
@@ -1923,7 +1972,7 @@
         <div id="wishListContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
       </div>
 
-      <!-- 🗣️ 日本結帳/溝通必備手指卡（8大情境・已加入 touch-card 觸控反饋） -->
+      <!-- 🗣️ 日本結帳/溝通必備手指卡（8大情境） -->
       <div class="tool-section">
         <div class="tool-title">🗣️ 實用溝通手指卡（點擊放大出示）</div>
         <div style="font-size: 12.5px; color: #64748b; margin-bottom: 12px;">
@@ -2024,7 +2073,7 @@
             </div>
             <div style="position: relative;">
               <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #94a3b8; font-size: 14px;">¥</span>
-              <input type="number" id="calcJpyInput" placeholder="0" oninput="calcExchange('jpy')" style="width: 100%; padding: 8px 10px 8px 24px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 700; color: #0f172a; outline: none; margin-bottom: 0; background: white;">
+              <input type="number" id="calcJpyInput" placeholder="0" oninput="calcExchange('jpy')" style="width: 100%; box-sizing: border-box; padding: 8px 10px 8px 24px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 700; color: #0f172a; outline: none; margin-bottom: 0; background: white;">
             </div>
           </div>
 
@@ -2037,7 +2086,7 @@
             </div>
             <div style="position: relative;">
               <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #94a3b8; font-size: 13px;">NT$</span>
-              <input type="number" id="calcTwdInput" placeholder="0" oninput="calcExchange('twd')" style="width: 100%; padding: 8px 10px 8px 36px; border: 1px solid #a7f3d0; border-radius: 8px; font-size: 15px; font-weight: 700; color: #065f46; outline: none; margin-bottom: 0; background: #f0fdf4;">
+              <input type="number" id="calcTwdInput" placeholder="0" oninput="calcExchange('twd')" style="width: 100%; box-sizing: border-box; padding: 8px 10px 8px 36px; border: 1px solid #a7f3d0; border-radius: 8px; font-size: 15px; font-weight: 700; color: #065f46; outline: none; margin-bottom: 0; background: #f0fdf4;">
             </div>
           </div>
         </div>
@@ -2046,24 +2095,24 @@
       <div class="tool-section split-box">
         <!-- 輸入區第 1 行（加 class 防擠出） -->
         <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 8px;">
-          <select id="splitPayer" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
+          <select id="splitPayer" style="padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
             <option value="柏毅">由「柏毅」先付</option>
             <option value="張庭">由「張庭」先付</option>
             <option value="班長">由「班長」先付</option>
             <option value="書緯">由「書緯」先付</option>
             <option value="柳丁">由「柳丁」先付</option>
           </select>
-          <input type="text" id="splitItem" placeholder="項目（如：門票、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
+          <input type="text" id="splitItem" placeholder="項目（如：門票、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
         </div>
 
         <!-- 輸入區第 2 行（加 class 防擠出） -->
         <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 10px;">
-          <select id="splitCurrency" style="padding: 10px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 0.9;">
+          <select id="splitCurrency" style="padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 0.9;">
             <option value="JPY">日圓 ¥</option>
             <option value="TWD">台幣 NT$</option>
           </select>
-          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
-          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 10px; margin: 0; font-size: 14px;">＋ 新增支出</button>
+          <input type="number" id="splitAmount" placeholder="金額" style="margin-bottom:0; flex: 1.2; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
+          <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 11px; margin: 0; font-size: 14px;">＋ 新增支出</button>
         </div>
 
         <!-- 選擇分攤對象（預設全員） -->
@@ -2081,7 +2130,7 @@
         <!-- 歷史支出流水帳明細 -->
         <div id="expenseList" style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;"></div>
 
-        <!-- 結算結果看板 -->
+        <!-- 結算結果看板（升級特大醒目結算金額） -->
         <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
 
         <!-- 📲 一鍵複製到 LINE 按鈕 -->
@@ -2388,7 +2437,7 @@
     const tripMembers = ["柏毅", "張庭", "班長", "書緯", "柳丁"];
     let tripExpenses = JSON.parse(localStorage.getItem('trip_expenses_list') || '[]');
 
-    // 渲染支出清單與各自精確結算看板
+    // 渲染支出清單與各自精確結算看板（極致數字對比美化）
     function renderExpenses() {
       const listEl = document.getElementById('expenseList');
       const resEl = document.getElementById('splitResult');
@@ -2466,7 +2515,7 @@
 
             if (diff > 0) {
               detail += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #bbf7d0; border-left:4px solid #16a34a; padding:10px 12px; border-radius:10px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #bbf7d0; border-left:4px solid #16a34a; padding:10px 12px; border-radius:12px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
                   <div>
                     <div style="font-size:15px; font-weight:800; color:#14532d; display:flex; align-items:center; gap:4px;">
                       <span>🟢</span> <span>${m}</span>
@@ -2476,14 +2525,15 @@
                     </div>
                   </div>
                   <div style="text-align:right;">
-                    <span style="display:inline-block; background:#dcfce7; color:#15803d; font-size:14px; font-weight:800; padding:5px 10px; border-radius:8px;">
-                      應收回 +${sym}${diff.toLocaleString()}
+                    <span style="display:inline-block; background:#dcfce7; color:#15803d; font-size:18px; font-weight:900; padding:4px 10px; border-radius:8px; letter-spacing:0.3px;">
+                      +${sym}${diff.toLocaleString()}
                     </span>
+                    <div style="font-size:10px; color:#16a34a; font-weight:700; margin-top:2px;">應收回</div>
                   </div>
                 </div>`;
             } else if (diff < 0) {
               detail += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #fecaca; border-left:4px solid #dc2626; padding:10px 12px; border-radius:10px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #fecaca; border-left:4px solid #dc2626; padding:10px 12px; border-radius:12px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
                   <div>
                     <div style="font-size:15px; font-weight:800; color:#7f1d1d; display:flex; align-items:center; gap:4px;">
                       <span>🔴</span> <span>${m}</span>
@@ -2493,14 +2543,15 @@
                     </div>
                   </div>
                   <div style="text-align:right;">
-                    <span style="display:inline-block; background:#fee2e2; color:#b91c1c; font-size:14px; font-weight:800; padding:5px 10px; border-radius:8px;">
-                      應拿出 -${sym}${Math.abs(diff).toLocaleString()}
+                    <span style="display:inline-block; background:#fee2e2; color:#b91c1c; font-size:18px; font-weight:900; padding:4px 10px; border-radius:8px; letter-spacing:0.3px;">
+                      -${sym}${Math.abs(diff).toLocaleString()}
                     </span>
+                    <div style="font-size:10px; color:#dc2626; font-weight:700; margin-top:2px;">應拿出</div>
                   </div>
                 </div>`;
             } else {
               detail += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #94a3b8; padding:10px 12px; border-radius:10px; margin-bottom:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #94a3b8; padding:10px 12px; border-radius:12px; margin-bottom:8px;">
                   <div>
                     <div style="font-size:15px; font-weight:700; color:#334155; display:flex; align-items:center; gap:4px;">
                       <span>⚪</span> <span>${m}</span>
@@ -2509,7 +2560,7 @@
                       已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}
                     </div>
                   </div>
-                  <div style="font-size:13px; font-weight:600; color:#64748b; padding:4px 8px;">
+                  <div style="font-size:13px; font-weight:700; color:#64748b; padding:4px 8px;">
                     剛好結清
                   </div>
                 </div>`;
