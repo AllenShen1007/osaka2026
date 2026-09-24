@@ -1663,6 +1663,37 @@
       }
     }
     updateCountdown();
+    // 🌤️ 自動更新大阪與京都即時氣溫（Open-Meteo 免費氣象 API）
+    async function updateWeatherInfo() {
+      try {
+        const [osakaRes, kyotoRes] = await Promise.all([
+          fetch('https://api.open-meteo.com/v1/forecast?latitude=34.6937&longitude=135.5023&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo'),
+          fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0116&longitude=135.7681&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo')
+        ]);
+
+        const osakaData = await osakaRes.json();
+        const kyotoData = await kyotoRes.json();
+
+        if (osakaData && osakaData.current) {
+          const cur = Math.round(osakaData.current.temperature_2m);
+          const max = Math.round(osakaData.daily.temperature_2m_max[0]);
+          const min = Math.round(osakaData.daily.temperature_2m_min[0]);
+          const el = document.getElementById('osakaWeatherTxt');
+          if (el) el.innerHTML = `即時 ${cur}°C <span style="font-size:11px;font-weight:500;color:#94a3b8;">(${min}°~${max}°)</span>`;
+        }
+
+        if (kyotoData && kyotoData.current) {
+          const cur = Math.round(kyotoData.current.temperature_2m);
+          const max = Math.round(kyotoData.daily.temperature_2m_max[0]);
+          const min = Math.round(kyotoData.daily.temperature_2m_min[0]);
+          const el = document.getElementById('kyotoWeatherTxt');
+          if (el) el.innerHTML = `即時 ${cur}°C <span style="font-size:11px;font-weight:500;color:#94a3b8;">(${min}°~${max}°)</span>`;
+        }
+      } catch (err) {
+        console.warn('氣象資料取得失敗，顯示秋季均溫預設值');
+      }
+    }
+    updateWeatherInfo();
 
     // Tab 切換（支援 Day 1~7、Day 8 工具、Day 9 記帳）
     function switchDay(day) {
