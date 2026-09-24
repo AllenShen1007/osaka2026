@@ -1413,6 +1413,7 @@
     updateCountdown();
 
     // Tab 切換
+    // Tab 切換（支援 Day 1~7、Day 8 工具、Day 9 記帳）
     function switchDay(day) {
       document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === day - 1);
