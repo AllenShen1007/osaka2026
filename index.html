@@ -2374,9 +2374,11 @@
       const now = new Date();
       const diffTime = targetDate - now;
       const banner = document.getElementById("countdownBanner");
+      if (!banner) return;
+
       if (diffTime > 0) {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        banner.innerHTML = `✈️ 距離出發還有 <span style="font-size:14px;color:#fff;">${diffDays}</span> 天！(2026/10/31)`;
+        banner.innerHTML = `✈️ 距離出發還有 <span style="font-size:16px; font-weight:900; color:#dc2626; padding:0 2px;">${diffDays}</span> 天！(2026/10/31)`;
       } else {
         banner.innerHTML = `🇯🇵 關西旅行進行中！享受每一刻`;
       }
