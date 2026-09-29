@@ -1674,8 +1674,8 @@
     <!-- DAY 6 -->
     <div id="day-6" class="day-panel">
       <div class="day-header">
-        <div class="day-title">Day 6：海遊館 ➔ 壽喜燒 ➔ 日本橋動漫 ＆ GiGO</div>
-        <div class="day-subtitle">鯨鯊 ➔ 13:45 壽喜燒 ➔ 公仔模型挖寶</div>
+        <div class="day-title">Day 6：海遊館 ➔ 壽喜燒大牧場 ➔ 日本橋動漫 ＆ GiGO</div>
+        <div class="day-subtitle">鯨鯊 ➔ 13:45 壽喜燒大牧場 ➔ 公仔模型挖寶</div>
       </div>
 
       <div class="timeline-container">
@@ -1760,36 +1760,48 @@
           </div>
         </div>
 
-        <!-- 壽喜燒 -->
+        <!-- 壽喜燒大牧場 -->
         <div class="event-card">
           <div class="img-container">
-            <img id="img_d6_sukiyaki" class="event-img" src="d6_sukiyaki.jpg" onerror="this.src='https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1000&auto=format&fit=crop'" alt="壽喜燒">
+            <img id="img_d6_sukiyaki" class="event-img" src="d6_sukiyaki.jpg" onerror="this.src='https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1000&auto=format&fit=crop'" alt="大牧場壽喜燒">
             <div class="img-scrim"></div>
-            <span class="img-tag-overlay">🍲 和牛壽喜燒午餐</span>
+            <span class="img-tag-overlay">🍲 黑毛和牛壽喜燒盛宴</span>
             <label class="btn-upload-label">
               📷 換照
               <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_sukiyaki')">
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 13:45～15:15 午餐大餐</span>
-            <div class="event-title">道地日式壽喜燒午餐大餐</div>
+            <span class="time-badge alert">⏰ 13:45～15:15 午餐大餐（建議預約）</span>
+            <div class="event-title">すき焼き・しゃぶしゃぶ 大牧場（日本橋店）</div>
             <div class="event-desc">
-              返回難波避開中午尖峰，品嚐熱騰騰黑毛和牛壽喜燒沾蛋液。<br>
-              🎯 <strong>美食亮點</strong>：正宗關西風壽喜燒做法！牛油熱鍋、現煎 A5 和牛撒上白糖與秘製醬汁，沾裹金黃生食級蛋液，入口即化幸福感破表！搭配吸滿醬汁的烤豆腐與蒟蒻絲超滿足。
+              海遊館結束後直達日本橋，享用頂級黑毛和牛壽喜燒／涮涮鍋！油花均勻的和牛沾滿生食級金黃蛋液，入口即化，5 人圍爐大滿足。
             </div>
 
-            <div class="transit-box">
-              <div class="transit-title">🚇 海遊館 ➔ 難波商圈</div>
-              <div class="transit-step">
-                <span class="metro-badge"><span class="metro-circle line-C">C</span> 中央線</span> <strong>大阪港站</strong> ➔ <strong>本町站</strong> 換 <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> ➔ 回到 <strong>難波站</strong>。
+            <!-- 折疊資訊 -->
+            <details class="spot-details">
+              <summary>💡 查看大牧場用餐特色與點餐建議</summary>
+              <div class="spot-details-content">
+                🎯 <strong>餐廳特色</strong>：難波/日本橋超人氣和牛專門店，座位寬敞適合 5 人團體，可同時開壽喜燒與涮涮鍋雙重享受！<br>
+                🔥 <strong>點餐推薦</strong>：特選黑毛和牛壽喜燒套餐（附新鮮蔬菜拼盤、白飯、烏龍麵與甜點），和牛吸飽甜鹹關西風醬汁超下飯！
               </div>
-              <div class="transit-tip">💡 最快出口：難波站出<strong>「11 號或高島屋出口」</strong>，步行 3 分鐘進入千日前/南海通壽喜燒餐廳區。</div>
+            </details>
+
+            <div class="transit-box">
+              <div class="transit-title">🚇 海遊館 ➔ 大牧場（日本橋站出站即達）</div>
+              <div class="transit-step">
+                <span class="metro-badge"><span class="metro-circle line-C">C</span> 中央線</span> <strong>大阪港站</strong> ➔ 搭至 <strong>阿波座站</strong>
+              </div>
+              <div class="transit-step">
+                <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> ➔ 直達 <strong>日本橋站</strong>。
+              </div>
+              <div class="transit-tip">💡 最快出口：日本橋站走<strong>「6 號或 2 號出口」</strong>出站，步行 1 分鐘即達餐廳大樓！吃飽下樓直接走進動漫街。</div>
             </div>
 
             <div class="card-actions">
-              <span class="event-tag">難波商圈</span>
-              <a class="btn-nav" href="https://maps.google.com/?q=Sukiyaki+Namba+Osaka" target="_blank">📍 尋找周邊壽喜燒</a>
+              <span class="event-tag">日本橋站旁</span><span class="event-tag">黑毛和牛放題</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Sukiyaki+shabushabu+daibokujyo" target="_blank">📍 導航大牧場</a>
             </div>
           </div>
         </div>
