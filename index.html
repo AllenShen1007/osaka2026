@@ -23,7 +23,6 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif; }
     
-    /* 升級版 body：支援 iOS 底部安全區域，鎖定水平寬度 */
     body { 
       background-color: var(--bg); 
       color: var(--text); 
@@ -32,7 +31,6 @@
       overflow-x: hidden; 
     }
 
-    /* 摺疊詳情區塊美化 */
     .spot-details {
       margin-top: 10px;
       border: 1px dashed var(--border);
@@ -61,7 +59,6 @@
     .spot-details[open] summary::after { transform: rotate(180deg); }
     .spot-details-content { font-size: 13px; color: #334155; margin-top: 8px; line-height: 1.65; border-top: 1px dashed #cbd5e1; padding-top: 8px; }
 
-    /* 懸浮回到頂部按鈕 (FAB) */
     .fab-top {
       position: fixed;
       bottom: calc(22px + env(safe-area-inset-bottom, 0px));
@@ -86,11 +83,9 @@
     }
     .fab-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    /* 手指卡觸控反饋 */
     .touch-card { transition: transform 0.15s ease, background-color 0.15s ease; }
     .touch-card:active { transform: scale(0.96); background: #f1f5f9 !important; }
 
-    /* Header 封面 */
     header {
       position: relative;
       background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
@@ -125,7 +120,6 @@
     header h1 { font-size: 24px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4px; color: #ffffff !important; }
     header p { font-size: 13px; color: #cbd5e1 !important; font-weight: 500; }
 
-    /* Header 快捷小卡按鈕樣式 */
     .header-quick-btn {
       background: rgba(255, 255, 255, 0.16) !important;
       border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -143,7 +137,6 @@
       background: rgba(255, 255, 255, 0.25) !important;
     }
 
-    /* Tabs 膠囊導覽列 */
     .tabs-wrapper {
       position: sticky;
       top: 0;
@@ -196,7 +189,6 @@
     .tab-btn.accounting-tab.active .tab-name { color: #ffffff !important; }
     .tab-btn.accounting-tab.active .tab-sub { color: #d1fae5 !important; }
 
-    /* Layout & 動態容器 */
     .container { max-width: 680px; margin: 0 auto; padding: 18px 16px; }
     .day-panel { display: none; }
     .day-panel.active { display: block; animation: slideUp 0.3s ease-out; }
@@ -213,7 +205,6 @@
     .day-title { font-size: 19px; font-weight: 800; color: #0f172a; line-height: 1.4; }
     .day-subtitle { font-size: 13px; color: var(--accent); font-weight: 700; margin-top: 6px; }
 
-    /* 時間軸軌跡效果 */
     .timeline-container { position: relative; padding-left: 22px; }
     .timeline-container::before {
       content: "";
@@ -225,7 +216,6 @@
       background: linear-gradient(to bottom, #cbd5e1, #e2e8f0);
     }
 
-    /* Event Card 卡片美化 */
     .event-card {
       position: relative;
       background: var(--card-bg);
@@ -249,7 +239,6 @@
       box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
     }
 
-    /* 照片欄位與漸層遮罩 */
     .img-container {
       position: relative;
       width: 100%;
@@ -278,7 +267,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* 懸浮半透明相機按鈕 */
     .btn-upload-label {
       position: absolute;
       top: 12px;
@@ -301,14 +289,12 @@
     .btn-upload-label:active { transform: scale(0.95); background: rgba(0, 0, 0, 0.85); }
     .file-input { display: none; }
 
-    /* 集合點雙圖排版 */
     .dual-img-container { position: relative; display: flex; gap: 3px; height: 280px; background: #0f172a; overflow: hidden; }
     .dual-img-box { position: relative; height: 100%; overflow: hidden; }
     .dual-img-box img { width: 100%; height: 100%; object-fit: cover; }
     .dual-badge { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
     .dual-badge.orange { background: rgba(217, 119, 6, 0.95); }
 
-    /* 卡片內容排版 */
     .event-body { padding: 18px 20px; }
     .time-badge {
       font-size: 11.5px;
@@ -333,7 +319,6 @@
     .event-desc ul { margin-left: 18px; margin-top: 8px; }
     .event-desc li { margin-bottom: 4px; }
 
-    /* 🚇 官方 Osaka Metro 圓圈與轉乘卡片 */
     .transit-box {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -346,7 +331,6 @@
     .transit-step { font-size: 13px; color: #334155; margin-bottom: 5px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; line-height: 1.5; }
     .transit-tip { font-size: 12px; color: #b45309; margin-top: 5px; font-weight: 600; background: #fffbeb; padding: 4px 8px; border-radius: 6px; border: 1px dashed #fde68a; line-height: 1.6; }
     
-    /* 🚨 避坑防刷錯警示盒 */
     .transit-alert { 
       font-size: 12.5px; 
       color: #b91c1c; 
@@ -382,7 +366,6 @@
       flex-shrink: 0;
     }
 
-    /* 官方精準色標 */
     .line-M { background-color: #E60012; }
     .line-T { background-color: #A61280; }
     .line-Y { background-color: #007AC1; }
@@ -432,7 +415,6 @@
       line-height: 1.5;
     }
 
-    /* Tools 工具箱樣式 */
     .tool-section { background: var(--card-bg); border-radius: 20px; padding: 20px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: var(--shadow-sm); }
     .tool-title { font-size: 16px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; color: #0f172a; }
     .checklist { display: flex; flex-direction: column; gap: 12px; }
@@ -451,7 +433,6 @@
 
     @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 手機螢幕極致優化 */
     @media (max-width: 600px) {
       input[type="text"], input[type="number"], select { font-size: 16px !important; }
       header h1 { font-size: 24px !important; }
@@ -1644,7 +1625,7 @@
                 大阪站 <strong>1/2 號月台</strong> 搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span>（外環・外回り）➔ <strong>直達 鶴橋站</strong>（車程 15 分鐘，免轉車！）。
               </div>
               <div class="transit-alert">
-                ⚠️ <strong>方向指南</strong>：大阪梅田站請認明「外環（外回り・往京橋/鶴橋）」，直接順向往東開回鶴橋！
+                ⚠️️ <strong>方向指南</strong>：大阪梅田站請認明「外環（外回り・往京橋/鶴橋）」，直接順向往東開回鶴橋！
               </div>
               <div class="transit-tip">💡 鶴橋出站：中央口出站順路去 LIFE 超市採買或直接回民宿！</div>
             </div>
@@ -1839,7 +1820,7 @@
               <div class="transit-alert">
                 🚨 <strong>鶴橋站出站防卡關鐵則</strong>：<br>
                 下地鐵後請找<strong>「東改札」</strong>出站。<br>
-                ⚠️️ <strong>千萬不要順著人潮嗶進「JR／近鐵連絡閘門」</strong>（會被當成搭乘 JR 被鎖卡、走不出去）！<br>
+                ⚠ <strong>千萬不要順著人潮嗶進「JR／近鐵連絡閘門」</strong>（會被當成搭乘 JR 被鎖卡、走不出去）！<br>
                 出閘門後請認明 <strong>「出口 5」或「出口 6」</strong> 直通千日前通地面大道，步行 4 分鐘回民宿！
               </div>
             </div>
@@ -2197,7 +2178,7 @@
         </button>
         
         <button id="clearExpenseBtn" onclick="clearAllExpenses()" style="display:none; width: 100%; margin-top: 10px; background: transparent; border: 1px dashed #cbd5e1; color: #94a3b8; padding: 8px; border-radius: 8px; font-size: 13px; cursor: pointer;">
-          🗑️ 清空所有記帳（今日已結清）
+          🗑️️ 清空所有記帳（今日已結清）
         </button>
       </div>
     </div>
@@ -2214,104 +2195,201 @@
     </div>
   </div>
 
-  <!-- 高精度實戰 SVG 地圖（寬 960px 視窗，支援超清晰細節） -->
-      <svg viewBox="0 0 960 420" style="width: 100%; min-width: 900px; height: auto; display: block; background: #070d1e; font-family: -apple-system, sans-serif; border-radius: 8px;">
-        <defs>
-          <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+  <!-- 🗺️ 獨立全螢幕 NAMBA Walk 戰略導航地圖系統 -->
+  <div id="nambaMapModal" style="display: none; position: fixed; inset: 0; background: #090d16; z-index: 999999; flex-direction: column; overflow: hidden; font-family: -apple-system, sans-serif;">
+    
+    <!-- 頂部操作工具列 -->
+    <div style="background: #0f172a; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; flex-shrink: 0;">
+      <div>
+        <div style="font-size: 16px; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+          <span>🗺️</span> NAMBA Walk 全景店家實戰導航
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">
+          西 ➔ 東 橫跨三大番街・點擊下方按鈕可快速定位所在位置
+        </div>
+      </div>
+      <button onclick="closeNambaMapModal()" style="background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 20px; cursor: pointer;">
+        ✕ 關閉
+      </button>
+    </div>
 
-        <!-- 頂部方位與指南 -->
-        <rect x="0" y="0" width="960" height="38" fill="#0f172a" />
-        <text x="30" y="24" fill="#94a3b8" font-size="13" font-weight="800">⬅️ 西側（往 地鐵四橋線 / JR難波 / OCAT巴士總站）</text>
-        <text x="930" y="24" text-anchor="end" fill="#94a3b8" font-size="13" font-weight="800">東側（往 地鐵千日前線・堺筋線 / 日本橋站 / 黑門市場）➡️</text>
+    <!-- 📍 快速定位與導引快捷鈕 -->
+    <div style="background: #131d33; padding: 8px 12px; display: flex; gap: 8px; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #1e293b; flex-shrink: 0; scrollbar-width: none;">
+      <span style="font-size: 11px; color: #fbbf24; font-weight: 800; align-self: center; flex-shrink: 0;">📍 快速定位：</span>
+      <button onclick="locateSpot('spot-entry')" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; flex-shrink: 0;">
+        📍 剛從 Bic Camera 下樓 (B14/B16)
+      </button>
+      <button onclick="locateSpot('spot-cake')" style="background: #d97706; color: white; border: none; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; flex-shrink: 0;">
+        🧀 老爺爺起司蛋糕 (2番街北通)
+      </button>
+      <button onclick="locateSpot('spot-3coins')" style="background: #059669; color: white; border: none; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; flex-shrink: 0;">
+        🛍️ 3COINS 日雜 (2番街南通)
+      </button>
+      <button onclick="locateSpot('spot-kintetsu')" style="background: #004098; color: white; border: none; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; flex-shrink: 0;">
+        🚅 回程近鐵東改札 (回鶴橋)
+      </button>
+      <button onclick="locateSpot('spot-tai')" style="background: #b91c1c; color: white; border: none; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; flex-shrink: 0;">
+        🐟 鳴門鯛燒本舖 (3番街)
+      </button>
+    </div>
 
-        <!-- 地面道路參照 (千日前通地面) -->
-        <rect x="30" y="48" width="900" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-dasharray="4,4" />
-        <text x="45" y="71" fill="#64748b" font-size="11.5" font-weight="700">【地面 1F 大道：千日前通】</text>
-        <text x="360" y="71" fill="#93c5fd" font-size="12" font-weight="800">🏃 戎橋筋商店街（跑跑人方向）</text>
-        <text x="540" y="71" fill="#fde68a" font-size="12" font-weight="800">📷 Bic Camera 難波旗艦店</text>
-        <text x="750" y="71" fill="#fca5a5" font-size="12" font-weight="800">🍜 千日前商店街（天政/大牧場）</text>
-
-        <!-- 地面鑽入地下街的出入口手扶梯 -->
-        <!-- B14 / B16 入口通道 -->
-        <path d="M 570 84 L 570 140" stroke="#ef4444" stroke-width="3" stroke-dasharray="3,3" />
-        <rect x="515" y="98" width="110" height="24" rx="12" fill="#ef4444" filter="url(#neonGlow)" />
-        <text x="570" y="114" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="900">⬇️ B14 / B16 入口</text>
-
-        <!-- B21 / B23 出口 -->
-        <path d="M 760 84 L 760 140" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="3,3" />
-        <rect x="715" y="98" width="90" height="22" rx="11" fill="#b45309" />
-        <text x="760" y="113" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="800">B21 / B23 階梯</text>
-
-        <!-- ================= 地下街三大番街主體 (B1F) ================= -->
-
-        <!-- 1番街 (1st Ave) -->
-        <rect x="30" y="145" width="240" height="190" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
-        <rect x="40" y="155" width="220" height="24" rx="5" fill="#1e293b" />
-        <text x="150" y="172" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="900">1st Avenue（1番街）</text>
-        <text x="150" y="200" text-anchor="middle" fill="#64748b" font-size="11">咖啡輕食・日系服飾街</text>
-        <!-- 1番街車站連接 -->
-        <rect x="45" y="280" width="210" height="42" rx="8" fill="#1e3a8a" stroke="#3b82f6" />
-        <text x="150" y="300" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">🚇 Osaka Metro 難波站</text>
-        <text x="150" y="315" text-anchor="middle" fill="#93c5fd" font-size="10">四橋線 (Y) ｜ 御堂筋線 (M)</text>
-
-        <!-- 2番街 (2nd Ave - 今晚核心區) -->
-        <rect x="290" y="135" width="370" height="210" rx="12" fill="#132347" stroke="#3b82f6" stroke-width="2.5" />
-        <rect x="310" y="123" width="130" height="22" rx="11" fill="#2563eb" filter="url(#neonGlow)" />
-        <text x="375" y="138" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="900">⭐ 今晚核心逛街區</text>
-        <text x="560" y="142" text-anchor="middle" fill="#60a5fa" font-size="15" font-weight="900">2nd Avenue（2番街）</text>
-
-        <!-- 2番街雙通道實體剖面 -->
-        <!-- 北大道 (North Walk) -->
-        <rect x="305" y="160" width="340" height="34" rx="6" fill="#1e3a8a" fill-opacity="0.5" stroke="#3b82f6" />
-        <text x="320" y="182" fill="#93c5fd" font-size="11" font-weight="800">北通 ➔</text>
-        <!-- 老爺爺起司蛋糕定位 -->
-        <rect x="470" y="164" width="165" height="26" rx="6" fill="#d97706" filter="url(#neonGlow)" />
-        <text x="552" y="181" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="900">🧀 老爺爺起司蛋糕 (現烤)</text>
-
-        <!-- 中央穿堂廣場 (鯨魚公園通道) -->
-        <path d="M 450 194 L 450 220" stroke="#60a5fa" stroke-width="16" opacity="0.3" stroke-linecap="round" />
-        <text x="450" y="211" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="700">中央橫向穿堂</text>
-
-        <!-- 南大道 (South Walk) -->
-        <rect x="305" y="220" width="340" height="34" rx="6" fill="#1e3a8a" fill-opacity="0.5" stroke="#3b82f6" />
-        <text x="320" y="242" fill="#93c5fd" font-size="11" font-weight="800">南通 ➔</text>
-        <!-- 3COINS 定位 -->
-        <rect x="480" y="224" width="110" height="26" rx="6" fill="#047857" />
-        <text x="535" y="241" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="800">🛍️ 3COINS (日雜)</text>
-
-        <!-- 關鍵捷徑：近鐵東改札直通口 -->
-        <rect x="305" y="275" width="340" height="52" rx="8" fill="#004098" stroke="#60a5fa" stroke-width="2" />
-        <text x="475" y="297" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="900">🚅 近鐵 大阪難波站【東改札口】進站</text>
-        <text x="475" y="316" text-anchor="middle" fill="#fde047" font-size="11" font-weight="700">（★ 吃飽直接在此嗶卡進站 ➔ 搭 2 站 5 分鐘直達鶴橋！）</text>
-
-        <!-- 3番街 (3rd Ave) -->
-        <rect x="680" y="145" width="250" height="190" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
-        <rect x="690" y="155" width="230" height="24" rx="5" fill="#1e293b" />
-        <text x="805" y="172" text-anchor="middle" fill="#34d399" font-size="13" font-weight="900">3rd Avenue（3番街）</text>
+    <!-- 🗺️ 可滾動/縮放的地圖主畫布區域 -->
+    <div id="mapCanvasContainer" style="flex: 1; overflow: auto; padding: 20px 14px; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center;">
+      
+      <div style="width: 1080px; background: #0f172a; border: 2px solid #334155; border-radius: 18px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); position: relative;">
         
-        <!-- 鳴門鯛燒定位 -->
-        <rect x="710" y="195" width="190" height="28" rx="6" fill="#dc2626" />
-        <text x="805" y="213" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="900">🐟 鳴門鯛燒本舖（天然鯛燒）</text>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 6px;">
+          <span style="font-size: 13px; font-weight: 800; color: #60a5fa;">⬅️ 西側端點：往 地鐵四橋線 / JR難波 / OCAT 巴士總站</span>
+          <span style="font-size: 13px; font-weight: 800; color: #34d399;">東側端點：往 地鐵千日前線・堺筋線 / 日本橋站 ➡️</span>
+        </div>
 
-        <!-- 3番街日本橋地鐵站連接 -->
-        <rect x="695" y="280" width="220" height="42" rx="8" fill="#1e3a8a" stroke="#3b82f6" />
-        <text x="805" y="300" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">🚇 Osaka Metro 日本橋站</text>
-        <text x="805" y="315" text-anchor="middle" fill="#93c5fd" font-size="10">千日前線 (S) ｜ 堺筋線 (K)</text>
+        <!-- 🏢 地面 1F 大道參照層 -->
+        <div style="background: #1e293b; border: 1px dashed #475569; border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; font-weight: 800; color: #94a3b8;">【地面 1F 大馬路：千日前通】</span>
+          <div style="display: flex; gap: 14px;">
+            <span style="font-size: 11.5px; color: #93c5fd; background: rgba(59,130,246,0.2); padding: 3px 8px; border-radius: 6px;">🏃 道頓堀跑跑人 / 戎橋筋（向南走2分）</span>
+            <span style="font-size: 11.5px; color: #fde68a; background: rgba(245,158,11,0.2); padding: 3px 8px; border-radius: 6px;">📷 Bic Camera 難波旗艦大店</span>
+            <span style="font-size: 11.5px; color: #fca5a5; background: rgba(239,68,68,0.2); padding: 3px 8px; border-radius: 6px;">🍜 千日前商店街（天政/大牧場方向）</span>
+          </div>
+        </div>
 
-        <!-- ================= 底部導航逃生指南線 ================= -->
-        <rect x="30" y="355" width="900" height="50" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
-        <text x="50" y="377" fill="#fbbf24" font-size="12.5" font-weight="900">🧭 終極防迷走法總結：</text>
-        <text x="50" y="395" fill="#cbd5e1" font-size="11.5">
-          1. 走下 B14/B16 扶梯即達 2 番街中央 ➔ 2. 買起司蛋糕走「北通」，逛雜貨走「南通」 ➔ 3. 回程認明中央下方的【近鐵東改札】，免走去大地鐵站！
-        </text>
-      </svg>
+        <!-- ⬇️ 地面進入地下街手扶梯入口定位 -->
+        <div style="position: relative; height: 36px; margin-bottom: 8px;">
+          <div id="spot-entry" style="position: absolute; left: 450px; transform: translateX(-50%); background: #ef4444; color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 900; box-shadow: 0 0 16px rgba(239,68,68,0.8); border: 2px solid #ffffff; transition: all 0.3s; z-index: 10;">
+            ⬇️ 入口 B14 / B16 手扶梯（Bic Camera 正對面直接下樓）
+          </div>
+        </div>
+
+        <!-- 🚇 地下街長廊主體（1番街 ➔ 2番街 ➔ 3番街） -->
+        <div style="display: flex; gap: 14px;">
+          
+          <!-- 【1番街 1st Avenue】 -->
+          <div style="flex: 1; background: #131d33; border: 1.5px solid #1e3a8a; border-radius: 14px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 13px; font-weight: 900; color: #60a5fa;">1st Avenue（1番街）</span>
+              <span style="font-size: 10px; color: #94a3b8; background: #1e293b; padding: 2px 6px; border-radius: 4px;">出口 B1~B10</span>
+            </div>
+            
+            <div style="font-size: 10.5px; color: #64748b; margin-bottom: 8px;">通道特色：日系服飾、精品雜貨、連鎖咖啡</div>
+
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px; margin-bottom: 6px;">
+              <div style="font-size: 10px; color: #93c5fd; font-weight: 700; margin-bottom: 4px;">【北通】店家分佈：</div>
+              <div style="font-size: 11px; color: #cbd5e1; line-height: 1.6;">
+                ☕ 星巴克咖啡（Starbucks）<br>
+                👓 JINS 平價快速配鏡旗艦店<br>
+                👗 靴下屋（日本製造型襪）
+              </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px; margin-bottom: 8px;">
+              <div style="font-size: 10px; color: #93c5fd; font-weight: 700; margin-bottom: 4px;">【南通】店家分佈：</div>
+              <div style="font-size: 11px; color: #cbd5e1; line-height: 1.6;">
+                🥐 Saint Marc Cafe（酥脆可頌）<br>
+                💊 Kokumin 國民藥妝店<br>
+                💄 DHC 直營護膚專門店
+              </div>
+            </div>
+
+            <div style="background: #1e293b; border-radius: 6px; padding: 6px; text-align: center; font-size: 11px; color: #94a3b8; font-weight: 700;">
+              🚇 連通：Osaka Metro 四橋線 難波站
+            </div>
+          </div>
+
+          <!-- 【2番街 2nd Avenue】 -->
+          <div style="flex: 1.35; background: #172554; border: 2.5px solid #3b82f6; border-radius: 14px; padding: 14px; position: relative; box-shadow: 0 0 20px rgba(59,130,246,0.2);">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 14px; font-weight: 900; color: #fbbf24; display: flex; align-items: center; gap: 4px;">
+                ⭐ 2nd Avenue（2番街 核心戰區）
+              </span>
+              <span style="font-size: 10px; color: #ffffff; background: #2563eb; padding: 2px 8px; border-radius: 10px; font-weight: 700;">
+                下樓即達・B12~B20
+              </span>
+            </div>
+
+            <div style="font-size: 11px; color: #bfdbfe; margin-bottom: 10px;">通道特色：必買名店齊聚・雙廊道平行結構</div>
+
+            <div style="background: rgba(15,23,42,0.6); border: 1px solid #1e3a8a; border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+              <div style="font-size: 11px; color: #93c5fd; font-weight: 800; margin-bottom: 6px;">【北通】排隊美食與伴手禮：</div>
+              
+              <div id="spot-cake" style="background: #d97706; color: white; border-radius: 8px; padding: 7px 10px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
+                <span style="font-size: 12.5px; font-weight: 900;">🧀 Rikuro 老爺爺現烤起司蛋糕</span>
+                <span style="font-size: 10px; background: rgba(0,0,0,0.25); padding: 2px 6px; border-radius: 4px;">北通中段</span>
+              </div>
+              
+              <div style="font-size: 11px; color: #cbd5e1; line-height: 1.6; padding-left: 2px;">
+                🍮 Morozoff 焦糖烤布丁名店<br>
+                🍛 咖哩工房・KYK 日式炸豬排料理
+              </div>
+            </div>
+
+            <div style="background: rgba(59,130,246,0.15); border: 1px dashed #60a5fa; border-radius: 6px; padding: 4px; text-align: center; font-size: 10.5px; color: #93c5fd; font-weight: 700; margin-bottom: 8px;">
+              ↕️ 中央橫向穿堂（鯨魚公園廣場，可自由往返南北通）
+            </div>
+
+            <div style="background: rgba(15,23,42,0.6); border: 1px solid #1e3a8a; border-radius: 10px; padding: 10px; margin-bottom: 10px;">
+              <div style="font-size: 11px; color: #93c5fd; font-weight: 800; margin-bottom: 6px;">【南通】生活雜貨與扭蛋：</div>
+              
+              <div id="spot-3coins" style="background: #059669; color: white; border-radius: 8px; padding: 7px 10px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
+                <span style="font-size: 12.5px; font-weight: 900;">🛍️ 3COINS（日系精緻平價雜貨）</span>
+                <span style="font-size: 10px; background: rgba(0,0,0,0.25); padding: 2px 6px; border-radius: 4px;">南通中段</span>
+              </div>
+              
+              <div style="font-size: 11px; color: #cbd5e1; line-height: 1.6; padding-left: 2px;">
+                🧸 #C-pla 巨大扭蛋專門店（200台扭蛋機）<br>
+                🍵 宇治園（抹茶甜點與焙茶霜淇淋）
+              </div>
+            </div>
+
+            <div id="spot-kintetsu" style="background: #004098; border: 2px solid #60a5fa; border-radius: 10px; padding: 10px; text-align: center; transition: all 0.3s;">
+              <div style="font-size: 13px; font-weight: 900; color: #ffffff;">
+                🚅 近鐵 大阪難波站【東改札口】直通閘門
+              </div>
+              <div style="font-size: 11px; color: #fde047; margin-top: 3px; font-weight: 700;">
+                ★ 吃飽買齊在此直接嗶卡進站 ➔ 搭 2 站 5 分鐘瞬移直達鶴橋！
+              </div>
+            </div>
+          </div>
+
+          <!-- 【3番街 3rd Avenue】 -->
+          <div style="flex: 1; background: #131d33; border: 1.5px solid #1e3a8a; border-radius: 14px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 13px; font-weight: 900; color: #34d399;">3rd Avenue（3番街）</span>
+              <span style="font-size: 10px; color: #94a3b8; background: #1e293b; padding: 2px 6px; border-radius: 4px;">出口 B21~B32</span>
+            </div>
+
+            <div style="font-size: 10.5px; color: #64748b; margin-bottom: 8px;">通道特色：特色小吃、居酒屋、千日前出口</div>
+
+            <div id="spot-tai" style="background: #b91c1c; color: white; border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
+              <span style="font-size: 12px; font-weight: 900;">🐟 鳴門鯛燒本舖（天然鯛燒）</span>
+              <span style="font-size: 9.5px; background: rgba(0,0,0,0.25); padding: 2px 5px; border-radius: 4px;">近B27出口</span>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px; margin-bottom: 8px;">
+              <div style="font-size: 10px; color: #93c5fd; font-weight: 700; margin-bottom: 4px;">【重點餐飲與店鋪】：</div>
+              <div style="font-size: 11px; color: #cbd5e1; line-height: 1.6;">
+                🍜 杵屋（自家手打手延烏龍麵）<br>
+                🍺 正宗屋（大阪平價下町大眾居酒屋）<br>
+                🍣 魚心握壽司（大份量厚切壽司）
+              </div>
+            </div>
+
+            <div style="background: #1e293b; border-radius: 6px; padding: 6px; text-align: center; font-size: 11px; color: #34d399; font-weight: 700;">
+              🚇 連通：Osaka Metro 日本橋站 (千日前線/堺筋線)
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 14px; background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #cbd5e1; line-height: 1.6;">
+          🎯 <strong>地下街戰略指引：</strong><br>
+          1. <strong>下樓就定格在中央</strong>：從 Bic Camera 旁 <strong>B14/B16 手扶梯</strong>下來，正前方就是最熱鬧的 <strong>2番街</strong>。<br>
+          2. <strong>買蛋糕往北、買雜貨往南</strong>：北通排老爺爺起司蛋糕，南通逛 3COINS，中間走穿堂隨時能切換。<br>
+          3. <strong>回鶴橋絕不迷路捷徑</strong>：買齊後不必往西走去大地鐵站！直接在 <strong>2番街正下方的「近鐵東改札口」</strong>刷 ICOCA 進站，5 分鐘直奔鶴橋民宿！
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- 回到頂部按鈕 -->
   <div id="btnBackTop" class="fab-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
@@ -2332,6 +2410,22 @@
         modal.style.display = 'none';
         document.body.style.overflow = '';
       }
+    }
+
+    // 🗺️ 難波地圖特定店家即時定位與平滑捲動
+    function locateSpot(elementId) {
+      const target = document.getElementById(elementId);
+      const container = document.getElementById('mapCanvasContainer');
+      if (!target || !container) return;
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+
+      target.style.transform = 'scale(1.08)';
+      target.style.boxShadow = '0 0 25px #fbbf24';
+      setTimeout(() => {
+        target.style.transform = 'none';
+        target.style.boxShadow = 'none';
+      }, 1800);
     }
 
     // 🗣️ 大字手指卡展示與關閉
@@ -2420,7 +2514,7 @@
 
       if (diffTime > 0) {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        banner.innerHTML = `✈️️ 距離出發還有 <span style="font-size:16px; font-weight:900; color:#dc2626; padding:0 2px;">${diffDays}</span> 天！(2026/10/31)`;
+        banner.innerHTML = `✈ 距離出發還有 <span style="font-size:16px; font-weight:900; color:#dc2626; padding:0 2px;">${diffDays}</span> 天！(2026/10/31)`;
       } else {
         banner.innerHTML = `🇯🇵 關西旅行進行中！享受每一刻`;
       }
