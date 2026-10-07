@@ -1743,21 +1743,21 @@
             <div style="background: #ffffff; border: 2px solid #2563eb; border-radius: 16px; padding: 14px; margin-top: 14px; box-shadow: 0 4px 14px rgba(37,99,235,0.12);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">🎟️ 官方電子門票 QR Code（5人全員）</span>
-                <span style="font-size: 11px; color: #2563eb; background: #eff6ff; padding: 2px 8px; border-radius: 6px; font-weight: 700;">入場時段 11:15~11:30[cite: 7, 8, 9, 10]</span>
+                <span style="font-size: 11px; color: #2563eb; background: #eff6ff; padding: 2px 8px; border-radius: 6px; font-weight: 700;">入場時段 11:15~11:30</span>
               </div>
 
               <!-- 成員切換按鈕組 -->
               <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none;">
-                <button onclick="switchTicket(0)" id="tbtn-0" style="flex:1; min-width:60px; padding: 7px 6px; background: #2563eb; color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer;">柏毅 (1/5)[cite: 7]</button>
-                <button onclick="switchTicket(1)" id="tbtn-1" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">張庭 (2/5)[cite: 8]</button>
-                <button onclick="switchTicket(2)" id="tbtn-2" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">班長 (3/5)[cite: 9]</button>
-                <button onclick="switchTicket(3)" id="tbtn-3" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">書緯 (4/5)[cite: 10]</button>
+                <button onclick="switchTicket(0)" id="tbtn-0" style="flex:1; min-width:60px; padding: 7px 6px; background: #2563eb; color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer;">柏毅 (1/5)</button>
+                <button onclick="switchTicket(1)" id="tbtn-1" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">張庭 (2/5)</button>
+                <button onclick="switchTicket(2)" id="tbtn-2" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">班長 (3/5)</button>
+                <button onclick="switchTicket(3)" id="tbtn-3" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">書緯 (4/5)</button>
                 <button onclick="switchTicket(4)" id="tbtn-4" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">柳丁 (5/5)</button>
               </div>
 
               <!-- QR Code 核心展示區（支援點擊放大） -->
               <div style="margin-top: 10px; background: #f8fafc; border: 1px dashed #93c5fd; border-radius: 12px; padding: 14px; text-align: center;">
-                <div style="font-size: 12.5px; color: #64748b; font-weight: 600;">持票成員：<span id="ticketMemberName" style="color: #1e293b; font-weight: 800;">柏毅 (1/5)[cite: 7]</span>（大人[cite: 7]）</div>
+                <div style="font-size: 12.5px; color: #64748b; font-weight: 600;">持票成員：<span id="ticketMemberName" style="color: #1e293b; font-weight: 800;">柏毅 (1/5)</span>（大人）</div>
                 
                 <!-- 點擊放大容器 -->
                 <div onclick="openQrModal()" style="background: white; padding: 12px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin: 10px auto; cursor: zoom-in;">
@@ -1765,7 +1765,7 @@
                   <div style="font-size: 10.5px; color: #2563eb; font-weight: 700; margin-top: 4px;">🔍 點擊全螢幕放大</div>
                 </div>
 
-                <div style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-bottom: 6px;" id="ticketSerialNo">00290-2026-1006-8100-5460-0018[cite: 7]</div>
+                <div style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-bottom: 6px;" id="ticketSerialNo">00290-2026-1006-8100-5460-0018</div>
                 <div style="font-size: 11px; color: #059669; font-weight: 700; background: #ecfdf5; display: inline-block; padding: 3px 10px; border-radius: 6px;">
                   📱 原版官方防偽條碼・入館時對準驗票機掃描
                 </div>
