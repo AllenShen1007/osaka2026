@@ -497,6 +497,12 @@
       </div>
     </div>
 
+    <!-- 💡 保持螢幕常亮開關 -->
+    <div onclick="toggleWakeLock()" id="wakeLockBtn" style="margin-top: 10px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 10px; padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+      <span style="font-size: 11.5px; color: #f8fafc; font-weight: 700;">💡 保持螢幕常亮（查路線防鎖定）</span>
+      <span id="wakeLockStatus" style="font-size: 10.5px; color: #94a3b8; font-weight: 800;">OFF</span>
+    </div>
+
     <div style="margin-top: 10px; font-size: 11.5px; color: #cbd5e1; background: rgba(0,0,0,0.22); padding: 7px 10px; border-radius: 8px; line-height: 1.45;">
       🧥 <strong>秋季穿搭</strong>：日夜溫差大、電車暖氣強，建議薄長袖＋衛衣＋可收納輕羽絨防風外套（洋蔥式穿法）。
     </div>
@@ -715,7 +721,7 @@
               <div onclick="openNambaMapModal()" style="cursor: zoom-in; background: #0b1329; border-radius: 12px; padding: 14px 10px; border: 1px solid #1e293b; overflow-x: auto; -webkit-overflow-scrolling: touch;">
                 <svg viewBox="0 0 760 300" style="width: 100%; min-width: 680px; height: auto; display: block; font-family: -apple-system, sans-serif;">
                   <text x="50" y="24" fill="#94a3b8" font-size="12" font-weight="700">⬅️ 西側（往 四橋線 / JR難波 / OCAT）</text>
-                  <text x="690" y="24" text-anchor="end" fill="#94a3b8" font-size="12" font-weight="700">東側（往 堺筋線 / 日本橋站 / 黑門市場）➡️️</text>
+                  <text x="690" y="24" text-anchor="end" fill="#94a3b8" font-size="12" font-weight="700">東側（往 堺筋線 / 日本橋站 / 黑門市場）➡</text>
 
                   <rect x="30" y="38" width="700" height="42" rx="8" fill="#1e293b" stroke="#334155" stroke-dasharray="3,3" />
                   <text x="45" y="63" fill="#64748b" font-size="11" font-weight="700">【地面層 1F】</text>
@@ -1672,42 +1678,50 @@
       </div>
 
       <div class="timeline-container">
-        <!-- 早餐：天政烏龍麵 -->
+        <!-- 早餐：天政烏龍麵 或 一蘭拉麵（自由分流） -->
         <div class="event-card">
           <div class="img-container">
-            <img id="img_d6_udon" class="event-img" src="d6_udon.jpg" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1000&auto=format&fit=crop'" alt="烏龍麵">
+            <img id="img_d6_udon" class="event-img" src="d6_udon.jpg" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1000&auto=format&fit=crop'" alt="晨間早餐">
             <div class="img-scrim"></div>
-            <span class="img-tag-overlay">🍜 難波老舖朝食</span>
+            <span class="img-tag-overlay">🍜 難波朝食自由選</span>
             <label class="btn-upload-label">
               📷 換照
               <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_udon')">
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 09:00～10:00 悠閒晨間朝食</span>
-            <div class="event-title">難波千日前 天政烏龍麵</div>
+            <span class="time-badge">⏰ 08:45～09:40 晨間朝食（自由分流）</span>
+            <div class="event-title">難波朝食｜天政烏龍麵 或 一蘭拉麵（各自爽吃）</div>
             <div class="event-desc">
-              造訪排隊老舖，品嚐滑順道地的大阪肉烏龍與豆皮烏龍麵。時間充裕悠閒享用，10:10 出發前往大阪港海遊館！<br>
-              🎯 <strong>美食特色</strong>：昭和傳承老店，湯頭採用利尻昆布與柴魚每日清晨熬煮，平價美味、麵條滑嫩彈牙。<br>
-              🔥 <strong>必吃招牌</strong>：肉烏龍（肉うどん，鮮甜牛肉與高湯相融）、狐狸豆皮烏龍（きつねうどん）、現炸天婦羅飯糰。
+              早餐在難波商圈彈性分流！想吃滑嫩麵條選千日前老牌<strong>「天政烏龍麵」</strong>；想來碗濃郁豚骨湯頭直接去<strong>「一蘭拉麵道頓堀本館」</strong>（兩店步行僅 3 分鐘）。09:45 準時於難波站集合，提早前往大阪港港灣散策！
             </div>
 
+            <details class="spot-details">
+              <summary>💡 查看兩家名店特色與必點招牌</summary>
+              <div class="spot-details-content">
+                🍜 <strong>千日前 天政烏龍麵</strong>：大阪代表性平價老字號，利尻昆布與柴魚高湯超鮮美。必點「肉烏龍（肉うどん）」、「狐狸豆皮烏龍」。<br>
+                🍜 <strong>一蘭拉麵 道頓堀本館</strong>：晨間免排隊、味集中座位，濃郁豚骨拉麵加秘製辣醬，吃得過癮又暖胃。<br>
+                🤝 <strong>集合地點</strong>：09:45 於地鐵御堂筋線難波站北改札（或難波 Walk B21 出口下方）集合。
+              </div>
+            </details>
+
             <div class="transit-box">
-              <div class="transit-title">🚇 鶴橋民宿 ➔ 難波天政</div>
+              <div class="transit-title">🚇 鶴橋民宿 ➔ 難波早餐</div>
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 3 站至 <strong>難波站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：難波站走難波 Walk <strong>「B21 出口」</strong>鑽上來，步行 2 分鐘直達天政門口！</div>
+              <div class="transit-tip">💡 最快出口：走難波 Walk <strong>「B21 出口」</strong>鑽上來即是千日前通，天政在旁、一蘭往北走 3 分鐘！</div>
             </div>
 
             <div class="card-actions">
-              <span class="event-tag">千日前通</span>
+              <span class="event-tag">千日前 / 道頓堀</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Tenmasa+Udon+Namba" target="_blank">📍 導航天政</a>
+              <a class="btn-nav" href="https://maps.google.com/?q=Ichiran+Dotonbori+Main+Building" target="_blank" style="margin-left: 6px;">📍 導航一蘭</a>
             </div>
           </div>
         </div>
 
-        <!-- 海遊館（含真實可掃描 QR Code 切換卡） -->
+        <!-- 海遊館（官方正版原圖 QR Code ＆ 點擊放大） -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d6_aquarium" class="event-img" src="d6_aquarium.jpg" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1000&auto=format&fit=crop'" alt="海遊館鯨鯊">
@@ -1722,35 +1736,36 @@
             <span class="time-badge alert">⏰ 11:15～13:15（已預約 11:15 場次）</span>
             <div class="event-title">大阪港 海遊館（Kaiyukan）＆ 天保山港灣散策</div>
             <div class="event-desc">
-              世界級水族館巨型鯨鯊、環斑海豹與企鵝。已成功預約 <strong>11:15～11:30</strong> 入場[cite: 7, 8, 9, 10]，現場依序出示下方 5 人 Webket 電子 QR Code 掃碼進館[cite: 7, 8, 9, 10]，參觀約 2 小時後出館直奔壽喜燒午餐！
+              世界級水族館巨型鯨鯊、環斑海豹與企鵝。已成功預約 <strong>11:15～11:30</strong> 入場[cite: 7, 8, 9, 10]，現場依序出示下方 5 人 Webket 電子門票掃碼進館[cite: 7, 8, 9, 10]，參觀約 2 小時後出館直奔壽喜燒午餐！
             </div>
 
-           <!-- 🎫 5 人電子門票快速切換卡（原版官方 QR Code） -->
+            <!-- 🎫 5 人電子門票快速切換卡（原版官方圖檔） -->
             <div style="background: #ffffff; border: 2px solid #2563eb; border-radius: 16px; padding: 14px; margin-top: 14px; box-shadow: 0 4px 14px rgba(37,99,235,0.12);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">🎟️ 官方電子門票 QR Code（5人全員）</span>
-                <span style="font-size: 11px; color: #2563eb; background: #eff6ff; padding: 2px 8px; border-radius: 6px; font-weight: 700;">入場時段 11:15~11:30</span>
+                <span style="font-size: 11px; color: #2563eb; background: #eff6ff; padding: 2px 8px; border-radius: 6px; font-weight: 700;">入場時段 11:15~11:30[cite: 7, 8, 9, 10]</span>
               </div>
 
               <!-- 成員切換按鈕組 -->
               <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none;">
-                <button onclick="switchTicket(0)" id="tbtn-0" style="flex:1; min-width:60px; padding: 7px 6px; background: #2563eb; color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer;">柏毅 (1/5)</button>
-                <button onclick="switchTicket(1)" id="tbtn-1" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">張庭 (2/5)</button>
-                <button onclick="switchTicket(2)" id="tbtn-2" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">班長 (3/5)</button>
-                <button onclick="switchTicket(3)" id="tbtn-3" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">書緯 (4/5)</button>
+                <button onclick="switchTicket(0)" id="tbtn-0" style="flex:1; min-width:60px; padding: 7px 6px; background: #2563eb; color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer;">柏毅 (1/5)[cite: 7]</button>
+                <button onclick="switchTicket(1)" id="tbtn-1" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">張庭 (2/5)[cite: 8]</button>
+                <button onclick="switchTicket(2)" id="tbtn-2" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">班長 (3/5)[cite: 9]</button>
+                <button onclick="switchTicket(3)" id="tbtn-3" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">書緯 (4/5)[cite: 10]</button>
                 <button onclick="switchTicket(4)" id="tbtn-4" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">柳丁 (5/5)</button>
               </div>
 
-              <!-- QR Code 核心展示區 -->
+              <!-- QR Code 核心展示區（支援點擊放大） -->
               <div style="margin-top: 10px; background: #f8fafc; border: 1px dashed #93c5fd; border-radius: 12px; padding: 14px; text-align: center;">
-                <div style="font-size: 12.5px; color: #64748b; font-weight: 600;">持票成員：<span id="ticketMemberName" style="color: #1e293b; font-weight: 800;">柏毅 (1/5)</span>（大人）</div>
+                <div style="font-size: 12.5px; color: #64748b; font-weight: 600;">持票成員：<span id="ticketMemberName" style="color: #1e293b; font-weight: 800;">柏毅 (1/5)[cite: 7]</span>（大人[cite: 7]）</div>
                 
-                <!-- QR Code 圖片容器 -->
-                <div style="background: white; padding: 12px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin: 10px auto;">
+                <!-- 點擊放大容器 -->
+                <div onclick="openQrModal()" style="background: white; padding: 12px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin: 10px auto; cursor: zoom-in;">
                   <img id="ticketQrImg" src="ticket_1.png" alt="門票 QR Code" style="width: 160px; height: 160px; display: block; object-fit: contain;">
+                  <div style="font-size: 10.5px; color: #2563eb; font-weight: 700; margin-top: 4px;">🔍 點擊全螢幕放大</div>
                 </div>
 
-                <div style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-bottom: 6px;" id="ticketSerialNo">00290-2026-1006-8100-5460-0018</div>
+                <div style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-bottom: 6px;" id="ticketSerialNo">00290-2026-1006-8100-5460-0018[cite: 7]</div>
                 <div style="font-size: 11px; color: #059669; font-weight: 700; background: #ecfdf5; display: inline-block; padding: 3px 10px; border-radius: 6px;">
                   📱 原版官方防偽條碼・入館時對準驗票機掃描
                 </div>
@@ -2100,7 +2115,8 @@
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c7"> 隨身小折疊雨傘 / 換洗衣物</label>
         </div>
       </div>
-<div class="tool-section">
+
+      <div class="tool-section">
         <div class="tool-title">🔖 重要訂單與預約備忘錄</div>
         <div class="booking-card">
           <h4>🏠 Day 1 鶴橋民宿 Check-in</h4>
@@ -2122,9 +2138,9 @@
           <p>預約時間：19:00（5 人）</p>
         </div>
         <div class="booking-card">
-          <h4>🦈 Day 6 海遊館門票（Webket 電子票）</h4>
-          <p>入場預約時段：<strong>11/05 11:15～11:30</strong></p>
-          <p>票號總覽：已於 Day 6 卡片生成 5 人專屬掃碼 QR Code</p>
+          <h4>🦈 Day 6 海遊館門票（Webket 電子票[cite: 7]）</h4>
+          <p>入場預約時段：<strong>11/05 11:15～11:30[cite: 7, 8, 9, 10]</strong></p>
+          <p>票號總覽：已於 Day 6 卡片生成 5 人專屬掃碼 QR Code[cite: 7, 8, 9, 10]</p>
         </div>
       </div>
 
@@ -2183,7 +2199,8 @@
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Kore o sagashite imasu</div>
           </div>
 
-          <div class="touch-card" onclick="showBigText('新しい在庫はありますか？', '請問有全新庫存嗎？', 'Atarashii zaiko wa arimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <div class="touch-card" onclick="showBigText('新しい在庫はありますか？', '請問有全新庫存嗎？', 'Atarashii zaiko wa arimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius:
+<div class="touch-card" onclick="showBigText('新しい在庫はありますか？', '請問有全新庫存嗎？', 'Atarashii zaiko wa arimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
             <div style="font-size: 12px; color: #ea580c; font-weight: 800;">📦 全新商品</div>
             <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">新しい在庫はありますか？</div>
             <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Atarashii zaiko wa arimasu ka?</div>
@@ -2291,7 +2308,7 @@
 
   </div>
 
-  <!-- 全螢幕大字彈窗 Modal -->
+  <!-- 全螢幕大字手指卡彈窗 Modal -->
   <div id="bigTextModal" onclick="closeBigText()" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 999; align-items: center; justify-content: center; padding: 20px;">
     <div style="background: #ffffff; width: 100%; max-width: 450px; border-radius: 24px; padding: 32px 24px; text-align: center; box-shadow: var(--shadow-lg);">
       <div id="modalJp" style="font-size: 32px; font-weight: 900; color: #0f172a; line-height: 1.3;"></div>
@@ -2396,11 +2413,9 @@
   <!-- 回到頂部按鈕 -->
   <div id="btnBackTop" class="fab-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
 
-  <!-- 引入輕量級純前端 QRCode 庫（免依賴，離線有快取） -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
+  <!-- 腳本邏輯區 -->
   <script>
-   // 🎫 海遊館 5 人票券原圖對照表
+    // 🎫 海遊館 5 人票券原圖對照表
     const kaiyukanTickets = [
       { name: "柏毅", serial: "00290-2026-1006-8100-5460-0018", imgSrc: "ticket_1.png", page: "1/5" },
       { name: "張庭", serial: "00290-2026-1006-8100-5460-0025", imgSrc: "ticket_2.png", page: "2/5" },
@@ -2409,7 +2424,10 @@
       { name: "柳丁", serial: "00290-2026-1006-8100-5460-0056", imgSrc: "ticket_5.png", page: "5/5" }
     ];
 
+    let currentTicketIdx = 0;
+
     function switchTicket(idx) {
+      currentTicketIdx = idx;
       const ticket = kaiyukanTickets[idx];
       document.getElementById('ticketMemberName').innerText = `${ticket.name} (${ticket.page})`;
       document.getElementById('ticketSerialNo').innerText = ticket.serial;
@@ -2433,6 +2451,55 @@
           }
         }
       });
+    }
+
+    // 🎫 開啟與關閉海遊館 QR Code 全螢幕放大視窗
+    function openQrModal() {
+      const modal = document.getElementById('qrModal');
+      const ticket = kaiyukanTickets[currentTicketIdx];
+      if (modal && ticket) {
+        document.getElementById('modalMemberName').innerText = `${ticket.name} (${ticket.page})`;
+        document.getElementById('modalSerialNo').innerText = ticket.serial;
+        document.getElementById('modalQrImg').src = ticket.imgSrc;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeQrModal() {
+      const modal = document.getElementById('qrModal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    // 💡 螢幕常亮開關邏輯
+    let wakeLock = null;
+    async function toggleWakeLock() {
+      const statusEl = document.getElementById('wakeLockStatus');
+      const btnEl = document.getElementById('wakeLockBtn');
+      if ('wakeLock' in navigator) {
+        if (!wakeLock) {
+          try {
+            wakeLock = await navigator.wakeLock.request('screen');
+            statusEl.innerText = 'ON（常亮中）';
+            statusEl.style.color = '#4ade80';
+            btnEl.style.background = 'rgba(74, 222, 128, 0.2)';
+          } catch (err) {
+            alert('無法啟用螢幕常亮');
+          }
+        } else {
+          wakeLock.release().then(() => {
+            wakeLock = null;
+            statusEl.innerText = 'OFF';
+            statusEl.style.color = '#94a3b8';
+            btnEl.style.background = 'rgba(255, 255, 255, 0.12)';
+          });
+        }
+      } else {
+        alert('您的瀏覽器不支援螢幕常亮功能');
+      }
     }
 
     // 🗺️ 難波地下街全螢幕地圖開關
@@ -2718,7 +2785,7 @@
       }
     }
 
-    // 頁面載入時讀取儲存的狀態與照片，並繪製第一張票券 QR
+    // 頁面載入時讀取儲存的狀態與照片，並執行 Auto-Jump 日期跳轉
     window.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.check-item input').forEach(input => {
         const id = input.getAttribute('data-id');
@@ -2741,6 +2808,27 @@
 
       setTimeout(() => {
         switchTicket(0);
+
+        // 🗓️ 旅程當天自動定位頁籤（Auto-Jump）
+        const tripDateMap = {
+          "2026-10-31": 1,
+          "2026-11-01": 2,
+          "2026-11-02": 3,
+          "2026-11-03": 4,
+          "2026-11-04": 5,
+          "2026-11-05": 6,
+          "2026-11-06": 7
+        };
+
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
+        const currentDate = String(today.getDate()).padStart(2, '0');
+        const todayKey = `${currentYear}-${currentMonth}-${currentDate}`;
+
+        if (tripDateMap[todayKey]) {
+          switchDay(tripDateMap[todayKey]);
+        }
       }, 300);
     });
 
@@ -3090,6 +3178,28 @@
       }
     });
   </script>
+
+  <!-- 🎫 海遊館 QR Code 全螢幕放大檢票視窗 -->
+  <div id="qrModal" onclick="closeQrModal()" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(10px); z-index: 999999; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
+    <div style="position: absolute; top: 20px; right: 24px; color: #ffffff; font-size: 28px; font-weight: 800; cursor: pointer;">✕</div>
+    
+    <div onclick="event.stopPropagation()" style="background: #ffffff; border-radius: 24px; padding: 28px 24px; text-align: center; max-width: 320px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+      <div id="modalMemberName" style="font-size: 17px; font-weight: 800; color: #1e3a8a; margin-bottom: 4px;">柏毅 (1/5)</div>
+      <div style="font-size: 12px; color: #64748b; margin-bottom: 16px;">海遊館電子門票（大人）</div>
+      
+      <!-- 放大版高對比白色襯底 -->
+      <div style="background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 12px; display: inline-block;">
+        <img id="modalQrImg" src="ticket_1.png" alt="放大 QR Code" style="width: 230px; height: 230px; display: block; object-fit: contain;">
+      </div>
+
+      <div id="modalSerialNo" style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-top: 14px;">
+        00290-2026-1006-8100-5460-0018
+      </div>
+      <div style="font-size: 11.5px; color: #059669; font-weight: 700; background: #ecfdf5; display: inline-block; padding: 4px 10px; border-radius: 6px; margin-top: 8px;">
+        📱 請將螢幕調亮，對準閘門掃描
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
