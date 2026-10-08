@@ -1213,11 +1213,14 @@
             </div>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 鶴橋民宿 ➔ 道頓堀一蘭</div>
+              <div class="transit-title">🚇 一蘭道頓堀本館 ➔ 通天閣（日本橋出發最快捷徑）</div>
               <div class="transit-step">
-                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 2 站至 <strong>日本橋站</strong>
+                吃完一蘭 ➔ 順著道頓堀川往東步行僅 3～4 分鐘 ➔ 地鐵 <span class="metro-badge"><span class="metro-circle line-K">K</span> 堺筋線</span> <strong>日本橋站</strong>（由 7 號或 2 號出口進站）。
               </div>
-              <div class="transit-tip">💡 最快出口：日本橋站走<strong>「7 號出口」</strong>，出站沿千日前通轉入道頓堀川旁，步行 4 分鐘抵達一蘭本館！</div>
+              <div class="transit-step">
+                搭乘堺筋線（往天下茶屋方向）➔ <strong>僅 1 站（2 分鐘）直達 惠美須町站</strong>。
+              </div>
+              <div class="transit-tip">💡 最快出口：惠美須町站<strong>「3 號出口」</strong>搭手扶梯上來直面通天閣本通，筆直走 3 分鐘進塔！</div>
             </div>
 
             <div class="card-actions">
@@ -2119,7 +2122,7 @@
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c3"> 日本網卡 / eSIM 設定完成</label>
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c4"> 實體信用卡 ＋ 日幣現金（含8,600円代付現款）</label>
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c5"> 隨身行動電源（須放隨身行李）</label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c6"> 海遊館門票（已預約 11/5 11:15 場次 Webket QR Code[cite: 7, 8, 9, 10]）</label>
+             <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c6"> 海遊館門票（已預約 11/5 11:15 場次 Webket QR Code）</label>
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c7"> 隨身小折疊雨傘 / 換洗衣物</label>
         </div>
       </div>
@@ -2145,10 +2148,10 @@
           <p>地址：大阪市天王寺区堀越町 16-9（天王寺站北口步行 2 分）</p>
           <p>預約時間：19:00（5 人）</p>
         </div>
-        <div class="booking-card">
-          <h4>🦈 Day 6 海遊館門票（Webket 電子票[cite: 7]）</h4>
-          <p>入場預約時段：<strong>11/05 11:15～11:30[cite: 7, 8, 9, 10]</strong></p>
-          <p>票號總覽：已於 Day 6 卡片生成 5 人專屬掃碼 QR Code[cite: 7, 8, 9, 10]</p>
+<div class="booking-card">
+          <h4>🦈 Day 6 海遊館門票（Webket 電子票）</h4>
+          <p>入場預約時段：<strong>11/05 11:15～11:30</strong></p>
+          <p>票號總覽：已於 Day 6 卡片生成 5 人專屬掃碼 QR Code</p>
         </div>
       </div>
 
@@ -2269,7 +2272,15 @@
         </div>
       </div>
 
-      <div class="tool-section split-box">
+<!-- 常用項目快捷標籤 -->
+        <div style="display: flex; gap: 6px; overflow-x: auto; margin-bottom: 8px; scrollbar-width: none;">
+          <span onclick="setQuickItem('🍱 正餐')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">🍱 正餐</span>
+          <span onclick="setQuickItem('🏪 超商/超市')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">🏪 超商</span>
+          <span onclick="setQuickItem('🚇 地鐵/交通')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">🚇 交通</span>
+          <span onclick="setQuickItem('🎟️ 門票')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">🎟️ 門票</span>
+          <span onclick="setQuickItem('☕ 飲料/點心')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">☕ 點心</span>
+        </div>
+
         <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 8px;">
           <select id="splitPayer" style="padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 1.1;">
             <option value="柏毅">由「柏毅」先付</option>
@@ -2280,7 +2291,6 @@
           </select>
           <input type="text" id="splitItem" placeholder="項目（如：門票、晚餐）" style="margin-bottom:0; flex: 1.5; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none;">
         </div>
-
         <div class="split-input-row" style="display: flex; gap: 8px; margin-bottom: 10px;">
           <select id="splitCurrency" style="padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; background: white; outline: none; flex: 0.9;">
             <option value="JPY">日圓 ¥</option>
@@ -2290,17 +2300,25 @@
           <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 11px; margin: 0; font-size: 14px;">＋ 新增支出</button>
         </div>
 
-        <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 8px;">
-          <div style="font-size: 12.5px; font-weight: 700; color: #475569; margin-bottom: 6px;">👥 參與分攤成員（預設全員，非全員請手動點掉）：</div>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柏毅" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柏毅</label>
-            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="張庭" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 張庭</label>
-            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="班長" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 班長</label>
-            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="書緯" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 書緯</label>
-            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柳丁" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柳丁</label>
-          </div>
-        </div>
+<div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 8px;">
+  <!-- 標題列：左邊文字，右邊切換按鈕 -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+    <div style="font-size: 12.5px; font-weight: 700; color: #475569;">👥 參與分攤成員：</div>
+    <div style="display: flex; gap: 6px;">
+      <span onclick="toggleAllBeneficiaries(true)" style="font-size: 11px; color: #2563eb; background: #dbeafe; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-weight: 800;">全員</span>
+      <span onclick="toggleAllBeneficiaries(false)" style="font-size: 11px; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-weight: 800;">清空</span>
+    </div>
+  </div>
 
+  <!-- 下方 5 位成員的核取方塊 -->
+  <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柏毅" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柏毅</label>
+    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="張庭" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 張庭</label>
+    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="班長" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 班長</label>
+    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="書緯" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 書緯</label>
+    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柳丁" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柳丁</label>
+  </div>
+</div>
         <div id="expenseList" style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;"></div>
         <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
 
@@ -2423,6 +2441,21 @@
 
   <!-- 腳本邏輯區 -->
   <script>
+// 快速填入常用項目名稱
+    function setQuickItem(name) {
+      const input = document.getElementById('splitItem');
+      if (input) {
+        input.value = name;
+        document.getElementById('splitAmount').focus();
+      }
+    }
+
+    // 快速切換全員/清空成員勾選
+    function toggleAllBeneficiaries(checkAll) {
+      document.querySelectorAll('input[name="splitBeneficiary"]').forEach(cb => {
+        cb.checked = checkAll;
+      });
+    }
     // 🎫 海遊館 5 人票券原圖對照表
     const kaiyukanTickets = [
       { name: "柏毅", serial: "00290-2026-1006-8100-5460-0018", imgSrc: "ticket_1.png", page: "1/5" },
