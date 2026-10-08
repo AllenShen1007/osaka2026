@@ -83,7 +83,7 @@
     }
     .fab-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    .touch-card { transition: transform 0.15s ease, background-color 0.15s ease; }
+    .touch-card { transition: transform 0.15s ease, background-color 0.15s ease; user-select: none; }
     .touch-card:active { transform: scale(0.96); background: #f1f5f9 !important; }
 
     header {
@@ -131,7 +131,6 @@
       justify-content: space-between;
       transition: all 0.15s ease;
     }
-    .header-quick-btn span, .header-quick-btn div { opacity: 1 !important; }
     .header-quick-btn:active {
       transform: scale(0.97);
       background: rgba(255, 255, 255, 0.25) !important;
@@ -280,8 +279,7 @@
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      align-items: gap;
       border: 1px solid rgba(255, 255, 255, 0.25);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: all 0.2s;
@@ -426,7 +424,6 @@
     .booking-card h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 5px; color: #1e293b; }
     .booking-card p { font-size: 12.5px; color: #64748b; line-height: 1.5; }
 
-    .split-box input, .split-box select { box-sizing: border-box; }
     .split-btn { width: 100%; background: var(--primary-accent); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
     .split-btn:active { transform: scale(0.98); }
     .split-res { margin-top: 14px; padding: 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; font-size: 14px; color: #065f46; font-weight: 700; text-align: left; line-height: 1.6; }
@@ -450,11 +447,9 @@
       .btn-nav { font-size: 13px !important; padding: 7px 14px !important; }
       .alert-box { font-size: 13.5px !important; line-height: 1.55 !important; }
       .check-item { font-size: 14.5px !important; }
-      .check-item input[type="checkbox"] { width: 20px !important; height: 20px !important; }
       .booking-card h4 { font-size: 14.5px !important; }
       .booking-card p { font-size: 13px !important; }
       .tool-title { font-size: 17px !important; }
-
       .split-input-row { flex-direction: column !important; gap: 8px !important; }
       .split-input-row > * { width: 100% !important; }
     }
@@ -497,17 +492,14 @@
       </div>
     </div>
 
-    <!-- 💡 保持螢幕常亮開關 -->
+    <!-- 保持螢幕常亮開關 -->
     <div onclick="toggleWakeLock()" id="wakeLockBtn" style="margin-top: 10px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 10px; padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
       <span style="font-size: 11.5px; color: #f8fafc; font-weight: 700;">💡 保持螢幕常亮（查路線防鎖定）</span>
       <span id="wakeLockStatus" style="font-size: 10.5px; color: #94a3b8; font-weight: 800;">OFF</span>
     </div>
 
     <div style="margin-top: 10px; font-size: 11.5px; color: #cbd5e1; background: rgba(0,0,0,0.22); padding: 7px 10px; border-radius: 8px; line-height: 1.45;">
-      🧥 <strong>秋季穿搭</strong>：日夜溫差大、電車暖氣強，建議薄長袖＋衛衣＋可收納輕羽絨防風外套（洋蔥式穿法）。
-    </div>
-    <div style="margin-top: 8px; font-size: 11px; color: #93c5fd; background: rgba(30, 58, 138, 0.45); border: 1px dashed rgba(147, 197, 253, 0.4); padding: 6px 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-      <span>📱 <strong>加到主畫面</strong>：iOS 點 Safari「分享➔加入主畫面」；Android 點「⋮ ➔新增至主螢幕」即成獨立 App！</span>
+      🧥 <strong>秋季穿搭</strong>：日夜溫差大、電車暖氣強，建議洋蔥式穿法（薄長袖＋可收納保暖外套）。
     </div>
   </header>
 
@@ -528,11 +520,11 @@
 
   <div class="container">
 
-<!-- DAY 1 -->
+    <!-- DAY 1 -->
     <div id="day-1" class="day-panel active">
       <div class="day-header">
-        <div class="day-title">Day 1：抵達關西 ➔ 寶可夢 DX ➔ 迪奧專櫃 ＆ 藥妝 ➔ 夾娃娃 ➔ 難波地下街</div>
-        <div class="day-subtitle">10/31 舊制免稅最後衝刺・大丸心齋橋美妝・千日前 GiGO・難波 Walk</div>
+        <div class="day-title">Day 1：抵達關西 ➔ 寶可夢 DX ➔ 美妝藥妝 ➔ 難波地下街</div>
+        <div class="day-subtitle">10/31 舊制免稅採購・大丸心齋橋・老爺爺起司蛋糕・難波 Walk 晚餐</div>
       </div>
 
       <div class="timeline-container">
@@ -548,22 +540,22 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">⏰ 11:55 降落 ➔ 14:00 鶴橋民宿提早 Check-in！</span>
-            <div class="event-title">關西機場出關 ➔ 鶴橋民宿提早卸行李休整</div>
+            <span class="time-badge alert">⏰ 11:55 降落 ➔ 14:00 鶴橋民宿 Check-in</span>
+            <div class="event-title">關西機場出關 ➔ 鶴橋民宿卸行李</div>
             <div class="event-desc">
-              11:55 班機落地出示 VJW 快速通關。配合民宿同意提早於 14:00 入住，搭乘最速「南海電鐵特急 Rapi:t」直奔難波轉近鐵，約 13:55 抵達鶴橋，剛好 14:00 準時開鎖進門吹冷氣卸行李！
+              11:55 班機落地出示 VJW 快速通關。搭乘「南海電鐵特急 Rapi:t」直達難波轉近鐵，約 13:55 抵達鶴橋，預計 14:00 抵達辦理入住並放置行李。
             </div>
             
             <div class="transit-box">
-              <div class="transit-title">🚇 機場至民宿最速路線（南海特急 Rapi:t ➔ 近鐵）</div>
+              <div class="transit-title">🚇 機場至民宿路線（南海特急 Rapi:t ➔ 近鐵）</div>
               <div class="transit-step">
-                1. 關西空港站搭乘 <strong style="color:#0284c7;">南海特急 Rapi:t</strong> ➔ 直達 <strong>南海難波站</strong>（車程僅 34～38 分鐘，全對號座有大行李架）。
+                1. 關西空港站搭乘 <strong style="color:#0284c7;">南海特急 Rapi:t</strong> ➔ 直達 <strong>南海難波站</strong>（車程 34～38 分鐘，全對號座有大行李架）。
               </div>
               <div class="transit-step">
-                2. 走地下通道至 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 大阪難波站</span> ➔ 搭近鐵奈良線（2 站直達）➔ <strong>鶴橋站</strong>（車程僅 5 分鐘！）。
+                2. 走地下通道至 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 大阪難波站</span> ➔ 搭近鐵奈良線（2 站直達）➔ <strong>鶴橋站</strong>（車程 5 分鐘）。
               </div>
               <div class="transit-tip">
-                🛋️ <strong>極速省時優勢</strong>：比搭 JR 整整快了 35 分鐘！全程專屬行李架、對號座不怕沒位子，13:55 出鶴橋東改札走 4 分鐘，準時 14:00 開門進房休息！
+                🛋️ <strong>路線優勢</strong>：全車對號座附行李架，出鶴橋東改札步行 4 分鐘即達民宿。
               </div>
             </div>
 
@@ -609,7 +601,7 @@
                 <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
                 <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> <strong>難波站</strong> ➔ 搭 1 站至 <strong>心齋橋站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：心齋橋站走<strong>「4號或5號出口」</strong>，地下通道直通大丸本館 B1，免上地面直搭電梯上 9F！</div>
+              <div class="transit-tip">💡 最快出口：心齋橋站走<strong>「4號或5號出口」</strong>地下通道直通大丸本館 B1，搭電梯上 9F。</div>
             </div>
 
             <div class="card-actions">
@@ -631,21 +623,21 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">⏰ 17:45～19:15 舊制退稅衝刺</span>
+            <span class="time-badge alert">⏰ 17:45～19:15 免稅採買</span>
             <div class="event-title">大丸 1F 迪奧專櫃 ＆ 心齋橋重點藥妝</div>
             <div class="event-desc">
-              把握 10/31 舊制免稅直接折抵結帳的最後良機，專櫃與藥妝一次購齊！
+              10/31 舊制免稅折抵採購：
               <ul>
-                <li><strong>Dior 專櫃（大丸 1F）</strong>：採買親友託買的美妝保養品，同棟 9 樓退稅櫃台直接辦理免稅退現金。</li>
-                <li><strong>心齋橋藥妝街</strong>：鎖定大丸對面連鎖店（Sundrug / 大國 / 松本清），店內直接免稅封袋。</li>
+                <li><strong>Dior 專櫃（大丸 1F）</strong>：採買美妝保養品，同棟 9 樓退稅櫃台辦理退稅。</li>
+                <li><strong>心齋橋藥妝街</strong>：鎖定大丸對面連鎖店（Sundrug / 大國 / 松本清），店內直接免稅。</li>
               </ul>
             </div>
 
             <details class="spot-details">
               <summary>💡 查看美妝專櫃與藥妝必買清單</summary>
               <div class="spot-details-content">
-                💄 <strong>專櫃美妝</strong>：Dior 癮誘粉漾潤唇膏（熱門色號 001/004）、逆時能量精華、超完美持久氣墊。<br>
-                💊 <strong>藥妝必搶</strong>：合利他命 EX Plus 270錠、EVE 白盒/藍盒止痛藥、大正百保能感冒微粒、Wakamoto 若元錠、DHC 維他命C/B群、花王蒸氣眼罩。
+                💄 <strong>專櫃美妝</strong>：Dior 癮誘粉漾潤唇膏、逆時能量精華、超完美持久氣墊。<br>
+                💊 <strong>藥妝必搶</strong>：合利他命 EX Plus 270錠、EVE 止痛藥、大正百保能感冒微粒、Wakamoto 若元錠、DHC 維他命C/B群。
               </div>
             </details>
 
@@ -664,7 +656,7 @@
         </div>
 
         <!-- 難波 Walk -->
-<div class="event-card">
+        <div class="event-card">
           <div class="img-container">
             <img id="img_d1_namba" class="event-img" src="d1_namba.jpg" onerror="this.src='https://images.unsplash.com/photo-1590559899731-a382839e5549?w=1000&auto=format&fit=crop'" alt="道頓堀與難波地下街">
             <div class="img-scrim"></div>
@@ -675,36 +667,36 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge night">🌙 19:45～21:30 晚間散策、必買甜點與晚餐</span>
+            <span class="time-badge night">🌙 19:45～21:30 晚間散策、甜點與晚餐</span>
             <div class="event-title">道頓堀跑跑人 ➔ 難波地下街（NAMBA Walk）</div>
             <div class="event-desc">
-              走過戎橋拍固力果跑跑人，沿著戎橋筋商店街直走接進難波地下街！20:00 左右先買<strong>老爺爺起司蛋糕（2番街店，營業至 21:00）</strong>與逛 3COINS，再輕鬆享用晚餐，吃飽後搭近鐵 5 分鐘直達鶴橋回民宿品嚐現烤蛋糕。
+              走過戎橋拍固力果跑跑人，沿著戎橋筋商店街直走接進難波地下街。20:00 左右先買<strong>老爺爺起司蛋糕（2番街店，營業至 21:00）</strong>與逛 3COINS，再享用晚餐，吃飽後搭近鐵 5 分鐘直達鶴橋。
             </div>
 
             <details class="spot-details">
               <summary>💡 查看地下街必吃必逛清單</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：難波地下街橫跨兩大地鐵站，長達數百公尺，匯聚近 200 家日系服飾、生活雜貨、日式居酒屋與甜點。<br>
-                🔥 <strong>必吃必逛推薦</strong>：老爺爺起司蛋糕（NAMBA Walk 2番街門市外帶）、鳴門鯛燒本舖（天然鯛魚燒金時地瓜口味）、3COINS 平價日雜店。
+                🎯 <strong>景點特色</strong>：難波地下街長達數百公尺，匯聚近 200 家日系服飾、生活雜貨、居酒屋與甜點。<br>
+                🔥 <strong>必吃必逛推薦</strong>：老爺爺起司蛋糕（NAMBA Walk 2番街門市外帶）、鳴門鯛燒本舖、3COINS 平價日雜店。
               </div>
             </details>
 
             <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb; border-radius: 12px; padding: 12px; margin-top: 12px; font-size: 13px; line-height: 1.6; color: #1e3a8a;">
-              <strong>🧭 從道頓堀走到 NAMBA Walk 零迷路走法：</strong><br>
-              1. 拍完固力果跑跑人後，順著<strong>「戎橋筋商店街」</strong>筆直往南走約 2～3 分鐘。<br>
-              2. 走出拱廊會看見橫向超大馬路（千日前通），斜對面就是超大棟的 <strong>Bic Camera</strong>。<br>
-              3. 馬路路口正下方就是 <strong>NAMBA Walk「B14 / B16 號入口」</strong>，搭手扶梯直下 B1 即抵達最熱鬧的 2nd Avenue（2番街），買蛋糕最順！
+              <strong>🧭 從道頓堀走到 NAMBA Walk 走法：</strong><br>
+              1. 拍完跑跑人後，順著<strong>「戎橋筋商店街」</strong>往南走約 2～3 分鐘。<br>
+              2. 走出拱廊看見千日前通橫向大馬路，斜對面即為 <strong>Bic Camera</strong>。<br>
+              3. 路口正下方即為 <strong>NAMBA Walk「B14 / B16 號入口」</strong>，搭手扶梯直下 B1 即抵達 2nd Avenue（2番街）。
             </div>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 吃飽回程返抵鶴橋民宿（近鐵線極速返家）</div>
+              <div class="transit-title">🚇 吃飽回程返抵鶴橋民宿（近鐵線）</div>
               <div class="transit-step">
-                直接在地下街沿標示走進 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 大阪難波站</span>（東改札口進站）。
+                直接在地下街走進 <span class="metro-badge"><span class="metro-circle line-KINTETSU">近鐵</span> 大阪難波站</span>（東改札口進站）。
               </div>
               <div class="transit-step">
-                搭乘近鐵奈良線（往奈良/東生駒方向）➔ <strong>僅 2 站直達 鶴橋站</strong>（車程 5 分鐘極快！）。
+                搭乘近鐵奈良線（往奈良方向）➔ <strong>僅 2 站直達 鶴橋站</strong>（車程 5 分鐘）。
               </div>
-              <div class="transit-tip">💡 鶴橋站出站：從近鐵「東改札」出站，出站即是千日前通地面，步行 4 分鐘回到民宿洗澡吃蛋糕休息！</div>
+              <div class="transit-tip">💡 鶴橋站出站：從近鐵「東改札」出站即是千日前通地面，步行 4 分鐘回民宿休息。</div>
             </div>
 
             <div class="card-actions">
@@ -724,7 +716,7 @@
       </div>
 
       <div class="timeline-container">
-<div class="event-card">
+        <div class="event-card">
           <div class="dual-img-container">
             <div class="dual-img-box" style="flex: 1.2;">
               <img id="img_d2_crab" src="kani.jpg" onerror="this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1000&auto=format&fit=crop'" alt="蟹道樂中店門口">
@@ -748,7 +740,7 @@
             <div class="event-title">道頓堀蟹道樂中店前 集合搭專車</div>
             <div class="event-desc">
               <ul>
-                <li><strong>5 人同團確認</strong>：因已向廠商提出 5 人同一車團需求，官方安排於 <strong>前一天（10/31）20:00 前以信件/訊息發布最終集合確切時間</strong>。</li>
+                <li><strong>5 人同團確認</strong>：已向廠商提出同車需求，<strong>前一天（10/31）20:00 前以信件/訊息發布集合確切時間</strong>。</li>
                 <li><strong>門市辨識</strong>：道頓堀「かに道楽 中店」正門大螃蟹招牌下（非本店或東店）。</li>
                 <li><strong>報到方式</strong>：現場認明身穿<strong>亮橘色「EasyGo!」背心</strong>、手持隊旗的工作人員報到。</li>
               </ul>
@@ -759,7 +751,7 @@
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 2 站至 <strong>日本橋站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：日本橋站走<strong>「2 號出口」</strong>上來，沿著道頓堀川往西步行 3 分鐘直達蟹道樂中店！</div>
+              <div class="transit-tip">💡 最快出口：日本橋站走<strong>「2 號出口」</strong>，沿著道頓堀川往西步行 3 分鐘直達蟹道樂中店。</div>
             </div>
 
             <div class="card-actions">
@@ -768,6 +760,7 @@
             </div>
           </div>
         </div>
+
         <div class="event-card">
           <div class="img-container">
             <img id="img_d2_uji" class="event-img" src="d2_uji.jpg" onerror="this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1000&auto=format&fit=crop'" alt="平等院">
@@ -782,14 +775,14 @@
             <span class="time-badge">⏰ 10:00～12:00 上午</span>
             <div class="event-title">宇治｜平等院鳳凰堂 ＆ 抹茶老街</div>
             <div class="event-desc">
-              欣賞十圓日幣國寶鳳凰堂，表參道品嚐中村藤吉／伊藤久右衛門濃抹茶甜點。
+              欣賞十圓日幣國寶鳳凰堂，表參道品嚐中村藤吉／伊藤久右衛門抹茶甜點。
             </div>
 
             <details class="spot-details">
               <summary>💡 查看宇治抹茶名店與必吃推薦</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：日本國寶級古蹟，印在日幣 10 圓硬幣及萬元鈔票上的鳳凰圖騰，阿字池水面倒映著極樂淨土風貌。<br>
-                🔥 <strong>必吃必買推薦</strong>：中村藤吉本店（生茶果凍竹筒冰）、伊藤久右衛門（宇治抹茶芭菲、抹茶大福）、宇治上等煎茶與玄米茶茶包。
+                🎯 <strong>景點特色</strong>：日本國寶級古蹟，印在 10 圓硬幣及萬元鈔票上的鳳凰圖騰。<br>
+                🔥 <strong>推薦品項</strong>：中村藤吉本店（生茶果凍）、伊藤久右衛門（宇治抹茶芭菲、抹茶大福）、宇治煎茶茶包。
               </div>
             </details>
 
@@ -818,14 +811,14 @@
             <span class="time-badge">⏰ 12:30～14:30 中午～下午</span>
             <div class="event-title">伏見稻荷大社｜朱紅千本鳥居</div>
             <div class="event-desc">
-              走訪綿延不絕的朱紅鳥居隧道，參拜狐狸守護神與狐狸繪馬。
+              走訪朱紅鳥居隧道，參拜狐狸守護神與狐狸繪馬。
             </div>
 
             <details class="spot-details">
               <summary>💡 查看千本鳥居看點與特色伴手禮</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：全日本三萬座稻荷神社總本社，以壯觀的「千本鳥居」聞名世界，祈求五穀豐收、商業繁盛。<br>
-                🔥 <strong>必買必做體驗</strong>：掛「白狐造型繪馬」（可自己畫狐狸表情臉）、千本鳥居迷你朱紅鳥居守護御守、稻荷狐狸煎餅（寶玉堂）。
+                🎯 <strong>景點特色</strong>：全日本三萬座稻荷神社總本社，祈求五穀豐收、商業繁盛。<br>
+                🔥 <strong>特色體驗</strong>：白狐造型繪馬、千本鳥居迷你朱紅鳥居守護御守、稻荷狐狸煎餅（寶玉堂）。
               </div>
             </details>
 
@@ -854,14 +847,14 @@
             <span class="time-badge">⏰ 15:30～17:00 下午</span>
             <div class="event-title">勝尾寺（勝運達摩寺）</div>
             <div class="event-desc">
-              滿山遍野寫著「勝」字的超萌開運達摩不倒翁，祈求考運、事業與旅程平安！一日遊專車返抵道頓堀後解散。
+              參訪開運達摩不倒翁寺院，祈求考運、事業與旅程平安。一日遊專車返抵道頓堀後解散。
             </div>
 
             <details class="spot-details">
               <summary>💡 查看勝運達摩祈願玩法</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：源自平安時代專求「勝運」的靈驗名剎，全寺石梯、樹枝間擺滿信徒還願的紅色達摩，極度壯觀好拍。<br>
-                🔥 <strong>必買推薦</strong>：勝尾寺「勝運達摩神籤」（抽完可帶走或塞入石縫求運）、開眼大達摩（許願時畫左眼，願望達成畫右眼）。
+                🎯 <strong>景點特色</strong>：源自平安時代專求「勝運」的名剎，全寺石梯與樹枝間擺滿信徒還願的紅色達摩。<br>
+                🔥 <strong>祈願推薦</strong>：勝尾寺「勝運達摩神籤」、開眼大達摩（許願時畫左眼，實現時畫右眼）。
               </div>
             </details>
 
@@ -877,8 +870,8 @@
     <!-- DAY 3 -->
     <div id="day-3" class="day-panel">
       <div class="day-header">
-        <div class="day-title">Day 3：京都 10 小時專車包車（08:00～18:00 嚴格不超時）</div>
-        <div class="day-subtitle">嵐山竹林 ➔ 清水舞台 ➔ 祇園貓咖 ➔ 寶可夢京都限定店 ➔ 鶴橋超市熟食</div>
+        <div class="day-title">Day 3：京都 10 小時專車包車（08:00～18:00）</div>
+        <div class="day-subtitle">嵐山竹林 ➔ 清水舞台 ➔ 祇園貓咖 ➔ 寶可夢京都店 ➔ 鶴橋超市熟食</div>
       </div>
 
       <div class="timeline-container">
@@ -897,13 +890,13 @@
             <div class="event-title">鶴橋民宿門口上車 ➔ 直奔嵐山</div>
             <div class="event-desc">
               <ul>
-                <li><strong>出發準備</strong>：07:50 全員於鶴橋民宿 1F 大廳集合，司機於門口待命。</li>
+                <li><strong>出發準備</strong>：07:50 全員於民宿 1F 大廳集合，司機於門口待命。</li>
                 <li><strong>行車路線</strong>：走阪神高速往京都嵐山，車程約 70～75 分鐘。</li>
-                <li><strong>下車策略點</strong>：司機導航至<strong>「天龍寺北門」</strong>旁下車，直接進竹林！</li>
+                <li><strong>下車策略點</strong>：司機導航至<strong>「天龍寺北門」</strong>旁下車，直接進入竹林。</li>
               </ul>
             </div>
 
-            <!-- 🚗 待付司機尾款提醒 -->
+            <!-- 待付司機尾款提醒 -->
             <div class="reminder-box" style="margin-top: 12px; padding: 12px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;">
               <div style="font-weight: 800; color: #1d4ed8; font-size: 13.5px; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;">
                 <span>🚗</span> 待付司機尾款：包車一日遊現金尾款
@@ -933,17 +926,17 @@
           </div>
           <div class="event-body">
             <span class="time-badge alert">⏰ 09:15～10:25（限時 70 分鐘）</span>
-            <div class="event-title">嵐山精華散策 ➔ 渡月橋準時上車離開</div>
+            <div class="event-title">嵐山精華散策 ➔ 渡月橋上車出發</div>
             <div class="event-desc">
               09:15 天龍寺北門下車 ➔ 竹林小徑 ➔ 野宮神社 ➔ 渡月橋北側靠川邊小巴臨停處上車。
-              <div class="alert-box">⚠️ 鐵則警報：10:25 必須全員上車關門發車！嵐山往清水寺車程約 45～50 分鐘！</div>
+              <div class="alert-box">⚠️ 準時提醒：10:25 全員上車出發。嵐山至清水寺車程約 45～50 分鐘。</div>
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看嵐山必拍特色與街頭美食</summary>
+              <summary>💡 查看嵐山特色與街頭點心</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：高聳入天的嵯峨野竹林綠色隧道，穿過源氏物語歷史名剎野宮神社，漫步至渡月橋眺望大堰川秀麗山水。<br>
-                🔥 <strong>必買必嚐美食</strong>：野宮神社黑木鳥居御守、古都芋本舖（現烤炙燒四色糰子、軟糯日式醬油糰子）、% Arabica 嵐山景觀咖啡。
+                🎯 <strong>景點特色</strong>：嵯峨野竹林綠色隧道，野宮神社，漫步至渡月橋眺望大堰川景色。<br>
+                🔥 <strong>特色點心</strong>：野宮神社黑木鳥居御守、古都芋本舖（炙燒糰子）、% Arabica 嵐山咖啡。
               </div>
             </details>
 
@@ -968,14 +961,14 @@
             <span class="time-badge">⏰ 11:15～14:00 午餐與參拜</span>
             <div class="event-title">清水舞台 ➔ 音羽之瀧 ➔ 二年坂老街午餐</div>
             <div class="event-desc">
-              11:15 五條坂下車步行上山，司機前往市區四條烏丸待命。參觀國寶舞台後走二年坂老街午餐。
+              11:15 五條坂下車步行上山，司機前往市區四條烏丸待命。參觀清水舞台後走二年坂老街享用午餐。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看清水寺舞台傳奇與京都伴手禮</summary>
+              <summary>💡 查看清水寺舞台與伴手禮</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：世界文化遺產，全棟未用一根釘子的木造「清水舞台」，底下的音羽之瀧三道清泉代表健康、學業、姻緣（選一道喝）。<br>
-                🔥 <strong>必買伴手禮</strong>：本家西尾八ッ橋（生八橋抹茶/肉桂餅皮）、清水寺開運「頭上結草」護身符、二年坂傳統京扇子。
+                🎯 <strong>景點特色</strong>：世界文化遺產，全棟未用一根釘子的木造「清水舞台」，音羽之瀧三道清泉象徵健康、學業、姻緣。<br>
+                🔥 <strong>伴手禮</strong>：本家西尾八ッ橋（生八橋）、清水寺開運護身符、二年坂京扇子。
               </div>
             </details>
 
@@ -1000,8 +993,8 @@
             <span class="time-badge">⏰ 14:00～14:30 祇園徒步</span>
             <div class="event-title">二年坂 ➔ 八坂神社 ➔ 祇園花見小路 ➔ 鴨川</div>
             <div class="event-desc">
-              吃完午餐後沿寧寧之道漫步至八坂神社，穿過朱紅西樓門沿四條通跨過四條大橋賞鴨川。<br>
-              🎯 <strong>景點特色</strong>：京都藝妓文化中心，八坂神社的美御前社擁有「美容水」相傳拍臉會變帥變漂亮，花見小路充滿古色古香的木造町家茶屋。
+              午餐後沿寧寧之道漫步至八坂神社，穿過西樓門沿四條通跨過四條大橋觀賞鴨川。<br>
+              🎯 <strong>景點特色</strong>：八坂神社美御前社擁有美容水，花見小路保存日式町家建築風貌。
             </div>
             <div class="card-actions">
               <span class="event-tag">八坂神社</span><span class="event-tag">鴨川四條大橋</span>
@@ -1024,8 +1017,8 @@
             <span class="time-badge">⏰ 14:40～15:30 擼貓放鬆</span>
             <div class="event-title">新京極商店街｜京都豹貓之森（Cat Cafe）</div>
             <div class="event-desc">
-              位於新京極ヒカリビル 2F，全日本極少見的豹貓專門咖啡廳，喝飲料摸貓補體力！<br>
-              🎯 <strong>亮點體驗</strong>：室內打造成綠意盎然的熱帶雨林，滿屋子活潑親人的純種豹貓（Bengal），點一杯飲料吹冷氣與貓咪互動拍照超療癒。
+              位於新京極ヒカリビル 2F，豹貓主題咖啡廳，在此稍作歇息補給體力。<br>
+              🎯 <strong>體驗亮點</strong>：室內規劃為森林風格，與純種豹貓互動放鬆。
             </div>
             <div class="card-actions">
               <span class="event-tag">新京極 2F</span><span class="event-tag">豹貓互動</span>
@@ -1048,14 +1041,14 @@
             <span class="time-badge alert">⏰ 15:45～16:30（16:30 準時發車回大阪）</span>
             <div class="event-title">SUINA室町 2F｜寶可夢中心京都店（Pokemon Center）</div>
             <div class="event-desc">
-              鎖定藝妓皮卡丘公仔、金色鳳王徽章！採買至 16:25，16:30 準時由 SUINA室町西側室町通上車回大阪！
+              採買限定藝妓皮卡丘與金色鳳王徽章至 16:25，16:30 準時由 SUINA室町西側室町通上車返回大阪。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看京都限定皮卡丘與獨家周邊</summary>
+              <summary>💡 查看京都限定皮卡丘與周邊</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：京都獨一無二的和風主題寶可夢店，門口有洛奇亞與鳳王盤旋造景。<br>
-                🔥 <strong>必買限定神物</strong>：<strong>京都店限定「舞妓/藝妓皮卡丘」</strong>毛絨公仔（手拿櫻花油紙傘超精緻）、和風花紋鳳王徽章、京都限定和紙手帳膠帶。
+                🎯 <strong>景點特色</strong>：京都和風主題寶可夢店，門口設有洛奇亞與鳳王造景。<br>
+                🔥 <strong>限定商品</strong>：京都店限定「舞妓皮卡丘」玩偶、鳳王徽章、和紙手帳膠帶。
               </div>
             </details>
 
@@ -1077,22 +1070,22 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge night">🌙 18:00～20:00 自由覓食／民宿派對</span>
-            <div class="event-title">返抵鶴橋民宿 ➔ LIFE 超市熟食折扣戰／自由晚餐</div>
+            <span class="time-badge night">🌙 18:00～20:00 自由覓食</span>
+            <div class="event-title">返抵鶴橋民宿 ➔ LIFE 超市熟食／自由晚餐</div>
             <div class="event-desc">
-              18:00 包車準時返抵鶴橋！卸下戰利品後各自放鬆自由覓食，或至站前大型 LIFE 超市搶購晚間特價生魚片壽司、炸物串燒與水果，回民宿客廳開箱邊吃邊聊天，省錢又舒適！
+              18:00 包車返抵鶴橋。放置戰利品後各自放鬆自由覓食，或至站前大型 LIFE 超市採買晚間特價握壽司、炸物串燒與水果回民宿享用。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看鶴橋周邊外帶與覓食推薦</summary>
+              <summary>💡 查看鶴橋周邊覓食資訊</summary>
               <div class="spot-details-content">
-                🎯 <strong>LIFE 超市黃金時段</strong>：18:00～19:00 起熟食區陸續貼上 20%～半價折扣標籤，握壽司拼盤與便當CP值破表！<br>
-                🔥 <strong>周邊自由選擇</strong>：鶴橋站周邊有平價拉麵、立食烏龍麵、連鎖定食及韓國街小吃，想吃什麼各自挑選零壓力。
+                🎯 <strong>LIFE 超市特價時段</strong>：18:00～19:00 起熟食區陸續貼上折扣標籤。<br>
+                🔥 <strong>周邊店家</strong>：鶴橋站周邊有拉麵、立食烏龍麵、定食及韓國街小吃。
               </div>
             </details>
 
             <div class="card-actions">
-              <span class="event-tag">10小時包車滿分達標</span><span class="event-tag">晚間特價熟食</span>
+              <span class="event-tag">包車準時返抵</span><span class="event-tag">晚間特價熟食</span>
               <a class="btn-nav" href="https://maps.google.com/?q=LIFE+Supermarket+Tsuruhashi" target="_blank">📍 導航鶴橋 LIFE 超市</a>
             </div>
           </div>
@@ -1103,8 +1096,8 @@
     <!-- DAY 4 -->
     <div id="day-4" class="day-panel">
       <div class="day-header">
-        <div class="day-title">Day 4：通天閣 ➔ 天王寺動物園 ➔ 天王寺公園 ➔ 阿倍野 ➔ 爐端燒</div>
-        <div class="day-subtitle">11/3 文化之日・下町街區 ➔ 綠地散策 ➔ 百萬夕陽夜景連貫線</div>
+        <div class="day-title">Day 4：通天閣 ➔ 天王寺動物園 ➔ 天王寺公園 ➔ 夾娃娃 ➔ 阿倍野 ➔ 爐端燒</div>
+        <div class="day-subtitle">11/3 文化之日・下町散策 ➔ 綠地咖啡 ➔ TAITO 娃娃機 ➔ HARUKAS 夜景</div>
       </div>
 
       <div class="timeline-container">
@@ -1122,19 +1115,19 @@
             <span class="time-badge">⏰ 08:30～09:45 早餐</span>
             <div class="event-title">道頓堀 一蘭拉麵早餐</div>
             <div class="event-desc">
-              晨間時段避開排隊人潮，享用濃郁天然豚骨拉麵。<br>
-              🎯 <strong>美食亮點</strong>：經典個人「味集中座位」、獨家赤紅秘製醬汁、客製化麵條硬度與湯頭濃度，加點半熟溏心蛋與釜醬汁叉燒絕配！
+              晨間避開排隊人潮，享用豚骨拉麵。<br>
+              🎯 <strong>特色亮點</strong>：個人「味集中座位」、獨家赤紅秘製醬汁。
             </div>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 一蘭道頓堀本館 ➔ 通天閣（日本橋出發最快捷徑）</div>
+              <div class="transit-title">🚇 一蘭道頓堀本館 ➔ 通天閣（日本橋出發）</div>
               <div class="transit-step">
-                吃完一蘭 ➔ 順著道頓堀川往東步行僅 3～4 分鐘 ➔ 地鐵 <span class="metro-badge"><span class="metro-circle line-K">K</span> 堺筋線</span> <strong>日本橋站</strong>（由 7 號或 2 號出口進站）。
+                吃完一蘭 ➔ 沿道頓堀川往東步行 3～4 分鐘 ➔ 地鐵 <span class="metro-badge"><span class="metro-circle line-K">K</span> 堺筋線</span> <strong>日本橋站</strong>。
               </div>
               <div class="transit-step">
                 搭乘堺筋線（往天下茶屋方向）➔ <strong>僅 1 站（2 分鐘）直達 惠美須町站</strong>。
               </div>
-              <div class="transit-tip">💡 最快出口：惠美須町站<strong>「3 號出口」</strong>搭手扶梯上來直面通天閣本通，筆直走 3 分鐘進塔！</div>
+              <div class="transit-tip">💡 最快出口：惠美須町站<strong>「3 號出口」</strong>直面通天閣本通，步行 3 分鐘進塔。</div>
             </div>
 
             <div class="card-actions">
@@ -1158,14 +1151,14 @@
             <span class="time-badge">⏰ 10:15～12:15 溜滑梯＆串炸午餐</span>
             <div class="event-title">通天閣溜滑梯 ＆ 新世界本通串炸午餐</div>
             <div class="event-desc">
-              挑戰 TOWER SLIDER 溜滑梯，漫步新世界拱廊拍巨型河豚與比利肯招牌，午餐享用現炸元祖串炸達摩。
+              挑戰 TOWER SLIDER 溜滑梯，漫步新世界拱廊拍巨型河豚與比利肯招牌，午餐品嚐元祖串炸達摩。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看通天閣看點與元祖串炸</summary>
+              <summary>💡 查看通天閣看點與串炸推薦</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：大阪下町懷舊風情，摸頂樓比利肯神像（Billiken）腳底求好運。全新「TOWER SLIDER」從 3 樓繞著塔身溜到 B1，全長 60 公尺僅需 10 秒超刺激！<br>
-                🔥 <strong>必吃美食</strong>：元祖串炸達摩（牛肉串、紅薑、炸起司，沾獨門醬汁）。
+                🎯 <strong>景點特色</strong>：下町懷舊街區，摸比利肯神像腳底求好運。TOWER SLIDER 從 3 樓繞著塔身溜至 B1（全長 60 公尺）。<br>
+                🔥 <strong>午餐推薦</strong>：元祖串炸達摩（牛肉串、紅薑、炸起司）。
               </div>
             </details>
 
@@ -1174,7 +1167,7 @@
               <div class="transit-step">
                 從日本橋站搭 <span class="metro-badge"><span class="metro-circle line-K">K</span> 堺筋線</span>（往天下茶屋方向）➔ 搭 1 站至 <strong>惠美須町站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：惠美須町站<strong>「3 號出口」</strong>上來直面通天閣本通，筆直走 3 分鐘進塔！</div>
+              <div class="transit-tip">💡 最快出口：惠美須町站<strong>「3 號出口」</strong>直行 3 分鐘進塔。</div>
             </div>
 
             <div class="card-actions">
@@ -1195,24 +1188,24 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 12:30～14:15 動物園悠閒散策</span>
+            <span class="time-badge">⏰ 12:30～14:15 動物園散策</span>
             <div class="event-title">天王寺動物園（新世界門進 ➔ 天王寺門出）</div>
             <div class="event-desc">
-              新世界吃完午餐後，走 2 分鐘由「新世界門」進園。穿過非洲大草原區與鳥樂園，由「天王寺門」走出直通公園草皮！
+              新世界午餐後由「新世界門」進園。穿過非洲大草原區與鳥樂園，由「天王寺門」走出直通公園草皮。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看天王寺動物園必看亮點</summary>
+              <summary>💡 查看動物園必看展區</summary>
               <div class="spot-details-content">
-                🎯 <strong>百年歷史名園</strong>：日本歷史第三悠久的動物園，重現棲息地原生環境的生態展區超好逛！<br>
-                🔥 <strong>人氣必看明星</strong>：北極熊（看大熊跳水嬉戲）、非洲大草原區（長頸鹿、斑馬與獅子視線交疊的擬真造景）、超罕見紐西蘭國鳥「奇異鳥（Kiwi）」。
+                🎯 <strong>百年歷史名園</strong>：日本歷史第三悠久的動物園，生態造景豐富。<br>
+                🔥 <strong>人氣亮點</strong>：北極熊跳水、非洲大草原區（長頸鹿、斑馬造景）、紐西蘭國鳥奇異鳥。
               </div>
             </details>
 
             <div class="transit-box">
               <div class="transit-title">🚶 步行動線（新世界 ➔ 動物園）</div>
               <div class="transit-step">
-                新世界商店街往南走到底 ➔ 直達 <strong>天王寺動物園「新世界門（門票約 500 円）」</strong>，免搭車走路 2 分鐘進園！
+                新世界商店街往南到底 ➔ 直達 <strong>天王寺動物園「新世界門」</strong>（門票約 500 円），步行 2 分鐘進園。
               </div>
             </div>
 
@@ -1234,26 +1227,19 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 14:20～15:45 綠地草皮咖啡時光</span>
+            <span class="time-badge">⏰ 14:20～15:30 綠地咖啡時光</span>
             <div class="event-title">天王寺公園「てんしば（Tenshiba）」草皮區</div>
             <div class="event-desc">
-              從動物園天王寺門出來即達！寬廣平整的綠油油大草皮，喝杯咖啡歇歇腳，抬頭即可拍下 HARUKAS 與「OSAKA」立體地標合影。
+              動物園天王寺門出來即達。平整綠油油大草皮，在此喝杯咖啡歇息，抬頭可拍下 HARUKAS 與「OSAKA」立體地標合影。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看公園特色與打卡推薦</summary>
+              <summary>💡 查看公園特色與打卡點</summary>
               <div class="spot-details-content">
-                🎯 <strong>文青生活聚落</strong>：集結戶外咖啡館、義大利窯烤披薩、花園雜貨與巨大草皮，是大阪在地人最放鬆的散步綠洲。<br>
-                📸 <strong>必拍打卡點</strong>：草皮正中央巨大的白色立體「OSAKA」字母裝置藝術，以背後 300 公尺高的阿倍野 HARUKAS 當背景拍照效果絕佳！
+                🎯 <strong>文青聚落</strong>：集結戶外咖啡館、義大利餐廳與草皮休憩區。<br>
+                📸 <strong>打卡地標</strong>：中央白色「OSAKA」字母裝置，以阿倍野 HARUKAS 為背景取景。
               </div>
             </details>
-
-            <div class="transit-box">
-              <div class="transit-title">🚶 步行動線（公園 ➔ HARUKAS）</div>
-              <div class="transit-step">
-                穿過草皮區往天王寺車站方向走 ➔ 走上人行天橋或地下連通道 ➔ <strong>步行 3 分鐘直接走進阿倍野 HARUKAS 2 樓</strong>。
-              </div>
-            </div>
 
             <div class="card-actions">
               <span class="event-tag">OSAKA立體地標</span>
@@ -1262,7 +1248,7 @@
           </div>
         </div>
 
-        <!-- 🕹️ 獨立行程卡片：TAITO STATION 天王寺阿倍野店 -->
+        <!-- 🕹️ 獨立卡片：TAITO STATION 天王寺阿倍野店 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d4_taito" class="event-img" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1000&auto=format&fit=crop" alt="TAITO STATION 天王寺阿倍野店">
@@ -1274,13 +1260,13 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">⏰ 15:30～16:30 順路大顯身手・夾娃娃</span>
+            <span class="time-badge" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">⏰ 15:30～16:30 順路夾娃娃</span>
             <div class="event-title">TAITO STATION 天王寺阿倍野店</div>
             <div class="event-desc">
-              從草皮公園走往 HARUKAS 必經天橋旁（Q's Mall 正對面）！營業至 23:00。
+              從草皮公園走往 HARUKAS 必經天橋旁（Q's Mall 正對面）。營業至 23:00。
               <ul>
-                <li><strong>高評價優勢</strong>：以在地日本學生與家庭客為主，爪力比道頓堀觀光區友善許多，玩偶與零食機台非常好出貨。</li>
-                <li><strong>必備神技</strong>：夾不順或卡爪時，出示 Day 8 工具箱的<strong>「恐れ入ります、景品の位置を直していただけますか？」</strong>手指日語卡，店員通常會親切幫忙調整到好夾角度！</li>
+                <li><strong>店家優勢</strong>：以在地日本學生與家庭客為主，爪力親民，玩偶與零食機台好出貨。</li>
+                <li><strong>店員求助</strong>：夾不順時出示 Day 8 工具箱的<strong>「恐れ入ります、景品の位置を直していただけますか？」</strong>手指日語卡請店員協助調整位置。</li>
               </ul>
             </div>
 
@@ -1291,6 +1277,7 @@
           </div>
         </div>
 
+        <!-- HARUKAS 300 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d4_harukas" class="event-img" src="d4_harukas.jpg" onerror="this.src='https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1000&auto=format&fit=crop'" alt="HARUKAS夜景">
@@ -1302,23 +1289,23 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 16:15～18:30 展望台夕陽與百萬夜景</span>
+            <span class="time-badge">⏰ 16:30～18:30 展望台夕陽與夜景</span>
             <div class="event-title">阿倍野 HARUKAS 300 展望台</div>
             <div class="event-desc">
-              搭高速電梯直達 60 樓 360 度玻璃迴廊，一次飽覽黃昏落日漸變到繁星百萬夜景的壯闊奇景。
+              搭高速電梯直達 60 樓 360 度玻璃迴廊，觀賞黃昏落日與百萬夜景。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看 HARUKAS 景觀特色與吉祥物</summary>
+              <summary>💡 查看 HARUKAS 景觀特色</summary>
               <div class="spot-details-content">
-                🎯 <strong>日本第一摩天大樓</strong>：高達 300 公尺，60 樓擁有全透明無死角空中迴廊，中央 58 樓是露天空中花園廣場，視野遠眺明石海峽大橋與關西機場。<br>
-                🔥 <strong>必買紀念品</strong>：HARUKAS 專屬吉祥物「阿倍野熊（Abenobea）」雲朵絨毛玩偶、晴空造型吊飾。
+                🎯 <strong>日本名樓</strong>：高達 300 公尺，60 樓擁有全透明空中迴廊，58 樓是露天空中花園廣場。<br>
+                🔥 <strong>吉祥物</strong>：「阿倍野熊（Abenobea）」雲朵絨毛玩偶、晴空吊飾。
               </div>
             </details>
 
             <div class="transit-box">
               <div class="transit-title">🚶 步行動線</div>
-              <div class="transit-step">從公園走過來至近鐵百貨 2F 售票處換票 ➔ 搭乘高速星空電梯直達 60 樓！</div>
+              <div class="transit-step">從 TAITO 走過天橋進近鐵百貨 2F 售票處換票 ➔ 搭乘高速電梯直達 60 樓。</div>
             </div>
 
             <div class="card-actions">
@@ -1328,6 +1315,7 @@
           </div>
         </div>
 
+        <!-- 力丸爐端燒 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d4_robata" class="event-img" src="d4_robata.jpg" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1000&auto=format&fit=crop'" alt="爐端燒">
@@ -1342,29 +1330,28 @@
             <span class="time-badge night">🌙 19:00～20:30 預約晚餐</span>
             <div class="event-title">力丸爐端燒 網兵衛（天王寺店）</div>
             <div class="event-desc">
-              體驗長木槳送餐烤物！結束後直搭 JR 環狀線回鶴橋。
+              體驗長木槳送餐烤物。結束後搭 JR 環狀線回鶴橋。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看爐端燒看點與必點烤海鮮</summary>
+              <summary>💡 查看爐端燒特色與推薦料理</summary>
               <div class="spot-details-content">
-                🎯 <strong>餐廳特色</strong>：師傅坐在環形吧台中央炭火前現烤，烤熟後用超長木槳（船槳）直接將熱騰騰的烤盤送到面前，極具日式傳統儀式感！<br>
-                🔥 <strong>必點招牌</strong>：帶殼現烤大帆立貝（蒜香牛油醬汁）、巨大鹽烤海老、烤雞肉串拼盤、生薑燒肉。
+                🎯 <strong>餐廳特色</strong>：師傅坐在吧台中央炭火前現烤，以長木槳（船槳）將熱騰騰的烤盤送至面前。<br>
+                🔥 <strong>招牌推薦</strong>：現烤大帆立貝、鹽烤海老、烤雞肉串拼盤、生薑燒肉。
               </div>
             </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 HARUKAS ➔ 網兵衛 ➔ 回鶴橋民宿</div>
               <div class="transit-step">
-                從 HARUKAS 穿過 JR 天王寺站 ➔ 出 <strong>「北口」</strong> 步行 2 分鐘進堀越町巷弄（力丸爐端燒）。
+                從 HARUKAS 穿過 JR 天王寺站 ➔ 出 <strong>「北口」</strong> 步行 2 分鐘進堀越町巷弄。
               </div>
               <div class="transit-step">
-                回程：天王寺站 <strong>11/12 號月台</strong> 搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span>（內環・内回り）➔ <strong>僅 3 站直達 鶴橋站</strong>。
+                回程：天王寺站 <strong>11/12 號月台</strong> 搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span>（內環）➔ <strong>僅 3 站直達 鶴橋站</strong>。
               </div>
               <div class="transit-alert">
-                ⚠️ <strong>方向指南</strong>：天王寺站請認明「內環（内回り・往鶴橋/京橋）」，不要搭到外環繞大半圈！
+                ⚠️ <strong>方向確認</strong>：認明「內環（内回り・往鶴橋/京橋）」，避免搭到外環繞遠路。
               </div>
-              <div class="transit-tip">💡 鶴橋出站：從 JR 鶴橋站「中央口」出站，沿千日前通直走 4 分鐘回民宿！</div>
             </div>
 
             <div class="card-actions">
@@ -1379,7 +1366,7 @@
     <!-- DAY 5 -->
     <div id="day-5" class="day-panel">
       <div class="day-header">
-        <div class="day-title">Day 5：大阪城 ➔ 天神橋筋 ➔ 梅田旗艦大血拼 ➔ 民宿火鍋</div>
+        <div class="day-title">Day 5：大阪城 ➔ 天神橋筋 ➔ 梅田旗艦採購 ➔ 夾娃娃 ➔ 民宿火鍋</div>
         <div class="day-subtitle">西日本最大 UNIQLO UMEDA ＆ 任天堂旗艦店 ＆ 溫馨圍爐</div>
       </div>
 
@@ -1398,14 +1385,14 @@
             <span class="time-badge">⏰ 09:30～11:30 上午</span>
             <div class="event-title">大阪城公園 ＆ 天守閣</div>
             <div class="event-desc">
-              登頂眺望大阪市景，漫步西之丸庭園感受壯麗石牆。
+              登頂眺望大阪市景，漫步西之丸庭園觀賞石牆造景。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看大阪城歷史特色與限定御守</summary>
+              <summary>💡 查看大阪城歷史特色與御守</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：大阪地標名城，豐臣秀吉與德川家康的戰國名勝。天守閣 8 樓展望台可 360 度俯瞰大阪城全景與護城河。<br>
-                🔥 <strong>必買紀念品</strong>：戰國武將家徽御守（豐臣秀吉五七桐紋）、大阪城限定金色立體城堡磁鐵。
+                🎯 <strong>景點特色</strong>：豐臣秀吉名勝。天守閣 8 樓展望台可 360 度俯瞰大阪城全景。<br>
+                🔥 <strong>紀念品</strong>：戰國武將家徽御守、大阪城限定金色立體城堡磁鐵。
               </div>
             </details>
 
@@ -1414,7 +1401,7 @@
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span> <strong>鶴橋站</strong> ➔ <strong>搭 3 站直達 大阪城公園站</strong>（車程 6 分鐘）。
               </div>
-              <div class="transit-tip">💡 最快出口：大阪城公園站走<strong>「1 號出口（改札口直出）」</strong>，出站即是平坦景觀大道直通天守閣！</div>
+              <div class="transit-tip">💡 最快出口：大阪城公園站走<strong>「1 號出口」</strong>，出站即是景觀大道直通天守閣。</div>
             </div>
 
             <div class="card-actions">
@@ -1436,38 +1423,26 @@
           </div>
           <div class="event-body">
             <span class="time-badge">⏰ 12:00～14:00 精華段散策午餐</span>
-            <div class="event-title">天神橋筋 4 丁目（JR 天滿站）午餐邊走邊吃</div>
+            <div class="event-title">天神橋筋 4 丁目（JR 天滿站）午餐</div>
             <div class="event-desc">
-              搭 JR 環狀線直達「天滿站」，出站正核心就是最熱鬧的 4 丁目！品嚐中村屋炸可樂餅、春駒壽司、鳴門鯛燒等庶民排隊名物。
+              搭 JR 環狀線直達天滿站，出站即為熱鬧的 4 丁目。品嚐中村屋可樂餅、春駒壽司、鳴門鯛燒等庶民美食。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看天神橋筋三大庶民排隊名物</summary>
+              <summary>💡 查看天神橋筋排隊名物</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：全日本最長商店街，其中「天滿站周邊的 4 丁目」美食密度最高、生活氣息最濃郁。<br>
-                🔥 <strong>必吃三大名物</strong>：中村屋可樂餅（外脆內綿鬆軟馬鈴薯肉餡）、春駒壽司（高CP值厚切生魚片手握）、鳴門鯛燒（天然炭火烘烤酥脆外皮）。
+                🎯 <strong>景點特色</strong>：全日本最長商店街，天滿站周邊 4 丁目美食密度最高。<br>
+                🔥 <strong>名物推薦</strong>：中村屋可樂餅、春駒壽司、鳴門鯛燒。
               </div>
             </details>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 大阪城天守閣 ➔ 天神橋筋（省力不走回頭路最順解）</div>
+              <div class="transit-title">🚇 大阪城天守閣 ➔ 天神橋筋</div>
               <div class="transit-step">
-                天守閣參觀完 ➔ 往北走穿過極樂橋與青屋門（步行約 6 分鐘）➔ 地鐵 <span class="metro-badge"><span class="metro-circle line-N">N</span> 長堀鶴見綠地線</span> <strong>大阪商務園區站（OBP）</strong>。
+                天守閣往北穿過極樂橋與青屋門 ➔ 地鐵 <span class="metro-badge"><span class="metro-circle line-N">N</span> 長堀鶴見綠地線</span> <strong>大阪商務園區站（OBP）</strong>。
               </div>
               <div class="transit-step">
-                搭 1 站至 <strong>京橋站</strong> ➔ 站內轉乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span> ➔ <strong>僅 2 站直達 天滿站</strong>（車程僅 3 分鐘！）。
-              </div>
-              <div class="transit-tip">💡 <strong>省力核心</strong>：不用折回十幾分鐘路程的城東公園站！出天滿站改札口往右走 30 秒，直接進天神橋筋 4 丁目精華美食街！</div>
-            </div>
-
-            <div class="transit-box" style="margin-top: 8px;">
-              <div class="transit-title">🚇 吃飽出發 ➔ 梅田商圈（超快轉乘）</div>
-              <div class="transit-step">
-                從商店街穿出至地鐵 <span class="metro-badge"><span class="metro-circle line-K">K</span> 堺筋線</span> <strong>扇町站</strong> ➔ 搭 1 站至 <strong>南森町站</strong>。
-              </div>
-              <div class="transit-step">
-                <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
-                <span class="metro-badge"><span class="metro-circle line-T">T</span> 谷町線</span> ➔ <strong>僅 1 站抵達 東梅田站</strong>（地下直通大丸梅田與 LINKS）！
+                搭 1 站至 <strong>京橋站</strong> ➔ 轉乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span> ➔ <strong>僅 2 站直達 天滿站</strong>（車程 3 分鐘）。
               </div>
             </div>
 
@@ -1490,16 +1465,16 @@
           </div>
           <div class="event-body">
             <span class="time-badge">⏰ 14:30～16:00 旗艦抽獎</span>
-            <div class="event-title">大丸梅田 13F｜一番賞官方旗艦店 ＆ 任天堂旗艦店</div>
+            <div class="event-title">大丸梅田 13F｜一番賞官方店 ＆ 任天堂旗艦店</div>
             <div class="event-desc">
-              一番賞官方店拆獎、Nintendo OSAKA 瑪利歐合影與 JUMP SHOP 特區。
+              一番賞官方店抽獎、Nintendo OSAKA 瑪利歐合影與 JUMP SHOP 特區。
             </div>
 
             <details class="spot-details">
               <summary>💡 查看一番賞官方店與任天堂限定周邊</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：大丸梅田 13 樓是宅宅頂級樂園，一番賞官方直營店陳列完整展示櫃，同層還有直營任天堂、海賊王、JUMP SHOP。<br>
-                🔥 <strong>必買必抽推薦</strong>：當季限定一番賞（A賞/最後賞神物）、Nintendo OSAKA 限定瑪利歐周邊、斯普拉遁射擊遊戲水槍玩具。
+                🎯 <strong>展區特色</strong>：大丸梅田 13 樓匯聚一番賞官方直營店、任天堂、海賊王與 JUMP SHOP。<br>
+                🔥 <strong>推薦商品</strong>：當季限定一番賞、Nintendo OSAKA 限定瑪利歐周邊、斯普拉遁周邊。
               </div>
             </details>
 
@@ -1508,7 +1483,7 @@
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-T">T</span> 谷町線</span> <strong>天神橋筋六丁目站</strong> ➔ 搭 1 站至 <strong>東梅田站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：東梅田站走<strong>「8 號或 9 號出口」</strong>地下連通道往 JR 大阪站方向，直通大丸梅田 B1 入口！</div>
+              <div class="transit-tip">💡 最快出口：東梅田站走<strong>「8 號或 9 號出口」</strong>地下連通道直通大丸梅田 B1 入口。</div>
             </div>
 
             <div class="card-actions">
@@ -1530,10 +1505,9 @@
           </div>
           <div class="event-body">
             <span class="time-badge">⏰ 16:00～17:00 卡牌與周邊</span>
-            <div class="event-title">大丸梅田 13F｜寶可夢中心大阪店（Pokemon Center Osaka）</div>
+            <div class="event-title">大丸梅田 13F｜寶可夢中心大阪店（Pokemon Center）</div>
             <div class="event-desc">
-              齊全的卡牌（PTCG）、巨大絨毛娃娃牆與生活雜貨，同層無縫連逛！<br>
-              🎯 <strong>景點特色</strong>：大丸梅田老牌旗艦門市，擁有超級巨型的整面寶可夢玩偶牆，PTCG 卡牌周邊（卡套、卡盒）種類全大阪最齊全！
+              PTCG 卡牌、巨大絨毛娃娃牆與生活雜貨，同層連逛。
             </div>
             <div class="card-actions">
               <span class="event-tag">大丸梅田 13F</span><span class="event-tag">卡牌與絨毛牆</span>
@@ -1553,17 +1527,10 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 17:15～18:45 旗艦免稅採買</span>
-            <div class="event-title">LINKS UMEDA 1～2F｜UNIQLO UMEDA 西日本最大旗艦店</div>
+            <span class="time-badge">⏰ 17:15～18:15 旗艦免稅採買</span>
+            <div class="event-title">LINKS UMEDA 1～2F｜UNIQLO UMEDA 旗艦店</div>
             <div class="event-desc">
-              西日本最大旗艦門市，聯名款尺碼最齊全，提供客製化 UTme! 與免稅。大丸梅田走 2F 空橋 3 分鐘即達友都八喜「LINKS UMEDA」。<br>
-              🎯 <strong>景點亮點</strong>：高達 1,300 坪的巨型雙層門市，聯名 UT 庫存最深、尺碼最足，現場還能親自操作 iPad 客製化印製專屬 UT 衣服與托特包。
-            </div>
-            <div class="transit-box">
-              <div class="transit-title">🚶 換館動線指引</div>
-              <div class="transit-step">
-                大丸梅田 2F 走<strong>「戶外景觀天橋（JR大阪站連絡通道）」</strong>過馬路，3 分鐘直通 LINKS UMEDA 2 樓！
-              </div>
+              西日本最大旗艦門市，聯名款尺碼齊全，提供客製化 UTme! 與免稅。大丸梅田走 2F 空橋 3 分鐘即達 LINKS UMEDA。
             </div>
             <div class="card-actions">
               <span class="event-tag">LINKS UMEDA 1-2F</span><span class="event-tag">1300坪旗艦店</span>
@@ -1584,13 +1551,13 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">⏰ 17:30～18:30 旗艦遊樂場・夾娃娃</span>
+            <span class="time-badge" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">⏰ 18:15～19:15 旗艦遊樂場・夾娃娃</span>
             <div class="event-title">TAITO STATION 梅田店</div>
             <div class="event-desc">
-              位於阪急東通商店街路口，梅田規模最大且人氣極高的 Game Center 之一，營業至 24:00！
+              位於阪急東通商店街路口，營業至 24:00。
               <ul>
-                <li><strong>機台亮點</strong>：超大型公仔、大玩偶與各類日本零食機台極多，且支援交通卡（ICOCA）直接感應遊玩，不用一直掏百円零錢。</li>
-                <li><strong>補貨頻率高</strong>：店員巡場迅速，若目標景品卡在死角，出示 Day 8 手指卡（恐れ入ります、景品の位置を直していただけますか？）通常會熱心協助調整！</li>
+                <li><strong>機台亮點</strong>：公仔、玩偶與零食機台豐富，支援交通卡（ICOCA）直接感應遊玩。</li>
+                <li><strong>店員求助</strong>：若景品卡在死角，出示 Day 8 手指卡（恐れ入ります、景品の位置を直していただけますか？）請店員協助調整。</li>
               </ul>
             </div>
 
@@ -1601,6 +1568,7 @@
           </div>
         </div>
 
+        <!-- 民宿火鍋盛宴 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d5_hotpot" class="event-img" src="d5_hotpot.jpg" onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=1000&auto=format&fit=crop'" alt="日式火鍋派對">
@@ -1612,31 +1580,23 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge night">🌙 19:30～21:30 溫馨圍爐盛宴</span>
-            <div class="event-title">大型超市火鍋料採買 ➔ 鶴橋民宿溫馨火鍋盛宴</div>
+            <span class="time-badge night">🌙 19:45～21:30 溫馨圍爐盛宴</span>
+            <div class="event-title">超市火鍋料採買 ➔ 鶴橋民宿火鍋晚餐</div>
             <div class="event-desc">
-              LINKS UMEDA B1F 超市或鶴橋站前 LIFE 超市採買黑毛和牛與高湯包，回鶴橋民宿圍爐煮火鍋！
+              LINKS UMEDA B1F 超市或鶴橋站前 LIFE 超市採買黑毛和牛與高湯包，回鶴橋民宿煮火鍋。
             </div>
-
-            <details class="spot-details">
-              <summary>💡 查看超市必掃頂級食材與折扣技巧</summary>
-              <div class="spot-details-content">
-                🔥 <strong>超市必掃食材清單</strong>：黑毛和牛火鍋肉片（晚上 19:00 後常有 20%～半價折扣貼紙）、博多水炊地雞/相撲濃高湯包、甜玉米、大蔥、讃岐烏龍麵條、當季日本新鮮草莓。
-              </div>
-            </details>
 
             <div class="transit-box">
               <div class="transit-title">🚇 梅田 ➔ 回鶴橋民宿</div>
               <div class="transit-step">
-                從 LINKS UMEDA 地下直通 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 大阪站</span> 御堂筋口進站。
+                從 LINKS UMEDA 地下走進 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 大阪站</span> 御堂筋口。
               </div>
               <div class="transit-step">
-                大阪站 <strong>1/2 號月台</strong> 搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span>（外環・外回り）➔ <strong>直達 鶴橋站</strong>（車程 15 分鐘，免轉車！）。
+                大阪站 <strong>1/2 號月台</strong> 搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 環狀線</span>（外環）➔ <strong>直達 鶴橋站</strong>（車程 15 分鐘）。
               </div>
               <div class="transit-alert">
-                ⚠ <strong>方向指南</strong>：大阪梅田站請認明「外環（外回り・往京橋/鶴橋）」，直接順向往東開回鶴橋！
+                ⚠️ <strong>方向確認</strong>：認明「外環（外回り・往京橋/鶴橋）」，直接順向開回鶴橋。
               </div>
-              <div class="transit-tip">💡 鶴橋出站：中央口出站順路去 LIFE 超市採買或直接回民宿！</div>
             </div>
 
             <div class="card-actions">
@@ -1651,12 +1611,12 @@
     <!-- DAY 6 -->
     <div id="day-6" class="day-panel">
       <div class="day-header">
-        <div class="day-title">Day 6：海遊館 ➔ 壽喜燒大牧場 ➔ 日本橋動漫 ＆ GiGO</div>
-        <div class="day-subtitle">鯨鯊 ➔ 13:45 壽喜燒大牧場 ➔ 公仔模型挖寶</div>
+        <div class="day-title">Day 6：海遊館 ➔ 壽喜燒大牧場 ➔ 日本橋動漫街</div>
+        <div class="day-subtitle">鯨鯊 ➔ 13:45 壽喜燒大牧場 ➔ 公仔模型與一番賞挖寶</div>
       </div>
 
       <div class="timeline-container">
-        <!-- 早餐：天政烏龍麵 或 一蘭拉麵（自由分流） -->
+        <!-- 早餐：天政烏龍麵 或 一蘭拉麵 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d6_udon" class="event-img" src="d6_udon.jpg" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1000&auto=format&fit=crop'" alt="晨間早餐">
@@ -1669,17 +1629,17 @@
           </div>
           <div class="event-body">
             <span class="time-badge">⏰ 08:45～09:40 晨間朝食（自由分流）</span>
-            <div class="event-title">難波朝食｜天政烏龍麵 或 一蘭拉麵（各自爽吃）</div>
+            <div class="event-title">難波朝食｜天政烏龍麵 或 一蘭拉麵</div>
             <div class="event-desc">
-              早餐在難波商圈彈性分流！想吃滑嫩麵條選千日前老牌<strong>「天政烏龍麵」</strong>；想來碗濃郁豚骨湯頭直接去<strong>「一蘭拉麵道頓堀本館」</strong>（兩店步行僅 3 分鐘）。09:45 準時於難波站集合，提早前往大阪港港灣散策！
+              早餐在難波商圈彈性分流：可選千日前老牌<strong>「天政烏龍麵」</strong>，或前往<strong>「一蘭拉麵道頓堀本館」</strong>（兩店步行約 3 分鐘）。<strong>09:45</strong> 於難波站集合前往大阪港。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看兩家名店特色與必點招牌</summary>
+              <summary>💡 查看兩家名店特色</summary>
               <div class="spot-details-content">
-                🍜 <strong>千日前 天政烏龍麵</strong>：大阪代表性平價老字號，利尻昆布與柴魚高湯超鮮美。必點「肉烏龍（肉うどん）」、「狐狸豆皮烏龍」。<br>
-                🍜 <strong>一蘭拉麵 道頓堀本館</strong>：晨間免排隊、味集中座位，濃郁豚骨拉麵加秘製辣醬，吃得過癮又暖胃。<br>
-                🤝 <strong>集合地點</strong>：09:45 於地鐵御堂筋線難波站北改札（或難波 Walk B21 出口下方）集合。
+                🍜 <strong>千日前 天政烏龍麵</strong>：大阪平價老店，昆布柴魚高湯。推薦肉烏龍、豆皮烏龍。<br>
+                🍜 <strong>一蘭拉麵 道頓堀本館</strong>：晨間避開人潮，豚骨拉麵加秘製辣醬。<br>
+                🤝 <strong>集合地點</strong>：09:45 於地鐵難波站北改札（難波 Walk B21 出口下方）集合。
               </div>
             </details>
 
@@ -1688,7 +1648,7 @@
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ 搭 3 站至 <strong>難波站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：走難波 Walk <strong>「B21 出口」</strong>鑽上來即是千日前通，天政在旁、一蘭往北走 3 分鐘！</div>
+              <div class="transit-tip">💡 最快出口：走難波 Walk <strong>「B21 出口」</strong>即達千日前通，天政在旁、一蘭往北走 3 分鐘。</div>
             </div>
 
             <div class="card-actions">
@@ -1699,7 +1659,7 @@
           </div>
         </div>
 
-        <!-- 海遊館（官方正版原圖 QR Code ＆ 點擊放大） -->
+        <!-- 海遊館 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d6_aquarium" class="event-img" src="d6_aquarium.jpg" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1000&auto=format&fit=crop'" alt="海遊館鯨鯊">
@@ -1711,13 +1671,13 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">⏰ 11:15～13:15（已預約 11:15 場次）</span>
-            <div class="event-title">大阪港 海遊館（Kaiyukan）＆ 天保山港灣散策</div>
+            <span class="time-badge alert">⏰ 11:15～13:15（已預約 11:15 入場）</span>
+            <div class="event-title">大阪港 海遊館（Kaiyukan）＆ 港灣散策</div>
             <div class="event-desc">
-              世界級水族館巨型鯨鯊、環斑海豹與企鵝。已成功預約 <strong>11:15～11:30</strong> 入場[cite: 7, 8, 9, 10]，現場依序出示下方 5 人 Webket 電子門票掃碼進館[cite: 7, 8, 9, 10]，參觀約 2 小時後出館直奔壽喜燒午餐！
+              已預約 <strong>11:15～11:30</strong> 入場，現場依序出示下方 5 人 Webket 電子門票掃碼進館。參觀約 2 小時後前往千日前壽喜燒。
             </div>
 
-            <!-- 🎫 5 人電子門票快速切換卡（原版官方圖檔） -->
+            <!-- 5 人電子門票快速切換卡 -->
             <div style="background: #ffffff; border: 2px solid #2563eb; border-radius: 16px; padding: 14px; margin-top: 14px; box-shadow: 0 4px 14px rgba(37,99,235,0.12);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span style="font-size: 13.5px; font-weight: 800; color: #1e3a8a;">🎟️ 官方電子門票 QR Code（5人全員）</span>
@@ -1733,11 +1693,10 @@
                 <button onclick="switchTicket(4)" id="tbtn-4" style="flex:1; min-width:60px; padding: 7px 6px; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">柳丁 (5/5)</button>
               </div>
 
-              <!-- QR Code 核心展示區（支援點擊放大） -->
+              <!-- QR Code 展示區 -->
               <div style="margin-top: 10px; background: #f8fafc; border: 1px dashed #93c5fd; border-radius: 12px; padding: 14px; text-align: center;">
-                <div style="font-size: 12.5px; color: #64748b; font-weight: 600;">持票成員：<span id="ticketMemberName" style="color: #1e293b; font-weight: 800;">柏毅 (1/5)</span>（大人）</div>
+                <div style="font-size: 12.5px; color: #64748b; font-weight: 600;">持票成員：<span id="ticketMemberName" style="color: #1e3a8a; font-weight: 800;">柏毅 (1/5)</span>（大人）</div>
                 
-                <!-- 點擊放大容器 -->
                 <div onclick="openQrModal()" style="background: white; padding: 12px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin: 10px auto; cursor: zoom-in;">
                   <img id="ticketQrImg" src="ticket_1.png" alt="門票 QR Code" style="width: 160px; height: 160px; display: block; object-fit: contain;">
                   <div style="font-size: 10.5px; color: #2563eb; font-weight: 700; margin-top: 4px;">🔍 點擊全螢幕放大</div>
@@ -1745,16 +1704,16 @@
 
                 <div style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-bottom: 6px;" id="ticketSerialNo">00290-2026-1006-8100-5460-0018</div>
                 <div style="font-size: 11px; color: #059669; font-weight: 700; background: #ecfdf5; display: inline-block; padding: 3px 10px; border-radius: 6px;">
-                  📱 原版官方防偽條碼・入館時對準驗票機掃描
+                  📱 原版官方條碼・入館時對準驗票機掃描
                 </div>
               </div>
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看海遊館鯨鯊看點與限定抱枕</summary>
+              <summary>💡 查看海遊館特色</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：全球最大規模水族館之一，以重現環太平洋火山帶為概念，順著 8 層螺旋坡道環繞 9 公尺深的中央大水槽，近距離欣賞鯨鯊優游！<br>
-                🔥 <strong>必看必買</strong>：巨型鯨鯊（海吉）、超人氣微笑表情「環斑海豹」、海遊館限定圓滾滾海豹抱枕。
+                🎯 <strong>展區特色</strong>：重現環太平洋火山帶，順著 8 層螺旋坡道環繞中央大水槽欣賞鯨鯊。<br>
+                🔥 <strong>特色明星</strong>：巨型鯨鯊、環斑海豹、海豚。
               </div>
             </details>
 
@@ -1767,11 +1726,11 @@
                 <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
                 <span class="metro-badge"><span class="metro-circle line-C">C</span> 中央線</span> <strong>本町站</strong> ➔ 直達 <strong>大阪港站</strong>
               </div>
-              <div class="transit-tip">💡 最快出口：大阪港站走<strong>「1 號或 2 號出口」</strong>，出站抬頭看大摩天輪筆直走 5 分鐘即抵館！</div>
+              <div class="transit-tip">💡 最快出口：大阪港站走<strong>「1 號或 2 號出口」</strong>，朝天保山摩天輪方向步行 5 分鐘抵達。</div>
             </div>
 
             <div class="card-actions">
-              <span class="event-tag">已預約 11:15 場次[cite: 7, 8, 9, 10]</span><span class="event-tag">大阪港站</span>
+              <span class="event-tag">已預約 11:15 入場</span><span class="event-tag">大阪港站</span>
               <a class="btn-nav" href="https://maps.google.com/?q=Osaka+Aquarium+Kaiyukan" target="_blank">📍 導航海遊館</a>
             </div>
           </div>
@@ -1789,10 +1748,10 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge">⏰ 13:45～15:30 愜意午餐（全天營業免趕場）</span>
+            <span class="time-badge">⏰ 13:45～15:30 預約午餐（全天營業）</span>
             <div class="event-title">すきやき・しゃぶしゃぶ 大牧場（千日前店）</div>
             <div class="event-desc">
-              海遊館結束後搭車至日本橋／難波，直上 ECS第32大樓 5F！全天無午休，5 人圍爐開鍋享用神戶牛壽喜燒與酒水暢飲。
+              海遊館結束後前往千日前，搭乘電梯至 ECS 第 32 大樓 5 樓。全天營業無中休，5 人入座享用神戶牛壽喜燒與飲料暢飲。
             </div>
 
             <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 14px 16px; margin: 12px 0; color: #fff; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
@@ -1805,16 +1764,15 @@
                 注文は全員『神戸牛コース』のすき焼き食べ放題と、アルコール飲み放題でお願いします。」
               </div>
               <div style="font-size: 12px; color: #94a3b8; margin-top: 8px; padding-left: 2px; line-height: 1.4;">
-                💬 中文：不好意思，我們共 5 位，希望大家都能坐同一桌（圓桌）。全員都要點「神戶牛壽喜燒吃到飽」並加購「酒水飲料暢飲」。
+                💬 中文：不好意思，我們共 5 位，希望坐同一桌。全員點「神戶牛壽喜燒吃到飽」並加購「酒水飲料暢飲」。
               </div>
             </div>
 
             <details class="spot-details">
               <summary>💡 查看用餐細節與座位指引</summary>
               <div class="spot-details-content">
-                🎯 <strong>大桌說明</strong>：5 人可坐靠窗大圓桌共享一鍋（也可詢問是否能開長桌雙爐一邊壽喜燒、一邊涮涮鍋）。<br>
-                🔥 <strong>神戶牛特色</strong>：神戶和牛雪花細緻、香氣極濃，沾滿生食級生蛋液入口即化；搭配冰涼生啤、沙瓦與烏龍麵，爽度破表！<br>
-                📍 <strong>分店資訊</strong>：ECS第32ビル 5F（千日前店），營業至 23:00 全程不午休。
+                🎯 <strong>座位安排</strong>：5 人可安排靠窗大圓桌共享一鍋（亦可詢問是否能開長桌雙爐一邊壽喜燒、一邊涮涮鍋）。<br>
+                📍 <strong>分店資訊</strong>：ECS 第 32 大樓 5 樓（千日前店），全天營業不設午休。
               </div>
             </details>
 
@@ -1825,19 +1783,19 @@
               </div>
               <div class="transit-step">
                 <span style="color:#94a3b8; font-weight:700;">↳ 站內換線</span>
-                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> ➔ <strong>搭 3 站至 日本橋站 或 難波站</strong>。
+                <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> ➔ 搭 3 站至 <strong>日本橋站</strong> 或 <strong>難波站</strong>
               </div>
-              <div class="transit-tip">💡 快速抵達：出站往難波 Walk B14 出口或戎橋筋商店街，步行 2 分鐘進 ECS第32大樓 搭電梯上 5F！</div>
+              <div class="transit-tip">💡 步行動線：出站往難波 Walk B14 出口或戎橋筋商店街，步行 2 分鐘進 ECS 第 32 大樓搭電梯上 5 樓。</div>
             </div>
 
             <div class="card-actions">
-              <span class="event-tag">ECS第32ビル 5F</span><span class="event-tag">神戶牛放題</span>
+              <span class="event-tag">ECS第32大樓 5F</span><span class="event-tag">神戶牛放題</span>
               <a class="btn-nav" href="https://maps.google.com/?q=大阪市中央区難波3-4-16" target="_blank">📍 導航大牧場</a>
             </div>
           </div>
         </div>
 
-       <!-- 🕹️ 獨立行程卡片：Namco 大阪日本橋店 ＆ 一番賞街區 -->
+        <!-- Namco 大阪日本橋店 ＆ 一番賞街區 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d6_namco" class="event-img" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1000&auto=format&fit=crop" alt="Namco 日本橋店">
@@ -1849,13 +1807,13 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">⏰ 15:30～17:30 夾娃娃／一番賞聖地巡禮</span>
+            <span class="time-badge" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">⏰ 15:30～17:30 夾娃娃／一番賞巡禮</span>
             <div class="event-title">Namco 大阪日本橋店 ＆ 動漫街散策</div>
             <div class="event-desc">
-              萬代直營的大型據點，整條御宅大道（オタロード）都是動漫、模型、一番賞店！
+              萬代直營大型旗艦店，沿御宅大道（オタロード）聚集眾多動漫、模型與一番賞店家。
               <ul>
-                <li><strong>萬代景品最前線</strong>：七龍珠、航海王、火影、鬼滅等熱門官方景品與限定一番賞最齊全。</li>
-                <li><strong>保底掃貨技巧</strong>：如果機台夾不到心儀角色，周邊的二手模型名店（駿河屋、Lashinbang 羅針盤）玻璃展示櫃皆有標價販售，可直接免抽單買目標 A 賞或最後賞！</li>
+                <li><strong>萬代官方景品</strong>：七龍珠、航海王、火影、鬼滅等熱門官方景品與限定一番賞齊全。</li>
+                <li><strong>單買攻略</strong>：周邊二手模型店（駿河屋、Lashinbang 羅針盤）展示櫃皆有標價，可直接購買特定 A 賞或最後賞。</li>
               </ul>
             </div>
 
@@ -1866,51 +1824,51 @@
           </div>
         </div>
 
-        <!-- 日本橋動漫街 & 宵夜打包 -->
+        <!-- 日本橋動漫街 & 晚間返宿打包 -->
         <div class="event-card">
           <div class="img-container">
             <img id="img_d6_gigo" class="event-img" src="d6_gigo.jpg" onerror="this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&auto=format&fit=crop'" alt="公仔街與宵夜">
             <div class="img-scrim"></div>
-            <span class="img-tag-overlay">🕹️ 動漫挖寶 ＆ 輕食宵夜</span>
+            <span class="img-tag-overlay">🕹️ 動漫挖寶 ＆ 自由輕食</span>
             <label class="btn-upload-label">
               📷 換照
               <input type="file" class="file-input" accept="image/*" onchange="uploadCardPhoto(this, 'img_d6_gigo')">
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge night">🌙 15:30～20:00 動漫挖寶 ➔ 自由輕食宵夜 ➔ 最後大打包</span>
-            <div class="event-title">難波 GiGO ＆ 日本橋公仔挖寶 ➔ 自由輕食／返宿打包</div>
+            <span class="time-badge night">🌙 17:30～20:30 動漫挖寶 ➔ 自由輕食 ➔ 返宿打包</span>
+            <div class="event-title">日本橋動漫街巡禮 ➔ 彈性輕食／返宿整理行李</div>
             <div class="event-desc">
-              午後神戶牛壽喜燒飽足感極高，晚間<strong>不設固定正餐</strong>！日本橋 Ota Road 逛駿河屋、AmiAmi、Animate 挖寶與夾娃娃。微餓者可隨興品嚐千日前鯛燒、章魚燒，結束後搭車回鶴橋，順路買水果甜點回民宿做最後行李大打包！
+              下午享用壽喜燒後晚間不設固定正餐。沿日本橋 Ota Road 逛駿河屋、AmiAmi、Animate。需要用餐者可在千日前品嚐鯛魚燒或章魚燒，隨後搭車回鶴橋整理隔日返台行李。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看千日前輕食推薦 ＆ 最後打包提醒</summary>
+              <summary>💡 查看千日前輕食與打包提醒</summary>
               <div class="spot-details-content">
-                🎯 <strong>千日前隨興輕食</strong>：鳴門鯛燒本舖（現烤金時地瓜鯛魚燒）、わなか WANAKA 章魚燒、麵屋丈六（秋刀魚清爽醬油拉麵）。<br>
-                🧳 <strong>最後一晚打包重點</strong>：<br>
-                1. <strong>免稅品</strong>：11/1 後購買的免稅品一律需帶至關西機場海關掃描核對，切勿拆封免稅封袋。<br>
-                2. <strong>液體與刀剪</strong>：護手霜、保養品、酒類大於 100ml 務必包妥放入<strong>託運行李箱</strong>。<br>
-                3. <strong>隨身攜帶</strong>：行動電源、相機鋰電池、貴重公仔手辦請放隨身包，不可託運。
+                🎯 <strong>千日前輕食</strong>：鳴門鯛燒本舖、わなか WANAKA 章魚燒、麵屋丈六。<br>
+                🧳 <strong>打包提醒</strong>：<br>
+                1. <strong>免稅品</strong>：免稅商品需於關西機場海關核對，請勿拆開免稅封袋。<br>
+                2. <strong>液體規範</strong>：保養品、酒類大於 100ml 須放置於託運行李箱。<br>
+                3. <strong>隨身物品</strong>：行動電源、鋰電池請放隨身行李，不可託運。
               </div>
             </details>
 
             <div class="transit-box">
-              <div class="transit-title">🚇 日本橋 ➔ 回程返抵鶴橋民宿</div>
+              <div class="transit-title">🚇 日本橋 ➔ 鶴橋民宿</div>
               <div class="transit-step">
                 從 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>日本橋站</strong>（5 號或 10 號出口進站）➔ 搭 2 站回 <strong>鶴橋站</strong>。
               </div>
               <div class="transit-alert">
-                🚨 <strong>鶴橋站出站防卡關鐵則</strong>：<br>
-                下地鐵後請找<strong>「東改札」</strong>出站。<br>
-                ⚠ <strong>千萬不要順著人潮嗶進「JR／近鐵連絡閘門」</strong>（會被當成搭乘 JR 被鎖卡、走不出去）！<br>
-                出閘門後請認明 <strong>「出口 5」或「出口 6」</strong> 直通千日前通地面大道，步行 4 分鐘回民宿！
+                🚨 <strong>鶴橋出站提醒</strong>：<br>
+                下地鐵後請由<strong>「東改札」</strong>出站。<br>
+                ⚠️ <strong>切勿進入「JR／近鐵連絡閘門」</strong>，以免誤入付費區遭鎖卡。<br>
+                出閘門後由 <strong>5 號或 6 號出口</strong> 上千日前通，步行 4 分鐘即抵民宿。
               </div>
             </div>
 
             <div class="card-actions">
-              <span class="event-tag">オタロード</span><span class="event-tag">彈性輕食</span><span class="event-tag">行李大打包</span>
-              <a class="btn-nav" href="https://maps.google.com/?q=Nipponbashi+Denden+Town" target="_blank">📍 導航日本橋動漫街</a>
+              <span class="event-tag">オタロード</span><span class="event-tag">彈性輕食</span><span class="event-tag">行前打包</span>
+              <a class="btn-nav" href="https://maps.google.com/?q=Nipponbashi+Denden+Town" target="_blank">📍 導航動漫街</a>
             </div>
           </div>
         </div>
@@ -1937,16 +1895,16 @@
           </div>
           <div class="event-body">
             <span class="time-badge alert">⏰ 08:30～10:30 生魚片盛宴</span>
-            <div class="event-title">木津批發市場海鮮採買 ＆ 鶴橋民宿奢華海鮮早餐</div>
+            <div class="event-title">木津批發市場海鮮採買 ＆ 鶴橋民宿海鮮早餐</div>
             <div class="event-desc">
               採買黑鮪魚、海膽、大干貝刺身回鶴橋民宿早餐，打包行李 11:00 退房。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看木津市場頂級刺身必買清單</summary>
+              <summary>💡 查看木津市場刺身清單</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：有 300 年歷史的大阪在地海鮮批發大本營，非觀光化黑門市場，價格超級親民厚道、漁獲當天清晨現殺直送！<br>
-                🔥 <strong>必買奢華刺身</strong>：頂級黑鮪魚大腹（大トロ，油脂爆表）、一整盒產地直產生海膽、生食級大干貝拼盤、巨型甜蝦。
+                🎯 <strong>景點特色</strong>：300 年歷史的大阪在地海鮮批發市場，價格親民、漁獲清晨直送。<br>
+                🔥 <strong>推薦刺身</strong>：頂級黑鮪魚大腹（大トロ）、產地直送生海膽、生食級大干貝拼盤、甜蝦。
               </div>
             </details>
 
@@ -1955,7 +1913,7 @@
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-S">S</span> 千日前線</span> <strong>鶴橋站</strong> ➔ <strong>難波站</strong> 換 <span class="metro-badge"><span class="metro-circle line-M">M</span> 御堂筋線</span> ➔ 1 站至 <strong>大國町站</strong>。
               </div>
-              <div class="transit-tip">💡 最快出口：大國町站走<strong>「1 號出口」</strong>，出站向右轉直走 3 分鐘直達木津市場南大門！</div>
+              <div class="transit-tip">💡 最快出口：大國町站走<strong>「1 號出口」</strong>，出站向右轉直走 3 分鐘直達木津市場南大門。</div>
             </div>
 
             <div class="card-actions">
@@ -1976,17 +1934,17 @@
             </label>
           </div>
           <div class="event-body">
-            <span class="time-badge alert">⏰ 12:15～16:00 交通與購物衝刺</span>
-            <div class="event-title">JR 環狀線直通「臨空城站」 ➔ 暢貨中心最後衝刺</div>
+            <span class="time-badge alert">⏰ 12:15～16:00 交通與購物</span>
+            <div class="event-title">JR 環狀線直通「臨空城站」 ➔ 暢貨中心最後採購</div>
             <div class="event-desc">
-              退房後拉行李至 JR 鶴橋站，直達臨空城寄放大件行李血拼！
+              退房後拉行李至 JR 鶴橋站，直達臨空城寄放大件行李逛街。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看臨空城 Outlet 必搶人氣品牌</summary>
+              <summary>💡 查看臨空城 Outlet 人氣品牌</summary>
               <div class="spot-details-content">
-                🎯 <strong>景點特色</strong>：西日本最大渡假風臨海 Outlet，擁有 250 家國際與日本品牌，依山傍海風景優美，回國前血拼絕佳據點。<br>
-                🔥 <strong>必逛品牌優惠</strong>：Nike Factory Store（球鞋折上折超便宜）、Adidas、The North Face 防風機能外套、Beams/United Arrows 日系流行服裝免稅。
+                🎯 <strong>景點特色</strong>：西日本最大渡假風臨海 Outlet，擁有 250 家國際與日本品牌。<br>
+                🔥 <strong>品牌推薦</strong>：Nike Factory Store、Adidas、The North Face 防風機能外套、Beams/United Arrows。
               </div>
             </details>
 
@@ -1996,11 +1954,11 @@
                 JR 鶴橋站 <strong>【1 號月台】（外環・往天王寺/關西空港方向）</strong> ➔ 搭乘 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 關空快速</span> ➔ <strong>直達 臨空城站（Rinku-Town）</strong>（車程約 50～55 分鐘）。
               </div>
               <div class="transit-alert">
-                ⚠️ <strong>極重要車廂防呆</strong>：<br>
-                1. 列車於日根野站會「解聯分開」，<strong>務必坐進「第 1～4 節車廂」</strong>（開往關西空港/臨空城）；第 5～8 節會切換去和歌山！<br>
-                2. 上車前確認車體側面電子螢幕顯示 <strong>「関空快速 Kansai Airport」</strong>。
+                ⚠️ <strong>車廂防呆提醒</strong>：<br>
+                1. 列車於日根野站會解聯分開，<strong>務必坐進「第 1～4 節車廂」</strong>（開往關西空港/臨空城）；第 5～8 節會切換去和歌山。<br>
+                2. 上車前確認車體側面顯示 <strong>「関空快速 Kansai Airport」</strong>。
               </div>
-              <div class="transit-tip">💡 最快出口：臨空城站出改札走<strong>「4 號出口（南口）」</strong>，走行人空橋直通 Outlet 商場服務中心寄放大行李！</div>
+              <div class="transit-tip">💡 最快出口：臨空城站出改札走<strong>「4 號出口（南口）」</strong>，走行人空橋直通 Outlet 商場服務中心寄放大行李。</div>
             </div>
 
             <div class="card-actions">
@@ -2024,13 +1982,13 @@
             <span class="time-badge">⏰ 16:30 報到登機出境</span>
             <div class="event-title">臨空城站 ➔ 關西國際機場（KIX）辦理登機返台</div>
             <div class="event-desc">
-              領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘跨過跨海大橋）即抵達關西機場第一航廈託運行李出境返台！
+              領回寄放的行李，走回臨空城站搭乘 JR 關空快速（僅 1 站、5 分鐘）即抵達關西機場第一航廈託運行李出境返台。
             </div>
 
             <details class="spot-details">
-              <summary>💡 查看機場免稅店必掃伴手禮清單</summary>
+              <summary>💡 查看機場免稅店伴手禮清單</summary>
               <div class="spot-details-content">
-                🔥 <strong>出境免稅店必掃伴手禮</strong>：ROYCE' 生巧克力、白色戀人白巧克力夾心、Tokyo Banana、獺祭二割三分純米大吟釀、一蘭拉麵盒裝伴手禮。
+                🔥 <strong>伴手禮推薦</strong>：ROYCE' 生巧克力、白色戀人、Tokyo Banana、獺祭二割三分純米大吟釀、一蘭拉麵盒裝。
               </div>
             </details>
 
@@ -2039,7 +1997,7 @@
               <div class="transit-step">
                 <span class="metro-badge"><span class="metro-circle line-JR">JR</span> 關空快速</span> <strong>臨空城站</strong> ➔ <strong>僅 1 站（5分鐘）</strong> 抵達 <strong>關西機場第一航廈</strong>。
               </div>
-              <div class="transit-tip">💡 出站指引：改札出站直接過 2 樓天橋進第一航廈 4F 國際線出境大廳報到！</div>
+              <div class="transit-tip">💡 出站指引：改札出站直接過 2 樓天橋進第一航廈 4F 國際線出境大廳報到。</div>
             </div>
 
             <div class="card-actions">
@@ -2052,17 +2010,21 @@
     </div>
 
     <!-- DAY 8：工具箱 -->
+<!-- DAY 8：工具箱 -->
     <div id="day-8" class="day-panel">
       <div class="day-header">
         <div class="day-title">🧰 行前與旅途實用工具箱</div>
-        <div class="day-subtitle">行李打包清單・重要預約憑證・溝通手指卡・緊急救援</div>
+        <div class="day-subtitle">點擊各分類展開或收合・現場快速查閱</div>
       </div>
 
-      <!-- 💵 旅程現場現金款項彙整 -->
-      <div class="tool-section" style="border-left: 4px solid #f97316; background: #fffaf5;">
-        <div class="tool-title" style="color: #c2410c;">💵 旅程重要代付現款備忘（5人均攤）</div>
-        <div style="font-size: 13.5px; color: #475569; line-height: 1.6;">
-          <table style="width: 100%; border-collapse: collapse; margin-top: 6px;">
+      <!-- 1. 旅程現場現金款項彙整 -->
+      <details class="tool-section" style="border-left: 4px solid #f97316; background: #fffaf5; margin-bottom: 14px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #c2410c; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>💵 旅程重要代付現款備忘（5人均攤）</span>
+          <span style="font-size: 13px; color: #ea580c;">▾</span>
+        </summary>
+        <div style="font-size: 13.5px; color: #475569; line-height: 1.6; margin-top: 12px; border-top: 1px dashed #fed7aa; padding-top: 10px;">
+          <table style="width: 100%; border-collapse: collapse; margin-top: 4px;">
             <thead>
               <tr style="border-bottom: 2px solid #fed7aa; text-align: left; color: #9a3412;">
                 <th style="padding: 6px 0;">款項項目</th>
@@ -2089,14 +2051,18 @@
             </tbody>
           </table>
           <div style="font-size: 12px; color: #9a3412; margin-top: 8px;">
-            💡 建議出發前每位夥伴身上先預留 <strong>8,600 円</strong> 現金零錢，以便現場迅速收齊付款。
+            💡 建議出發前每位夥伴先預留 <strong>8,600 円</strong> 現金，以便現場付款。
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="tool-section" style="border-left: 4px solid #ef4444; background: #fff5f5;">
-        <div class="tool-title" style="color: #991b1b;">🚨 緊急就醫與聯絡專線（離民宿最近）</div>
-        <div style="font-size: 13px; color: #4b5563; line-height: 1.65;">
+      <!-- 2. 緊急就醫與聯絡專線 -->
+      <details class="tool-section" style="border-left: 4px solid #ef4444; background: #fff5f5; margin-bottom: 14px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #991b1b; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>🚨 緊急就醫與聯絡專線（近民宿）</span>
+          <span style="font-size: 13px; color: #dc2626;">▾</span>
+        </summary>
+        <div style="font-size: 13px; color: #4b5563; line-height: 1.65; margin-top: 12px; border-top: 1px dashed #fca5a5; padding-top: 10px;">
           <p>🏥 <strong>最近大醫院（支援外語急診）</strong>：</p>
           <ul style="margin-left: 18px; margin-bottom: 8px;">
             <li><strong>大阪日赤醫院</strong>：天王寺區筆崎町 5-30（鶴橋站步行 7 分鐘）</li>
@@ -2110,14 +2076,18 @@
             <a href="tel:+81-6-6227-8623" style="background: white; border: 1px solid #fca5a5; padding: 5px 10px; border-radius: 6px; text-decoration: none; color: #b91c1c; font-weight: 700; font-size: 12px;">🇹🇼 駐大阪辦事處</a>
           </div>
           <div style="font-size: 11.5px; color: #991b1b; margin-top: 8px; background: #fee2e2; padding: 6px 8px; border-radius: 6px;">
-            🗑️ <strong>街頭垃圾禮儀</strong>：日本街頭無公用垃圾桶，邊走邊吃請在原店門口吃完還給店員回收，或自備小塑膠袋回民宿分類丟棄。
+            🗑️ <strong>街頭垃圾禮儀</strong>：日本街頭無公用垃圾桶，邊走邊吃請在原店門口吃完給店員回收，或自備小塑膠袋回民宿丟棄。
           </div>
         </div>
-      </div>
+      </details>
 
-<div class="tool-section">
-        <div class="tool-title">📋 必備清單 Checkbox（自動記憶）</div>
-        <div class="checklist">
+      <!-- 3. 行前必備清單 Checkbox -->
+      <details class="tool-section" style="margin-bottom: 14px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #0f172a; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>📋 必備清單 Checkbox（自動記憶）</span>
+          <span style="font-size: 13px; color: #64748b;">▾</span>
+        </summary>
+        <div class="checklist" style="margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px;">
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c1"> 護照（效期 6 個月以上）</label>
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c2"> Visit Japan Web 入境審查填寫完畢</label>
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c3"> 日本網卡 / eSIM 設定完成</label>
@@ -2127,160 +2097,156 @@
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c6"> 🦈 海遊館門票（已預約 11/5 11:15 場次 Webket QR Code）</label>
           <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)" data-id="c7"> 隨身小折疊雨傘 / 換洗衣物</label>
         </div>
-      </div><div class="tool-section">
-        <div class="tool-title">🔖 重要訂單與預約備忘錄</div>
-        <div class="booking-card">
-          <h4>🏠 Day 1 鶴橋民宿 Check-in</h4>
-          <p>時間：房東同意提早至 <strong>14:00 入住</strong></p>
-          <p>地址：大阪市東成区東小橋3-11-9（東改札步行 4 分）</p>
-        </div>
-        <div class="booking-card">
-          <h4>🚌 Day 2 Klook 京都一日遊</h4>
-          <p>時間：<strong>08:30 集合</strong></p>
-          <p>地點：道頓堀蟹道樂中店門口（認橘色 EasyGo 背心）</p>
-        </div>
-        <div class="booking-card">
-          <h4>🚗 Day 3 京都 10 小時包車</h4>
-          <p>時間：<strong>08:00 民宿門口準時發車</strong> ➔ 18:00 前返回民宿</p>
-          <p>行程：嵐山 ➔ 清水寺 ➔ 祇園 ➔ 貓咖 ➔ 寶可夢京都店</p>
-        </div>
-        <div class="booking-card">
-          <h4>🍢 Day 4 力丸爐端燒 網兵衛</h4>
-          <p>時間：<strong>19:00 預約（5 人）</strong></p>
-          <p>地點：大阪市天王寺区堀越町 16-9（天王寺站北口步行 2 分）</p>
-        </div>
-        <div class="booking-card">
-          <h4>🦈 Day 6 海遊館門票（Webket 電子票）</h4>
-          <p>時段：<strong>11/05 11:15～11:30 入場</strong></p>
-          <p>備註：已於 Day 6 頁籤提供 5 人專屬掃碼 QR Code</p>
-        </div>
-      </div>
-      <div class="tool-section">
-        <div class="tool-title">🛍️ 託買與個人採購清單（Wishlist）</div>
-        <div style="font-size: 12.5px; color: #64748b; margin-bottom: 12px; line-height: 1.5;">
-          記錄親友託買物品或必搶戰利品，買到後打勾自動畫線，不怕漏買或重複買！
-        </div>
+      </details>
 
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
-          <input type="text" id="wishItemInput" placeholder="品名（例：合利他命 270錠、Dior 潤唇膏）" style="width: 100%; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; margin-bottom: 0; background: #ffffff;">
-          
-          <div style="display: flex; gap: 8px; width: 100%;">
-            <input type="text" id="wishTargetInput" placeholder="誰託買 / 給誰（例：媽媽、自用）" style="flex: 1; min-width: 0; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; margin-bottom: 0; background: #ffffff;">
-            <button onclick="addWishItem()" style="flex-shrink: 0; padding: 11px 18px; background: var(--accent); color: white; border: none; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer;">＋ 加入</button>
+      <!-- 4. 重要訂單與預約備忘錄 -->
+      <details class="tool-section" style="margin-bottom: 14px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #0f172a; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>🔖 重要訂單與預約備忘錄</span>
+          <span style="font-size: 13px; color: #64748b;">▾</span>
+        </summary>
+        <div style="margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px;">
+          <div class="booking-card">
+            <h4>🏠 Day 1 鶴橋民宿 Check-in</h4>
+            <p>時間：<strong>14:00 入住</strong></p>
+            <p>地址：大阪市東成区東小橋3-11-9（東改札步行 4 分）</p>
+          </div>
+          <div class="booking-card">
+            <h4>🚌 Day 2 Klook 京都一日遊</h4>
+            <p>時間：<strong>08:30 集合</strong></p>
+            <p>地點：道頓堀蟹道樂中店門口（認橘色 EasyGo 背心）</p>
+          </div>
+          <div class="booking-card">
+            <h4>🚗 Day 3 京都 10 小時包車</h4>
+            <p>時間：<strong>08:00 民宿門口準時發車</strong> ➔ 18:00 前返回民宿</p>
+            <p>行程：嵐山 ➔ 清水寺 ➔ 祇園 ➔ 貓咖 ➔ 寶可夢京都店</p>
+          </div>
+          <div class="booking-card">
+            <h4>🍢 Day 4 力丸爐端燒 網兵衛</h4>
+            <p>時間：<strong>19:00 預約（5 人）</strong></p>
+            <p>地點：大阪市天王寺区堀越町 16-9（天王寺站北口步行 2 分）</p>
+          </div>
+          <div class="booking-card">
+            <h4>🦈 Day 6 海遊館門票（Webket 電子票）</h4>
+            <p>時段：<strong>11/05 11:15～11:30 入場</strong></p>
+            <p>備註：已於 Day 6 頁籤提供 5 人專屬掃碼 QR Code</p>
           </div>
         </div>
+      </details>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-
-  <!-- 1. 辦理免稅 -->
-  <div class="touch-card" onclick="showBigText('免税手続きをお願いできますか？', '不好意思，能麻煩協助辦理免稅手續嗎？', 'Menzei tetsuzuki o onegai dekimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #d97706; font-weight: 800;">🛍️ 辦理免稅</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">免税手続きをお願いできますか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Menzei tetsuzuki o onegai dekimasu ka?</div>
-  </div>
-
-  <!-- 2. 分開結帳 -->
-  <div class="touch-card" onclick="showBigText('お会計は別々でお願いできますか？', '不好意思，結帳麻煩幫我們分開算可以嗎？', 'O-kaikei wa betsubetsu de onegai dekimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #475569; font-weight: 800;">💳 分開結帳</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お会計は別々でお願いできますか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">O-kaikei wa betsubetsu de onegai dekimasu ka?</div>
-  </div>
-
-  <!-- 3. 找洗手間（高禮貌お手洗い） -->
-  <div class="touch-card" onclick="showBigText('すみません、お手洗いはどちらですか？', '不好意思，請問洗手間在何處呢？', 'Sumimasen, o-tearai wa dochira desu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #475569; font-weight: 800;">🚻 詢問洗手間</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">すみません、お手洗いはどちらですか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Sumimasen, o-tearai wa dochira desu ka?</div>
-  </div>
-
-  <!-- 4. 調整娃娃機位置 -->
-  <div class="touch-card" onclick="showBigText('恐れ入ります、景品の位置を直していただけますか？', '不好意思打擾了，能否麻煩您幫忙調整一下景品的位置呢？', 'Osoreirimasu, keihin no ichi o naoshite itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #2563eb; font-weight: 800;">🕹️ 調整娃娃機位置</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">恐れ入ります、景品の位置を直していただけますか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Osoreirimasu, keihin no ichi o naoshite itadakemasu ka?</div>
-  </div>
-
-  <!-- 5. 寄放行李 -->
-  <div class="touch-card" onclick="showBigText('荷物を預かっていただけますか？', '不好意思，能否麻煩您幫忙寄放行李呢？', 'Nimotsu o azukatte itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #475569; font-weight: 800;">🧳 寄放行李</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">荷物を預かっていただけますか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Nimotsu o azukatte itadakemasu ka?</div>
-  </div>
-
-  <!-- 6. 請求合照 -->
-  <div class="touch-card" onclick="showBigText('恐れ入りますが、写真を撮っていただけますか？', '不好意思打擾了，能否麻煩您幫我們合照一張呢？', 'Osoreirimasu ga, shashin o totte itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #475569; font-weight: 800;">📸 請求合照</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">恐れ入りますが、写真を撮っていただけますか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Osoreirimasu ga, shashin o totte itadakemasu ka?</div>
-  </div>
-
-  <!-- 7. 推薦招牌料理 -->
-  <div class="touch-card" onclick="showBigText('おすすめの料理を教えていただけますか？', '不好意思，能否為我們推薦一下店裡的招牌料理呢？', 'Osusume no ryōri o oshiete itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #475569; font-weight: 800;">🍽️ 推薦招牌料理</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">おすすめの料理を教えていただけますか？</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Osusume no ryōri o oshiete itadakemasu ka?</div>
-  </div>
-
-  <!-- 8. 買單離席 -->
-  <div class="touch-card" onclick="showBigText('お会計をお願いします。ごちそうさまでした。', '麻煩結帳，謝謝款待。', 'O-kaikei o onegai shimasu. Gochisōsama deshita.')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
-    <div style="font-size: 12px; color: #475569; font-weight: 800;">🧾 買單離席</div>
-    <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お会計をお願いします。</div>
-    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">O-kaikei o onegai shimasu.</div>
-  </div>
-
-</div><!-- ☔ 雨天備案 ＆ 娃娃機推薦清單 -->
-      <div class="tool-section">
-        <div class="tool-title">☔ 雨天備案 ＆ 🕹️ 娃娃機推薦指南</div>
-
-        <!-- 雨天室內備案 -->
-        <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px;">
-          <summary style="font-weight: 700; color: #1e293b; cursor: pointer; font-size: 13.5px;">
-            🌧️ 點擊展開：各日下雨 / 人潮室內替代景點
-          </summary>
-          <div style="font-size: 12.5px; color: #475569; margin-top: 8px; line-height: 1.6;">
-            <strong>【Day 3 京都大雨】</strong><br>
-            • <strong>錦市場 / 新風館</strong>：挑高拱頂遮雨棚，逛街品嚐小吃完全不淋雨。<br>
-            • <strong>京都鐵道博物館</strong>：週一正常開館（10:00～17:00），梅小路室內大展館，包車直達門口。<br><br>
-            <strong>【Day 4 動物園人潮/下雨】</strong><br>
-            • <strong>天王寺 Mio ＋ 阿倍野 Q's Mall</strong>：車站直通超大商場（10:00～21:00 全年無休），避雨吹冷氣首選。<br>
-            • <strong>阿倍野 HARUKAS 提前進館</strong>：近鐵百貨地下美食街 ＋ 提早排隊上展望台看雨景雲海。<br><br>
-            <strong>【Day 5 大阪城大雨】</strong><br>
-            • <strong>大阪歷史博物館</strong>：週三正常開館（09:30～17:00），10 樓大落地窗可平視俯瞰整個天守閣全景！
+      <!-- 5. 託買與個人採購清單 -->
+      <details class="tool-section" style="margin-bottom: 14px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #0f172a; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>🛍️ 託買與個人採購清單（Wishlist）</span>
+          <span style="font-size: 13px; color: #64748b;">▾</span>
+        </summary>
+        <div style="margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px;">
+          <div style="font-size: 12.5px; color: #64748b; margin-bottom: 12px; line-height: 1.5;">
+            記錄親友託買物品或必買戰利品，買到後打勾自動畫線。
           </div>
-        </details>
 
-        <!-- 娃娃機推薦 -->
-        <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px;">
-          <summary style="font-weight: 700; color: #1e293b; cursor: pointer; font-size: 13.5px;">
-            🕹️ 點擊展開：沿線精選大型娃娃機旗艦店（Google 高評）
-          </summary>
-          <div style="font-size: 12.5px; color: #475569; margin-top: 8px; line-height: 1.6;">
-            • <strong>GiGO 難波（難波本館）</strong><br>
-            千日前商店街內，多層樓大型店，寶可夢/最新動漫景品最齊，可請店員調位（Day 1、Day 6）。<br>
-            <a href="https://maps.google.com/?q=GiGO+難波" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 700;">📍 Google 導航</a><br><br>
-
-            • <strong>TAITO STATION 梅田店</strong><br>
-            梅田大站核心，機台極多、支援電子支付，玩偶與零食台好出貨（Day 5）。<br>
-            <a href="https://maps.google.com/?q=タイトーステーション+梅田店" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 700;">📍 Google 導導航</a><br><br>
-
-            • <strong>TAITO STATION 天王寺阿倍野店</strong><br>
-            天王寺站出口旁（Q's Mall 對面），以在地客與家庭為主，爪力較觀光區良心（Day 4）。<br>
-            <a href="https://maps.google.com/?q=タイトーステーション+あべの店" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 700;">📍 Google 導航</a><br><br>
-
-            • <strong>Namco 大阪日本橋店</strong><br>
-            萬代直營旗艦，主打航海王、七龍珠等萬代專屬一番賞與限定景品（Day 6）。<br>
-            <a href="https://maps.google.com/?q=namco+大阪日本橋店" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 700;">📍 Google 導航</a>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
+            <input type="text" id="wishItemInput" placeholder="品名（例：合利他命 270錠、Dior 潤唇膏）" style="width: 100%; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; margin-bottom: 0; background: #ffffff;">
+            
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <input type="text" id="wishTargetInput" placeholder="誰託買 / 給誰（例：媽媽、自用）" style="flex: 1; min-width: 0; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; margin-bottom: 0; background: #ffffff;">
+              <button onclick="addWishItem()" style="flex-shrink: 0; padding: 11px 18px; background: var(--accent); color: white; border: none; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer;">＋ 加入</button>
+            </div>
           </div>
-        </details>
-      </div>
-      </div>
+          <div id="wishListContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+      </details>
+
+      <!-- 6. 實用溝通手指卡 -->
+      <details class="tool-section" style="margin-bottom: 14px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #0f172a; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>🗣️ 實用溝通手指卡（點擊放大出示）</span>
+          <span style="font-size: 13px; color: #64748b;">▾</span>
+        </summary>
+        <div style="margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <!-- 1. 辦理免稅 -->
+            <div class="touch-card" onclick="showBigText('免税手続きをお願いできますか？', '不好意思，能麻煩協助辦理免稅手續嗎？', 'Menzei tetsuzuki o onegai dekimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #d97706; font-weight: 800;">🛍️ 辦理免稅</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">免税手続きをお願いできますか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Menzei tetsuzuki o onegai dekimasu ka?</div>
+            </div>
+
+            <!-- 2. 分開結帳 -->
+            <div class="touch-card" onclick="showBigText('お会計は別々でお願いできますか？', '不好意思，結帳麻煩幫我們分開算可以嗎？', 'O-kaikei wa betsubetsu de onegai dekimasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #475569; font-weight: 800;">💳 分開結帳</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お会計は別々でお願いできますか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">O-kaikei wa betsubetsu de onegai dekimasu ka?</div>
+            </div>
+
+            <!-- 3. 找洗手間 -->
+            <div class="touch-card" onclick="showBigText('すみません、お手洗いはどちらですか？', '不好意思，請問洗手間在何處呢？', 'Sumimasen, o-tearai wa dochira desu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #475569; font-weight: 800;">🚻 詢問洗手間</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">すみません、お手洗いはどちらですか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Sumimasen, o-tearai wa dochira desu ka?</div>
+            </div>
+
+            <!-- 4. 調整娃娃機位置 -->
+            <div class="touch-card" onclick="showBigText('恐れ入ります、景品の位置を直していただけますか？', '不好意思打擾了，能否麻煩您幫忙調整一下景品的位置呢？', 'Osoreirimasu, keihin no ichi o naoshite itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #2563eb; font-weight: 800;">🕹️ 調整娃娃機位置</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">恐れ入ります、景品の位置を直していただけますか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Osoreirimasu, keihin no ichi o naoshite itadakemasu ka?</div>
+            </div>
+
+            <!-- 5. 寄放行李 -->
+            <div class="touch-card" onclick="showBigText('荷物を預かっていただけますか？', '不好意思，能否麻煩您幫忙寄放行李呢？', 'Nimotsu o azukatte itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #475569; font-weight: 800;">🧳 寄放行李</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">荷物を預かっていただけますか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Nimotsu o azukatte itadakemasu ka?</div>
+            </div>
+
+            <!-- 6. 請求合照 -->
+            <div class="touch-card" onclick="showBigText('恐れ入りますが、写真を撮っていただけますか？', '不好意思打擾了，能否麻煩您幫我們合照一張呢？', 'Osoreirimasu ga, shashin o totte itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #475569; font-weight: 800;">📸 請求合照</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">恐れ入りますが、写真を撮っていただけますか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Osoreirimasu ga, shashin o totte itadakemasu ka?</div>
+            </div>
+
+            <!-- 7. 推薦招牌料理 -->
+            <div class="touch-card" onclick="showBigText('おすすめの料理を教えていただけますか？', '不好意思，能否為我們推薦一下店裡的招牌料理呢？', 'Osusume no ryōri o oshiete itadakemasu ka?')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #475569; font-weight: 800;">🍽️ 推薦招牌料理</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">おすすめの料理を教えていただけますか？</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Osusume no ryōri o oshiete itadakemasu ka?</div>
+            </div>
+
+            <!-- 8. 買單離席 -->
+            <div class="touch-card" onclick="showBigText('お会計をお願いします。ごちそうさ客でした。', '麻煩結帳，謝謝款待。', 'O-kaikei o onegai shimasu. Gochisōsama deshita.')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; box-shadow: var(--shadow-sm);">
+              <div style="font-size: 12px; color: #475569; font-weight: 800;">🧾 買單離席</div>
+              <div style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">お会計をお願いします。</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">O-kaikei o onegai shimasu.</div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 7. 雨天備案 -->
+      <details class="tool-section" style="margin-bottom: 20px; padding: 14px 18px;">
+        <summary style="font-size: 15.5px; font-weight: 800; color: #0f172a; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span>☔ 雨天備案（各日室內替代景點）</span>
+          <span style="font-size: 13px; color: #64748b;">▾</span>
+        </summary>
+        <div style="font-size: 12.5px; color: #475569; margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px; line-height: 1.6;">
+          <strong>【Day 3 京都大雨】</strong><br>
+          • <strong>錦市場 / 新風館</strong>：挑高拱頂遮雨棚，逛街小吃不淋雨。<br>
+          • <strong>京都鐵道博物館</strong>：週一正常開館（10:00～17:00），室內大展館，包車直達門口。<br><br>
+          <strong>【Day 4 動物園人潮/下雨】</strong><br>
+          • <strong>天王寺 Mio ＋ 阿倍野 Q's Mall</strong>：車站直通商場（10:00～21:00 全年無休）。<br>
+          • <strong>阿倍野 HARUKAS 提前進館</strong>：近鐵百貨地下街 ＋ 提前上展望台。<br><br>
+          <strong>【Day 5 大阪城大雨】</strong><br>
+          • <strong>大阪歷史博物館</strong>：週三正常開館（09:30～17:00），10 樓大落地窗可俯瞰天守閣全景。
+        </div>
+      </details>
     </div> <!-- 結束 Day 8 -->
-
-    <!-- DAY 9：獨立記帳頁面 -->
+<!-- DAY 9：獨立記帳頁面 -->
     <div id="day-9" class="day-panel">
       <div class="day-header">
         <div class="day-title">💰 5 人公費記帳簿</div>
-        <div class="day-subtitle">多幣別記錄・自選分攤成員・當日智慧多退少補結算</div>
+        <div class="day-subtitle">多幣別記錄・自選分攤成員・當日多退少補結算</div>
       </div>
 
       <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 14px; box-shadow: var(--shadow-sm);">
@@ -2316,7 +2282,8 @@
         </div>
       </div>
 
-<!-- 常用項目快捷標籤 -->
+      <!-- 記帳主面板 -->
+      <div class="tool-section">
         <div style="display: flex; gap: 6px; overflow-x: auto; margin-bottom: 8px; scrollbar-width: none;">
           <span onclick="setQuickItem('🍱 正餐')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">🍱 正餐</span>
           <span onclick="setQuickItem('🏪 超商/超市')" style="background: #f1f5f9; color: #475569; font-size: 11.5px; padding: 4px 8px; border-radius: 6px; cursor: pointer; white-space: nowrap;">🏪 超商</span>
@@ -2344,25 +2311,24 @@
           <button class="split-btn" onclick="addExpenseRecord()" style="flex: 1.1; padding: 11px; margin: 0; font-size: 14px;">＋ 新增支出</button>
         </div>
 
-<div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 8px;">
-  <!-- 標題列：左邊文字，右邊切換按鈕 -->
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-    <div style="font-size: 12.5px; font-weight: 700; color: #475569;">👥 參與分攤成員：</div>
-    <div style="display: flex; gap: 6px;">
-      <span onclick="toggleAllBeneficiaries(true)" style="font-size: 11px; color: #2563eb; background: #dbeafe; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-weight: 800;">全員</span>
-      <span onclick="toggleAllBeneficiaries(false)" style="font-size: 11px; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-weight: 800;">清空</span>
-    </div>
-  </div>
+        <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <div style="font-size: 12.5px; font-weight: 700; color: #475569;">👥 參與分攤成員：</div>
+            <div style="display: flex; gap: 6px;">
+              <span onclick="toggleAllBeneficiaries(true)" style="font-size: 11px; color: #2563eb; background: #dbeafe; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-weight: 800;">全員</span>
+              <span onclick="toggleAllBeneficiaries(false)" style="font-size: 11px; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-weight: 800;">清空</span>
+            </div>
+          </div>
 
-  <!-- 下方 5 位成員的核取方塊 -->
-  <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柏毅" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柏毅</label>
-    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="張庭" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 張庭</label>
-    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="班長" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 班長</label>
-    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="書緯" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 書緯</label>
-    <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柳丁" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柳丁</label>
-  </div>
-</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柏毅" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柏毅</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="張庭" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 張庭</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="班長" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 班長</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="書緯" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 書緯</label>
+            <label style="display: flex; align-items: center; gap: 4px; font-size: 13.5px; cursor: pointer;"><input type="checkbox" name="splitBeneficiary" value="柳丁" checked style="accent-color: var(--primary-accent); width: 17px; height: 17px;"> 柳丁</label>
+          </div>
+        </div>
+
         <div id="expenseList" style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;"></div>
         <div id="splitResult" class="split-res" style="display:none; margin-top: 14px; text-align: left;"></div>
 
@@ -2388,104 +2354,11 @@
     </div>
   </div>
 
-  <!-- 🗺️ 極簡高清晰 NAMBA Walk 捷運式戰略圖 -->
-  <div id="nambaMapModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); z-index: 999999; flex-direction: column; justify-content: center; align-items: center; padding: 20px; font-family: -apple-system, sans-serif;" onclick="closeNambaMapModal()">
-    
-    <div style="position: absolute; top: 18px; right: 20px; color: #94a3b8; font-size: 26px; font-weight: 800; cursor: pointer;">✕</div>
-    <div style="position: absolute; top: 22px; left: 24px; color: #ffffff; font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 6px;">
-      <span>🧭</span> NAMBA Walk 極簡直線方位圖
-    </div>
-
-    <div onclick="event.stopPropagation()" style="background: #ffffff; border-radius: 20px; width: 100%; max-width: 620px; padding: 22px 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid #e2e8f0;">
-      
-      <div style="display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 800; color: #64748b; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
-        <span>⬅️ 往 西梅田 / JR難波</span>
-        <span style="color: #2563eb;">全程直路無分岔（西 ➔ 東）</span>
-        <span>往 日本橋 / 黑門市場 ➡️</span>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 14px; position: relative; padding-left: 10px;">
-        
-        <div style="position: absolute; left: 23px; top: 15px; bottom: 20px; width: 4px; background: #e2e8f0; border-radius: 2px;"></div>
-
-        <!-- 錨點 1：1番街端點 -->
-        <div style="display: flex; align-items: center; gap: 14px; position: relative;">
-          <div style="width: 30px; height: 30px; border-radius: 50%; background: #f1f5f9; border: 3px solid #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #475569; z-index: 2; flex-shrink: 0;">1</div>
-          <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <span style="font-size: 13px; font-weight: 800; color: #334155;">1番街（西端）</span>
-              <span style="font-size: 11px; color: #64748b; margin-left: 6px;">出口 B1～B10</span>
-            </div>
-            <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">連通 四橋線 難波站</span>
-          </div>
-        </div>
-
-        <!-- 錨點 2：下樓位置（B14/B16） -->
-        <div style="display: flex; align-items: center; gap: 14px; position: relative;">
-          <div style="width: 30px; height: 30px; border-radius: 50%; background: #ef4444; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #ef4444; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; z-index: 2; flex-shrink: 0;">⬇</div>
-          <div style="flex: 1; background: #fef2f2; border: 1.5px solid #f87171; border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <span style="font-size: 13.5px; font-weight: 900; color: #991b1b;">【我們從這裡下樓】B14 / B16</span>
-              <div style="font-size: 11px; color: #b91c1c; margin-top: 2px;">地面 Bic Camera 斜對面手扶梯直達</div>
-            </div>
-            <span style="background: #ef4444; color: white; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">入口起點</span>
-          </div>
-        </div>
-
-        <!-- 錨點 3：2番街核心店家 -->
-        <div style="display: flex; align-items: center; gap: 14px; position: relative;">
-          <div style="width: 30px; height: 30px; border-radius: 50%; background: #2563eb; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #2563eb; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; z-index: 2; flex-shrink: 0;">2</div>
-          <div style="flex: 1; background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 10px; padding: 10px 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <span style="font-size: 13.5px; font-weight: 900; color: #1e3a8a;">2番街（核心逛街段）</span>
-              <span style="font-size: 11px; color: #2563eb; font-weight: 700;">出口 B12～B20</span>
-            </div>
-            <div style="font-size: 12px; color: #334155; line-height: 1.7;">
-              🧀 <strong>北通</strong>：老爺爺現烤起司蛋糕（排隊名店）<br>
-              🛍 <strong>南通</strong>：3COINS（日系生活雜貨）
-            </div>
-          </div>
-        </div>
-
-        <!-- 錨點 4：回程改札口（近鐵） -->
-        <div style="display: flex; align-items: center; gap: 14px; position: relative;">
-          <div style="width: 30px; height: 30px; border-radius: 50%; background: #004098; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #004098; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; z-index: 2; flex-shrink: 0;">🚆</div>
-          <div style="flex: 1; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <span style="font-size: 13px; font-weight: 900; color: #14532d;">近鐵 大阪難波站【東改札】</span>
-              <div style="font-size: 11px; color: #16a34a; margin-top: 2px;">★ 吃飽在此嗶卡進站 ➔ 2站回鶴橋！</div>
-            </div>
-            <span style="background: #16a34a; color: white; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">回程捷徑</span>
-          </div>
-        </div>
-
-        <!-- 錨點 5：3番街端點 -->
-        <div style="display: flex; align-items: center; gap: 14px; position: relative;">
-          <div style="width: 30px; height: 30px; border-radius: 50%; background: #f1f5f9; border: 3px solid #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #475569; z-index: 2; flex-shrink: 0;">3</div>
-          <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <span style="font-size: 13px; font-weight: 800; color: #334155;">3番街（東端）</span>
-              <span style="font-size: 11px; color: #dc2626; font-weight: 700; margin-left: 6px;">🐟 鳴門鯛燒本舖</span>
-            </div>
-            <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">連通 地鐵日本橋站</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="margin-top: 18px; background: #f8fafc; border-radius: 8px; padding: 8px 12px; font-size: 11.5px; color: #64748b; line-height: 1.5; text-align: center;">
-        💡 <strong>現場口訣</strong>：下樓就是 <strong>2番街</strong> ➔ 蛋糕在北、雜貨在南 ➔ 吃完直接走進 <strong>近鐵東改札</strong> 撤退！
-      </div>
-
-    </div>
-  </div>
-
   <!-- 回到頂部按鈕 -->
   <div id="btnBackTop" class="fab-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
 
   <!-- 腳本邏輯區 -->
   <script>
-// 快速填入常用項目名稱
     function setQuickItem(name) {
       const input = document.getElementById('splitItem');
       if (input) {
@@ -2494,13 +2367,13 @@
       }
     }
 
-    // 快速切換全員/清空成員勾選
     function toggleAllBeneficiaries(checkAll) {
       document.querySelectorAll('input[name="splitBeneficiary"]').forEach(cb => {
         cb.checked = checkAll;
       });
     }
-    // 🎫 海遊館 5 人票券原圖對照表
+
+    // 🎫 海遊館 5 人票券對照表
     const kaiyukanTickets = [
       { name: "柏毅", serial: "00290-2026-1006-8100-5460-0018", imgSrc: "ticket_1.png", page: "1/5" },
       { name: "張庭", serial: "00290-2026-1006-8100-5460-0025", imgSrc: "ticket_2.png", page: "2/5" },
@@ -2514,10 +2387,12 @@
     function switchTicket(idx) {
       currentTicketIdx = idx;
       const ticket = kaiyukanTickets[idx];
-      document.getElementById('ticketMemberName').innerText = `${ticket.name} (${ticket.page})`;
-      document.getElementById('ticketSerialNo').innerText = ticket.serial;
-      
+      const memberEl = document.getElementById('ticketMemberName');
+      const serialEl = document.getElementById('ticketSerialNo');
       const qrImg = document.getElementById('ticketQrImg');
+
+      if (memberEl) memberEl.innerText = `${ticket.name} (${ticket.page})`;
+      if (serialEl) serialEl.innerText = ticket.serial;
       if (qrImg) qrImg.src = ticket.imgSrc;
 
       kaiyukanTickets.forEach((_, i) => {
@@ -2538,7 +2413,6 @@
       });
     }
 
-    // 🎫 開啟與關閉海遊館 QR Code 全螢幕放大視窗
     function openQrModal() {
       const modal = document.getElementById('qrModal');
       const ticket = kaiyukanTickets[currentTicketIdx];
@@ -2559,7 +2433,7 @@
       }
     }
 
-    // 💡 螢幕常亮開關邏輯
+    // 💡 保持螢幕常亮
     let wakeLock = null;
     async function toggleWakeLock() {
       const statusEl = document.getElementById('wakeLockStatus');
@@ -2587,24 +2461,7 @@
       }
     }
 
-    // 🗺️ 難波地下街全螢幕地圖開關
-    function openNambaMapModal() {
-      const modal = document.getElementById('nambaMapModal');
-      if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeNambaMapModal() {
-      const modal = document.getElementById('nambaMapModal');
-      if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-    }
-
-    // 🗣 大字手指卡展示與關閉
+    // 手指日語卡
     function showBigText(jp, zh, romaji) {
       document.getElementById('modalJp').innerText = jp;
       document.getElementById('modalZh').innerText = zh;
@@ -2618,7 +2475,7 @@
       if (modal) modal.style.display = 'none';
     }
 
-    // 🛍️ 個人採購願望清單（Wishlist）邏輯
+    // 願望清單
     let wishList = JSON.parse(localStorage.getItem('trip_wishlist_items') || '[]');
 
     function renderWishList() {
@@ -2680,7 +2537,7 @@
       renderWishList();
     }
 
-    // 動態倒數計時計算
+    // 倒數計時
     function updateCountdown() {
       const targetDate = new Date("2026-10-31T00:00:00");
       const now = new Date();
@@ -2697,30 +2554,27 @@
     }
     updateCountdown();
 
-    // 🌤️ 自動更新大阪與京都即時氣溫
+    // 氣象資訊
     async function updateWeatherInfo() {
       try {
         const [osakaRes, kyotoRes] = await Promise.all([
           fetch('https://api.open-meteo.com/v1/forecast?latitude=34.6937&longitude=135.5023&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo'),
           fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0116&longitude=135.7681&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo')
         ]);
-
         const osakaData = await osakaRes.json();
         const kyotoData = await kyotoRes.json();
-
         let oCur = 20, kCur = 18;
         if (osakaData && osakaData.current) oCur = Math.round(osakaData.current.temperature_2m);
         if (kyotoData && kyotoData.current) kCur = Math.round(kyotoData.current.temperature_2m);
-
         const miniEl = document.getElementById('headerWeatherMini');
         if (miniEl) miniEl.innerText = `阪 ${oCur}° ｜ 京 ${kCur}°`;
       } catch (err) {
-        console.warn('氣象資料取得失敗，顯示預設值');
+        console.warn('氣象取得失敗，顯示預設值');
       }
     }
     updateWeatherInfo();
 
-    // 升級版 Tab 切換
+    // Tab 切換
     function switchDay(day) {
       document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
         const isActive = idx === day - 1;
@@ -2737,19 +2591,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 支援中/日文與英文地址個別複製
+    // 地址複製
     function copyAddress(type) {
-      let address = "";
-      let targetSpanId = "";
-
-      if (type === 'jp') {
-        address = "大阪府大阪市東成区東小橋3丁目11-9";
-        targetSpanId = "copyTxtJp";
-      } else {
-        address = "3-11-9 Higashiobase, Higashinari-ku, Osaka, Japan";
-        targetSpanId = "copyTxtEn";
-      }
-
+      let address = type === 'jp' ? "大阪府大阪市東成区東小橋3丁目11-9" : "3-11-9 Higashiobase, Higashinari-ku, Osaka, Japan";
+      let targetSpanId = type === 'jp' ? "copyTxtJp" : "copyTxtEn";
       const copySpan = document.getElementById(targetSpanId);
       navigator.clipboard.writeText(address).then(() => {
         const origText = copySpan.innerHTML;
@@ -2759,7 +2604,7 @@
           copySpan.innerHTML = origText;
           copySpan.style.color = "#38bdf8";
         }, 2000);
-      }).catch(err => {
+      }).catch(() => {
         prompt("請手動複製地址：", address);
       });
     }
@@ -2776,7 +2621,7 @@
       }
     }
 
-    // 上傳並自動輕量化壓縮快取
+    // 上傳壓縮照片
     function uploadCardPhoto(input, imgElementId) {
       if (input.files && input.files[0]) {
         const file = input.files[0];
@@ -2789,17 +2634,14 @@
             const scale = Math.min(maxW / img.width, 1);
             canvas.width = img.width * scale;
             canvas.height = img.height * scale;
-
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
             const compressedBase64 = canvas.toDataURL('image/jpeg', 0.78);
             document.getElementById(imgElementId).src = compressedBase64;
-
             try {
               localStorage.setItem('trip_img_' + imgElementId, compressedBase64);
             } catch (err) {
-              console.warn('儲存空間已滿，但當前畫面已成功顯示。');
+              console.warn('容量已滿');
             }
           };
           img.src = e.target.result;
@@ -2808,69 +2650,37 @@
       }
     }
 
-    // 💱 雙線路即時匯率抓取
+    // 匯率抓取
     let currentJpyToTwdRate = 0.215;
-
     async function fetchLiveExchangeRate() {
       const rateEl = document.getElementById('liveRateDisplay');
-      const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
-
       try {
-        const fetchPromise = fetch('https://open.er-api.com/v6/latest/JPY').then(res => res.json());
-        const data = await Promise.race([fetchPromise, timeout(3000)]);
+        const res = await fetch('https://open.er-api.com/v6/latest/JPY');
+        const data = await res.json();
         if (data && data.rates && data.rates.TWD) {
           currentJpyToTwdRate = data.rates.TWD;
           if (rateEl) rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)}`;
-          return;
         }
       } catch (e) {
-        console.warn('線路 1 失敗，嘗試線路 2...');
-      }
-
-      try {
-        const fetchPromise2 = fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/jpy.json').then(res => res.json());
-        const data2 = await Promise.race([fetchPromise2, timeout(3000)]);
-        if (data2 && data2.jpy && data2.jpy.twd) {
-          currentJpyToTwdRate = data2.jpy.twd;
-          if (rateEl) rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(4)}`;
-          return;
-        }
-      } catch (e) {
-        console.warn('線路 2 失敗，啟用離線基準值');
-      }
-
-      if (rateEl) {
-        rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(3)} (離線)`;
-        rateEl.style.color = '#64748b';
-        rateEl.style.background = '#f1f5f9';
+        if (rateEl) rateEl.innerText = `1 JPY ≈ NT$ ${currentJpyToTwdRate.toFixed(3)} (離線)`;
       }
     }
 
-    // 雙向換算輸入連動計算
     function calcExchange(source) {
       const jpyInput = document.getElementById('calcJpyInput');
       const twdInput = document.getElementById('calcTwdInput');
-
       if (!jpyInput || !twdInput) return;
 
       if (source === 'jpy') {
         const jpyVal = parseFloat(jpyInput.value);
-        if (isNaN(jpyVal) || jpyVal <= 0) {
-          twdInput.value = '';
-          return;
-        }
-        twdInput.value = Math.round(jpyVal * currentJpyToTwdRate);
+        twdInput.value = (!isNaN(jpyVal) && jpyVal > 0) ? Math.round(jpyVal * currentJpyToTwdRate) : '';
       } else {
         const twdVal = parseFloat(twdInput.value);
-        if (isNaN(twdVal) || twdVal <= 0) {
-          jpyInput.value = '';
-          return;
-        }
-        jpyInput.value = Math.round(twdVal / currentJpyToTwdRate);
+        jpyInput.value = (!isNaN(twdVal) && twdVal > 0) ? Math.round(twdVal / currentJpyToTwdRate) : '';
       }
     }
 
-    // 頁面載入時讀取儲存的狀態與照片，並執行 Auto-Jump 日期跳轉
+    // 頁面載入
     window.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.check-item input').forEach(input => {
         const id = input.getAttribute('data-id');
@@ -2882,9 +2692,7 @@
 
       document.querySelectorAll('.event-img, .dual-img-box img').forEach(img => {
         const savedData = localStorage.getItem('trip_img_' + img.id);
-        if (savedData) {
-          img.src = savedData;
-        }
+        if (savedData) img.src = savedData;
       });
 
       fetchLiveExchangeRate();
@@ -2893,31 +2701,17 @@
 
       setTimeout(() => {
         switchTicket(0);
-
-        // 🗓️ 旅程當天自動定位頁籤（Auto-Jump）
         const tripDateMap = {
-          "2026-10-31": 1,
-          "2026-11-01": 2,
-          "2026-11-02": 3,
-          "2026-11-03": 4,
-          "2026-11-04": 5,
-          "2026-11-05": 6,
-          "2026-11-06": 7
+          "2026-10-31": 1, "2026-11-01": 2, "2026-11-02": 3,
+          "2026-11-03": 4, "2026-11-04": 5, "2026-11-05": 6, "2026-11-06": 7
         };
-
         const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
-        const currentDate = String(today.getDate()).padStart(2, '0');
-        const todayKey = `${currentYear}-${currentMonth}-${currentDate}`;
-
-        if (tripDateMap[todayKey]) {
-          switchDay(tripDateMap[todayKey]);
-        }
+        const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        if (tripDateMap[todayKey]) switchDay(tripDateMap[todayKey]);
       }, 300);
     });
 
-    // 專屬 5 位成員名單
+    // 記帳系統
     const tripMembers = ["柏毅", "張庭", "班長", "書緯", "柳丁"];
     let tripExpenses = JSON.parse(localStorage.getItem('trip_expenses_list') || '[]');
 
@@ -2948,7 +2742,7 @@
 
       tripExpenses.forEach((item, index) => {
         const cur = item.currency || 'JPY';
-        const symbol = cur === 'JPY' ? '¥' : 'NT$';
+        const symbol = cur === 'JPY' ? '¥' : 'NT\$';
         const beneficiaries = (item.beneficiaries && item.beneficiaries.length > 0) ? item.beneficiaries : tripMembers;
         const perPersonShare = item.amount / beneficiaries.length;
 
@@ -2988,7 +2782,7 @@
       let summaryHtml = '';
       ['JPY', 'TWD'].forEach(cur => {
         if (totals[cur] > 0) {
-          const sym = cur === 'JPY' ? '¥' : 'NT$';
+          const sym = cur === 'JPY' ? '¥' : 'NT\$';
           let detail = '';
 
           tripMembers.forEach(m => {
@@ -2998,37 +2792,25 @@
 
             if (diff > 0) {
               detail += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #bbf7d0; border-left:4px solid #16a34a; padding:10px 12px; border-radius:12px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #bbf7d0; border-left:4px solid #16a34a; padding:10px 12px; border-radius:12px; margin-bottom:8px;">
                   <div>
-                    <div style="font-size:15px; font-weight:800; color:#14532d; display:flex; align-items:center; gap:4px;">
-                      <span>🟢</span> <span>${m}</span>
-                    </div>
-                    <div style="font-size:11.5px; color:#64748b; margin-top:2px;">
-                      已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}
-                    </div>
+                    <div style="font-size:15px; font-weight:800; color:#14532d;">🟢 ${m}</div>
+                    <div style="font-size:11.5px; color:#64748b; margin-top:2px;">已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}</div>
                   </div>
                   <div style="text-align:right;">
-                    <span style="display:inline-block; background:#dcfce7; color:#15803d; font-size:18px; font-weight:900; padding:4px 10px; border-radius:8px; letter-spacing:0.3px;">
-                      +${sym}${diff.toLocaleString()}
-                    </span>
+                    <span style="display:inline-block; background:#dcfce7; color:#15803d; font-size:18px; font-weight:900; padding:4px 10px; border-radius:8px;">+${sym}${diff.toLocaleString()}</span>
                     <div style="font-size:10px; color:#16a34a; font-weight:700; margin-top:2px;">應收回</div>
                   </div>
                 </div>`;
             } else if (diff < 0) {
               detail += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #fecaca; border-left:4px solid #dc2626; padding:10px 12px; border-radius:12px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #fecaca; border-left:4px solid #dc2626; padding:10px 12px; border-radius:12px; margin-bottom:8px;">
                   <div>
-                    <div style="font-size:15px; font-weight:800; color:#7f1d1d; display:flex; align-items:center; gap:4px;">
-                      <span>🔴</span> <span>${m}</span>
-                    </div>
-                    <div style="font-size:11.5px; color:#64748b; margin-top:2px;">
-                      已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}
-                    </div>
+                    <div style="font-size:15px; font-weight:800; color:#7f1d1d;">🔴 ${m}</div>
+                    <div style="font-size:11.5px; color:#64748b; margin-top:2px;">已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}</div>
                   </div>
                   <div style="text-align:right;">
-                    <span style="display:inline-block; background:#fee2e2; color:#b91c1c; font-size:18px; font-weight:900; padding:4px 10px; border-radius:8px; letter-spacing:0.3px;">
-                      -${sym}${Math.abs(diff).toLocaleString()}
-                    </span>
+                    <span style="display:inline-block; background:#fee2e2; color:#b91c1c; font-size:18px; font-weight:900; padding:4px 10px; border-radius:8px;">-${sym}${Math.abs(diff).toLocaleString()}</span>
                     <div style="font-size:10px; color:#dc2626; font-weight:700; margin-top:2px;">應拿出</div>
                   </div>
                 </div>`;
@@ -3036,29 +2818,22 @@
               detail += `
                 <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #94a3b8; padding:10px 12px; border-radius:12px; margin-bottom:8px;">
                   <div>
-                    <div style="font-size:15px; font-weight:700; color:#334155; display:flex; align-items:center; gap:4px;">
-                      <span>⚪</span> <span>${m}</span>
-                    </div>
-                    <div style="font-size:11.5px; color:#64748b; margin-top:2px;">
-                      已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}
-                    </div>
+                    <div style="font-size:15px; font-weight:700; color:#334155;">⚪ ${m}</div>
+                    <div style="font-size:11.5px; color:#64748b; margin-top:2px;">已墊 ${sym}${paid.toLocaleString()} ｜ 應負擔 ${sym}${shouldPay.toLocaleString()}</div>
                   </div>
-                  <div style="font-size:13px; font-weight:700; color:#64748b; padding:4px 8px;">
-                    剛好結清
-                  </div>
+                  <div style="font-size:13px; font-weight:700; color:#64748b; padding:4px 8px;">剛好結清</div>
                 </div>`;
             }
           });
 
           summaryHtml += `
             <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:14px; padding:12px 10px; margin-top:10px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px; margin-bottom:10px; padding-left:4px; padding-right:4px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px; margin-bottom:10px;">
                 <strong style="font-size:14.5px; color:#1e3a8a;">🪙 ${cur === 'JPY' ? '日幣結算 (JPY ¥)' : '台幣結算 (TWD NT$)'}</strong>
                 <span style="font-size:13px; color:#475569; font-weight:700;">總支出 ${sym}${totals[cur].toLocaleString()}</span>
               </div>
               ${detail}
-            </div>
-          `;
+            </div>`;
         }
       });
 
@@ -3068,18 +2843,15 @@
       `;
     }
 
-    // 📲 一鍵複製 LINE 格式報告
     function copyExpenseSummaryToLine() {
       if (tripExpenses.length === 0) {
         alert('目前還沒有任何記帳紀錄喔！');
         return;
       }
-
       const todayStr = new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' });
       let text = `【🇯🇵 關西 7 天 6 夜｜公費結算報告】\n📅 日期：${todayStr}\n📝 支出筆數：${tripExpenses.length} 筆\n\n--- 支出明細 ---\n`;
-
       tripExpenses.forEach(item => {
-        const sym = item.currency === 'TWD' ? 'NT$' : '¥';
+        const sym = item.currency === 'TWD' ? 'NT\$' : '¥';
         text += `・${item.name}：${sym}${item.amount.toLocaleString()}（${item.payer} 付）\n`;
       });
 
@@ -3096,10 +2868,8 @@
         const cur = item.currency || 'JPY';
         const beneficiaries = (item.beneficiaries && item.beneficiaries.length > 0) ? item.beneficiaries : tripMembers;
         const perPersonShare = item.amount / beneficiaries.length;
-
         totals[cur] = (totals[cur] || 0) + item.amount;
         paidMap[cur][item.payer] = (paidMap[cur][item.payer] || 0) + item.amount;
-
         beneficiaries.forEach(m => {
           shouldPayMap[cur][m] = (shouldPayMap[cur][m] || 0) + perPersonShare;
         });
@@ -3107,25 +2877,19 @@
 
       ['JPY', 'TWD'].forEach(cur => {
         if (totals[cur] > 0) {
-          const sym = cur === 'JPY' ? '¥' : 'NT$';
+          const sym = cur === 'JPY' ? '¥' : 'NT\$';
           text += `\n--- 🪙 ${cur === 'JPY' ? '日幣結算 (JPY ¥)' : '台幣結算 (TWD NT$)'} ---\n`;
           text += `💰 總支出：${sym}${totals[cur].toLocaleString()}\n`;
-
           tripMembers.forEach(m => {
             const paid = paidMap[cur][m] || 0;
             const shouldPay = Math.round(shouldPayMap[cur][m] || 0);
             const diff = paid - shouldPay;
-            if (diff > 0) {
-              text += `🟢 ${m}：應收回 +${sym}${diff.toLocaleString()}\n`;
-            } else if (diff < 0) {
-              text += `🔴 ${m}：應拿出 -${sym}${Math.abs(diff).toLocaleString()}\n`;
-            } else {
-              text += `⚪ ${m}：剛好結清\n`;
-            }
+            if (diff > 0) text += `🟢 ${m}：應收回 +${sym}${diff.toLocaleString()}\n`;
+            else if (diff < 0) text += `🔴 ${m}：應拿出 -${sym}${Math.abs(diff).toLocaleString()}\n`;
+            else text += `⚪ ${m}：剛好結清\n`;
           });
         }
       });
-
       text += `\n（大家確認無誤後即可結清～💰）`;
 
       const btn = document.getElementById('copyLineBtn');
@@ -3137,12 +2901,11 @@
           btn.innerHTML = origText;
           btn.style.background = '#06c755';
         }, 2500);
-      }).catch(err => {
+      }).catch(() => {
         prompt('請手動複製以下結算文字：', text);
       });
     }
 
-    // 新增支出
     function addExpenseRecord() {
       const payer = document.getElementById('splitPayer').value;
       const currency = document.getElementById('splitCurrency').value;
@@ -3152,7 +2915,7 @@
       const amt = parseFloat(amtInput.value);
 
       if (!amt || amt <= 0) {
-        alert('請輸入大於 0 的有效金額！');
+        alert('請輸入有效金額！');
         return;
       }
 
@@ -3167,11 +2930,7 @@
       }
 
       tripExpenses.push({
-        payer,
-        currency,
-        name,
-        amount: amt,
-        beneficiaries: checkedBeneficiaries,
+        payer, currency, name, amount: amt, beneficiaries: checkedBeneficiaries,
         time: new Date().toLocaleTimeString()
       });
 
@@ -3181,7 +2940,6 @@
       renderExpenses();
     }
 
-    // 編輯單筆支出
     function editExpenseRecord(index) {
       const item = tripExpenses[index];
       const currentBeneficiaries = item.beneficiaries || tripMembers;
@@ -3200,7 +2958,7 @@
       if (newCur === null) return;
       const formattedCur = newCur.trim().toUpperCase();
       if (!['JPY', 'TWD'].includes(formattedCur)) {
-        alert('幣別僅支援 JPY（日幣）或 TWD（台幣）！');
+        alert('幣別僅支援 JPY 或 TWD！');
         return;
       }
 
@@ -3233,7 +2991,6 @@
       renderExpenses();
     }
 
-    // 刪除單筆
     function removeExpenseRecord(index) {
       if (confirm(`確定刪除「${tripExpenses[index].name}」這筆紀錄嗎？`)) {
         tripExpenses.splice(index, 1);
@@ -3242,7 +2999,6 @@
       }
     }
 
-    // 清空重置（結清）
     function clearAllExpenses() {
       if (confirm('確定要清空今日所有記帳紀錄嗎？（請確認已完成收款結算）')) {
         tripExpenses = [];
@@ -3251,15 +3007,11 @@
       }
     }
 
-    // 捲動超過 300px 自動顯示回頂按鈕
     window.addEventListener('scroll', () => {
       const fab = document.getElementById('btnBackTop');
       if (fab) {
-        if (window.scrollY > 300) {
-          fab.classList.add('show');
-        } else {
-          fab.classList.remove('show');
-        }
+        if (window.scrollY > 300) fab.classList.add('show');
+        else fab.classList.remove('show');
       }
     });
   </script>
@@ -3271,12 +3023,9 @@
     <div onclick="event.stopPropagation()" style="background: #ffffff; border-radius: 24px; padding: 28px 24px; text-align: center; max-width: 320px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
       <div id="modalMemberName" style="font-size: 17px; font-weight: 800; color: #1e3a8a; margin-bottom: 4px;">柏毅 (1/5)</div>
       <div style="font-size: 12px; color: #64748b; margin-bottom: 16px;">海遊館電子門票（大人）</div>
-      
-      <!-- 放大版高對比白色襯底 -->
       <div style="background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 12px; display: inline-block;">
         <img id="modalQrImg" src="ticket_1.png" alt="放大 QR Code" style="width: 230px; height: 230px; display: block; object-fit: contain;">
       </div>
-
       <div id="modalSerialNo" style="font-size: 13px; font-family: monospace; font-weight: 800; color: #0284c7; margin-top: 14px;">
         00290-2026-1006-8100-5460-0018
       </div>
